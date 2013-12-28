@@ -7,7 +7,7 @@ namespace green_leaf {
       throw "Could not initialize SDL system";
     }
 
-    window_ = SDL_CreateWindow("Hello there!",
+    window_ = SDL_CreateWindow("Pokémon GreenLeaf - The Remake!",
                                SDL_WINDOWPOS_CENTERED,
                                SDL_WINDOWPOS_CENTERED,
                                width_ * scale_,
