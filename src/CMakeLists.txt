@@ -11,6 +11,7 @@ set(GREEN_LEAF_SRC
   graphics.cpp
   input.cpp
   main.cpp
+  player.cpp
   texture.cpp
 )
 
