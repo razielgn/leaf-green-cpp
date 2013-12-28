@@ -40,7 +40,7 @@ namespace green_leaf {
     dest->w *= scale_;
     dest->h *= scale_;
 
-    SDL_RenderCopy(renderer_, texture->data(), source, dest);
+    SDL_RenderCopy(renderer_, texture->toSDLTexture(), source, dest);
   }
 
   void Graphics::present() {
