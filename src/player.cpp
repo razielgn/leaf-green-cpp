@@ -1,6 +1,7 @@
 #include "player.hpp"
 #include "input.hpp"
 #include "graphics.hpp"
+#include "rectangle.hpp"
 #include "texture.hpp"
 
 namespace green_leaf {
@@ -36,26 +37,28 @@ namespace green_leaf {
   }
 
   void Player::draw(Graphics* graphics) {
-    SDL_Rect source_rect, dest_rect;
     int frame_w = 16;
     int frame_h = 20;
 
-    dest_rect.x = graphics->width() / 2 - frame_w / 2;
-    dest_rect.y = graphics->height() / 2 - frame_w / 2;
-
-    source_rect.w = frame_w;
-    source_rect.h = frame_h;
-
+    int x = 0;
     if(walking_) {
-      source_rect.x = frame_w * int(((SDL_GetTicks() / 200) % 4));
-    } else {
-      source_rect.x = 0;
+      x = frame_w * int(((SDL_GetTicks() / 200) % 4));
     }
-    source_rect.y = frame_h * direction_;
 
-    dest_rect.w = source_rect.w;
-    dest_rect.h = source_rect.h;
+    Rectangle source(
+      x,
+      frame_h * direction_,
+      frame_w,
+      frame_h
+    );
 
-    graphics->drawTexture(texture_, &source_rect, &dest_rect);
+    Rectangle destination(
+      graphics->width() / 2 - frame_w / 2,
+      graphics->height() / 2 - frame_h / 2,
+      source.width(),
+      source.height()
+    );
+
+    graphics->drawTexture(texture_, &destination, &source);
   }
 }

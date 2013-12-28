@@ -1,4 +1,5 @@
 #include "graphics.hpp"
+#include "rectangle.hpp"
 #include "texture.hpp"
 
 namespace green_leaf {
@@ -34,13 +35,19 @@ namespace green_leaf {
     SDL_RenderClear(renderer_);
   }
 
-  void Graphics::drawTexture(Texture* texture, SDL_Rect* source, SDL_Rect* dest) {
-    dest->x *= scale_;
-    dest->y *= scale_;
-    dest->w *= scale_;
-    dest->h *= scale_;
+  void Graphics::drawTexture(const Texture* texture, const Rectangle* destination, const Rectangle* source) {
+    Rectangle scaled_destination = destination->scale(scale_);
 
-    SDL_RenderCopy(renderer_, texture->toSDLTexture(), source, dest);
+    SDL_Rect source_rect = source->toSDLRect();
+    SDL_Rect dest_rect   = scaled_destination.toSDLRect();
+
+    SDL_RenderCopy(renderer_, texture->toSDLTexture(), &source_rect, &dest_rect);
+  }
+
+  void Graphics::drawTexture(const Texture* texture, const Rectangle* destination) {
+    Rectangle source(0, 0, texture->width(), texture->height());
+
+    drawTexture(texture, destination, &source);
   }
 
   void Graphics::present() {

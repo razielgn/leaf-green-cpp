@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 namespace green_leaf {
+  class Rectangle;
   class Texture;
 
   class Graphics {
@@ -12,7 +13,8 @@ namespace green_leaf {
     ~Graphics();
 
     void clear();
-    void drawTexture(Texture* texture, SDL_Rect* source, SDL_Rect* dest);
+    void drawTexture(const Texture* texture, const Rectangle* destination, const Rectangle* source);
+    void drawTexture(const Texture* texture, const Rectangle* destination);
     void present();
 
     SDL_Renderer* renderer() const {

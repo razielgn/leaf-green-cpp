@@ -1,6 +1,7 @@
 #include "graphics.hpp"
 #include "input.hpp"
 #include "map.hpp"
+#include "rectangle.hpp"
 #include "texture.hpp"
 
 namespace green_leaf {
@@ -17,12 +18,8 @@ namespace green_leaf {
   }
 
   void Map::draw(Graphics* graphics) {
-    SDL_Rect rect;
-    rect.x = 0;
-    rect.y = 0;
-    rect.w = 176;
-    rect.h = 144;
+    Rectangle destination(0, 0, 176, 144);
 
-    graphics->drawTexture(background_, &rect, &rect);
+    graphics->drawTexture(background_, &destination);
   }
 }
