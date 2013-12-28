@@ -19,9 +19,21 @@ namespace green_leaf {
       return renderer_;
     }
 
+    int width() const {
+      return width_;
+    }
+
+    int height() const {
+      return height_;
+    }
+
   private:
     SDL_Window* window_;
     SDL_Renderer* renderer_;
+
+    int width_ = 240;
+    int height_ = 160;
+    int scale_ = 1;
   };
 }
 

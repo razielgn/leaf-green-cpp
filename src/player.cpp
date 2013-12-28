@@ -37,13 +37,11 @@ namespace green_leaf {
 
   void Player::draw(Graphics* graphics) {
     SDL_Rect source_rect, dest_rect;
-    int scale = 4;
-
     int frame_w = 16;
     int frame_h = 20;
 
-    dest_rect.x = 200;
-    dest_rect.y = 200;
+    dest_rect.x = graphics->width() / 2 - frame_w / 2;
+    dest_rect.y = graphics->height() / 2 - frame_w / 2;
 
     source_rect.w = frame_w;
     source_rect.h = frame_h;
@@ -55,8 +53,8 @@ namespace green_leaf {
     }
     source_rect.y = frame_h * direction_;
 
-    dest_rect.w = source_rect.w * scale;
-    dest_rect.h = source_rect.h * scale;
+    dest_rect.w = source_rect.w;
+    dest_rect.h = source_rect.h;
 
     graphics->drawTexture(texture_, &source_rect, &dest_rect);
   }

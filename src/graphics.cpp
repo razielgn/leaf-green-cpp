@@ -10,8 +10,8 @@ namespace green_leaf {
     window_ = SDL_CreateWindow("Hello there!",
                                SDL_WINDOWPOS_CENTERED,
                                SDL_WINDOWPOS_CENTERED,
-                               640,
-                               480,
+                               width_ * scale_,
+                               height_ * scale_,
                                SDL_WINDOW_SHOWN);
 
     if(!window_) {
@@ -35,6 +35,11 @@ namespace green_leaf {
   }
 
   void Graphics::drawTexture(Texture* texture, SDL_Rect* source, SDL_Rect* dest) {
+    dest->x *= scale_;
+    dest->y *= scale_;
+    dest->w *= scale_;
+    dest->h *= scale_;
+
     SDL_RenderCopy(renderer_, texture->data(), source, dest);
   }
 
