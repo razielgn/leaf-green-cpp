@@ -9,6 +9,7 @@ include_directories(${SDL2_IMAGE_INCLUDE_DIR})
 set(GREEN_LEAF_SRC
   game.cpp
   graphics.cpp
+  input.cpp
   main.cpp
   texture.cpp
 )
@@ -22,4 +23,7 @@ target_link_libraries(green-leaf
 
 add_definitions(
   -std=c++11
+  -Wall
+  -Wextra
+  -pedantic
 )

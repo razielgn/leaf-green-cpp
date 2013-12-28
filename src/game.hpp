@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 
 #include "graphics.hpp"
+#include "input.hpp"
 
 namespace green_leaf {
   class Game {
@@ -20,6 +21,7 @@ namespace green_leaf {
   private:
     Graphics* graphics_;
     Texture* hero_texture_;
+    Input* input_;
     bool running_;
   };
 }

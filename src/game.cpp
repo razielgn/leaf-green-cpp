@@ -4,10 +4,12 @@
 namespace green_leaf {
   Game::Game() {
     graphics_ = new Graphics();
+    input_ = new Input();
   }
 
   Game::~Game() {
     delete graphics_;
+    delete input_;
   }
 
   void Game::loadContent() {
@@ -27,7 +29,6 @@ namespace green_leaf {
     SDL_Rect source_rect, dest_rect;
     int scale = 4;
 
-    int frame = 0;
     int frame_w = 16;
     int frame_h = 20;
 
@@ -36,56 +37,39 @@ namespace green_leaf {
     int fps = 60;
     int delay_time = 1000.0f / fps;
     int frame_start, frame_time;
-    SDL_Event event;
-    const Uint8 *key_state;
 
     bool walking = false;
-      dest_rect.x = 200;
-      dest_rect.y = 200;
+    dest_rect.x = 200;
+    dest_rect.y = 200;
 
     while(running_) {
       frame_start = SDL_GetTicks();
 
-      key_state = SDL_GetKeyboardState(NULL);
+      input_->recordState();
 
-      if(SDL_PollEvent(&event)) {
-        switch(event.type) {
-          case SDL_QUIT:
-            stop();
-            break;
-          case SDL_KEYDOWN:
-            if(key_state[SDL_SCANCODE_ESCAPE]) {
-              stop();
-            } else if(key_state[SDL_SCANCODE_RIGHT]) {
-              direction = 3;
-              walking = true;
-            } else if(key_state[SDL_SCANCODE_LEFT]) {
-              direction = 1;
-              walking = true;
-            } else if(key_state[SDL_SCANCODE_UP]) {
-              direction = 2;
-              walking = true;
-            } else if(key_state[SDL_SCANCODE_DOWN]) {
-              direction = 0;
-              walking = true;
-            }
+      if(input_->hasQuit()) {
+        stop();
+      }
 
-            break;
-          case SDL_KEYUP:
-            if(!key_state[SDL_SCANCODE_RIGHT]) {
-              walking = false;
-            } else if(!key_state[SDL_SCANCODE_LEFT]) {
-              walking = false;
-            } else if(!key_state[SDL_SCANCODE_UP]) {
-              walking = false;
-            } else if(!key_state[SDL_SCANCODE_DOWN]) {
-              walking = false;
-            }
+      if(input_->isKeyDown(Right)) {
+        direction = 3;
+        walking = true;
+      } else if(input_->isKeyDown(Left)) {
+        direction = 1;
+        walking = true;
+      } else if(input_->isKeyDown(Up)) {
+        direction = 2;
+        walking = true;
+      } else if(input_->isKeyDown(Down)) {
+        direction = 0;
+        walking = true;
+      }
 
-            break;
-          default:
-            break;
-        }
+      if(input_->isKeyUp(Right) ||
+         input_->isKeyUp(Left)  ||
+         input_->isKeyUp(Up)  ||
+         input_->isKeyUp(Down)) {
+        walking = false;
       }
 
       source_rect.w = frame_w;
