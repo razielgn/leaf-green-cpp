@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
+#include "map.hpp"
 #include "player.hpp"
 
 namespace green_leaf {
@@ -8,6 +9,7 @@ namespace green_leaf {
     graphics_ = new Graphics();
     input_ = new Input();
     player_ = new Player();
+    map_ = new Map();
 
     running_ = true;
   }
@@ -16,14 +18,18 @@ namespace green_leaf {
     delete graphics_;
     delete input_;
     delete player_;
+
+    delete map_;
   }
 
   void Game::loadContent() {
     player_->loadContent(graphics_);
+    map_->loadContent(graphics_);
   }
 
   void Game::unloadContent() {
     player_->unloadContent();
+    map_->unloadContent();
   }
 
   void Game::run() {
@@ -50,11 +56,13 @@ namespace green_leaf {
     }
 
     player_->update(input_);
+    map_->update(input_);
   }
 
   void Game::draw() {
     graphics_->clear();
 
+    map_->draw(graphics_);
     player_->draw(graphics_);
 
     graphics_->present();

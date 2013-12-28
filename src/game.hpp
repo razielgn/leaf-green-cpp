@@ -5,6 +5,7 @@ namespace green_leaf {
   class Graphics;
   class Input;
   class Player;
+  class Map;
 
   class Game {
   public:
@@ -22,6 +23,7 @@ namespace green_leaf {
     Graphics* graphics_;
     Input* input_;
     Player* player_;
+    Map* map_;
 
     bool running_;
   };
