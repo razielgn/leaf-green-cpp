@@ -1,0 +1,15 @@
+language: cpp
+
+compiler:
+  - clang
+  - gcc
+
+before_install:
+  - "sudo add-apt-repository -y ppa:zoogie/sdl2-snapshots"
+  - "sudo apt-get update"
+  - "sudo apt-get install libsdl2 libsdl2-image"
+
+before_script:
+  - "cmake ."
+
+script: "make test"
