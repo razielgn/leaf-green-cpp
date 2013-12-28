@@ -5,7 +5,7 @@
 
 namespace green_leaf {
   void Player::loadContent(Graphics* graphics) {
-    texture_ = Texture::from_path(graphics, "hero.png");
+    texture_ = Texture::fromPath(graphics, "hero.png");
   }
 
   void Player::unloadContent() {

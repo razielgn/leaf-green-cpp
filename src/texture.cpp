@@ -1,8 +1,10 @@
 #include "texture.hpp"
 #include "graphics.hpp"
 
+#include <SDL_image.h>
+
 namespace green_leaf {
-  Texture* Texture::from_path(const Graphics* graphics, const char* path) {
+  Texture* Texture::fromPath(const Graphics* graphics, const char* path) {
     Texture* texture = new Texture();
 
     SDL_Surface* surface = IMG_Load(path);

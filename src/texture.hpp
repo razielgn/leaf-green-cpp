@@ -2,14 +2,13 @@
 #define GL_TEXTURE_CPP
 
 #include <SDL.h>
-#include <SDL_image.h>
 
 namespace green_leaf {
   class Graphics;
 
   class Texture {
   public:
-    static Texture* from_path(const Graphics* graphics, const char* path);
+    static Texture* fromPath(const Graphics* graphics, const char* path);
     ~Texture();
 
     SDL_Texture* data() const {
