@@ -23,6 +23,10 @@ namespace green_leaf {
     EXPECT_EQ(rect_, rect_);
   }
 
+  TEST_F(RectangleTest, Equality) {
+    EXPECT_EQ(Rectangle(1, 2, 3, 4), rect_);
+  }
+
   TEST_F(RectangleTest, Inequality) {
     EXPECT_NE(Rectangle(1, 2, 3, 1), rect_);
   }

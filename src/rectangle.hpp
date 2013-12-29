@@ -28,7 +28,7 @@ namespace green_leaf {
     }
 
     bool operator==(const Rectangle& rect) const {
-      return (
+      return (this == &rect) || (
         x_ == rect.x_ &&
         y_ == rect.y_ &&
         width_ == rect.width_ &&
