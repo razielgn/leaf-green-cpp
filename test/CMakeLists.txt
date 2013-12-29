@@ -7,6 +7,7 @@ set(TEST_DIR ${CMAKE_CURRENT_BINARY_DIR})
 include(ExternalProject)
 ExternalProject_Add(GoogleMock
   URL "https://googlemock.googlecode.com/files/gmock-1.7.0.zip"
+  DOWNLOAD_NAME "gmock-1.7.0.zip"
   URL_HASH SHA1=f9d9dd882a25f4069ed9ee48e70aff1b53e3c5a5
   PREFIX "${TEST_DIR}/gmock"
   CMAKE_ARGS -DBUILD_SHARED_LIBS=ON
