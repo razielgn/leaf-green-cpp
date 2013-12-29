@@ -7,6 +7,7 @@ compiler:
 before_install:
   - "sudo apt-get -y build-dep libsdl1.2 libsdl-image1.2-dev"
   - "sudo apt-get -y install unzip"
+  - "sudo apt-get upgrade cmake"
   - "wget http://www.libsdl.org/release/SDL2-2.0.1.tar.gz"
   - "tar xfz SDL2-2.0.1.tar.gz"
   - "cd SDL2-2.0.1"
