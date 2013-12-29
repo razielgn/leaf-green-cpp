@@ -23,8 +23,8 @@ namespace green_leaf {
     }
 
   private:
-    const int x_;
-    const int y_;
+    int x_;
+    int y_;
   };
 }
 

@@ -28,4 +28,12 @@ namespace green_leaf {
   TEST_F(PointTest, Inequality) {
     EXPECT_NE(Point(1, 1), point_);
   }
+
+  TEST_F(PointTest, Assignment) {
+    Point point(1, 2);
+    point = Point(3, 4);
+
+    EXPECT_EQ(3, point.x());
+    EXPECT_EQ(4, point.y());
+  }
 }
