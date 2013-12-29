@@ -35,7 +35,7 @@ namespace green_leaf {
   }
 
   TEST_F(RectangleTest, ToSDLRect) {
-    SDL_Rect rect = rect_.toSDLRect();
+    const SDL_Rect rect = rect_.toSDLRect();
 
     EXPECT_EQ(1, rect.x);
     EXPECT_EQ(2, rect.y);

@@ -9,7 +9,7 @@ namespace green_leaf {
     Rectangle(int x, int y, int width, int height);
 
     Rectangle scale(int factor) const;
-    SDL_Rect toSDLRect() const;
+    const SDL_Rect toSDLRect() const;
 
     int x() const {
       return x_;

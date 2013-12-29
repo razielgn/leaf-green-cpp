@@ -38,8 +38,8 @@ namespace green_leaf {
   void Graphics::drawTexture(const Texture* texture, const Rectangle* destination, const Rectangle* source) {
     Rectangle scaled_destination = destination->scale(scale_);
 
-    SDL_Rect source_rect = source->toSDLRect();
-    SDL_Rect dest_rect   = scaled_destination.toSDLRect();
+    const SDL_Rect source_rect = source->toSDLRect();
+    const SDL_Rect dest_rect   = scaled_destination.toSDLRect();
 
     SDL_RenderCopy(renderer_, texture->toSDLTexture(), &source_rect, &dest_rect);
   }

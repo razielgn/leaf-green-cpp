@@ -18,7 +18,7 @@ namespace green_leaf {
     );
   }
 
-  SDL_Rect Rectangle::toSDLRect() const {
+  const SDL_Rect Rectangle::toSDLRect() const {
     SDL_Rect rect;
 
     rect.x = x_;
