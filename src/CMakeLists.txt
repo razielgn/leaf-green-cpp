@@ -1,14 +1,15 @@
 project(green-leaf C CXX)
 
+set(SRC_DIR ${CMAKE_CURRENT_BINARY_DIR})
+
+file(
+  GLOB
+  SRC_FILES
+  "${SRC_DIR}/*.cpp"
+)
+
 set(GREEN_LEAF_SRC
-  game.cpp
-  graphics.cpp
-  input.cpp
-  main.cpp
-  map.cpp
-  player.cpp
-  rectangle.cpp
-  texture.cpp
+  ${SRC_FILES}
 )
 
 add_executable(green-leaf ${GREEN_LEAF_SRC})
