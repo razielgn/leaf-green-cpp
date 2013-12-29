@@ -1,5 +1,4 @@
 #include "input.hpp"
-#include <map>
 
 namespace green_leaf {
   void Input::recordState() {
