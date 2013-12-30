@@ -7,15 +7,15 @@
 namespace green_leaf {
   class Point {
   public:
-    Point(int x, int y);
+    Point(float x, float y);
 
     std::string toString() const;
 
-    int x() const {
+    float x() const {
       return x_;
     }
 
-    int y() const {
+    float y() const {
       return y_;
     }
 
@@ -27,9 +27,13 @@ namespace green_leaf {
       return !(*this == p);
     }
 
+    Point operator+(const Point& p) const;
+    Point operator-(const Point& p) const;
+    Point operator*(float f) const;
+
   private:
-    int x_;
-    int y_;
+    float x_;
+    float y_;
   };
 
   void PrintTo(const Point& p, std::ostream* os);

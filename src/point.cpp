@@ -3,10 +3,31 @@
 #include <sstream>
 
 namespace green_leaf {
-  Point::Point(int x, int y)
+  Point::Point(float x, float y)
     : x_(x)
     , y_(y)
   {
+  }
+
+  Point Point::operator+(const Point& p) const {
+    return Point(
+      x_ + p.x_,
+      y_ + p.y_
+    );
+  }
+
+  Point Point::operator-(const Point& p) const {
+    return Point(
+      x_ - p.x_,
+      y_ - p.y_
+    );
+  }
+
+  Point Point::operator*(float f) const {
+    return Point(
+      x_ * f,
+      y_ * f
+    );
   }
 
   std::string Point::toString() const {

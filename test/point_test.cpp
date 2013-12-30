@@ -41,4 +41,20 @@ namespace green_leaf {
   TEST_F(PointTest, ToString) {
     ASSERT_EQ(std::string("Point(1, 2)"), point_.toString());
   }
+
+  TEST_F(PointTest, Sum) {
+    EXPECT_EQ(Point(2, 5), Point(0, 0) + Point(2, 5));
+    EXPECT_EQ(Point(2, 5), Point(1, 2) + Point(1, 3));
+  }
+
+  TEST_F(PointTest, Difference) {
+    EXPECT_EQ(Point(-2, -5), Point(0, 0) - Point(2, 5));
+    EXPECT_EQ(Point(-0, -1), Point(1, 2) - Point(1, 3));
+  }
+
+  TEST_F(PointTest, Multiplication) {
+    EXPECT_EQ(Point(0, 0), Point(0, 0) * 0.0f);
+    EXPECT_EQ(Point(0, 0), Point(1, 4) * 0.0f);
+    EXPECT_EQ(Point(4, -8), Point(2, -4) * 2.0f);
+  }
 }
