@@ -3,6 +3,7 @@
 #include "graphics.hpp"
 #include "input.hpp"
 #include "map.hpp"
+#include "point.hpp"
 #include "player.hpp"
 
 namespace green_leaf {
@@ -10,7 +11,7 @@ namespace green_leaf {
     graphics_ = new Graphics();
     input_ = new Input();
     player_ = new Player();
-    map_ = new Map();
+    map_ = new Map(Point(5, 6));
 
     running_ = true;
     total_time_ = SDL_GetTicks();
