@@ -1,11 +1,20 @@
 #include "game_time.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
+#include "movement.hpp"
 #include "player.hpp"
 #include "rectangle.hpp"
 #include "texture.hpp"
 
 namespace green_leaf {
+  Player::Player()
+    : elapsed_(0)
+    , frame_number_(0)
+    , direction_(0)
+    , walking_(false)
+    , a_(0)
+  {
+  }
   void Player::loadContent(Graphics* graphics) {
     texture_ = Texture::fromPath(graphics, "hero.png");
   }
@@ -15,33 +24,47 @@ namespace green_leaf {
   }
 
   void Player::update(Input* input, GameTime* game_time) {
-    if(input->isKeyDown(InputKey::Right)) {
-      direction_ = 3;
-      walking_ = true;
-    } else if(input->isKeyDown(InputKey::Left)) {
-      direction_ = 1;
-      walking_ = true;
-    } else if(input->isKeyDown(InputKey::Up)) {
-      direction_ = 2;
-      walking_ = true;
-    } else if(input->isKeyDown(InputKey::Down)) {
-      direction_ = 0;
-      walking_ = true;
+    if(elapsed_ == 0) {
+      if(input->isKeyDown(InputKey::Right)) {
+        walking_ = true;
+        direction_ = 3;
+      } else if(input->isKeyDown(InputKey::Left)) {
+        walking_ = true;
+        direction_ = 1;
+      } else if(input->isKeyDown(InputKey::Up)) {
+        walking_ = true;
+        direction_ = 2;
+      } else if(input->isKeyDown(InputKey::Down)) {
+        walking_ = true;
+        direction_ = 0;
+      }
     }
 
-    if(input->isKeyUp(InputKey::Right) ||
-       input->isKeyUp(InputKey::Left) ||
-       input->isKeyUp(InputKey::Up) ||
-       input->isKeyUp(InputKey::Down)) {
-      walking_ = false;
-    }
+    if(walking_) {
+      elapsed_ += game_time->elapsed();
 
-    frame_number_ = int(((game_time->total() / 200) % 4));
+      if(elapsed_ / float(movement_time_) >= 0.6) {
+        frame_number_ = 0;
+      } else {
+        if(a_ == 0) {
+          frame_number_ = 1;
+        } else {
+          frame_number_ = 3;
+        }
+      }
+
+      if(elapsed_ >= movement_time_) {
+        elapsed_ = 0;
+        walking_ = false;
+        frame_number_ = 0;
+        a_ = (a_ + 1) % 2;
+      }
+    }
   }
-
   void Player::draw(Graphics* graphics) {
     int frame_w = 16;
     int frame_h = 20;
+
     int x = 0;
 
     if(walking_) {

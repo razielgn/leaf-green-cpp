@@ -9,6 +9,7 @@ namespace green_leaf {
 
   class Player {
   public:
+    Player();
     void loadContent(Graphics* graphics);
     void unloadContent();
 
@@ -18,9 +19,12 @@ namespace green_leaf {
   private:
     Texture* texture_;
 
-    bool walking_ = false;
-    unsigned int direction_ = 0;
-    int frame_number_ = 0;
+    const int movement_time_ = 250;
+    int elapsed_;
+    int frame_number_;
+    int direction_;
+    bool walking_;
+    int a_;
   };
 }
 
