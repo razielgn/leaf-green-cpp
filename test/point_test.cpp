@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include <string>
 #include "point.hpp"
 
 namespace green_leaf {
@@ -35,5 +36,9 @@ namespace green_leaf {
 
     EXPECT_EQ(3, point.x());
     EXPECT_EQ(4, point.y());
+  }
+
+  TEST_F(PointTest, ToString) {
+    ASSERT_EQ(std::string("Point(1, 2)"), point_.toString());
   }
 }

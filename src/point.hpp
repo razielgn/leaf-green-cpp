@@ -1,10 +1,14 @@
 #ifndef GL_POINT_HPP
 #define GL_POINT_HPP
 
+#include <string>
+
 namespace green_leaf {
   class Point {
   public:
     Point(int x, int y);
+
+    std::string toString() const;
 
     int x() const {
       return x_;
