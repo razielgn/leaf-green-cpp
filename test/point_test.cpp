@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "point.cpp"
+#include "point.hpp"
 
 namespace green_leaf {
   class PointTest : public ::testing::Test {

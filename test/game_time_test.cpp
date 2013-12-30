@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "game_time.cpp"
+#include "game_time.hpp"
 
 namespace green_leaf {
   class GameTimeTest : public ::testing::Test {

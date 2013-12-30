@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "rectangle.cpp"
+#include "rectangle.hpp"
 
 namespace green_leaf {
   class RectangleTest : public ::testing::Test {
