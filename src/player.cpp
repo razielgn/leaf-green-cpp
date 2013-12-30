@@ -15,24 +15,24 @@ namespace green_leaf {
   }
 
   void Player::update(Input* input, GameTime* game_time) {
-    if(input->isKeyDown(Right)) {
+    if(input->isKeyDown(InputKey::Right)) {
       direction_ = 3;
       walking_ = true;
-    } else if(input->isKeyDown(Left)) {
+    } else if(input->isKeyDown(InputKey::Left)) {
       direction_ = 1;
       walking_ = true;
-    } else if(input->isKeyDown(Up)) {
+    } else if(input->isKeyDown(InputKey::Up)) {
       direction_ = 2;
       walking_ = true;
-    } else if(input->isKeyDown(Down)) {
+    } else if(input->isKeyDown(InputKey::Down)) {
       direction_ = 0;
       walking_ = true;
     }
 
-    if(input->isKeyUp(Right) ||
-       input->isKeyUp(Left)  ||
-       input->isKeyUp(Up)  ||
-       input->isKeyUp(Down)) {
+    if(input->isKeyUp(InputKey::Right) ||
+       input->isKeyUp(InputKey::Left) ||
+       input->isKeyUp(InputKey::Up) ||
+       input->isKeyUp(InputKey::Down)) {
       walking_ = false;
     }
 

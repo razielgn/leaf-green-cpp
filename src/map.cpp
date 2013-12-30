@@ -1,6 +1,7 @@
 #include "game_time.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
+#include "input_key.hpp"
 #include "map.hpp"
 #include "movement.hpp"
 #include "point.hpp"
@@ -28,16 +29,16 @@ namespace green_leaf {
 
   void Map::update(Input* input, GameTime* game_time) {
     if(elapsed_ == 0) {
-      if(input->isKeyDown(Right)) {
+      if(input->isKeyDown(InputKey::Right)) {
         movement_ = Movement::Right;
         destination_ = center_ + Point(1, 0);
-      } else if(input->isKeyDown(Left)) {
+      } else if(input->isKeyDown(InputKey::Left)) {
         movement_ = Movement::Left;
         destination_ = center_ - Point(1, 0);
-      } else if(input->isKeyDown(Up)) {
+      } else if(input->isKeyDown(InputKey::Up)) {
         movement_ = Movement::Up;
         destination_ = center_ - Point(0, 1);
-      } else if(input->isKeyDown(Down)) {
+      } else if(input->isKeyDown(InputKey::Down)) {
         movement_ = Movement::Down;
         destination_ = center_ + Point(0, 1);
       } else {

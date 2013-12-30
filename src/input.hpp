@@ -2,29 +2,16 @@
 #define GL_INPUT_HPP
 
 #include <SDL.h>
+#include "input_key.hpp"
 
 namespace green_leaf {
-  enum Keys {
-    A,
-    B,
-    Up,
-    Down,
-    Left,
-    Right,
-    Start,
-    Select,
-    R,
-    L,
-    Escape,
-  };
-
   class Input {
   public:
     void recordState();
 
     bool hasQuit();
-    bool isKeyUp(Keys key);
-    bool isKeyDown(Keys key);
+    bool isKeyUp(InputKey key);
+    bool isKeyDown(InputKey key);
 
   private:
     SDL_Event event_;

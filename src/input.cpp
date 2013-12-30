@@ -6,35 +6,37 @@ namespace green_leaf {
     SDL_PollEvent(&event_);
   }
 
-  SDL_Scancode convertKeyToScancode(Keys key) {
+  SDL_Scancode convertKeyToScancode(InputKey key) {
     switch(key) {
-      case A:       return SDL_SCANCODE_X;
-      case B:       return SDL_SCANCODE_Z;
-      case Up:      return SDL_SCANCODE_UP;
-      case Down:    return SDL_SCANCODE_DOWN;
-      case Left:    return SDL_SCANCODE_LEFT;
-      case Right:   return SDL_SCANCODE_RIGHT;
-      case Start:   return SDL_SCANCODE_RETURN;
-      case Select:  return SDL_SCANCODE_RSHIFT;
-      case R:       return SDL_SCANCODE_S;
-      case L:       return SDL_SCANCODE_A;
-      case Escape:  return SDL_SCANCODE_ESCAPE;
+      case InputKey::A:       return SDL_SCANCODE_X;
+      case InputKey::B:       return SDL_SCANCODE_Z;
+      case InputKey::Up:      return SDL_SCANCODE_UP;
+      case InputKey::Down:    return SDL_SCANCODE_DOWN;
+      case InputKey::Left:    return SDL_SCANCODE_LEFT;
+      case InputKey::Right:   return SDL_SCANCODE_RIGHT;
+      case InputKey::Start:   return SDL_SCANCODE_RETURN;
+      case InputKey::Select:  return SDL_SCANCODE_RSHIFT;
+      case InputKey::R:       return SDL_SCANCODE_S;
+      case InputKey::L:       return SDL_SCANCODE_A;
+      case InputKey::Escape:  return SDL_SCANCODE_ESCAPE;
     }
+
+    throw "Unknown InputKet given!";
   }
 
-  bool Input::isKeyDown(Keys key) {
+  bool Input::isKeyDown(InputKey key) {
     SDL_Scancode scancode = convertKeyToScancode(key);
 
     return event_.type == SDL_KEYDOWN && keyboard_state_[scancode];
   }
 
-  bool Input::isKeyUp(Keys key) {
+  bool Input::isKeyUp(InputKey key) {
     SDL_Scancode scancode = convertKeyToScancode(key);
 
     return event_.type == SDL_KEYUP && !keyboard_state_[scancode];
   }
 
   bool Input::hasQuit() {
-    return event_.type == SDL_QUIT || isKeyDown(Escape);
+    return event_.type == SDL_QUIT || isKeyDown(InputKey::Escape);
   }
 }
