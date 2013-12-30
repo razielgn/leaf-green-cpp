@@ -2,8 +2,6 @@ project(green-leaf-tests C CXX)
 
 set(BUILD_SHARED_LIBS ON)
 
-set(TEST_DIR ${CMAKE_CURRENT_BINARY_DIR})
-
 include(ExternalProject)
 ExternalProject_Add(GoogleMock
   URL "https://googlemock.googlecode.com/files/gmock-1.7.0.zip"
@@ -19,14 +17,9 @@ ExternalProject_Get_Property(GoogleMock
   binary_dir
 )
 
-file(
-  GLOB
-  TEST_FILES
-  "${TEST_DIR}/*_test.cpp"
-)
-
 set(GREEN_LEAF_TESTS_SRC
   ${TEST_FILES}
+  ${SRC_FILES}
   runner.cpp
 )
 

@@ -15,5 +15,35 @@ add_definitions(
   -pedantic
 )
 
+set(SRC_DIR
+  "${CMAKE_CURRENT_BINARY_DIR}/src"
+)
+
+set(TEST_DIR
+  "${CMAKE_CURRENT_BINARY_DIR}/test"
+)
+
+file(
+  GLOB
+  TEST_FILES
+  "${TEST_DIR}/*_test.cpp"
+)
+
+file(
+  GLOB
+  SRC_FILES
+  "${SRC_DIR}/*.cpp"
+)
+
+file(
+  GLOB
+  MAIN_FILES
+  "${SRC_DIR}/*main.cpp"
+)
+
+list(REMOVE_ITEM
+  SRC_FILES "${MAIN_FILES}"
+)
+
 add_subdirectory(src)
 add_subdirectory(test)
