@@ -2,6 +2,7 @@
 #define GL_MAP_HPP
 
 #include "point.hpp"
+#include "movement.hpp"
 
 namespace green_leaf {
   class GameTime;
@@ -23,7 +24,14 @@ namespace green_leaf {
     Point center_;
     Point dimension_;
 
-    const int tile_size_ = 16;
+    static const int tile_size_ = 16;
+
+    const int movement_time_ = 250;
+    int elapsed_;
+
+    Point destination_;
+    Point offset_;
+    Movement movement_;
   };
 }
 

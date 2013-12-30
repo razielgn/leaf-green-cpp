@@ -2,6 +2,7 @@
 #include "graphics.hpp"
 #include "input.hpp"
 #include "map.hpp"
+#include "movement.hpp"
 #include "point.hpp"
 #include "rectangle.hpp"
 #include "texture.hpp"
@@ -10,6 +11,10 @@ namespace green_leaf {
   Map::Map(Point center)
     : center_(center)
     , dimension_(Point(176, 144))
+    , elapsed_(0)
+    , destination_(center_)
+    , offset_(center_)
+    , movement_(Movement::Still)
   {
   }
 
@@ -22,6 +27,37 @@ namespace green_leaf {
   }
 
   void Map::update(Input* input, GameTime* game_time) {
+    if(elapsed_ == 0) {
+      if(input->isKeyDown(Right)) {
+        movement_ = Movement::Right;
+        destination_ = center_ + Point(1, 0);
+      } else if(input->isKeyDown(Left)) {
+        movement_ = Movement::Left;
+        destination_ = center_ - Point(1, 0);
+      } else if(input->isKeyDown(Up)) {
+        movement_ = Movement::Up;
+        destination_ = center_ - Point(0, 1);
+      } else if(input->isKeyDown(Down)) {
+        movement_ = Movement::Down;
+        destination_ = center_ + Point(0, 1);
+      } else {
+        movement_ = Movement::Still;
+      }
+    }
+
+    offset_ = drawOffset(center_, dimension_);
+
+    if(movement_ != Movement::Still) {
+      elapsed_ += game_time->elapsed();
+
+      Point destination = drawOffset(destination_, dimension_);
+      offset_ = offset_ + (destination - offset_) * (elapsed_ / float(movement_time_));
+
+      if(elapsed_ >= movement_time_) {
+        center_ = destination_;
+        elapsed_ = 0;
+      }
+    }
   }
 
   Point Map::drawOffset(Point center, Point map_dimension) const {
@@ -32,11 +68,9 @@ namespace green_leaf {
   }
 
   void Map::draw(Graphics* graphics) {
-    Point offset = drawOffset(center_, dimension_);
-
     Rectangle destination(
-      offset.x(),
-      offset.y(),
+      offset_.x(),
+      offset_.y(),
       dimension_.x(),
       dimension_.y()
     );
