@@ -1,3 +1,4 @@
+#include "game_time.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
 #include "map.hpp"
@@ -13,8 +14,7 @@ namespace green_leaf {
     delete background_;
   }
 
-  void Map::update(Input* input) {
-#pragma unused(input)
+  void Map::update(Input* input, GameTime* game_time) {
   }
 
   void Map::draw(Graphics* graphics) {

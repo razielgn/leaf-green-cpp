@@ -25,6 +25,7 @@ namespace green_leaf {
     Player* player_;
     Map* map_;
 
+    unsigned int total_time_;
     bool running_;
   };
 }

@@ -2,6 +2,7 @@
 #define GL_MAP_HPP
 
 namespace green_leaf {
+  class GameTime;
   class Graphics;
   class Input;
   class Texture;
@@ -10,7 +11,7 @@ namespace green_leaf {
   public:
     void loadContent(Graphics* graphics);
     void unloadContent();
-    void update(Input* input);
+    void update(Input* input, GameTime* game_time);
     void draw(Graphics* graphics);
 
   private:

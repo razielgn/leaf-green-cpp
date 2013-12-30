@@ -1,6 +1,7 @@
-#include "player.hpp"
-#include "input.hpp"
+#include "game_time.hpp"
 #include "graphics.hpp"
+#include "input.hpp"
+#include "player.hpp"
 #include "rectangle.hpp"
 #include "texture.hpp"
 
@@ -13,7 +14,7 @@ namespace green_leaf {
     delete texture_;
   }
 
-  void Player::update(Input* input) {
+  void Player::update(Input* input, GameTime* game_time) {
     if(input->isKeyDown(Right)) {
       direction_ = 3;
       walking_ = true;
@@ -34,15 +35,17 @@ namespace green_leaf {
        input->isKeyUp(Down)) {
       walking_ = false;
     }
+
+    frame_number_ = int(((game_time->total() / 200) % 4));
   }
 
   void Player::draw(Graphics* graphics) {
     int frame_w = 16;
     int frame_h = 20;
-
     int x = 0;
+
     if(walking_) {
-      x = frame_w * int(((SDL_GetTicks() / 200) % 4));
+      x = frame_w * frame_number_;
     }
 
     Rectangle source(

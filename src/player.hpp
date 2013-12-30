@@ -2,6 +2,7 @@
 #define GL_PLAYER_HPP
 
 namespace green_leaf {
+  class GameTime;
   class Graphics;
   class Input;
   class Texture;
@@ -11,7 +12,7 @@ namespace green_leaf {
     void loadContent(Graphics* graphics);
     void unloadContent();
 
-    void update(Input* input);
+    void update(Input* input, GameTime* game_time);
     void draw(Graphics* graphics);
 
   private:
@@ -19,6 +20,7 @@ namespace green_leaf {
 
     bool walking_ = false;
     unsigned int direction_ = 0;
+    int frame_number_ = 0;
   };
 }
 

@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include "game_time.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
 #include "map.hpp"
@@ -12,6 +13,7 @@ namespace green_leaf {
     map_ = new Map();
 
     running_ = true;
+    total_time_ = SDL_GetTicks();
   }
 
   Game::~Game() {
@@ -49,14 +51,19 @@ namespace green_leaf {
   }
 
   void Game::update() {
+    unsigned int now = SDL_GetTicks();
+    GameTime game_time(now - total_time_, now);
+
     input_->recordState();
 
     if(input_->hasQuit()) {
       stop();
     }
 
-    player_->update(input_);
-    map_->update(input_);
+    player_->update(input_, &game_time);
+    map_->update(input_, &game_time);
+
+    total_time_ = SDL_GetTicks();
   }
 
   void Game::draw() {
