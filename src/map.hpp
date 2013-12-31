@@ -8,6 +8,7 @@ namespace green_leaf {
   class GameTime;
   class Graphics;
   class Input;
+  class PlayerMovement;
   class Texture;
 
   class Map {
@@ -15,7 +16,7 @@ namespace green_leaf {
     Map(Point center);
     void loadContent(Graphics* graphics);
     void unloadContent();
-    void update(Input* input, GameTime* game_time);
+    void update(Input* input, GameTime* game_time, PlayerMovement* player_movement);
     void draw(Graphics* graphics);
     Point drawOffset(Point center, Point map_dimension) const;
 
@@ -26,12 +27,8 @@ namespace green_leaf {
 
     static const int tile_size_ = 16;
 
-    const int movement_time_ = 250;
-    int elapsed_;
-
     Point destination_;
     Point offset_;
-    Movement movement_;
   };
 }
 

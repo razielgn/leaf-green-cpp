@@ -5,6 +5,7 @@
 #include "map.hpp"
 #include "point.hpp"
 #include "player.hpp"
+#include "player_movement.hpp"
 
 namespace green_leaf {
   Game::Game() {
@@ -12,6 +13,7 @@ namespace green_leaf {
     input_ = new SDLInput();
     player_ = new Player();
     map_ = new Map(Point(5, 6));
+    player_movement_ = new PlayerMovement();
 
     running_ = true;
     total_time_ = SDL_GetTicks();
@@ -21,7 +23,7 @@ namespace green_leaf {
     delete graphics_;
     delete input_;
     delete player_;
-
+    delete player_movement_;
     delete map_;
   }
 
@@ -61,8 +63,9 @@ namespace green_leaf {
       stop();
     }
 
-    player_->update(input_, &game_time);
-    map_->update(input_, &game_time);
+    player_movement_->update(input_, &game_time);
+    player_->update(input_, &game_time, player_movement_);
+    map_->update(input_, &game_time, player_movement_);
 
     total_time_ = SDL_GetTicks();
   }

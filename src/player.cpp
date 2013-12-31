@@ -3,18 +3,17 @@
 #include "input.hpp"
 #include "movement.hpp"
 #include "player.hpp"
+#include "player_movement.hpp"
 #include "rectangle.hpp"
 #include "texture.hpp"
 
 namespace green_leaf {
   Player::Player()
-    : elapsed_(0)
-    , frame_number_(0)
-    , direction_(0)
-    , walking_(false)
+    : frame_(Point(0, 0))
     , a_(0)
   {
   }
+
   void Player::loadContent(Graphics* graphics) {
     texture_ = Texture::fromPath(graphics, "hero.png");
   }
@@ -23,57 +22,51 @@ namespace green_leaf {
     delete texture_;
   }
 
-  void Player::update(Input* input, GameTime* game_time) {
-    if(elapsed_ == 0) {
-      if(input->isKeyDown(InputKey::Right)) {
-        walking_ = true;
-        direction_ = 3;
-      } else if(input->isKeyDown(InputKey::Left)) {
-        walking_ = true;
-        direction_ = 1;
-      } else if(input->isKeyDown(InputKey::Up)) {
-        walking_ = true;
-        direction_ = 2;
-      } else if(input->isKeyDown(InputKey::Down)) {
-        walking_ = true;
-        direction_ = 0;
+  void Player::update(Input* input, GameTime* game_time, PlayerMovement* player_movement) {
+#pragma unused(game_time)
+#pragma unused(input)
+
+    int frame_x = frame_.x();
+    int frame_y = frame_.y();
+
+    if(player_movement->moving()) {
+      switch(player_movement->movement()) {
+        case Movement::Down:
+          frame_y = 0; break;
+        case Movement::Left:
+          frame_y = 1; break;
+        case Movement::Up:
+          frame_y = 2; break;
+        case Movement::Right:
+          frame_y = 3; break;
+        default: break;
       }
     }
 
-    if(walking_) {
-      elapsed_ += game_time->elapsed();
-
-      if(elapsed_ / float(movement_time_) >= 0.6) {
-        frame_number_ = 0;
+    if(player_movement->moving()) {
+      if(player_movement->progress() >= 0.6) {
+        frame_x = 0;
       } else {
         if(a_ == 0) {
-          frame_number_ = 1;
+          frame_x = 1;
         } else {
-          frame_number_ = 3;
+          frame_x = 3;
         }
       }
 
-      if(elapsed_ >= movement_time_) {
-        elapsed_ = 0;
-        walking_ = false;
-        frame_number_ = 0;
+      if(player_movement->finished()) {
+        frame_x = 0;
         a_ = (a_ + 1) % 2;
       }
     }
+
+    frame_ = Point(frame_x, frame_y);
   }
+
   void Player::draw(Graphics* graphics) {
-    int frame_w = 16;
-    int frame_h = 20;
-
-    int x = 0;
-
-    if(walking_) {
-      x = frame_w * frame_number_;
-    }
-
     Rectangle source(
-      x,
-      frame_h * direction_,
+      frame_.x() * frame_w,
+      frame_.y() * frame_h,
       frame_w,
       frame_h
     );

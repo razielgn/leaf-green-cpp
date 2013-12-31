@@ -5,6 +5,7 @@ namespace green_leaf {
   class Graphics;
   class Input;
   class Player;
+  class PlayerMovement;
   class Map;
 
   class Game {
@@ -24,6 +25,7 @@ namespace green_leaf {
     Input* input_;
     Player* player_;
     Map* map_;
+    PlayerMovement* player_movement_;
 
     unsigned int total_time_;
     bool running_;
