@@ -17,6 +17,22 @@ ExternalProject_Get_Property(GoogleMock
   binary_dir
 )
 
+file(
+  GLOB
+  TEST_FILES
+  "${TEST_DIR}/*_test.cpp"
+)
+
+set(SRC_FILES
+  "${SRC_DIR}/game_time.cpp"
+  "${SRC_DIR}/graphics.cpp"
+  "${SRC_DIR}/map.cpp"
+  "${SRC_DIR}/player_movement.cpp"
+  "${SRC_DIR}/point.cpp"
+  "${SRC_DIR}/rectangle.cpp"
+  "${SRC_DIR}/texture.cpp"
+)
+
 set(GREEN_LEAF_TESTS_SRC
   ${TEST_FILES}
   ${SRC_FILES}
@@ -38,7 +54,7 @@ add_executable(green-leaf-tests
 add_dependencies(green-leaf-tests GoogleMock)
 
 include_directories(
-  "${TEST_DIR}/../src"
+  ${SRC_DIR}
   "${source_dir}/include"
   "${source_dir}/gtest/include"
 )
