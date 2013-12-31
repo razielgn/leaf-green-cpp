@@ -1,21 +1,19 @@
 #ifndef GL_INPUT_HPP
 #define GL_INPUT_HPP
 
-#include <SDL.h>
 #include "input_key.hpp"
 
 namespace green_leaf {
   class Input {
   public:
-    void recordState();
+    virtual ~Input() { };
 
-    bool hasQuit();
-    bool isKeyUp(InputKey key);
-    bool isKeyDown(InputKey key);
+    virtual void recordState() = 0;
 
-  private:
-    SDL_Event event_;
-    const Uint8* keyboard_state_;
+    virtual bool isKeyUp(InputKey key) = 0;
+    virtual bool isKeyDown(InputKey key) = 0;
+
+    virtual bool hasQuit() = 0;
   };
 }
 

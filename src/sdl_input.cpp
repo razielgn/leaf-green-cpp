@@ -1,7 +1,10 @@
-#include "input.hpp"
+#include "sdl_input.hpp"
 
 namespace green_leaf {
-  void Input::recordState() {
+  SDLInput::~SDLInput() {
+  }
+
+  void SDLInput::recordState() {
     keyboard_state_ = SDL_GetKeyboardState(NULL);
     SDL_PollEvent(&event_);
   }
@@ -24,19 +27,19 @@ namespace green_leaf {
     throw "Unknown InputKet given!";
   }
 
-  bool Input::isKeyDown(InputKey key) {
+  bool SDLInput::isKeyDown(InputKey key) {
     SDL_Scancode scancode = convertKeyToScancode(key);
 
     return event_.type == SDL_KEYDOWN && keyboard_state_[scancode];
   }
 
-  bool Input::isKeyUp(InputKey key) {
+  bool SDLInput::isKeyUp(InputKey key) {
     SDL_Scancode scancode = convertKeyToScancode(key);
 
     return event_.type == SDL_KEYUP && !keyboard_state_[scancode];
   }
 
-  bool Input::hasQuit() {
+  bool SDLInput::hasQuit() {
     return event_.type == SDL_QUIT || isKeyDown(InputKey::Escape);
   }
 }

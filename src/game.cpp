@@ -1,7 +1,7 @@
 #include "game.hpp"
 #include "game_time.hpp"
 #include "graphics.hpp"
-#include "input.hpp"
+#include "sdl_input.hpp"
 #include "map.hpp"
 #include "point.hpp"
 #include "player.hpp"
@@ -9,7 +9,7 @@
 namespace green_leaf {
   Game::Game() {
     graphics_ = new Graphics();
-    input_ = new Input();
+    input_ = new SDLInput();
     player_ = new Player();
     map_ = new Map(Point(5, 6));
 
