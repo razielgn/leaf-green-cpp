@@ -20,6 +20,7 @@ ExternalProject_Get_Property(GoogleMock
 set(GREEN_LEAF_TESTS_SRC
   ${TEST_FILES}
   ${SRC_FILES}
+  test_helper.cpp
   runner.cpp
 )
 

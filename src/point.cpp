@@ -35,8 +35,4 @@ namespace green_leaf {
     s << "Point(" << x_ << ", " << y_ << ")";
     return s.str();
   }
-
-  void PrintTo(const Point& p, std::ostream* os) {
-    *os << p.toString();
-  }
 }

@@ -1,7 +1,6 @@
 #ifndef GL_POINT_HPP
 #define GL_POINT_HPP
 
-#include <iostream>
 #include <string>
 
 namespace green_leaf {
@@ -35,8 +34,6 @@ namespace green_leaf {
     float x_;
     float y_;
   };
-
-  void PrintTo(const Point& p, std::ostream* os);
 }
 
 #endif
