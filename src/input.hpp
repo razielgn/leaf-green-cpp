@@ -1,9 +1,9 @@
 #ifndef GL_INPUT_HPP
 #define GL_INPUT_HPP
 
-#include "input_key.hpp"
-
 namespace green_leaf {
+  enum class InputKey;
+
   class Input {
   public:
     virtual ~Input() { };

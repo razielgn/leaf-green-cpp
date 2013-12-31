@@ -1,3 +1,4 @@
+#include "input_key.hpp"
 #include "sdl_input.hpp"
 
 namespace green_leaf {

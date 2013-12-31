@@ -2,7 +2,6 @@
 #define GL_MAP_HPP
 
 #include "point.hpp"
-#include "movement.hpp"
 
 namespace green_leaf {
   class GameTime;

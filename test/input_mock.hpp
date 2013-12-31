@@ -3,6 +3,7 @@
 
 #include "gmock/gmock.h"
 #include "input.hpp"
+#include "input_key.hpp"
 
 namespace green_leaf {
   class InputMock : public Input {

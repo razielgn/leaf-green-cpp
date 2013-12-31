@@ -1,11 +1,11 @@
 #ifndef GL_PLAYER_MOVEMENT_HPP
 #define GL_PLAYER_MOVEMENT_HPP
 
-#include "movement.hpp"
-
 namespace green_leaf {
   class Input;
   class GameTime;
+
+  enum class Movement;
 
   class PlayerMovement {
   public:

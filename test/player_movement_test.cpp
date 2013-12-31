@@ -1,4 +1,5 @@
 #include "gmock/gmock.h"
+#include "movement.hpp"
 #include "player_movement.hpp"
 #include "game_time.hpp"
 
