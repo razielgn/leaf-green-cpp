@@ -49,4 +49,8 @@ namespace green_leaf {
     s << "Vector2(" << x_ << ", " << y_ << ")";
     return s.str();
   }
+
+  ::std::ostream& operator<<(::std::ostream& os, const Vector2& v) {
+    return os << v.toString();
+  }
 }

@@ -1,6 +1,7 @@
 #ifndef GL_POINT_HPP
 #define GL_POINT_HPP
 
+#include <iostream>
 #include <string>
 
 namespace green_leaf {
@@ -36,6 +37,8 @@ namespace green_leaf {
     float x_;
     float y_;
   };
+
+  ::std::ostream& operator<<(::std::ostream& os, const Vector2& v);
 }
 
 #endif

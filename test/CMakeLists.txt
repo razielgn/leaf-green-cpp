@@ -26,18 +26,19 @@ file(
 set(SRC_FILES
   "${SRC_DIR}/game_time.cpp"
   "${SRC_DIR}/graphics.cpp"
+  "${SRC_DIR}/input_key.cpp"
   "${SRC_DIR}/map.cpp"
   "${SRC_DIR}/player_movement.cpp"
-  "${SRC_DIR}/vector2.cpp"
   "${SRC_DIR}/rectangle.cpp"
-  "${SRC_DIR}/tile_set.cpp"
   "${SRC_DIR}/texture.cpp"
+  "${SRC_DIR}/tile_layer.cpp"
+  "${SRC_DIR}/tile_set.cpp"
+  "${SRC_DIR}/vector2.cpp"
 )
 
 set(GREEN_LEAF_TESTS_SRC
   ${TEST_FILES}
   ${SRC_FILES}
-  test_helper.cpp
   runner.cpp
 )
 

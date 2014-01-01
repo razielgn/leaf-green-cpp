@@ -2,6 +2,7 @@
 #define GL_RECTANGLE_HPP
 
 #include <SDL.h>
+#include <iostream>
 #include <string>
 
 #include "vector2.hpp"
@@ -54,6 +55,8 @@ namespace green_leaf {
     const int width_;
     const int height_;
   };
+
+  ::std::ostream& operator<<(::std::ostream& os, const Rectangle& r);
 }
 
 #endif

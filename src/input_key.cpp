@@ -1,12 +1,7 @@
 #include "input_key.hpp"
-#include "vector2.hpp"
-#include "rectangle.hpp"
-#include "test_helper.hpp"
-
-#include <string>
 
 namespace green_leaf {
-  void PrintTo(const InputKey& p, std::ostream* os) {
+  ::std::ostream& operator<<(::std::ostream& os, const InputKey& p) {
     std::string str;
 
     switch(p) {
@@ -23,14 +18,7 @@ namespace green_leaf {
       case InputKey::Up:     str = std::string("InputKey::Up");     break;
     }
 
-    *os << str;
+    return os << str;
   }
 
-  void PrintTo(const Vector2& p, std::ostream* os) {
-    *os << p.toString();
-  }
-
-  void PrintTo(const Rectangle& r, std::ostream* os) {
-    *os << r.toString();
-  }
 }

@@ -1,6 +1,8 @@
 #ifndef GL_INPUT_KEYS_HPP
 #define GL_INPUT_KEYS_HPP
 
+#include <iostream>
+
 namespace green_leaf {
   enum class InputKey {
     A,
@@ -15,6 +17,8 @@ namespace green_leaf {
     L,
     Escape,
   };
+
+  ::std::ostream& operator<<(::std::ostream& os, const InputKey& p);
 }
 
 #endif

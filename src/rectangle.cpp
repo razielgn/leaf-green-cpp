@@ -51,4 +51,8 @@ namespace green_leaf {
     s << "Rectangle(" << x_ << ", " << y_ << ", " << width_ << ", " << height_ << ")";
     return s.str();
   }
+
+  ::std::ostream& operator<<(::std::ostream& os, const Rectangle& r) {
+    return os << r.toString();
+  }
 }
