@@ -30,6 +30,20 @@ namespace green_leaf {
     );
   }
 
+  Point Point::operator*(const Point& p) const {
+    return Point(
+      x_ * p.x_,
+      y_ * p.y_
+    );
+  }
+
+  Point Point::operator/(const Point& p) const {
+    return Point(
+      x_ / p.x_,
+      y_ / p.y_
+    );
+  }
+
   std::string Point::toString() const {
     std::stringstream s;
     s << "Point(" << x_ << ", " << y_ << ")";

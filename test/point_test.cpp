@@ -57,4 +57,14 @@ namespace green_leaf {
     EXPECT_EQ(Point(0, 0), Point(1, 4) * 0.0f);
     EXPECT_EQ(Point(4, -8), Point(2, -4) * 2.0f);
   }
+
+  TEST_F(PointTest, MultiplicationByPoint) {
+    EXPECT_EQ(Point(0, 0), Point(0, 0) * Point(1, 2));
+    EXPECT_EQ(Point(3, 20), Point(1, 4) * Point(3, 5));
+  }
+
+  TEST_F(PointTest, DivisionByPoint) {
+    EXPECT_EQ(Point(0, 0), Point(0, 0) / Point(1, 1));
+    EXPECT_EQ(Point(2, 2), Point(20, 10) / Point(10, 5));
+  }
 }

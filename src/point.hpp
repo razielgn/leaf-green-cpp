@@ -29,6 +29,8 @@ namespace green_leaf {
     Point operator+(const Point& p) const;
     Point operator-(const Point& p) const;
     Point operator*(float f) const;
+    Point operator*(const Point& p) const;
+    Point operator/(const Point& p) const;
 
   private:
     float x_;
