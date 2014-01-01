@@ -37,6 +37,13 @@ namespace green_leaf {
     );
   }
 
+  Vector2 Vector2::operator/(float f) const {
+    return Vector2(
+      x_ / f,
+      y_ / f
+    );
+  }
+
   Vector2 Vector2::operator/(const Vector2& p) const {
     return Vector2(
       x_ / p.x_,

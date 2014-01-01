@@ -58,6 +58,11 @@ namespace green_leaf {
     EXPECT_EQ(Vector2(4, -8), Vector2(2, -4) * 2.0f);
   }
 
+  TEST_F(Vector2Test, Division) {
+    EXPECT_EQ(Vector2(0, 0), Vector2(0, 0) / 1.0f);
+    EXPECT_EQ(Vector2(10, 5), Vector2(20, 10) / 2.0f);
+  }
+
   TEST_F(Vector2Test, MultiplicationByVector2) {
     EXPECT_EQ(Vector2(0, 0), Vector2(0, 0) * Vector2(1, 2));
     EXPECT_EQ(Vector2(3, 20), Vector2(1, 4) * Vector2(3, 5));

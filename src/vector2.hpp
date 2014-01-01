@@ -31,6 +31,7 @@ namespace green_leaf {
     Vector2 operator-(const Vector2& p) const;
     Vector2 operator*(float f) const;
     Vector2 operator*(const Vector2& p) const;
+    Vector2 operator/(float f) const;
     Vector2 operator/(const Vector2& p) const;
 
   private:
