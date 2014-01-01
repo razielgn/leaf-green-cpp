@@ -1,5 +1,5 @@
 #include "input_key.hpp"
-#include "point.hpp"
+#include "vector2.hpp"
 #include "rectangle.hpp"
 #include "test_helper.hpp"
 
@@ -26,7 +26,7 @@ namespace green_leaf {
     *os << str;
   }
 
-  void PrintTo(const Point& p, std::ostream* os) {
+  void PrintTo(const Vector2& p, std::ostream* os) {
     *os << p.toString();
   }
 

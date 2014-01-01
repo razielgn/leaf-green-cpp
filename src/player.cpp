@@ -9,7 +9,7 @@
 
 namespace green_leaf {
   Player::Player()
-    : frame_(Point(0, 0))
+    : frame_(Vector2(0, 0))
     , a_(0)
   {
   }
@@ -60,7 +60,7 @@ namespace green_leaf {
       }
     }
 
-    frame_ = Point(frame_x, frame_y);
+    frame_ = Vector2(frame_x, frame_y);
   }
 
   void Player::draw(Graphics* graphics) {

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "point.hpp"
+#include "vector2.hpp"
 #include "texture.hpp"
 #include "tile_set.hpp"
 
@@ -8,7 +8,7 @@ namespace green_leaf {
   class TileSetTest : public ::testing::Test {
   protected:
     TileSetTest() {
-      texture_ = new Texture(Point(48, 48));
+      texture_ = new Texture(Vector2(48, 48));
       tile_set_ = new TileSet(texture_, tile_size_, 1);
     }
     ~TileSetTest() {
@@ -18,7 +18,7 @@ namespace green_leaf {
 
     const TileSet* tile_set_;
     Texture* texture_;
-    const Point tile_size_ = Point(16, 16);
+    const Vector2 tile_size_ = Vector2(16, 16);
   };
 
   TEST_F(TileSetTest, Texture) {

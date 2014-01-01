@@ -11,17 +11,17 @@ namespace green_leaf {
   {
   }
 
-  Rectangle::Rectangle(int x, int y, Point size)
+  Rectangle::Rectangle(int x, int y, Vector2 size)
     : Rectangle(x, y, size.x(), size.y())
   {
   }
 
-  Rectangle::Rectangle(Point coord, int width, int height)
+  Rectangle::Rectangle(Vector2 coord, int width, int height)
     : Rectangle(coord.x(), coord.y(), width, height)
   {
   }
 
-  Rectangle::Rectangle(Point coord, Point size)
+  Rectangle::Rectangle(Vector2 coord, Vector2 size)
     : Rectangle(coord.x(), coord.y(), size.x(), size.y())
   {
   }

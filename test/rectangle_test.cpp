@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "point.hpp"
+#include "vector2.hpp"
 #include "rectangle.hpp"
 
 namespace green_leaf {
@@ -20,8 +20,8 @@ namespace green_leaf {
     EXPECT_EQ(4, rect_.height());
   }
 
-  TEST_F(RectangleTest, ConstructorWithPointAndIntegers) {
-    Rectangle r(Point(1, 2), 3, 4);
+  TEST_F(RectangleTest, ConstructorWithVector2AndIntegers) {
+    Rectangle r(Vector2(1, 2), 3, 4);
 
     EXPECT_EQ(1, r.x());
     EXPECT_EQ(2, r.y());
@@ -29,8 +29,8 @@ namespace green_leaf {
     EXPECT_EQ(4, r.height());
   }
 
-  TEST_F(RectangleTest, ConstructorWithIntegersAndPoint) {
-    Rectangle r(1, 2, Point(3, 4));
+  TEST_F(RectangleTest, ConstructorWithIntegersAndVector2) {
+    Rectangle r(1, 2, Vector2(3, 4));
 
     EXPECT_EQ(1, r.x());
     EXPECT_EQ(2, r.y());
@@ -38,8 +38,8 @@ namespace green_leaf {
     EXPECT_EQ(4, r.height());
   }
 
-  TEST_F(RectangleTest, ConstructorWithPoints) {
-    Rectangle r(Point(1, 2), Point(3, 4));
+  TEST_F(RectangleTest, ConstructorWithVector2s) {
+    Rectangle r(Vector2(1, 2), Vector2(3, 4));
 
     EXPECT_EQ(1, r.x());
     EXPECT_EQ(2, r.y());

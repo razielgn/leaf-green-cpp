@@ -28,7 +28,7 @@ set(SRC_FILES
   "${SRC_DIR}/graphics.cpp"
   "${SRC_DIR}/map.cpp"
   "${SRC_DIR}/player_movement.cpp"
-  "${SRC_DIR}/point.cpp"
+  "${SRC_DIR}/vector2.cpp"
   "${SRC_DIR}/rectangle.cpp"
   "${SRC_DIR}/tile_set.cpp"
   "${SRC_DIR}/texture.cpp"

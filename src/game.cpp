@@ -3,7 +3,7 @@
 #include "graphics.hpp"
 #include "sdl_input.hpp"
 #include "map.hpp"
-#include "point.hpp"
+#include "vector2.hpp"
 #include "player.hpp"
 #include "player_movement.hpp"
 
@@ -12,7 +12,7 @@ namespace green_leaf {
     graphics_ = new Graphics();
     input_ = new SDLInput();
     player_ = new Player();
-    map_ = new Map(Point(5, 6));
+    map_ = new Map(Vector2(5, 6));
     player_movement_ = new PlayerMovement();
 
     running_ = true;

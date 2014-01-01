@@ -1,7 +1,7 @@
 #ifndef GL_MAP_HPP
 #define GL_MAP_HPP
 
-#include "point.hpp"
+#include "vector2.hpp"
 
 namespace green_leaf {
   class GameTime;
@@ -12,22 +12,22 @@ namespace green_leaf {
 
   class Map {
   public:
-    Map(Point center);
+    Map(Vector2 center);
     void loadContent(Graphics* graphics);
     void unloadContent();
     void update(Input* input, GameTime* game_time, PlayerMovement* player_movement);
     void draw(Graphics* graphics);
-    Point drawOffset(Point center, Point map_dimension) const;
+    Vector2 drawOffset(Vector2 center, Vector2 map_dimension) const;
 
   private:
     Texture* background_;
-    Point center_;
-    Point dimension_;
+    Vector2 center_;
+    Vector2 dimension_;
 
     static const int tile_size_ = 16;
 
-    Point destination_;
-    Point offset_;
+    Vector2 destination_;
+    Vector2 offset_;
   };
 }
 

@@ -5,7 +5,7 @@
 #include <SDL_image.h>
 
 namespace green_leaf {
-  Point fetchTextureSize(SDL_Texture* texture) {
+  Vector2 fetchTextureSize(SDL_Texture* texture) {
     int width = 0, height = 0;
     int return_value = SDL_QueryTexture(texture, NULL, NULL, &width, &height);
 
@@ -13,7 +13,7 @@ namespace green_leaf {
       throw "Could not extract width and height from texture.";
     }
 
-    return Point(width, height);
+    return Vector2(width, height);
   }
 
   Texture* Texture::fromPath(const Graphics* graphics, const char* path) {
@@ -23,7 +23,7 @@ namespace green_leaf {
     SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(graphics->renderer(), surface);
     if (!sdl_texture) { throw "Could create texture from file"; }
 
-    Point textureSize = fetchTextureSize(sdl_texture);
+    Vector2 textureSize = fetchTextureSize(sdl_texture);
 
     Texture* texture = new Texture(textureSize);
     texture->loadSDLTexture(sdl_texture);
@@ -33,7 +33,7 @@ namespace green_leaf {
     return texture;
   }
 
-  Texture::Texture(Point size)
+  Texture::Texture(Vector2 size)
     : texture_(nullptr)
     , size_(size)
   {

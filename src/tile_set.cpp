@@ -3,7 +3,7 @@
 #include "tile_set.hpp"
 
 namespace green_leaf {
-  TileSet::TileSet(const Texture* texture, const Point tile_size, unsigned int first_gid)
+  TileSet::TileSet(const Texture* texture, const Vector2 tile_size, unsigned int first_gid)
     : tile_grid_(texture->size() / tile_size)
     , tile_size_(tile_size)
     , texture_(texture)

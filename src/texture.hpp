@@ -3,7 +3,7 @@
 
 #include <SDL.h>
 
-#include "point.hpp"
+#include "vector2.hpp"
 
 namespace green_leaf {
   class Graphics;
@@ -12,21 +12,21 @@ namespace green_leaf {
   public:
     static Texture* fromPath(const Graphics* graphics, const char* path);
 
-    Texture(Point size);
+    Texture(Vector2 size);
     ~Texture();
 
     SDL_Texture* toSDLTexture() const {
       return texture_;
     }
 
-    Point size() const {
+    Vector2 size() const {
       return size_;
     }
 
   private:
     SDL_Texture* texture_;
 
-    Point size_;
+    Vector2 size_;
 
     void loadSDLTexture(SDL_Texture* data);
   };

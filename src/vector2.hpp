@@ -4,9 +4,9 @@
 #include <string>
 
 namespace green_leaf {
-  class Point {
+  class Vector2 {
   public:
-    Point(float x, float y);
+    Vector2(float x, float y);
 
     std::string toString() const;
 
@@ -18,19 +18,19 @@ namespace green_leaf {
       return y_;
     }
 
-    bool operator==(const Point& p) const {
+    bool operator==(const Vector2& p) const {
       return (this == &p) || (x_ == p.x_ && y_ == p.y_);
     }
 
-    bool operator!=(const Point& p) const {
+    bool operator!=(const Vector2& p) const {
       return !(*this == p);
     }
 
-    Point operator+(const Point& p) const;
-    Point operator-(const Point& p) const;
-    Point operator*(float f) const;
-    Point operator*(const Point& p) const;
-    Point operator/(const Point& p) const;
+    Vector2 operator+(const Vector2& p) const;
+    Vector2 operator-(const Vector2& p) const;
+    Vector2 operator*(float f) const;
+    Vector2 operator*(const Vector2& p) const;
+    Vector2 operator/(const Vector2& p) const;
 
   private:
     float x_;

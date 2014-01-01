@@ -1,7 +1,7 @@
 #ifndef GL_PLAYER_HPP
 #define GL_PLAYER_HPP
 
-#include "point.hpp"
+#include "vector2.hpp"
 
 namespace green_leaf {
   class GameTime;
@@ -22,9 +22,9 @@ namespace green_leaf {
   private:
     Texture* texture_;
 
-    Point frame_;
+    Vector2 frame_;
     int a_;
-    Point frame_size_ = Point(16, 20);
+    Vector2 frame_size_ = Vector2(16, 20);
     const int frame_w = 16;
     const int frame_h = 20;
   };

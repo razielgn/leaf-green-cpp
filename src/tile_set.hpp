@@ -1,7 +1,7 @@
 #ifndef GL_TILE_SET_HPP
 #define GL_TILE_SET_HPP
 
-#include "point.hpp"
+#include "vector2.hpp"
 #include "rectangle.hpp"
 
 namespace green_leaf {
@@ -9,7 +9,7 @@ namespace green_leaf {
 
   class TileSet {
   public:
-    TileSet(const Texture* texture, const Point tile_size, unsigned int first_gid);
+    TileSet(const Texture* texture, const Vector2 tile_size, unsigned int first_gid);
 
     Rectangle rectangleFromCode(unsigned int tile_code) const;
 
@@ -17,13 +17,13 @@ namespace green_leaf {
       return texture_;
     }
 
-    const Point tile_size() const {
+    const Vector2 tile_size() const {
       return tile_size_;
     }
 
   private:
-    const Point tile_grid_;
-    const Point tile_size_;
+    const Vector2 tile_grid_;
+    const Vector2 tile_size_;
     const Texture* texture_;
 
     const unsigned int first_gid_;
