@@ -46,4 +46,8 @@ namespace green_leaf {
     EXPECT_EQ(3, rect.w);
     EXPECT_EQ(4, rect.h);
   }
+
+  TEST_F(RectangleTest, ToString) {
+    EXPECT_EQ(std::string("Rectangle(1, 2, 3, 4)"), rect_.toString());
+  }
 }

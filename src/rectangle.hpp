@@ -2,6 +2,7 @@
 #define GL_RECTANGLE_HPP
 
 #include <SDL.h>
+#include <string>
 
 namespace green_leaf {
   class Rectangle {
@@ -10,6 +11,8 @@ namespace green_leaf {
 
     Rectangle scale(int factor) const;
     const SDL_Rect toSDLRect() const;
+
+    std::string toString() const;
 
     int x() const {
       return x_;

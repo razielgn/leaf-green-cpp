@@ -1,5 +1,7 @@
 #include "rectangle.hpp"
 
+#include <sstream>
+
 namespace green_leaf {
   Rectangle::Rectangle(int x, int y, int width, int height)
     : x_(x)
@@ -27,5 +29,11 @@ namespace green_leaf {
     rect.h = height_;
 
     return rect;
+  }
+
+  std::string Rectangle::toString() const {
+    std::stringstream s;
+    s << "Rectangle(" << x_ << ", " << y_ << ", " << width_ << ", " << height_ << ")";
+    return s.str();
   }
 }
