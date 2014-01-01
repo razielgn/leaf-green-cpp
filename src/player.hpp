@@ -24,6 +24,7 @@ namespace green_leaf {
 
     Point frame_;
     int a_;
+    Point frame_size_ = Point(16, 20);
     const int frame_w = 16;
     const int frame_h = 20;
   };

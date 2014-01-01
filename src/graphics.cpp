@@ -45,7 +45,7 @@ namespace green_leaf {
   }
 
   void Graphics::drawTexture(const Texture* texture, const Rectangle* destination) {
-    Rectangle source(0, 0, texture->width(), texture->height());
+    Rectangle source(0, 0, texture->size());
 
     drawTexture(texture, destination, &source);
   }

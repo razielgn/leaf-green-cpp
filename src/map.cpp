@@ -64,12 +64,7 @@ namespace green_leaf {
   }
 
   void Map::draw(Graphics* graphics) {
-    Rectangle destination(
-      offset_.x(),
-      offset_.y(),
-      dimension_.x(),
-      dimension_.y()
-    );
+    Rectangle destination(offset_, dimension_);
 
     graphics->drawTexture(background_, &destination);
   }

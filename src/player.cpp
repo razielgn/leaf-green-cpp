@@ -64,12 +64,7 @@ namespace green_leaf {
   }
 
   void Player::draw(Graphics* graphics) {
-    Rectangle source(
-      frame_.x() * frame_w,
-      frame_.y() * frame_h,
-      frame_w,
-      frame_h
-    );
+    Rectangle source(frame_ * frame_size_, frame_size_);
 
     Rectangle destination(
       graphics->width() / 2 - frame_w / 2,
