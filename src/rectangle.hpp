@@ -4,10 +4,15 @@
 #include <SDL.h>
 #include <string>
 
+#include "point.hpp"
+
 namespace green_leaf {
   class Rectangle {
   public:
     Rectangle(int x, int y, int width, int height);
+    Rectangle(int x, int y, Point size);
+    Rectangle(Point coord, int width, int height);
+    Rectangle(Point coord, Point size);
 
     Rectangle scale(int factor) const;
     const SDL_Rect toSDLRect() const;
