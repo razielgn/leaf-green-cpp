@@ -5,37 +5,47 @@
 #include <SDL_image.h>
 
 namespace green_leaf {
-  Texture* Texture::fromPath(const Graphics* graphics, const char* path) {
-    Texture* texture = new Texture();
+  Point fetchTextureSize(SDL_Texture* texture) {
+    int width = 0, height = 0;
+    int return_value = SDL_QueryTexture(texture, NULL, NULL, &width, &height);
 
+    if(return_value != 0) {
+      throw "Could not extract width and height from texture.";
+    }
+
+    return Point(width, height);
+  }
+
+  Texture* Texture::fromPath(const Graphics* graphics, const char* path) {
     SDL_Surface* surface = IMG_Load(path);
     if (!surface) { throw "Could not load image"; }
 
     SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(graphics->renderer(), surface);
     if (!sdl_texture) { throw "Could create texture from file"; }
 
-    texture->fromSDLTexture(sdl_texture);
+    Point textureSize = fetchTextureSize(sdl_texture);
+
+    Texture* texture = new Texture(textureSize);
+    texture->loadSDLTexture(sdl_texture);
 
     SDL_FreeSurface(surface);
 
     return texture;
   }
 
-  void fillTextureMetadata(SDL_Texture* texture, int* width, int* height) {
-    int return_value = SDL_QueryTexture(texture, NULL, NULL, width, height);
-
-    if(return_value != 0) {
-      throw "Could not extract width and height from texture.";
-    }
+  Texture::Texture(Point size)
+    : texture_(nullptr)
+    , size_(size)
+  {
   }
 
-  void Texture::fromSDLTexture(SDL_Texture* data) {
+  void Texture::loadSDLTexture(SDL_Texture* data) {
     texture_ = data;
-
-    fillTextureMetadata(data, &width_, &height_);
   }
 
   Texture::~Texture() {
-    SDL_DestroyTexture(texture_);
+    if(texture_ != nullptr) {
+      SDL_DestroyTexture(texture_);
+    }
   }
 }
