@@ -43,7 +43,7 @@ set(GREEN_LEAF_TESTS_SRC
 
 add_custom_target(test
   COMMAND green-leaf-tests
-  ARGS "--gtest_shuffle"
+  ARGS "--gtest_shuffle" "--gtest_color=yes" "--gtest_output=xml"
   DEPENDS green-leaf-tests
 )
 

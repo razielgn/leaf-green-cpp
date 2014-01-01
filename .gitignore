@@ -7,3 +7,4 @@ install_manifest.txt
 green-leaf
 green-leaf-tests
 test/gmock
+test/test_detail.xml
