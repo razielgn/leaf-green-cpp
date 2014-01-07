@@ -31,7 +31,6 @@ set(SRC_FILES
   "${SRC_DIR}/player_movement.cpp"
   "${SRC_DIR}/rectangle.cpp"
   "${SRC_DIR}/texture.cpp"
-  "${SRC_DIR}/tile_layer.cpp"
   "${SRC_DIR}/tile_set.cpp"
   "${SRC_DIR}/vector2.cpp"
 )
