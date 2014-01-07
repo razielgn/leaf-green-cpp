@@ -12,48 +12,37 @@ namespace green_leaf {
   public:
     Rectangle(int x, int y, int width, int height);
     Rectangle(int x, int y, Vector2 size);
-    Rectangle(Vector2 coord, int width, int height);
-    Rectangle(Vector2 coord, Vector2 size);
+    Rectangle(Vector2 origin, int width, int height);
+    Rectangle(Vector2 origin, Vector2 size);
 
     Rectangle scale(int factor) const;
     const SDL_Rect toSDLRect() const;
 
     std::string toString() const;
 
-    int x() const {
-      return x_;
+    Vector2 origin() const {
+      return origin_;
     }
 
-    int y() const {
-      return y_;
+    Vector2 size() const {
+      return size_;
     }
 
-    int width() const {
-      return width_;
-    }
 
-    int height() const {
-      return height_;
-    }
-
-    bool operator==(const Rectangle& rect) const {
-      return (this == &rect) || (
-        x_ == rect.x_ &&
-        y_ == rect.y_ &&
-        width_ == rect.width_ &&
-        height_ == rect.height_
+    bool operator==(const Rectangle& r) const {
+      return (this == &r) || (
+        origin_ == r.origin_ &&
+        size_   == r.size_
       );
     }
 
-    bool operator!=(const Rectangle& rect) const {
-      return !(*this == rect);
+    bool operator!=(const Rectangle& r) const {
+      return !(*this == r);
     }
 
   private:
-    const int x_;
-    const int y_;
-    const int width_;
-    const int height_;
+    Vector2 origin_;
+    Vector2 size_;
   };
 
   ::std::ostream& operator<<(::std::ostream& os, const Rectangle& r);

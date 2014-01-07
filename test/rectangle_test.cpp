@@ -14,37 +14,37 @@ namespace green_leaf {
   };
 
   TEST_F(RectangleTest, DefaultConstructor) {
-    EXPECT_EQ(1, rect_.x());
-    EXPECT_EQ(2, rect_.y());
-    EXPECT_EQ(3, rect_.width());
-    EXPECT_EQ(4, rect_.height());
+    EXPECT_EQ(Vector2(1, 2), rect_.origin());
+    EXPECT_EQ(Vector2(3, 4), rect_.size());
   }
 
   TEST_F(RectangleTest, ConstructorWithVector2AndIntegers) {
     Rectangle r(Vector2(1, 2), 3, 4);
 
-    EXPECT_EQ(1, r.x());
-    EXPECT_EQ(2, r.y());
-    EXPECT_EQ(3, r.width());
-    EXPECT_EQ(4, r.height());
+    EXPECT_EQ(Vector2(1, 2), r.origin());
+    EXPECT_EQ(Vector2(3, 4), r.size());
   }
 
   TEST_F(RectangleTest, ConstructorWithIntegersAndVector2) {
     Rectangle r(1, 2, Vector2(3, 4));
 
-    EXPECT_EQ(1, r.x());
-    EXPECT_EQ(2, r.y());
-    EXPECT_EQ(3, r.width());
-    EXPECT_EQ(4, r.height());
+    EXPECT_EQ(Vector2(1, 2), r.origin());
+    EXPECT_EQ(Vector2(3, 4), r.size());
   }
 
   TEST_F(RectangleTest, ConstructorWithVector2s) {
     Rectangle r(Vector2(1, 2), Vector2(3, 4));
 
-    EXPECT_EQ(1, r.x());
-    EXPECT_EQ(2, r.y());
-    EXPECT_EQ(3, r.width());
-    EXPECT_EQ(4, r.height());
+    EXPECT_EQ(Vector2(1, 2), r.origin());
+    EXPECT_EQ(Vector2(3, 4), r.size());
+  }
+
+  TEST_F(RectangleTest, Origin) {
+    EXPECT_EQ(Vector2(1, 2), rect_.origin());
+  }
+
+  TEST_F(RectangleTest, Size) {
+    EXPECT_EQ(Vector2(3, 4), rect_.size());
   }
 
   TEST_F(RectangleTest, Identity) {
