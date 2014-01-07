@@ -39,11 +39,11 @@ namespace green_leaf {
     SDL_Quit();
   }
 
-  void Graphics::clear() {
+  void Graphics::clear() const {
     SDL_RenderClear(renderer_);
   }
 
-  void Graphics::drawTexture(const Texture* texture, const Rectangle* destination, const Rectangle* source) {
+  void Graphics::drawTexture(const Texture* texture, const Rectangle* destination, const Rectangle* source) const {
     Rectangle scaled_destination = destination->scale(scale_);
 
     const SDL_Rect source_rect = source->toSDLRect();
@@ -52,13 +52,13 @@ namespace green_leaf {
     SDL_RenderCopy(renderer_, texture->toSDLTexture(), &source_rect, &dest_rect);
   }
 
-  void Graphics::drawTexture(const Texture* texture, const Rectangle* destination) {
+  void Graphics::drawTexture(const Texture* texture, const Rectangle* destination) const {
     Rectangle source(0, 0, texture->size());
 
     drawTexture(texture, destination, &source);
   }
 
-  void Graphics::present() {
+  void Graphics::present() const {
     SDL_RenderPresent(renderer_);
   }
 }

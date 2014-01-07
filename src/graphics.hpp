@@ -13,10 +13,10 @@ namespace green_leaf {
     Graphics(bool visible = true);
     ~Graphics();
 
-    void clear();
-    void drawTexture(const Texture* texture, const Rectangle* destination, const Rectangle* source);
-    void drawTexture(const Texture* texture, const Rectangle* destination);
-    void present();
+    void clear() const;
+    void drawTexture(const Texture* texture, const Rectangle* destination, const Rectangle* source) const;
+    void drawTexture(const Texture* texture, const Rectangle* destination) const;
+    void present() const;
 
     SDL_Renderer* renderer() const {
       return renderer_;
