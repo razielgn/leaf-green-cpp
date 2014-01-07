@@ -10,7 +10,7 @@ namespace green_leaf {
 
   class Graphics {
   public:
-    Graphics();
+    Graphics(bool visible = true);
     ~Graphics();
 
     void clear();

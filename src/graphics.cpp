@@ -3,9 +3,17 @@
 #include "texture.hpp"
 
 namespace green_leaf {
-  Graphics::Graphics() {
-    if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-      throw "Could not initialize SDL system";
+  Graphics::Graphics(bool visible) {
+    if(SDL_Init(SDL_INIT_VIDEO) < 0) {
+      throw "Could not initialize SDL video system";
+    }
+
+    int flags;
+
+    if(visible) {
+      flags = SDL_WINDOW_SHOWN;
+    } else {
+      flags = SDL_WINDOW_HIDDEN;
     }
 
     window_ = SDL_CreateWindow("Pokémon GreenLeaf - The Remake!",
@@ -13,7 +21,7 @@ namespace green_leaf {
                                SDL_WINDOWPOS_CENTERED,
                                size_.x() * scale_,
                                size_.y() * scale_,
-                               SDL_WINDOW_SHOWN);
+                               flags);
 
     if(!window_) {
       throw "Could not create SDL window";
