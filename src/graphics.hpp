@@ -2,6 +2,7 @@
 #define GL_GRAPHICS_HPP
 
 #include <SDL.h>
+#include "vector2.hpp"
 
 namespace green_leaf {
   class Rectangle;
@@ -21,21 +22,16 @@ namespace green_leaf {
       return renderer_;
     }
 
-    int width() const {
-      return width_;
-    }
-
-    int height() const {
-      return height_;
+    Vector2 size() const {
+      return size_;
     }
 
   private:
     SDL_Window* window_;
     SDL_Renderer* renderer_;
 
-    int width_ = 240;
-    int height_ = 160;
-    int scale_ = 1;
+    const Vector2 size_ = Vector2(240, 160);
+    int scale_ = 4;
   };
 }
 

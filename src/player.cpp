@@ -67,10 +67,8 @@ namespace green_leaf {
     Rectangle source(frame_ * frame_size_, frame_size_);
 
     Rectangle destination(
-      graphics->width() / 2 - frame_w / 2,
-      graphics->height() / 2 - frame_h / 2,
-      source.width(),
-      source.height()
+      graphics->size() / 2 - frame_size_ / 2,
+      source.size()
     );
 
     graphics->drawTexture(texture_, &destination, &source);

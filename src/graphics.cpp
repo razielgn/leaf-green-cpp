@@ -11,8 +11,8 @@ namespace green_leaf {
     window_ = SDL_CreateWindow("Pokémon GreenLeaf - The Remake!",
                                SDL_WINDOWPOS_CENTERED,
                                SDL_WINDOWPOS_CENTERED,
-                               width_ * scale_,
-                               height_ * scale_,
+                               size_.x() * scale_,
+                               size_.y() * scale_,
                                SDL_WINDOW_SHOWN);
 
     if(!window_) {

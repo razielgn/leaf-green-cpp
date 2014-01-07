@@ -24,9 +24,7 @@ namespace green_leaf {
 
     Vector2 frame_;
     int a_;
-    Vector2 frame_size_ = Vector2(16, 20);
-    const int frame_w = 16;
-    const int frame_h = 20;
+    const Vector2 frame_size_ = Vector2(16, 20);
   };
 }
 
