@@ -1,20 +1,7 @@
 project(green-leaf-tests C CXX)
 
-set(BUILD_SHARED_LIBS ON)
-
-include(ExternalProject)
-ExternalProject_Add(GoogleMock
-  URL "https://googlemock.googlecode.com/files/gmock-1.7.0.zip"
-  DOWNLOAD_NAME "gmock-1.7.0.zip"
-  URL_HASH SHA1=f9d9dd882a25f4069ed9ee48e70aff1b53e3c5a5
-  PREFIX "${TEST_DIR}/gmock"
-  CMAKE_ARGS -DBUILD_SHARED_LIBS=ON
-  INSTALL_COMMAND ""
-)
-
-ExternalProject_Get_Property(GoogleMock
-  source_dir
-  binary_dir
+add_definitions(
+  -Wno-missing-field-initializers
 )
 
 file(
@@ -34,9 +21,15 @@ set(SRC_FILES
   "${SRC_DIR}/vector2.cpp"
 )
 
+set(GTEST_FILES
+  "${TEST_DIR}/gmock-gtest-all.cc"
+  #"${TEST_DIR}/gmock_main.cc"
+)
+
 set(GREEN_LEAF_TESTS_SRC
   ${TEST_FILES}
   ${SRC_FILES}
+  ${GTEST_FILES}
   runner.cpp
 )
 
@@ -55,8 +48,7 @@ add_dependencies(green-leaf-tests GoogleMock)
 
 include_directories(
   ${SRC_DIR}
-  "${source_dir}/include"
-  "${source_dir}/gtest/include"
+  ${TEST_DIR}
 )
 
 if(APPLE)
@@ -67,6 +59,4 @@ endif(APPLE)
 
 target_link_libraries(green-leaf-tests
   -lpthread
-  "${binary_dir}/${CMAKE_FIND_LIBRARY_PREFIXES}gmock${SUFFIX}"
-  "${binary_dir}/gtest/${CMAKE_FIND_LIBRARY_PREFIXES}gtest${SUFFIX}"
 )
