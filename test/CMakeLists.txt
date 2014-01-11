@@ -66,6 +66,7 @@ else(APPLE)
 endif(APPLE)
 
 target_link_libraries(green-leaf-tests
+  -lpthread
   "${binary_dir}/${CMAKE_FIND_LIBRARY_PREFIXES}gmock${SUFFIX}"
   "${binary_dir}/gtest/${CMAKE_FIND_LIBRARY_PREFIXES}gtest${SUFFIX}"
 )
