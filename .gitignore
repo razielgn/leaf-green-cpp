@@ -6,5 +6,6 @@ cmake_install.cmake
 install_manifest.txt
 green-leaf
 green-leaf-tests
+src/jsoncpp
 test/test_detail.xml
 .DS_Store

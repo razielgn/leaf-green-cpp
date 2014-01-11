@@ -13,6 +13,7 @@ file(
 set(SRC_FILES
   "${SRC_DIR}/game_time.cpp"
   "${SRC_DIR}/input_key.cpp"
+  "${SRC_DIR}/jsoncpp.cpp"
   "${SRC_DIR}/map.cpp"
   "${SRC_DIR}/player_movement.cpp"
   "${SRC_DIR}/rectangle.cpp"
@@ -23,7 +24,6 @@ set(SRC_FILES
 
 set(GTEST_FILES
   "${TEST_DIR}/gmock-gtest-all.cc"
-  #"${TEST_DIR}/gmock_main.cc"
 )
 
 set(GREEN_LEAF_TESTS_SRC
@@ -50,12 +50,6 @@ include_directories(
   ${SRC_DIR}
   ${TEST_DIR}
 )
-
-if(APPLE)
-  set(SUFFIX ".dylib")
-else(APPLE)
-  set(SUFFIX ".so")
-endif(APPLE)
 
 target_link_libraries(green-leaf-tests
   -lpthread

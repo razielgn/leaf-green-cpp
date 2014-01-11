@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+set(SRC_DIR "${CMAKE_CURRENT_BINARY_DIR}/src")
+set(TEST_DIR "${CMAKE_CURRENT_BINARY_DIR}/test")
 
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
@@ -13,16 +15,7 @@ add_definitions(
   -g
   -Wall
   -Wextra
-  -Werror
   -pedantic
-)
-
-set(SRC_DIR
-  "${CMAKE_CURRENT_BINARY_DIR}/src"
-)
-
-set(TEST_DIR
-  "${CMAKE_CURRENT_BINARY_DIR}/test"
 )
 
 add_subdirectory(src)
