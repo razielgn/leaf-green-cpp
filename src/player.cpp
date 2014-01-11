@@ -5,7 +5,7 @@
 #include "player.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"
-#include "texture.hpp"
+#include "sdl_texture.hpp"
 
 namespace green_leaf {
   Player::Player()
@@ -15,7 +15,7 @@ namespace green_leaf {
   }
 
   void Player::loadContent(Graphics* graphics) {
-    texture_ = Texture::fromPath(graphics, "hero.png");
+    texture_ = SDLTexture::fromPath(graphics, "hero.png");
   }
 
   void Player::unloadContent() {

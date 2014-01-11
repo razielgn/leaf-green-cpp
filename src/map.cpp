@@ -7,7 +7,7 @@
 #include "player_movement.hpp"
 #include "vector2.hpp"
 #include "rectangle.hpp"
-#include "texture.hpp"
+#include "sdl_texture.hpp"
 
 namespace green_leaf {
   Map::Map(Vector2 center)
@@ -19,7 +19,7 @@ namespace green_leaf {
   }
 
   void Map::loadContent(Graphics* graphics) {
-    background_ = Texture::fromPath(graphics, "map.png");
+    background_ = SDLTexture::fromPath(graphics, "map.png");
   }
 
   void Map::unloadContent() {

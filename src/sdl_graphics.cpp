@@ -1,6 +1,6 @@
-#include "sdl_graphics.hpp"
 #include "rectangle.hpp"
-#include "texture.hpp"
+#include "sdl_graphics.hpp"
+#include "sdl_texture.hpp"
 
 namespace green_leaf {
   SDLGraphics::SDLGraphics(bool visible) {
@@ -43,13 +43,19 @@ namespace green_leaf {
     SDL_RenderClear(renderer_);
   }
 
-  void SDLGraphics::drawTexture(const Texture* texture, const Rectangle destination, const Rectangle source) const {
+  void SDLGraphics::drawTexture(const Texture* texture_, const Rectangle destination, const Rectangle source) const {
+    const SDLTexture* texture = static_cast<const SDLTexture*>(texture_);
+
+    if(texture == nullptr) {
+      throw "SDLGraphics must work with SDLTexture";
+    }
+
     Rectangle scaled_destination = destination.scale(scale_);
 
     const SDL_Rect source_rect = source.toSDLRect();
     const SDL_Rect dest_rect   = scaled_destination.toSDLRect();
 
-    SDL_RenderCopy(renderer_, texture->toSDLTexture(), &source_rect, &dest_rect);
+    SDL_RenderCopy(renderer_, texture->data(), &source_rect, &dest_rect);
   }
 
   void SDLGraphics::drawTexture(const Texture* texture, const Rectangle destination) const {

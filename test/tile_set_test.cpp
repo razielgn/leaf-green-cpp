@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "vector2.hpp"
-#include "texture.hpp"
+#include "texture_mock.hpp"
 #include "tile_set.hpp"
 
 namespace green_leaf {
@@ -9,9 +9,9 @@ namespace green_leaf {
   protected:
     TileSetTest() { }
 
-    Texture texture_ = Texture(Vector2(48, 48));
-    const TileSet tile_set_ = TileSet(&texture_, tile_size_, 1);
+    TextureMock texture_ = TextureMock(Vector2(48, 48));
     const Vector2 tile_size_ = Vector2(16, 16);
+    const TileSet tile_set_ = TileSet(&texture_, tile_size_, 1);
   };
 
   TEST_F(TileSetTest, Texture) {

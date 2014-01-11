@@ -1,7 +1,7 @@
 #include "gmock/gmock.h"
 
 #include "graphics_mock.hpp"
-#include "texture.hpp"
+#include "texture_mock.hpp"
 #include "tile_layer.hpp"
 #include "tile_set.hpp"
 #include "vector2.hpp"
@@ -13,7 +13,7 @@ namespace green_leaf {
   protected:
     TileLayerTest() { }
 
-    Texture texture_ = Texture(Vector2(12, 12));
+    TextureMock texture_ = TextureMock(Vector2(12, 12));
     Vector2 tile_size_ = Vector2(4, 4);
     TileSet tile_set_ = TileSet(&texture_, tile_size_, 1);
 
