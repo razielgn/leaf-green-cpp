@@ -22,6 +22,10 @@ namespace green_leaf {
     EXPECT_EQ(tile_size_, tile_set_.tile_size());
   }
 
+  TEST_F(TileSetTest, StartCode) {
+    EXPECT_EQ(1, tile_set_.start_code());
+  }
+
   TEST_F(TileSetTest, RectangleFromCode) {
     EXPECT_EQ(Rectangle(0, 0, tile_size_), tile_set_.rectangleFromCode(1));
     EXPECT_EQ(Rectangle(1, 0, tile_size_), tile_set_.rectangleFromCode(2));

@@ -9,7 +9,7 @@ namespace green_leaf {
 
   class TileSet {
   public:
-    TileSet(const Texture* texture, const Vector2 tile_size, unsigned int first_gid);
+    TileSet(const Texture* texture, const Vector2 tile_size, unsigned int start_code);
 
     Rectangle rectangleFromCode(unsigned int tile_code) const;
 
@@ -21,12 +21,16 @@ namespace green_leaf {
       return tile_size_;
     }
 
+    int start_code() const {
+      return start_code_;
+    }
+
   private:
     const Vector2 tile_grid_;
     const Vector2 tile_size_;
     const Texture* texture_;
 
-    const unsigned int first_gid_;
+    const unsigned int start_code_;
   };
 }
 
