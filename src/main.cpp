@@ -1,15 +1,21 @@
+#include <string>
+#include <iostream>
+
 #include "game.hpp"
 
 int main() {
-  using namespace green_leaf;
+  try {
+    green_leaf::Game *game = new green_leaf::Game();
 
-  Game *game = new Game();
+    game->loadContent();
+    game->run();
 
-  game->loadContent();
-  game->run();
+    game->unloadContent();
 
-  game->unloadContent();
+    delete game;
+  } catch(const char* message) {
+    std::cout << message << std::endl;
+  }
 
-  delete game;
   return 0;
 }
