@@ -20,6 +20,22 @@ namespace green_leaf {
     StrictMock<GraphicsMock> graphics_;
   };
 
+  TEST_F(TileLayerTest, TileSet) {
+    std::vector<unsigned int> tiles;
+    TileLayer tile_layer = TileLayer(Vector2(3, 3), &tile_set_, tiles);
+
+    EXPECT_EQ(&tile_set_, tile_layer.tile_set());
+  }
+
+  TEST_F(TileLayerTest, Tiles) {
+    std::vector<unsigned int> tiles = { 1, 2, 3,
+                                        4, 5, 6,
+                                        7, 8, 9 };
+    TileLayer tile_layer = TileLayer(Vector2(3, 3), &tile_set_, tiles);
+
+    EXPECT_EQ(tiles, tile_layer.tiles());
+  }
+
   TEST_F(TileLayerTest, DrawShouldNeverDrawWhenTilesAreAllEmpty) {
     EXPECT_CALL(graphics_, drawTexture(&texture_, _, _)).Times(0);
 

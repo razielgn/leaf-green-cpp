@@ -18,6 +18,14 @@ namespace green_leaf {
       return size_;
     }
 
+    std::vector<unsigned int> tiles() const {
+      return tiles_;
+    }
+
+    const TileSet* tile_set() const {
+      return tile_set_;
+    }
+
     void draw(const Graphics* graphics, const Vector2 offset) const;
 
   private:
