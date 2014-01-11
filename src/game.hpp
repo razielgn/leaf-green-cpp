@@ -18,7 +18,7 @@ namespace green_leaf {
     void unloadContent();
     void run();
     void update();
-    void draw();
+    void draw() const;
     void stop();
 
   private:

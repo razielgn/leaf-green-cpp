@@ -73,7 +73,7 @@ namespace green_leaf {
     total_time_ = SDL_GetTicks();
   }
 
-  void Game::draw() {
+  void Game::draw() const {
     graphics_->clear();
 
     map_->drawBackground(graphics_);
