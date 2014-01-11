@@ -3,71 +3,66 @@
 #include "rectangle.hpp"
 
 namespace green_leaf {
-  class RectangleTest : public ::testing::Test {
-  protected:
-    RectangleTest() :
-      rect_(Rectangle(1, 2, 3, 4))
-    {
-    }
+  TEST(RectangleTest, DefaultConstructor) {
+    Rectangle r(1, 2, 3, 4);
 
-    const Rectangle rect_;
-  };
-
-  TEST_F(RectangleTest, DefaultConstructor) {
-    EXPECT_EQ(Vector2(1, 2), rect_.origin());
-    EXPECT_EQ(Vector2(3, 4), rect_.size());
+    EXPECT_EQ(Vector2(1, 2), r.origin());
+    EXPECT_EQ(Vector2(3, 4), r.size());
   }
 
-  TEST_F(RectangleTest, ConstructorWithVector2AndIntegers) {
+  TEST(RectangleTest, ConstructorWithVector2AndIntegers) {
     Rectangle r(Vector2(1, 2), 3, 4);
 
     EXPECT_EQ(Vector2(1, 2), r.origin());
     EXPECT_EQ(Vector2(3, 4), r.size());
   }
 
-  TEST_F(RectangleTest, ConstructorWithIntegersAndVector2) {
+  TEST(RectangleTest, ConstructorWithIntegersAndVector2) {
     Rectangle r(1, 2, Vector2(3, 4));
 
     EXPECT_EQ(Vector2(1, 2), r.origin());
     EXPECT_EQ(Vector2(3, 4), r.size());
   }
 
-  TEST_F(RectangleTest, ConstructorWithVector2s) {
+  TEST(RectangleTest, ConstructorWithVector2s) {
     Rectangle r(Vector2(1, 2), Vector2(3, 4));
 
     EXPECT_EQ(Vector2(1, 2), r.origin());
     EXPECT_EQ(Vector2(3, 4), r.size());
   }
 
-  TEST_F(RectangleTest, Origin) {
-    EXPECT_EQ(Vector2(1, 2), rect_.origin());
+  TEST(RectangleTest, Origin) {
+    EXPECT_EQ(Vector2(1, 2), Rectangle(1, 2, 3, 4).origin());
   }
 
-  TEST_F(RectangleTest, Size) {
-    EXPECT_EQ(Vector2(3, 4), rect_.size());
+  TEST(RectangleTest, Size) {
+    EXPECT_EQ(Vector2(3, 4), Rectangle(1, 2, 3, 4).size());
   }
 
-  TEST_F(RectangleTest, Identity) {
-    EXPECT_EQ(rect_, rect_);
+  TEST(RectangleTest, Identity) {
+    Rectangle r(1, 2, 3, 4);
+
+    EXPECT_EQ(r, r);
   }
 
-  TEST_F(RectangleTest, Equality) {
-    EXPECT_EQ(Rectangle(1, 2, 3, 4), rect_);
+  TEST(RectangleTest, Equality) {
+    EXPECT_EQ(Rectangle(1, 2, 3, 4), Rectangle(1, 2, 3, 4));
   }
 
-  TEST_F(RectangleTest, Inequality) {
-    EXPECT_NE(Rectangle(1, 2, 3, 1), rect_);
+  TEST(RectangleTest, Inequality) {
+    EXPECT_NE(Rectangle(1, 2, 3, 1), Rectangle(1, 2, 3, 4));
   }
 
-  TEST_F(RectangleTest, Scale) {
-    EXPECT_EQ(Rectangle(0, 0, 0, 0), rect_.scale(0));
-    EXPECT_EQ(Rectangle(2, 4, 6, 8), rect_.scale(2));
+  TEST(RectangleTest, Scale) {
+    Rectangle r(1, 2, 3, 4);
 
-    EXPECT_EQ(rect_, rect_.scale(1));
+    EXPECT_EQ(Rectangle(0, 0, 0, 0), r.scale(0));
+    EXPECT_EQ(Rectangle(2, 4, 6, 8), r.scale(2));
+    EXPECT_EQ(Rectangle(1, 2, 3, 4), r.scale(1));
   }
 
-  TEST_F(RectangleTest, ToSDLRect) {
-    const SDL_Rect rect = rect_.toSDLRect();
+  TEST(RectangleTest, ToSDLRect) {
+    const SDL_Rect rect = Rectangle(1, 2, 3, 4).toSDLRect();
 
     EXPECT_EQ(1, rect.x);
     EXPECT_EQ(2, rect.y);
@@ -75,7 +70,7 @@ namespace green_leaf {
     EXPECT_EQ(4, rect.h);
   }
 
-  TEST_F(RectangleTest, ToString) {
-    EXPECT_EQ(std::string("Rectangle(1, 2, 3, 4)"), rect_.toString());
+  TEST(RectangleTest, ToString) {
+    EXPECT_EQ(std::string("Rectangle(1, 2, 3, 4)"), Rectangle(1, 2, 3, 4).toString());
   }
 }
