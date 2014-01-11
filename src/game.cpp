@@ -4,6 +4,7 @@
 #include "sdl_input.hpp"
 #include "sdl_content.hpp"
 #include "map.hpp"
+#include "hero_home_2f.hpp"
 #include "vector2.hpp"
 #include "player.hpp"
 #include "player_movement.hpp"
@@ -13,9 +14,9 @@ namespace green_leaf {
     graphics_ = new SDLGraphics();
     input_ = new SDLInput();
     player_ = new Player();
-    map_ = new Map(Vector2(5, 6));
     player_movement_ = new PlayerMovement();
     content_ = new SDLContent(graphics_, std::string("."));
+    map_ = new Map(new HeroHome2F(content_), Vector2(5, 6));
 
     running_ = true;
     total_time_ = SDL_GetTicks();
@@ -32,12 +33,10 @@ namespace green_leaf {
 
   void Game::loadContent() {
     player_->loadContent(content_);
-    map_->loadContent(content_);
   }
 
   void Game::unloadContent() {
     player_->unloadContent();
-    map_->unloadContent();
   }
 
   void Game::run() {

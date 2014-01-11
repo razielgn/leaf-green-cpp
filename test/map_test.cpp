@@ -1,27 +1,21 @@
-#include "gtest/gtest.h"
-#include "content_mock.hpp"
+#include "gmock/gmock.h"
+#include "map_source_mock.hpp"
 #include "map.hpp"
 
 namespace green_leaf {
-  class MapTest : public ::testing::Test {
+  using namespace ::testing;
+
+  class MapTest : public Test {
   protected:
-    MapTest()
-      : vec_(Vector2(0, 0))
-      , map_(Map(vec_))
-    {
-      map_.loadContent(&content_);
-    }
+    MapTest() { }
 
-    ~MapTest() {
-      map_.unloadContent();
-    }
-
-    const Vector2 vec_;
-    const ContentMock content_;
-    Map map_;
+    MapSourceMock map_source_;
+    Map map_ = Map(&map_source_, Vector2(0, 0));
   };
 
   TEST_F(MapTest, DrawOffset) {
+    EXPECT_CALL(map_source_, tile_size()).WillRepeatedly(Return(Vector2(16, 16)));
+
     const Vector2 dimensions = Vector2(176, 144);
 
     EXPECT_EQ(Vector2(112, 74), map_.drawOffset(Vector2(0, 0), dimensions));
