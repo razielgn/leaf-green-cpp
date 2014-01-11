@@ -73,4 +73,11 @@ namespace green_leaf {
   TEST(RectangleTest, ToString) {
     EXPECT_EQ(std::string("Rectangle(1, 2, 3, 4)"), Rectangle(1, 2, 3, 4).toString());
   }
+
+  TEST(RectangleTest, ScaleOrigin) {
+    Rectangle r(1, 2, 3, 4);
+
+    EXPECT_EQ(Rectangle(0, 0, 3, 4), r.scaleOrigin(Vector2(0, 0)));
+    EXPECT_EQ(Rectangle(4, 8, 3, 4), r.scaleOrigin(Vector2(4, 4)));
+  }
 }

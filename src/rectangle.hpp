@@ -16,6 +16,7 @@ namespace green_leaf {
     Rectangle(Vector2 origin, Vector2 size);
 
     Rectangle scale(int factor) const;
+    Rectangle scaleOrigin(Vector2 vec) const;
     const SDL_Rect toSDLRect() const;
 
     std::string toString() const;

@@ -42,6 +42,13 @@ namespace green_leaf {
     return rect;
   }
 
+  Rectangle Rectangle::scaleOrigin(Vector2 vec) const {
+    return Rectangle(
+      origin_ * vec,
+      size_
+    );
+  }
+
   std::string Rectangle::toString() const {
     std::stringstream s;
     s << "Rectangle("
