@@ -1,3 +1,4 @@
+#include "content.hpp"
 #include "game_time.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
@@ -5,7 +6,7 @@
 #include "player.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"
-#include "sdl_texture.hpp"
+#include "texture.hpp"
 
 namespace green_leaf {
   Player::Player()
@@ -14,18 +15,15 @@ namespace green_leaf {
   {
   }
 
-  void Player::loadContent(Graphics* graphics) {
-    texture_ = SDLTexture::fromPath(graphics, "hero.png");
+  void Player::loadContent(const Content* content) {
+    texture_ = content->loadTexture("hero.png");
   }
 
   void Player::unloadContent() {
     delete texture_;
   }
 
-  void Player::update(Input* input, GameTime* game_time, PlayerMovement* player_movement) {
-#pragma unused(game_time)
-#pragma unused(input)
-
+  void Player::update(const PlayerMovement* player_movement) {
     int frame_x = frame_.x();
     int frame_y = frame_.y();
 
@@ -63,7 +61,7 @@ namespace green_leaf {
     frame_ = Vector2(frame_x, frame_y);
   }
 
-  void Player::draw(Graphics* graphics) {
+  void Player::draw(const Graphics* graphics) const {
     Rectangle source(frame_ * frame_size_, frame_size_);
 
     Rectangle destination(

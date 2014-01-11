@@ -2,6 +2,7 @@
 #include "game_time.hpp"
 #include "sdl_graphics.hpp"
 #include "sdl_input.hpp"
+#include "sdl_content.hpp"
 #include "map.hpp"
 #include "vector2.hpp"
 #include "player.hpp"
@@ -14,6 +15,7 @@ namespace green_leaf {
     player_ = new Player();
     map_ = new Map(Vector2(5, 6));
     player_movement_ = new PlayerMovement();
+    content_ = new SDLContent(graphics_, std::string("."));
 
     running_ = true;
     total_time_ = SDL_GetTicks();
@@ -25,11 +27,12 @@ namespace green_leaf {
     delete player_;
     delete player_movement_;
     delete map_;
+    delete content_;
   }
 
   void Game::loadContent() {
-    player_->loadContent(graphics_);
-    map_->loadContent(graphics_);
+    player_->loadContent(content_);
+    map_->loadContent(content_);
   }
 
   void Game::unloadContent() {
@@ -64,8 +67,8 @@ namespace green_leaf {
     }
 
     player_movement_->update(input_, &game_time);
-    player_->update(input_, &game_time, player_movement_);
-    map_->update(input_, &game_time, player_movement_);
+    player_->update(player_movement_);
+    map_->update(player_movement_);
 
     total_time_ = SDL_GetTicks();
   }

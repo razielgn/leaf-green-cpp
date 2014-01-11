@@ -4,6 +4,7 @@
 #include "vector2.hpp"
 
 namespace green_leaf {
+  class Content;
   class GameTime;
   class Graphics;
   class Input;
@@ -13,9 +14,9 @@ namespace green_leaf {
   class Map {
   public:
     Map(Vector2 center);
-    void loadContent(Graphics* graphics);
+    void loadContent(const Content* content);
     void unloadContent();
-    void update(Input* input, GameTime* game_time, PlayerMovement* player_movement);
+    void update(const PlayerMovement* player_movement);
     void draw(Graphics* graphics);
     Vector2 drawOffset(Vector2 center, Vector2 map_dimension) const;
 

@@ -15,12 +15,12 @@ namespace green_leaf {
     return Vector2(width, height);
   }
 
-  SDLTexture* SDLTexture::fromPath(const Graphics* graphics_, const char* path) {
+  SDLTexture* SDLTexture::fromPath(const Graphics* graphics_, std::string relative_path) {
     const SDLGraphics* graphics = static_cast<const SDLGraphics*>(graphics_);
 
     if(graphics == nullptr) { throw "SDLTexture must work with SDLGraphics"; }
 
-    SDL_Surface* surface = IMG_Load(path);
+    SDL_Surface* surface = IMG_Load(relative_path.c_str());
     if (!surface) { throw "Could not load image"; }
 
     SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(graphics->renderer(), surface);

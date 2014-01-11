@@ -2,6 +2,7 @@
 #define GL_GAME_CPP
 
 namespace green_leaf {
+  class Content;
   class Graphics;
   class Input;
   class Player;
@@ -26,6 +27,7 @@ namespace green_leaf {
     Player* player_;
     Map* map_;
     PlayerMovement* player_movement_;
+    Content* content_;
 
     unsigned int total_time_;
     bool running_;

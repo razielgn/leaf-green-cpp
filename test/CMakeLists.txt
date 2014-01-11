@@ -25,12 +25,10 @@ file(
 
 set(SRC_FILES
   "${SRC_DIR}/game_time.cpp"
-  "${SRC_DIR}/sdl_graphics.cpp"
   "${SRC_DIR}/input_key.cpp"
   "${SRC_DIR}/map.cpp"
   "${SRC_DIR}/player_movement.cpp"
   "${SRC_DIR}/rectangle.cpp"
-  "${SRC_DIR}/sdl_texture.cpp"
   "${SRC_DIR}/tile_layer.cpp"
   "${SRC_DIR}/tile_set.cpp"
   "${SRC_DIR}/vector2.cpp"
@@ -68,8 +66,6 @@ else(APPLE)
 endif(APPLE)
 
 target_link_libraries(green-leaf-tests
-  ${SDL2_LIBRARY}
-  ${SDL2_IMAGE_LIBRARY}
   "${binary_dir}/${CMAKE_FIND_LIBRARY_PREFIXES}gmock${SUFFIX}"
   "${binary_dir}/gtest/${CMAKE_FIND_LIBRARY_PREFIXES}gtest${SUFFIX}"
 )

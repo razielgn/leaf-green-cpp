@@ -1,0 +1,20 @@
+#ifndef GL_CONTENT_MOCK_HPP
+#define GL_CONTENT_MOCK_HPP
+
+#include "content.hpp"
+#include "texture_mock.hpp"
+
+namespace green_leaf {
+  class ContentMock : public Content {
+  public:
+    ContentMock() { }
+
+    Texture* loadTexture(std::string path) const {
+      #pragma unused(path)
+
+      return new TextureMock(Vector2(0, 0));
+    }
+  };
+}
+
+#endif

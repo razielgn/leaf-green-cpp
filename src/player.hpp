@@ -4,6 +4,7 @@
 #include "vector2.hpp"
 
 namespace green_leaf {
+  class Content;
   class GameTime;
   class Graphics;
   class Input;
@@ -13,11 +14,11 @@ namespace green_leaf {
   class Player {
   public:
     Player();
-    void loadContent(Graphics* graphics);
+    void loadContent(const Content* graphics);
     void unloadContent();
 
-    void update(Input* input, GameTime* game_time, PlayerMovement* player_movement);
-    void draw(Graphics* graphics);
+    void update(const PlayerMovement* player_movement);
+    void draw(const Graphics* graphics) const;
 
   private:
     Texture* texture_;

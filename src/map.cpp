@@ -1,3 +1,4 @@
+#include "content.hpp"
 #include "game_time.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
@@ -18,18 +19,15 @@ namespace green_leaf {
   {
   }
 
-  void Map::loadContent(Graphics* graphics) {
-    background_ = SDLTexture::fromPath(graphics, "map.png");
+  void Map::loadContent(const Content* content) {
+    background_ = content->loadTexture("map.png");
   }
 
   void Map::unloadContent() {
     delete background_;
   }
 
-  void Map::update(Input* input, GameTime* game_time, PlayerMovement* player_movement) {
-#pragma unused(game_time)
-#pragma unused(input)
-
+  void Map::update(const PlayerMovement* player_movement) {
     if(player_movement->moving()) {
       switch(player_movement->movement()) {
         case Movement::Right:
@@ -57,10 +55,11 @@ namespace green_leaf {
   }
 
   Vector2 Map::drawOffset(Vector2 center, Vector2 map_dimension) const {
-    return Vector2(
-      (map_dimension.x() / 2 - center.x() * tile_size_) + 24,
-      (map_dimension.y() / 2 - center.y() * tile_size_) + 2
-    );
+    return
+      (map_dimension / 2) -
+      (center * tile_set_background_->tile_size()) +
+      Vector2(24, 2);
+      // TODO: Why the hell do we need to add (24, 2)?
   }
 
   void Map::draw(Graphics* graphics) {

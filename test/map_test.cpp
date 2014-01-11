@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "content_mock.hpp"
 #include "map.hpp"
 
 namespace green_leaf {
@@ -8,10 +9,16 @@ namespace green_leaf {
       : vec_(Vector2(0, 0))
       , map_(Map(vec_))
     {
+      map_.loadContent(&content_);
+    }
+
+    ~MapTest() {
+      map_.unloadContent();
     }
 
     const Vector2 vec_;
-    const Map map_;
+    const ContentMock content_;
+    Map map_;
   };
 
   TEST_F(MapTest, DrawOffset) {
