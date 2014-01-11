@@ -10,6 +10,8 @@ namespace green_leaf {
   class Input;
   class PlayerMovement;
   class Texture;
+  class TileLayer;
+  class TileSet;
 
   class Map {
   public:
@@ -17,15 +19,22 @@ namespace green_leaf {
     void loadContent(const Content* content);
     void unloadContent();
     void update(const PlayerMovement* player_movement);
-    void draw(Graphics* graphics);
+    void drawBackground(const Graphics* graphics) const;
+    void drawForeground(const Graphics* graphics) const;
     Vector2 drawOffset(Vector2 center, Vector2 map_dimension) const;
 
   private:
-    Texture* background_;
+    Texture* texture_background_;
+    Texture* texture_objects_;
+    TileSet* tile_set_background_;
+    TileSet* tile_set_objects_;
+    TileLayer* tile_layer_foreground_;
+    TileLayer* tile_layer_objects_;
+    TileLayer* tile_layer_floor_;
+    TileLayer* tile_layer_background_;
+
     Vector2 center_;
     Vector2 dimension_;
-
-    static const int tile_size_ = 16;
 
     Vector2 destination_;
     Vector2 offset_;

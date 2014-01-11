@@ -76,8 +76,9 @@ namespace green_leaf {
   void Game::draw() {
     graphics_->clear();
 
-    map_->draw(graphics_);
+    map_->drawBackground(graphics_);
     player_->draw(graphics_);
+    map_->drawForeground(graphics_);
 
     graphics_->present();
   }
