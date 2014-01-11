@@ -1,5 +1,5 @@
 #include "texture.hpp"
-#include "graphics.hpp"
+#include "sdl_graphics.hpp"
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -20,7 +20,7 @@ namespace green_leaf {
     SDL_Surface* surface = IMG_Load(path);
     if (!surface) { throw "Could not load image"; }
 
-    SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(graphics->renderer(), surface);
+    SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(((SDLGraphics*)(graphics))->renderer(), surface);
     if (!sdl_texture) { throw "Could create texture from file"; }
 
     Vector2 textureSize = fetchTextureSize(sdl_texture);

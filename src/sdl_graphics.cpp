@@ -1,9 +1,9 @@
-#include "graphics.hpp"
+#include "sdl_graphics.hpp"
 #include "rectangle.hpp"
 #include "texture.hpp"
 
 namespace green_leaf {
-  Graphics::Graphics(bool visible) {
+  SDLGraphics::SDLGraphics(bool visible) {
     if(SDL_Init(SDL_INIT_VIDEO) < 0) {
       throw "Could not initialize SDL video system";
     }
@@ -33,32 +33,32 @@ namespace green_leaf {
                                    SDL_RENDERER_PRESENTVSYNC);
   }
 
-  Graphics::~Graphics() {
+  SDLGraphics::~SDLGraphics() {
     SDL_DestroyWindow(window_);
     SDL_DestroyRenderer(renderer_);
     SDL_Quit();
   }
 
-  void Graphics::clear() const {
+  void SDLGraphics::clear() const {
     SDL_RenderClear(renderer_);
   }
 
-  void Graphics::drawTexture(const Texture* texture, const Rectangle* destination, const Rectangle* source) const {
-    Rectangle scaled_destination = destination->scale(scale_);
+  void SDLGraphics::drawTexture(const Texture* texture, const Rectangle destination, const Rectangle source) const {
+    Rectangle scaled_destination = destination.scale(scale_);
 
-    const SDL_Rect source_rect = source->toSDLRect();
+    const SDL_Rect source_rect = source.toSDLRect();
     const SDL_Rect dest_rect   = scaled_destination.toSDLRect();
 
     SDL_RenderCopy(renderer_, texture->toSDLTexture(), &source_rect, &dest_rect);
   }
 
-  void Graphics::drawTexture(const Texture* texture, const Rectangle* destination) const {
+  void SDLGraphics::drawTexture(const Texture* texture, const Rectangle destination) const {
     Rectangle source(0, 0, texture->size());
 
-    drawTexture(texture, destination, &source);
+    drawTexture(texture, destination, source);
   }
 
-  void Graphics::present() const {
+  void SDLGraphics::present() const {
     SDL_RenderPresent(renderer_);
   }
 }

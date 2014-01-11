@@ -25,7 +25,7 @@ file(
 
 set(SRC_FILES
   "${SRC_DIR}/game_time.cpp"
-  "${SRC_DIR}/graphics.cpp"
+  "${SRC_DIR}/sdl_graphics.cpp"
   "${SRC_DIR}/input_key.cpp"
   "${SRC_DIR}/map.cpp"
   "${SRC_DIR}/player_movement.cpp"
