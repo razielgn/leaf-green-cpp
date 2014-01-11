@@ -4,7 +4,7 @@
 #include "sdl_input.hpp"
 #include "sdl_content.hpp"
 #include "map.hpp"
-#include "hero_home_2f.hpp"
+#include "map_json_source.hpp"
 #include "vector2.hpp"
 #include "player.hpp"
 #include "player_movement.hpp"
@@ -16,7 +16,7 @@ namespace green_leaf {
     player_ = new Player();
     player_movement_ = new PlayerMovement();
     content_ = new SDLContent(graphics_, std::string("."));
-    map_ = new Map(new HeroHome2F(content_), Vector2(5, 6));
+    map_ = new Map(new MapJsonSource(content_, "src/hero_home_2f.json"), Vector2(5, 6));
 
     running_ = true;
     total_time_ = SDL_GetTicks();
