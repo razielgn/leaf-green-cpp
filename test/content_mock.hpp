@@ -3,6 +3,7 @@
 
 #include "content.hpp"
 #include "texture_mock.hpp"
+#include "unused.hpp"
 
 namespace green_leaf {
   class ContentMock : public Content {
@@ -10,7 +11,7 @@ namespace green_leaf {
     ContentMock() { }
 
     Texture* loadTexture(std::string path) const {
-      #pragma unused(path)
+      UNUSED(path);
 
       return new TextureMock(Vector2(0, 0));
     }
