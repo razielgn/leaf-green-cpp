@@ -5,9 +5,9 @@
 #include "tile_set.hpp"
 
 namespace green_leaf {
-  TileLayer::TileLayer(Vector2 size, std::string name, std::vector<unsigned int> tiles)
-    : size_(size)
-    , name_(name)
+  TileLayer::TileLayer(Vector2 size, TileSet* tile_set, std::vector<unsigned int> tiles)
+    : tile_set_(tile_set)
+    , size_(size)
     , tiles_(tiles)
   {
   }
@@ -15,8 +15,8 @@ namespace green_leaf {
   TileLayer::~TileLayer() {
   }
 
-  void TileLayer::draw(const Graphics* graphics, const TileSet* tile_set, const Vector2 offset) const {
-    Vector2 tile_size = tile_set->tile_size();
+  void TileLayer::draw(const Graphics* graphics, const Vector2 offset) const {
+    Vector2 tile_size = tile_set_->tile_size();
 
     // OPTIMIZATION: Only draw visible tiles.
     for(unsigned int i = 0; i < size_.y(); i++) {
@@ -24,11 +24,11 @@ namespace green_leaf {
         unsigned int tile_code = tiles_[j + size_.x() * i];
 
         if(tile_code > 0) {
-          Rectangle tile = tile_set->rectangleFromCode(tile_code);
+          Rectangle tile = tile_set_->rectangleFromCode(tile_code);
           Vector2 destOffset = Vector2(j, i) * tile_size + offset;
 
           graphics->drawTexture(
-            tile_set->texture(),
+            tile_set_->texture(),
             Rectangle(destOffset, tile_size),
             tile.scaleOrigin(tile_size)
           );

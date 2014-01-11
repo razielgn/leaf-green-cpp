@@ -26,9 +26,9 @@ namespace green_leaf {
     std::vector<unsigned int> tiles = { 0, 0, 0,
                                         0, 0, 0,
                                         0, 0, 0 };
-    TileLayer tile_layer = TileLayer(Vector2(3, 3), std::string("test"), tiles);
+    TileLayer tile_layer = TileLayer(Vector2(3, 3), &tile_set_, tiles);
 
-    tile_layer.draw(&graphics_, &tile_set_, Vector2(0, 0));
+    tile_layer.draw(&graphics_, Vector2(0, 0));
   }
 
   TEST_F(TileLayerTest, DrawShouldDrawEveryTile) {
@@ -37,9 +37,9 @@ namespace green_leaf {
     std::vector<unsigned int> tiles = { 1, 2, 3,
                                         4, 5, 6,
                                         7, 8, 9 };
-    TileLayer tile_layer = TileLayer(Vector2(3, 3), std::string("test"), tiles);
+    TileLayer tile_layer = TileLayer(Vector2(3, 3), &tile_set_, tiles);
 
-    tile_layer.draw(&graphics_, &tile_set_, Vector2(0, 0));
+    tile_layer.draw(&graphics_, Vector2(0, 0));
   }
 
   TEST_F(TileLayerTest, DrawShouldCallDrawTextureWithCorrectParameters) {
@@ -65,8 +65,8 @@ namespace green_leaf {
     std::vector<unsigned int> tiles = { 1, 2, 3,
                                         4, 5, 6,
                                         7, 8, 9 };
-    TileLayer tile_layer = TileLayer(Vector2(3, 3), std::string("test"), tiles);
+    TileLayer tile_layer = TileLayer(Vector2(3, 3), &tile_set_, tiles);
 
-    tile_layer.draw(&graphics_, &tile_set_, Vector2(5, 17));
+    tile_layer.draw(&graphics_, Vector2(5, 17));
   }
 }

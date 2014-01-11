@@ -7,24 +7,23 @@
 #include "vector2.hpp"
 
 namespace green_leaf {
+  class TileSet;
+
   class TileLayer : public Layer {
   public:
-    TileLayer(Vector2 size, std::string name, std::vector<unsigned int> tiles);
+    TileLayer(Vector2 size, TileSet* tile_set, std::vector<unsigned int> tiles);
     ~TileLayer();
-
-    std::string name() const {
-      return name_;
-    }
 
     Vector2 size() const {
       return size_;
     }
 
-    void draw(const Graphics* graphics, const TileSet* tile_set, const Vector2 offset) const;
+    void draw(const Graphics* graphics, const Vector2 offset) const;
 
   private:
+    const TileSet* tile_set_;
+
     const Vector2 size_;
-    const std::string name_;
     const std::vector<unsigned int> tiles_;
   };
 }
