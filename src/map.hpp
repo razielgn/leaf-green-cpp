@@ -13,12 +13,12 @@ namespace green_leaf {
   public:
     Map(const MapSource* map_source, Vector2 playerPosition);
 
-    void update(const PlayerMovement* player_movement);
+    void update(const PlayerMovement* player_movement, Vector2 screenSize);
     void drawBackground(const Graphics* graphics) const;
     void drawForeground(const Graphics* graphics) const;
 
     // TODO: Mark private, it's here just for testing purposes.
-    Vector2 drawOffset(Vector2 center, Vector2 map_dimension) const;
+    Vector2 drawOffset(Vector2 center, Vector2 screenSize) const;
 
   private:
     const MapSource* map_source_;

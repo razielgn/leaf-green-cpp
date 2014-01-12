@@ -67,7 +67,7 @@ namespace green_leaf {
 
     player_movement_->update(input_, &game_time);
     player_->update(player_movement_);
-    map_->update(player_movement_);
+    map_->update(player_movement_, graphics_->size());
 
     total_time_ = SDL_GetTicks();
   }

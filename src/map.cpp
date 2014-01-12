@@ -17,7 +17,7 @@ namespace green_leaf {
   {
   }
 
-  void Map::update(const PlayerMovement* player_movement) {
+  void Map::update(const PlayerMovement* player_movement, Vector2 screenSize) {
     if(player_movement->moving()) {
       switch(player_movement->movement()) {
         case Movement::Right:
@@ -32,10 +32,10 @@ namespace green_leaf {
       }
     }
 
-    screenOffset_ = drawOffset(playerPosition_, map_source_->resolution());
+    screenOffset_ = drawOffset(playerPosition_, screenSize);
 
     if(player_movement->moving()) {
-      Vector2 destination = drawOffset(destination_, map_source_->resolution());
+      Vector2 destination = drawOffset(destination_, screenSize);
       screenOffset_ = screenOffset_ + (destination - screenOffset_) * player_movement->progress();
 
       if(player_movement->finished()) {
@@ -44,12 +44,11 @@ namespace green_leaf {
     }
   }
 
-  Vector2 Map::drawOffset(Vector2 center, Vector2 map_dimension) const {
-    return
-      (map_dimension / 2) -
-      (center * map_source_->tile_size()) +
-      Vector2(24, 2);
-      // TODO: Why the hell do we need to add (24, 2)?
+  Vector2 Map::drawOffset(Vector2 center, Vector2 screenSize) const {
+    const Vector2 tile_size = map_source_->tile_size();
+
+    return (screenSize / 2 - tile_size / 2 + Vector2(0, 2)) -
+      center * tile_size;
   }
 
   void Map::drawBackground(const Graphics* graphics) const {
