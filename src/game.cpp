@@ -16,7 +16,7 @@ namespace green_leaf {
     player_ = new Player();
     player_movement_ = new PlayerMovement();
     content_ = new SDLContent(graphics_, std::string("."));
-    map_ = new Map(new MapJsonSource(content_, "src/hero_home_2f.json"), Vector2(5, 6));
+    map_ = new Map(new MapJsonSource(content_, "src/hero_home_2f.json"), Vector2(5, 6), graphics_->size());
 
     running_ = true;
     total_time_ = SDL_GetTicks();
@@ -67,7 +67,7 @@ namespace green_leaf {
 
     player_movement_->update(input_, &game_time);
     player_->update(player_movement_);
-    map_->update(player_movement_, graphics_->size());
+    map_->update(player_movement_);
 
     total_time_ = SDL_GetTicks();
   }

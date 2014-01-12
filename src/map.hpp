@@ -9,23 +9,32 @@ namespace green_leaf {
   class MapSource;
   class PlayerMovement;
 
+  class MapOffset {
+  public:
+    MapOffset(Vector2 tile_size, Vector2 screen_size);
+
+    Vector2 centerOffset(Vector2 center) const;
+
+  private:
+    const Vector2 tile_size_;
+    const Vector2 screen_size_;
+  };
+
   class Map {
   public:
-    Map(const MapSource* map_source, Vector2 playerPosition);
+    Map(const MapSource* map_source, Vector2 player_position, Vector2 screen_size);
 
-    void update(const PlayerMovement* player_movement, Vector2 screenSize);
+    void update(const PlayerMovement* player_movement);
     void drawBackground(const Graphics* graphics) const;
     void drawForeground(const Graphics* graphics) const;
 
-    // TODO: Mark private, it's here just for testing purposes.
-    Vector2 drawOffset(Vector2 center, Vector2 screenSize) const;
-
   private:
     const MapSource* map_source_;
+    const MapOffset map_offset_;
 
-    Vector2 playerPosition_;
+    Vector2 player_position_;
     Vector2 destination_;
-    Vector2 screenOffset_;
+    Vector2 screen_offset_;
   };
 }
 
