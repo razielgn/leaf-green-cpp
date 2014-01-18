@@ -8,29 +8,30 @@
 #include <fstream>
 
 namespace green_leaf {
-  Json::Value findLayerWithName(Json::Value layers, std::string name) {
-    for(unsigned int i = 0; i < layers.size(); i++) {
-      if(layers[i]["name"] == name) {
-        return layers[i];
+  Json::Value findObjectWithName(const Json::Value array, const std::string name) {
+    for(const Json::Value &object : array) {
+      if(object["name"] == name) {
+        return object;
       }
     }
 
-    throw "Could not find layer.";
+    throw "Could not find object.";
   }
 
-  TileLayer* extractLayer(Vector2 dimension, Json::Value layers, std::string name, TileSet* tile_set) {
+  TileLayer* extractLayer(Vector2 dimension, const Json::Value layers, const std::string name, const TileSet* tile_set) {
     std::vector<unsigned int> background_tiles;
-    Json::Value layer = findLayerWithName(layers, name);
+    Json::Value layer = findObjectWithName(layers, name);
     Json::Value data = layer["data"];
 
-    for(unsigned int i = 0; i < data.size(); i++) {
-      background_tiles.push_back(data[i].asInt());
+    for(const Json::Value &tile_gid : data) {
+      background_tiles.push_back(tile_gid.asInt());
     }
 
     return new TileLayer(dimension, tile_set, background_tiles);
   }
 
-  TileSet* extractTileSet(const Content* content, Vector2 tile_size, Json::Value tile_set, Texture** texture) {
+  TileSet* extractTileSet(const Content* content, Vector2 tile_size, Json::Value tile_sets, std::string name, Texture** texture) {
+    Json::Value tile_set = findObjectWithName(tile_sets, name);
     std::string texture_path = tile_set["image"].asString();
     unsigned int start_code = tile_set["firstgid"].asInt();
 
@@ -78,8 +79,8 @@ namespace green_leaf {
     tile_size_ = extractTileSize(root);
     resolution_ = dimension * tile_size_;
 
-    background_tile_set_  = extractTileSet(content, tile_size_, root["tilesets"][0], &background_texture_);
-    decorations_tile_set_ = extractTileSet(content, tile_size_, root["tilesets"][1], &decorations_texture_);
+    background_tile_set_  = extractTileSet(content, tile_size_, root["tilesets"], std::string("background"), &background_texture_);
+    decorations_tile_set_ = extractTileSet(content, tile_size_, root["tilesets"], std::string("decorations"), &decorations_texture_);
 
     background_tile_layer_  = extractLayer(dimension, root["layers"], std::string("background"), background_tile_set_);
     floor_tile_layer_       = extractLayer(dimension, root["layers"], std::string("floor"), decorations_tile_set_);

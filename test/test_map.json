@@ -6,11 +6,13 @@
   "tilesets": [
     {
       "firstgid": 1,
-      "image": "tile1.png"
+      "image": "tile1.png",
+      "name": "background"
     },
     {
       "firstgid": 5,
-      "image": "tile2.png"
+      "image": "tile2.png",
+      "name": "decorations"
     }
   ],
   "layers": [

@@ -5,12 +5,14 @@
   "tileheight": 20,
   "tilesets": [
     {
-      "firstgid": 1,
-      "image": "tile1.png"
+      "firstgid": 5,
+      "image": "tile2.png",
+      "name": "decorations"
     },
     {
-      "firstgid": 5,
-      "image": "tile2.png"
+      "firstgid": 1,
+      "image": "tile1.png",
+      "name": "background"
     }
   ],
   "layers": [
