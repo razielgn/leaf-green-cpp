@@ -8,8 +8,19 @@
 #include <fstream>
 
 namespace green_leaf {
-  TileLayer* extractLayer(Vector2 dimension, Json::Value layer, TileSet* tile_set) {
+  Json::Value findLayerWithName(Json::Value layers, std::string name) {
+    for(unsigned int i = 0; i < layers.size(); i++) {
+      if(layers[i]["name"] == name) {
+        return layers[i];
+      }
+    }
+
+    throw "Could not find layer.";
+  }
+
+  TileLayer* extractLayer(Vector2 dimension, Json::Value layers, std::string name, TileSet* tile_set) {
     std::vector<unsigned int> background_tiles;
+    Json::Value layer = findLayerWithName(layers, name);
     Json::Value data = layer["data"];
 
     for(unsigned int i = 0; i < data.size(); i++) {
@@ -70,10 +81,10 @@ namespace green_leaf {
     background_tile_set_  = extractTileSet(content, tile_size_, root["tilesets"][0], &background_texture_);
     decorations_tile_set_ = extractTileSet(content, tile_size_, root["tilesets"][1], &decorations_texture_);
 
-    background_tile_layer_  = extractLayer(dimension, root["layers"][0], background_tile_set_);
-    floor_tile_layer_       = extractLayer(dimension, root["layers"][1], decorations_tile_set_);
-    decorations_tile_layer_ = extractLayer(dimension, root["layers"][2], decorations_tile_set_);
-    foreground_tile_layer_  = extractLayer(dimension, root["layers"][3], decorations_tile_set_);
+    background_tile_layer_  = extractLayer(dimension, root["layers"], std::string("background"), background_tile_set_);
+    floor_tile_layer_       = extractLayer(dimension, root["layers"], std::string("floor"), decorations_tile_set_);
+    decorations_tile_layer_ = extractLayer(dimension, root["layers"], std::string("decorations"), decorations_tile_set_);
+    foreground_tile_layer_  = extractLayer(dimension, root["layers"], std::string("foreground"), decorations_tile_set_);
   }
 
   MapJsonSource::~MapJsonSource() {
