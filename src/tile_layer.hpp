@@ -11,7 +11,7 @@ namespace green_leaf {
 
   class TileLayer : public Layer {
   public:
-    TileLayer(Vector2 size, TileSet* tile_set, std::vector<unsigned int> tiles);
+    TileLayer(Vector2 size, const TileSet* tile_set, std::vector<unsigned int> tiles);
     ~TileLayer();
 
     Vector2 size() const {

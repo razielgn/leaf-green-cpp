@@ -5,7 +5,7 @@
 #include "tile_set.hpp"
 
 namespace green_leaf {
-  TileLayer::TileLayer(Vector2 size, TileSet* tile_set, std::vector<unsigned int> tiles)
+  TileLayer::TileLayer(Vector2 size, const TileSet* tile_set, std::vector<unsigned int> tiles)
     : tile_set_(tile_set)
     , size_(size)
     , tiles_(tiles)
