@@ -1,3 +1,4 @@
+#include "collisions_layer.hpp"
 #include "map_json_source.hpp"
 #include "tile_layer.hpp"
 #include "tile_set.hpp"
@@ -37,6 +38,23 @@ namespace green_leaf {
 
     *texture = content->loadTexture(texture_path);
     return new TileSet(*texture, tile_size, start_code);
+  }
+
+  const CollisionsLayer* extractCollisionsLayer(Json::Value layers, std::string name) {
+    Json::Value collisions_layer = findObjectWithName(layers, name);
+    Json::Value json_rectangles = collisions_layer["objects"];
+    std::vector<Rectangle> rectangles;
+
+    for(const Json::Value &rectangle : json_rectangles) {
+      rectangles.push_back(Rectangle(
+        rectangle["x"].asInt(),
+        rectangle["y"].asInt(),
+        rectangle["width"].asInt(),
+        rectangle["height"].asInt()
+      ));
+    }
+
+    return new CollisionsLayer(rectangles);
   }
 
   Vector2 extractDimension(Json::Value root) {
@@ -86,6 +104,8 @@ namespace green_leaf {
     floor_tile_layer_       = extractTileLayer(dimension, root["layers"], std::string("floor"), decorations_tile_set_);
     decorations_tile_layer_ = extractTileLayer(dimension, root["layers"], std::string("decorations"), decorations_tile_set_);
     foreground_tile_layer_  = extractTileLayer(dimension, root["layers"], std::string("foreground"), decorations_tile_set_);
+
+    collisions_layer_ = extractCollisionsLayer(root["layers"], "collisions");
   }
 
   MapJsonSource::~MapJsonSource() {
@@ -99,6 +119,7 @@ namespace green_leaf {
     delete floor_tile_layer_;
     delete decorations_tile_layer_;
     delete foreground_tile_layer_;
-  }
 
+    delete collisions_layer_;
+  }
 }

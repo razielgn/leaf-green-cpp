@@ -37,6 +37,10 @@ namespace green_leaf {
       return foreground_tile_layer_;
     }
 
+    const CollisionsLayer* collisionsLayer() const {
+      return collisions_layer_;
+    }
+
   private:
     Vector2 resolution_;
     Vector2 tile_size_;
@@ -51,6 +55,7 @@ namespace green_leaf {
     const TileLayer* floor_tile_layer_;
     const TileLayer* decorations_tile_layer_;
     const TileLayer* foreground_tile_layer_;
+    const CollisionsLayer* collisions_layer_;
   };
 }
 
