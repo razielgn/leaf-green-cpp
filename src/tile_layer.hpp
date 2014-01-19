@@ -3,13 +3,13 @@
 
 #include <vector>
 
-#include "layer.hpp"
 #include "vector2.hpp"
 
 namespace green_leaf {
+  class Graphics;
   class TileSet;
 
-  class TileLayer : public Layer {
+  class TileLayer {
   public:
     TileLayer(Vector2 size, const TileSet* tile_set, std::vector<unsigned int> tiles);
     ~TileLayer();
