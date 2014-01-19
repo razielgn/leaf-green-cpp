@@ -13,17 +13,28 @@ namespace green_leaf {
     MapJsonSource(const Content* content, std::string path);
     ~MapJsonSource();
 
-    TileLayer* backgroundLayer() const;
-    TileLayer* decorationsLayer() const;
-    TileLayer* floorLayer() const;
-    TileLayer* foregroundLayer() const;
-
     Vector2 resolution() const {
       return resolution_;
     }
 
     Vector2 tile_size() const {
       return tile_size_;
+    }
+
+    const TileLayer* backgroundLayer() const {
+      return background_tile_layer_;
+    }
+
+    const TileLayer* decorationsLayer() const {
+      return decorations_tile_layer_;
+    }
+
+    const TileLayer* floorLayer() const {
+      return floor_tile_layer_;
+    }
+
+    const TileLayer* foregroundLayer() const {
+      return foreground_tile_layer_;
     }
 
   private:
@@ -33,13 +44,13 @@ namespace green_leaf {
     Texture* background_texture_;
     Texture* decorations_texture_;
 
-    TileSet* background_tile_set_;
-    TileSet* decorations_tile_set_;
+    const TileSet* background_tile_set_;
+    const TileSet* decorations_tile_set_;
 
-    TileLayer* background_tile_layer_;
-    TileLayer* floor_tile_layer_;
-    TileLayer* decorations_tile_layer_;
-    TileLayer* foreground_tile_layer_;
+    const TileLayer* background_tile_layer_;
+    const TileLayer* floor_tile_layer_;
+    const TileLayer* decorations_tile_layer_;
+    const TileLayer* foreground_tile_layer_;
   };
 }
 

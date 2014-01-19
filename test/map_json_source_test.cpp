@@ -21,7 +21,7 @@ namespace green_leaf {
   }
 
   TEST_P(MapJsonSourceTest, BackgroundLayer) {
-    TileLayer* backgroundLayer = GetParam()->backgroundLayer();
+    const TileLayer* backgroundLayer = GetParam()->backgroundLayer();
 
     EXPECT_EQ(Vector2(4, 3), backgroundLayer->size());
 
@@ -34,7 +34,7 @@ namespace green_leaf {
   }
 
   TEST_P(MapJsonSourceTest, FloorLayer) {
-    TileLayer* floorLayer = GetParam()->floorLayer();
+    const TileLayer* floorLayer = GetParam()->floorLayer();
 
     EXPECT_EQ(Vector2(4, 3), floorLayer->size());
 
@@ -47,7 +47,7 @@ namespace green_leaf {
   }
 
   TEST_P(MapJsonSourceTest, DecorationsLayer) {
-    TileLayer* decorationsLayer = GetParam()->decorationsLayer();
+    const TileLayer* decorationsLayer = GetParam()->decorationsLayer();
 
     EXPECT_EQ(Vector2(4, 3), decorationsLayer->size());
 
@@ -60,7 +60,7 @@ namespace green_leaf {
   }
 
   TEST_P(MapJsonSourceTest, ForegroundLayer) {
-    TileLayer* foregroundLayer = GetParam()->foregroundLayer();
+    const TileLayer* foregroundLayer = GetParam()->foregroundLayer();
 
     EXPECT_EQ(Vector2(4, 3), foregroundLayer->size());
 

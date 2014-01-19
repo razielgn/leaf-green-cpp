@@ -10,10 +10,10 @@ namespace green_leaf {
   public:
     virtual ~MapSource() { };
 
-    virtual TileLayer* backgroundLayer() const = 0;
-    virtual TileLayer* decorationsLayer() const = 0;
-    virtual TileLayer* floorLayer() const = 0;
-    virtual TileLayer* foregroundLayer() const = 0;
+    virtual const TileLayer* backgroundLayer() const = 0;
+    virtual const TileLayer* decorationsLayer() const = 0;
+    virtual const TileLayer* floorLayer() const = 0;
+    virtual const TileLayer* foregroundLayer() const = 0;
 
     virtual Vector2 resolution() const = 0;
     virtual Vector2 tile_size() const = 0;

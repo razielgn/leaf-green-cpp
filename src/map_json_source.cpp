@@ -18,7 +18,7 @@ namespace green_leaf {
     throw "Could not find object.";
   }
 
-  TileLayer* extractLayer(Vector2 dimension, const Json::Value layers, const std::string name, const TileSet* tile_set) {
+  const TileLayer* extractLayer(Vector2 dimension, const Json::Value layers, const std::string name, const TileSet* tile_set) {
     std::vector<unsigned int> background_tiles;
     Json::Value layer = findObjectWithName(layers, name);
     Json::Value data = layer["data"];
@@ -30,7 +30,7 @@ namespace green_leaf {
     return new TileLayer(dimension, tile_set, background_tiles);
   }
 
-  TileSet* extractTileSet(const Content* content, Vector2 tile_size, Json::Value tile_sets, std::string name, Texture** texture) {
+  const TileSet* extractTileSet(const Content* content, Vector2 tile_size, Json::Value tile_sets, std::string name, Texture** texture) {
     Json::Value tile_set = findObjectWithName(tile_sets, name);
     std::string texture_path = tile_set["image"].asString();
     unsigned int start_code = tile_set["firstgid"].asInt();
@@ -101,19 +101,4 @@ namespace green_leaf {
     delete foreground_tile_layer_;
   }
 
-  TileLayer* MapJsonSource::backgroundLayer() const {
-    return background_tile_layer_;
-  }
-
-  TileLayer* MapJsonSource::decorationsLayer() const {
-    return decorations_tile_layer_;
-  }
-
-  TileLayer* MapJsonSource::floorLayer() const {
-    return floor_tile_layer_;
-  }
-
-  TileLayer* MapJsonSource::foregroundLayer() const {
-    return foreground_tile_layer_;
-  }
 }
