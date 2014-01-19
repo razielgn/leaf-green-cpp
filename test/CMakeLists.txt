@@ -11,6 +11,7 @@ file(
 )
 
 set(SRC_FILES
+  "${SRC_DIR}/collisions_layer.cpp"
   "${SRC_DIR}/game_time.cpp"
   "${SRC_DIR}/input_key.cpp"
   "${SRC_DIR}/jsoncpp.cpp"
