@@ -53,12 +53,12 @@ namespace green_leaf {
     EXPECT_NE(Rectangle(1, 2, 3, 1), Rectangle(1, 2, 3, 4));
   }
 
-  TEST(RectangleTest, Scale) {
+  TEST(RectangleTest, MultiplicationByScalar) {
     Rectangle r(1, 2, 3, 4);
 
-    EXPECT_EQ(Rectangle(0, 0, 0, 0), r.scale(0));
-    EXPECT_EQ(Rectangle(2, 4, 6, 8), r.scale(2));
-    EXPECT_EQ(Rectangle(1, 2, 3, 4), r.scale(1));
+    EXPECT_EQ(Rectangle(0, 0, 0, 0), r * 0);
+    EXPECT_EQ(Rectangle(1, 2, 3, 4), r * 1);
+    EXPECT_EQ(Rectangle(2, 4, 6, 8), r * 2);
   }
 
   TEST(RectangleTest, ToSDLRect) {

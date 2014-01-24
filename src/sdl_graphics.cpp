@@ -50,7 +50,7 @@ namespace green_leaf {
       throw "SDLGraphics must work with SDLTexture";
     }
 
-    Rectangle scaled_destination = destination.scale(scale_);
+    Rectangle scaled_destination = destination * scale_;
 
     const SDL_Rect source_rect = source.toSDLRect();
     const SDL_Rect dest_rect   = scaled_destination.toSDLRect();

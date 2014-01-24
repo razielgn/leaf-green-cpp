@@ -15,11 +15,12 @@ namespace green_leaf {
     Rectangle(Vector2 origin, int width, int height);
     Rectangle(Vector2 origin, Vector2 size);
 
-    Rectangle scale(int factor) const;
     Rectangle scaleOrigin(Vector2 vec) const;
     const SDL_Rect toSDLRect() const;
 
     std::string toString() const;
+
+    Rectangle operator*(int factor) const;
 
     Vector2 origin() const {
       return origin_;

@@ -24,7 +24,7 @@ namespace green_leaf {
   {
   }
 
-  Rectangle Rectangle::scale(int f) const {
+  Rectangle Rectangle::operator*(int f) const {
     return Rectangle(
       origin_ * f,
       size_ * f
