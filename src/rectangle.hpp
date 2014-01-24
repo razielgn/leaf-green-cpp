@@ -21,6 +21,7 @@ namespace green_leaf {
     std::string toString() const;
 
     Rectangle operator*(int factor) const;
+    Rectangle operator/(const Vector2 &v) const;
 
     Vector2 origin() const {
       return origin_;
@@ -29,7 +30,6 @@ namespace green_leaf {
     Vector2 size() const {
       return size_;
     }
-
 
     bool operator==(const Rectangle& r) const {
       return (this == &r) || (

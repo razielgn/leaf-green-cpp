@@ -31,6 +31,13 @@ namespace green_leaf {
     );
   }
 
+  Rectangle Rectangle::operator/(const Vector2 &v) const {
+    return Rectangle(
+      origin_ / v,
+      size_ / v
+    );
+  }
+
   const SDL_Rect Rectangle::toSDLRect() const {
     SDL_Rect rect;
 

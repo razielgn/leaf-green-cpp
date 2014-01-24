@@ -61,6 +61,13 @@ namespace green_leaf {
     EXPECT_EQ(Rectangle(2, 4, 6, 8), r * 2);
   }
 
+  TEST(RectangleTest, DivisionByVector) {
+    Rectangle r(2, 4, 6, 8);
+
+    EXPECT_EQ(Rectangle(2, 2, 6, 4), r / Vector2(1, 2));
+    EXPECT_EQ(Rectangle(1, 1, 3, 2), r / Vector2(2, 4));
+  }
+
   TEST(RectangleTest, ToSDLRect) {
     const SDL_Rect rect = Rectangle(1, 2, 3, 4).toSDLRect();
 
