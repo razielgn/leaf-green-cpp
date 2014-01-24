@@ -42,4 +42,14 @@ namespace green_leaf {
   ::std::ostream& operator<<(::std::ostream& os, const Vector2& v);
 }
 
+namespace std {
+  template <> struct hash<green_leaf::Vector2>
+  {
+    size_t operator()(const green_leaf::Vector2 &v) const {
+      std::hash<float> hasher;
+      return hasher(v.x()) ^ hasher(v.y());
+    }
+  };
+}
+
 #endif

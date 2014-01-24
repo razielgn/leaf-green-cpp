@@ -35,6 +35,8 @@ namespace green_leaf {
     Vector2 player_position_;
     Vector2 destination_;
     Vector2 screen_offset_;
+
+    bool camera_stopped_;
   };
 }
 

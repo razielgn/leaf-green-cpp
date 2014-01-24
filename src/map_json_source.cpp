@@ -40,7 +40,7 @@ namespace green_leaf {
     return new TileSet(*texture, tile_size, start_code);
   }
 
-  const CollisionsLayer* extractCollisionsLayer(Json::Value layers, std::string name) {
+  const CollisionsLayer* extractCollisionsLayer(Vector2 dimension, Json::Value layers, std::string name, Vector2 tile_size) {
     Json::Value collisions_layer = findObjectWithName(layers, name);
     Json::Value json_rectangles = collisions_layer["objects"];
     std::vector<Rectangle> rectangles;
@@ -54,7 +54,7 @@ namespace green_leaf {
       ));
     }
 
-    return new CollisionsLayer(rectangles);
+    return new CollisionsLayer(dimension, tile_size, rectangles);
   }
 
   Vector2 extractDimension(Json::Value root) {
@@ -105,7 +105,7 @@ namespace green_leaf {
     decorations_tile_layer_ = extractTileLayer(dimension, root["layers"], std::string("decorations"), decorations_tile_set_);
     foreground_tile_layer_  = extractTileLayer(dimension, root["layers"], std::string("foreground"), decorations_tile_set_);
 
-    collisions_layer_ = extractCollisionsLayer(root["layers"], "collisions");
+    collisions_layer_ = extractCollisionsLayer(dimension, root["layers"], "collisions", tile_size_);
   }
 
   MapJsonSource::~MapJsonSource() {
