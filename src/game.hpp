@@ -5,9 +5,7 @@ namespace green_leaf {
   class Content;
   class Graphics;
   class Input;
-  class Player;
-  class PlayerMovement;
-  class Map;
+  class MapScreen;
 
   class Game {
   public:
@@ -15,7 +13,6 @@ namespace green_leaf {
     ~Game();
 
     void loadContent();
-    void unloadContent();
     void run();
     void update();
     void draw() const;
@@ -24,10 +21,8 @@ namespace green_leaf {
   private:
     Graphics* graphics_;
     Input* input_;
-    Player* player_;
-    Map* map_;
-    PlayerMovement* player_movement_;
     Content* content_;
+    MapScreen* map_screen_;
 
     unsigned int total_time_;
     bool running_;

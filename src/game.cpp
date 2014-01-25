@@ -3,20 +3,16 @@
 #include "sdl_graphics.hpp"
 #include "sdl_input.hpp"
 #include "sdl_content.hpp"
-#include "map.hpp"
 #include "map_json_source.hpp"
+#include "map_screen.hpp"
 #include "vector2.hpp"
-#include "player.hpp"
-#include "player_movement.hpp"
 
 namespace green_leaf {
   Game::Game() {
     graphics_ = new SDLGraphics();
     input_ = new SDLInput();
-    player_ = new Player();
-    player_movement_ = new PlayerMovement();
     content_ = new SDLContent(graphics_, std::string("."));
-    map_ = new Map(new MapJsonSource(content_, "src/hero_home_2f.json"), Vector2(5, 6), graphics_->size());
+    map_screen_ = new MapScreen(new MapJsonSource(content_, "src/hero_home_2f.json"), Vector2(5, 6), graphics_->size());
 
     running_ = true;
     total_time_ = SDL_GetTicks();
@@ -25,18 +21,11 @@ namespace green_leaf {
   Game::~Game() {
     delete graphics_;
     delete input_;
-    delete player_;
-    delete player_movement_;
-    delete map_;
     delete content_;
   }
 
   void Game::loadContent() {
-    player_->loadContent(content_);
-  }
-
-  void Game::unloadContent() {
-    player_->unloadContent();
+    map_screen_->loadContent(content_);
   }
 
   void Game::run() {
@@ -65,9 +54,7 @@ namespace green_leaf {
       stop();
     }
 
-    player_movement_->update(input_, &game_time);
-    player_->update(player_movement_);
-    map_->update(player_movement_);
+    map_screen_->update(input_, &game_time);
 
     total_time_ = SDL_GetTicks();
   }
@@ -75,9 +62,7 @@ namespace green_leaf {
   void Game::draw() const {
     graphics_->clear();
 
-    map_->drawBackground(graphics_);
-    player_->draw(graphics_);
-    map_->drawForeground(graphics_);
+    map_screen_->draw(graphics_);
 
     graphics_->present();
   }

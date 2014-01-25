@@ -10,8 +10,6 @@ int main() {
     game->loadContent();
     game->run();
 
-    game->unloadContent();
-
     delete game;
   } catch(const char* message) {
     std::cout << message << std::endl;
