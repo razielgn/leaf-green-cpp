@@ -15,6 +15,8 @@ namespace green_leaf {
 
       return new TextureMock(Vector2(0, 0));
     }
+
+    MOCK_CONST_METHOD1(loadMap, const MapSource*(std::string map_name));
   };
 }
 
