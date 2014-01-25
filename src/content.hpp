@@ -10,7 +10,7 @@ namespace green_leaf {
   public:
     virtual ~Content() { }
 
-    virtual Texture* loadTexture(std::string path) const = 0;
+    virtual const Texture* loadTexture(std::string path) const = 0;
   };
 }
 

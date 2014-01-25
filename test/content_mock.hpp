@@ -10,7 +10,7 @@ namespace green_leaf {
   public:
     ContentMock() { }
 
-    Texture* loadTexture(std::string path) const {
+    const Texture* loadTexture(std::string path) const {
       UNUSED(path);
 
       return new TextureMock(Vector2(0, 0));
