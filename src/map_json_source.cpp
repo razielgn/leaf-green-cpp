@@ -31,13 +31,13 @@ namespace green_leaf {
     return new TileLayer(dimension, tile_set, background_tiles);
   }
 
-  const TileSet* extractTileSet(const Content* content, Vector2 tile_size, Json::Value tile_sets, std::string name, Texture** texture) {
+  const TileSet* extractTileSet(const Content* content, Vector2 tile_size, Json::Value tile_sets, std::string name) {
     Json::Value tile_set = findObjectWithName(tile_sets, name);
     std::string texture_path = tile_set["image"].asString();
     unsigned int start_code = tile_set["firstgid"].asInt();
+    const Texture* texture = content->loadTexture(texture_path);
 
-    *texture = content->loadTexture(texture_path);
-    return new TileSet(*texture, tile_size, start_code);
+    return new TileSet(texture, tile_size, start_code);
   }
 
   const CollisionsLayer* extractCollisionsLayer(Vector2 dimension, Json::Value layers, std::string name, Vector2 tile_size) {
@@ -97,8 +97,8 @@ namespace green_leaf {
     tile_size_ = extractTileSize(root);
     resolution_ = dimension * tile_size_;
 
-    background_tile_set_  = extractTileSet(content, tile_size_, root["tilesets"], std::string("background"), &background_texture_);
-    decorations_tile_set_ = extractTileSet(content, tile_size_, root["tilesets"], std::string("decorations"), &decorations_texture_);
+    background_tile_set_  = extractTileSet(content, tile_size_, root["tilesets"], std::string("background"));
+    decorations_tile_set_ = extractTileSet(content, tile_size_, root["tilesets"], std::string("decorations"));
 
     background_tile_layer_  = extractTileLayer(dimension, root["layers"], std::string("background"), background_tile_set_);
     floor_tile_layer_       = extractTileLayer(dimension, root["layers"], std::string("floor"), decorations_tile_set_);
@@ -109,9 +109,6 @@ namespace green_leaf {
   }
 
   MapJsonSource::~MapJsonSource() {
-    delete background_texture_;
-    delete decorations_texture_;
-
     delete background_tile_set_;
     delete decorations_tile_set_;
 

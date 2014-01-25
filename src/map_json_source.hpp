@@ -45,9 +45,6 @@ namespace green_leaf {
     Vector2 resolution_;
     Vector2 tile_size_;
 
-    Texture* background_texture_;
-    Texture* decorations_texture_;
-
     const TileSet* background_tile_set_;
     const TileSet* decorations_tile_set_;
 
