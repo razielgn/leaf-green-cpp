@@ -15,8 +15,8 @@ namespace green_leaf {
     }
 
   private:
-    unsigned int elapsed_;
-    unsigned int total_;
+    const unsigned int elapsed_;
+    const unsigned int total_;
   };
 }
 
