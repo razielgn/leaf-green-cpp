@@ -13,7 +13,7 @@ namespace green_leaf {
   {
   }
 
-  void PlayerMovement::update(Input* input, GameTime* game_time) {
+  void PlayerMovement::update(Input* input, const GameTime* game_time) {
     if(finished_) {
       finished_ = false;
       moving_ = false;
