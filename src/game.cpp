@@ -12,20 +12,27 @@ namespace green_leaf {
     graphics_ = new SDLGraphics();
     input_ = new SDLInput();
     content_ = new SDLContent(graphics_, std::string("."));
-    map_screen_ = new MapScreen(new MapJsonSource(content_, "src/hero_home_2f.json"), Vector2(5, 6), graphics_->size());
 
     running_ = true;
     total_time_ = SDL_GetTicks();
+
+    screens_.push_back(new MapScreen(new MapJsonSource(content_, "src/hero_home_2f.json"), Vector2(5, 6), graphics_->size()););
   }
 
   Game::~Game() {
     delete graphics_;
     delete input_;
     delete content_;
+
+    for(Screen* screen : screens_) {
+      delete screen;
+    }
   }
 
   void Game::loadContent() {
-    map_screen_->loadContent(content_);
+    for(Screen* screen : screens_) {
+      screen->loadContent(content_);
+    }
   }
 
   void Game::run() {
@@ -54,7 +61,7 @@ namespace green_leaf {
       stop();
     }
 
-    map_screen_->update(input_, &game_time);
+    screens_.back()->update(input_, &game_time);
 
     total_time_ = SDL_GetTicks();
   }
@@ -62,7 +69,9 @@ namespace green_leaf {
   void Game::draw() const {
     graphics_->clear();
 
-    map_screen_->draw(graphics_);
+    for(Screen* screen : screens_) {
+      screen->draw(graphics_);
+    }
 
     graphics_->present();
   }
