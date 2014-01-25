@@ -21,7 +21,7 @@ namespace green_leaf {
     void draw(const Graphics* graphics) const;
 
   private:
-    Texture* texture_;
+    const Texture* texture_;
 
     Vector2 frame_;
     int a_;

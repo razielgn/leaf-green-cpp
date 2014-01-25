@@ -3,7 +3,6 @@
 #include "sdl_graphics.hpp"
 #include "sdl_input.hpp"
 #include "sdl_content.hpp"
-#include "map_json_source.hpp"
 #include "map_screen.hpp"
 #include "vector2.hpp"
 
@@ -11,12 +10,12 @@ namespace green_leaf {
   Game::Game() {
     graphics_ = new SDLGraphics();
     input_ = new SDLInput();
-    content_ = new SDLContent(graphics_, std::string("."));
+    content_ = new SDLContent(graphics_, std::string("./assets"));
 
     running_ = true;
     total_time_ = SDL_GetTicks();
 
-    screens_.push_back(new MapScreen(new MapJsonSource(content_, "src/hero_home_2f.json"), Vector2(5, 6), graphics_->size()););
+    screens_.push_back(new MapScreen(std::string("hero_home_2f"), Vector2(5, 6), graphics_->size()));
   }
 
   Game::~Game() {

@@ -6,13 +6,12 @@
 
 namespace green_leaf {
   class Map;
-  class MapSource;
   class Player;
   class PlayerMovement;
 
   class MapScreen : public Screen {
   public:
-    MapScreen(const MapSource* source, Vector2 start_pos, Vector2 screen_size);
+    MapScreen(std::string map_name, Vector2 start_pos, Vector2 screen_size);
     ~MapScreen();
 
     void loadContent(const Content* content);
@@ -20,6 +19,10 @@ namespace green_leaf {
     void draw(const Graphics* graphics) const;
 
   private:
+    const std::string map_name_;
+    const Vector2 start_pos_;
+    const Vector2 screen_size_;
+
     Map* map_;
     Player* player_;
     PlayerMovement* player_movement_;
