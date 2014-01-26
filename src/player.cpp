@@ -42,7 +42,8 @@ namespace green_leaf {
     }
 
     if(player_movement->moving()) {
-      if(player_movement->progress() >= 0.6) {
+      float progress = player_movement->clashing() ? 0.5 : 0.6;
+      if(player_movement->progress() >= progress) {
         frame_x = 0;
       } else {
         if(alternate_walk_ == 0) {

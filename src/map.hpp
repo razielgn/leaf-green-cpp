@@ -24,7 +24,7 @@ namespace green_leaf {
   public:
     Map(const MapSource* map_source, Vector2 player_position, Vector2 screen_size);
 
-    void update(const PlayerMovement* player_movement);
+    void update(PlayerMovement* player_movement);
     void drawBackground(const Graphics* graphics) const;
     void drawForeground(const Graphics* graphics) const;
 

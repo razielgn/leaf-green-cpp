@@ -31,7 +31,7 @@ namespace green_leaf {
   {
   }
 
-  void Map::update(const PlayerMovement* player_movement) {
+  void Map::update(PlayerMovement* player_movement) {
     screen_offset_ = map_offset_.centerOffset(player_position_);
 
     if(player_movement->moving()) {
@@ -53,6 +53,8 @@ namespace green_leaf {
         if(map_source_->collisionsLayer()->canMove(player_position_, desired_destination_)) {
           destination_ = desired_destination_;
           camera_stopped_ = false;
+        } else {
+          player_movement->clashing(true);
         }
       }
 
