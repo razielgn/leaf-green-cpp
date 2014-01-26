@@ -23,11 +23,9 @@ namespace green_leaf {
     const std::string dir_sep_ = std::string("/");
 #endif
 
-    const std::string maps_folder_ = std::string("maps");
     const std::string maps_ext_ = std::string(".json");
 
     std::string fullPath(std::string path) const;
-    std::string fullPath(std::string folders, std::string path) const;
   };
 }
 

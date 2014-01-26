@@ -13,16 +13,12 @@ namespace green_leaf {
     return base_path_ + dir_sep_ + path;
   }
 
-  std::string SDLContent::fullPath(std::string folders, std::string path) const {
-    return fullPath(folders + dir_sep_ + path);
-  }
-
   const Texture* SDLContent::loadTexture(std::string path) const {
     return SDLTexture::fromPath(graphics_, fullPath(path));
   }
 
   const MapSource* SDLContent::loadMap(std::string path) const {
-    std::string full_path = fullPath(maps_folder_, path) + maps_ext_;
+    std::string full_path = fullPath(path) + maps_ext_;
     return new MapJsonSource(this, full_path);
   }
 }
