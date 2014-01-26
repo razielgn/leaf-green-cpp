@@ -18,7 +18,7 @@ namespace green_leaf {
     virtual const CollisionsLayer* collisionsLayer() const = 0;
 
     virtual Vector2 resolution() const = 0;
-    virtual Vector2 tile_size() const = 0;
+    virtual Vector2 tileSize() const = 0;
   };
 }
 

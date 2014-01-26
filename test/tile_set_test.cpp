@@ -19,11 +19,11 @@ namespace green_leaf {
   }
 
   TEST_F(TileSetTest, TileSize) {
-    EXPECT_EQ(tile_size_, tile_set_.tile_size());
+    EXPECT_EQ(tile_size_, tile_set_.tileSize());
   }
 
   TEST_F(TileSetTest, StartCode) {
-    EXPECT_EQ(1, tile_set_.start_code());
+    EXPECT_EQ(1, tile_set_.startCode());
   }
 
   TEST_F(TileSetTest, RectangleFromCode) {

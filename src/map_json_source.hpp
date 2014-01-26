@@ -17,7 +17,7 @@ namespace green_leaf {
       return resolution_;
     }
 
-    Vector2 tile_size() const {
+    Vector2 tileSize() const {
       return tile_size_;
     }
 

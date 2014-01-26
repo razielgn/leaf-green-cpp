@@ -22,7 +22,7 @@ namespace green_leaf {
       return tiles_;
     }
 
-    const TileSet* tile_set() const {
+    const TileSet* tileSet() const {
       return tile_set_;
     }
 

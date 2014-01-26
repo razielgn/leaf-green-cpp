@@ -17,11 +17,11 @@ namespace green_leaf {
       return texture_;
     }
 
-    const Vector2 tile_size() const {
+    const Vector2 tileSize() const {
       return tile_size_;
     }
 
-    int start_code() const {
+    int startCode() const {
       return start_code_;
     }
 

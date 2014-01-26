@@ -24,7 +24,7 @@ namespace green_leaf {
     std::vector<unsigned int> tiles;
     TileLayer tile_layer = TileLayer(Vector2(3, 3), &tile_set_, tiles);
 
-    EXPECT_EQ(&tile_set_, tile_layer.tile_set());
+    EXPECT_EQ(&tile_set_, tile_layer.tileSet());
   }
 
   TEST_F(TileLayerTest, Tiles) {

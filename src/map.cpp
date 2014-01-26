@@ -23,7 +23,7 @@ namespace green_leaf {
 
   Map::Map(const MapSource* map_source, Vector2 player_position, Vector2 screen_size)
     : map_source_(map_source)
-    , map_offset_(MapOffset(map_source_->tile_size(), screen_size))
+    , map_offset_(MapOffset(map_source_->tileSize(), screen_size))
     , player_position_(player_position)
     , destination_(player_position_)
     , screen_offset_(Vector2(0, 0))

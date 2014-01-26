@@ -16,7 +16,7 @@ namespace green_leaf {
   }
 
   void TileLayer::draw(const Graphics* graphics, const Vector2 offset) const {
-    Vector2 tile_size = tile_set_->tile_size();
+    Vector2 tile_size = tile_set_->tileSize();
 
     // OPTIMIZATION: Only draw visible tiles.
     for(unsigned int i = 0; i < size_.y(); i++) {
