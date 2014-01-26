@@ -13,6 +13,10 @@ namespace green_leaf {
 
     void update(Input* input, const GameTime* game_time);
 
+    void clashing(bool clashing) {
+      clashing_ = clashing;
+    }
+
     Movement movement() const {
       return movement_;
     }
@@ -25,18 +29,26 @@ namespace green_leaf {
       return finished_;
     }
 
+    bool clashing() const {
+      return clashing_;
+    }
+
     // Returns a value between 0 and 1, indicating the animation progress.
     float progress() const {
-      return elapsed_mseconds_ / float(movement_time_);
+      return elapsed_mseconds_ / float(movement_time());
     }
 
   private:
-    const int movement_time_ = 250;
+    const int walking_movement_time_ = 250;
+    const int clashing_movement_time_ = 500;
 
     Movement movement_;
     int elapsed_mseconds_;
     bool moving_;
     bool finished_;
+    bool clashing_;
+
+    int movement_time() const;
   };
 }
 

@@ -155,4 +155,33 @@ namespace green_leaf {
     EXPECT_FALSE(player_movement_->moving());
     EXPECT_THAT(player_movement_->progress(), FloatEq(0.0));
   }
+
+  TEST_F(PlayerMovementTest, Clashing) {
+    player_movement_->clashing(true);
+    EXPECT_TRUE(player_movement_->clashing());
+
+    player_movement_->clashing(false);
+    EXPECT_FALSE(player_movement_->clashing());
+  }
+
+  TEST_F(PlayerMovementTest, WalkingAndClashing) {
+    onlyPressed(InputKey::Down);
+    player_movement_->clashing(true);
+
+    GameTime game_time(250, 0);
+
+    player_movement_->update(&input_, &game_time);
+    EXPECT_FALSE(player_movement_->finished());
+    EXPECT_TRUE(player_movement_->moving());
+    EXPECT_TRUE(player_movement_->clashing());
+    EXPECT_THAT(player_movement_->progress(), FloatEq(0.5));
+
+    GameTime game_time2(250, 0);
+
+    player_movement_->update(&input_, &game_time2);
+    EXPECT_TRUE(player_movement_->finished());
+    EXPECT_TRUE(player_movement_->moving());
+    EXPECT_TRUE(player_movement_->clashing());
+    EXPECT_THAT(player_movement_->progress(), FloatEq(1.0));
+  }
 }

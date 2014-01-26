@@ -10,6 +10,7 @@ namespace green_leaf {
     , elapsed_mseconds_(0)
     , moving_(false)
     , finished_(false)
+    , clashing_(false)
   {
   }
 
@@ -17,6 +18,7 @@ namespace green_leaf {
     if(finished_) {
       finished_ = false;
       moving_ = false;
+      clashing_ = false;
       elapsed_mseconds_ = 0;
     }
 
@@ -41,8 +43,16 @@ namespace green_leaf {
 
     elapsed_mseconds_ += game_time->elapsed();
 
-    if(elapsed_mseconds_ >= movement_time_) {
+    if(elapsed_mseconds_ >= movement_time()) {
       finished_ = true;
+    }
+  }
+
+  int PlayerMovement::movement_time() const {
+    if(clashing_) {
+      return clashing_movement_time_;
+    } else {
+      return walking_movement_time_;
     }
   }
 }
