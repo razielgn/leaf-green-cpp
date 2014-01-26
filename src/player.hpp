@@ -24,7 +24,7 @@ namespace green_leaf {
     const Texture* texture_;
 
     Vector2 frame_;
-    int a_;
+    unsigned int alternate_walk_;
     const Vector2 frame_size_ = Vector2(16, 20);
   };
 }

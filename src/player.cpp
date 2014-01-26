@@ -11,7 +11,7 @@
 namespace green_leaf {
   Player::Player()
     : frame_(Vector2(0, 0))
-    , a_(0)
+    , alternate_walk_(0)
   {
   }
 
@@ -45,7 +45,7 @@ namespace green_leaf {
       if(player_movement->progress() >= 0.6) {
         frame_x = 0;
       } else {
-        if(a_ == 0) {
+        if(alternate_walk_ == 0) {
           frame_x = 1;
         } else {
           frame_x = 3;
@@ -54,7 +54,7 @@ namespace green_leaf {
 
       if(player_movement->finished()) {
         frame_x = 0;
-        a_ = (a_ + 1) % 2;
+        alternate_walk_ = (alternate_walk_ + 1) % 2;
       }
     }
 
