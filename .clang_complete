@@ -1,0 +1,3 @@
+-I/usr/local/include/SDL2
+-Isrc
+-Isrc/json
