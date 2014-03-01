@@ -1,9 +1,10 @@
 #include "game.hpp"
 #include "game_time.hpp"
+#include "map_screen.hpp"
+#include "screen_manager.hpp"
+#include "sdl_content.hpp"
 #include "sdl_graphics.hpp"
 #include "sdl_input.hpp"
-#include "sdl_content.hpp"
-#include "map_screen.hpp"
 #include "vector2.hpp"
 
 namespace green_leaf {
@@ -11,30 +12,28 @@ namespace green_leaf {
     graphics_ = new SDLGraphics();
     input_ = new SDLInput();
     content_ = new SDLContent(graphics_, std::string("./assets"));
+    screen_manager_ = new ScreenManager();
 
     running_ = true;
     total_time_ = SDL_GetTicks();
-
-    screens_.push_back(new MapScreen(std::string("hero_home_2f"), Vector2(5, 6), graphics_->size()));
   }
 
   Game::~Game() {
     delete graphics_;
+    delete hero_home_2f_;
     delete input_;
     delete content_;
-
-    for(Screen* screen : screens_) {
-      delete screen;
-    }
+    delete screen_manager_;
   }
 
   void Game::loadContent() {
-    for(Screen* screen : screens_) {
-      screen->loadContent(content_);
-    }
+    hero_home_2f_ = new MapScreen(std::string("hero_home_2f"), Vector2(5, 6), graphics_->size());
+    hero_home_2f_->loadContent(content_);
   }
 
   void Game::run() {
+    screen_manager_->push(hero_home_2f_);
+
     while(running_) {
       int delay_time = 1000.0f / 60;
       int frame_start = SDL_GetTicks();
@@ -60,7 +59,7 @@ namespace green_leaf {
       stop();
     }
 
-    screens_.back()->update(input_, &game_time);
+    screen_manager_->update(input_, &game_time);
 
     total_time_ = SDL_GetTicks();
   }
@@ -68,9 +67,7 @@ namespace green_leaf {
   void Game::draw() const {
     graphics_->clear();
 
-    for(Screen* screen : screens_) {
-      screen->draw(graphics_);
-    }
+    screen_manager_->draw(graphics_);
 
     graphics_->present();
   }

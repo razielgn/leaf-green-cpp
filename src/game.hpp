@@ -1,13 +1,13 @@
 #ifndef GL_GAME_CPP
 #define GL_GAME_CPP
 
-#include <vector>
-
 namespace green_leaf {
   class Content;
   class Graphics;
   class Input;
+  class MapScreen;
   class Screen;
+  class ScreenManager;
 
   class Game {
   public:
@@ -24,7 +24,8 @@ namespace green_leaf {
     Graphics* graphics_;
     Input* input_;
     Content* content_;
-    std::vector<Screen*> screens_;
+    ScreenManager* screen_manager_;
+    MapScreen* hero_home_2f_;
 
     unsigned int total_time_;
     bool running_;
