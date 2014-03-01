@@ -1,8 +1,9 @@
+#include "player_movement.hpp"
+
 #include "game_time.hpp"
 #include "input.hpp"
 #include "input_key.hpp"
 #include "movement.hpp"
-#include "player_movement.hpp"
 
 namespace green_leaf {
   PlayerMovement::PlayerMovement()

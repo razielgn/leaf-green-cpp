@@ -1,8 +1,9 @@
-#include "graphics.hpp"
-#include "vector2.hpp"
-#include "rectangle.hpp"
 #include "tile_layer.hpp"
+
+#include "graphics.hpp"
+#include "rectangle.hpp"
 #include "tile_set.hpp"
+#include "vector2.hpp"
 
 namespace green_leaf {
   TileLayer::TileLayer(Vector2 size, const TileSet* tile_set, std::vector<unsigned int> tiles)

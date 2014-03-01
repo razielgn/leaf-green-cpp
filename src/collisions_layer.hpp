@@ -2,6 +2,7 @@
 #define GL_COLLISIONS_LAYER_HPP
 
 #include "rectangle.hpp"
+
 #include <vector>
 #include <unordered_set>
 

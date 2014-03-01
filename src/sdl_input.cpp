@@ -1,5 +1,6 @@
-#include "input_key.hpp"
 #include "sdl_input.hpp"
+
+#include "input_key.hpp"
 
 namespace green_leaf {
   SDLInput::~SDLInput() {

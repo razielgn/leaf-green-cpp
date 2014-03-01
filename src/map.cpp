@@ -1,13 +1,14 @@
+#include "map.hpp"
+
 #include "collisions_layer.hpp"
 #include "content.hpp"
 #include "graphics.hpp"
-#include "map.hpp"
 #include "map_source.hpp"
 #include "movement.hpp"
 #include "player_movement.hpp"
+#include "rectangle.hpp"
 #include "tile_layer.hpp"
 #include "vector2.hpp"
-#include "rectangle.hpp"
 
 namespace green_leaf {
   MapOffset::MapOffset(Vector2 tile_size, Vector2 screen_size)

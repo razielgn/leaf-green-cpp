@@ -1,8 +1,8 @@
 #ifndef GL_GRAPHICS_HPP
 #define GL_GRAPHICS_HPP
 
-#include "vector2.hpp"
 #include "rectangle.hpp"
+#include "vector2.hpp"
 
 namespace green_leaf {
   class Texture;

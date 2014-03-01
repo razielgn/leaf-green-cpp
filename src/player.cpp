@@ -1,9 +1,10 @@
+#include "player.hpp"
+
 #include "content.hpp"
 #include "game_time.hpp"
 #include "graphics.hpp"
 #include "input.hpp"
 #include "movement.hpp"
-#include "player.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"
 #include "texture.hpp"

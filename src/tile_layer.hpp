@@ -1,9 +1,9 @@
 #ifndef GL_TILE_LAYER_HPP
 #define GL_TILE_LAYER_HPP
 
-#include <vector>
-
 #include "vector2.hpp"
+
+#include <vector>
 
 namespace green_leaf {
   class Graphics;

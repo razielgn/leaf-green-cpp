@@ -1,6 +1,7 @@
+#include "tile_set.hpp"
+
 #include "rectangle.hpp"
 #include "texture.hpp"
-#include "tile_set.hpp"
 
 namespace green_leaf {
   TileSet::TileSet(const Texture* texture, const Vector2 tile_size, unsigned int start_code_)

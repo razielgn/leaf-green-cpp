@@ -1,10 +1,10 @@
 #ifndef GL_SDL_TEXTURE_CPP
 #define GL_SDL_TEXTURE_CPP
 
-#include <SDL.h>
-#include <string>
-
 #include "texture.hpp"
+
+#include <SDL_render.h>
+#include <string>
 
 namespace green_leaf {
   class Graphics;

@@ -1,4 +1,5 @@
 #include "sdl_content.hpp"
+
 #include "sdl_texture.hpp"
 #include "map_json_source.hpp"
 

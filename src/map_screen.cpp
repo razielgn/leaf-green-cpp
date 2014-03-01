@@ -1,6 +1,7 @@
+#include "map_screen.hpp"
+
 #include "content.hpp"
 #include "map.hpp"
-#include "map_screen.hpp"
 #include "player.hpp"
 #include "player_movement.hpp"
 #include "player_movement.hpp"

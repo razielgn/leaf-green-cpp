@@ -1,5 +1,6 @@
-#include "rectangle.hpp"
 #include "sdl_graphics.hpp"
+
+#include "rectangle.hpp"
 #include "sdl_texture.hpp"
 
 namespace green_leaf {

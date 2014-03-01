@@ -1,4 +1,5 @@
 #include "sdl_texture.hpp"
+
 #include "sdl_graphics.hpp"
 
 #include <SDL_image.h>

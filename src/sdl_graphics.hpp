@@ -1,9 +1,11 @@
 #ifndef GL_SDL_GRAPHICS_HPP
 #define GL_SDL_GRAPHICS_HPP
 
-#include <SDL.h>
 #include "graphics.hpp"
 #include "vector2.hpp"
+
+#include <SDL_render.h>
+#include <SDL_video.h>
 
 namespace green_leaf {
   class Rectangle;

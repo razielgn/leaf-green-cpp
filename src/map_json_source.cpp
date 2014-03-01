@@ -1,10 +1,11 @@
-#include "collisions_layer.hpp"
 #include "map_json_source.hpp"
+
+#include "collisions_layer.hpp"
+#include "content.hpp"
+#include "json/json.h"
+#include "texture.hpp"
 #include "tile_layer.hpp"
 #include "tile_set.hpp"
-#include "content.hpp"
-#include "texture.hpp"
-#include "json/json.h"
 
 #include <fstream>
 
