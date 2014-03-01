@@ -1,5 +1,5 @@
-#ifndef GL_POINT_HPP
-#define GL_POINT_HPP
+#ifndef GL_VECTOR2_HPP
+#define GL_VECTOR2_HPP
 
 #include <iostream>
 #include <string>
@@ -43,8 +43,7 @@ namespace green_leaf {
 }
 
 namespace std {
-  template <> struct hash<green_leaf::Vector2>
-  {
+  template <> struct hash<green_leaf::Vector2> {
     size_t operator()(const green_leaf::Vector2 &v) const {
       std::hash<float> hasher;
       return hasher(v.x()) ^ hasher(v.y());
