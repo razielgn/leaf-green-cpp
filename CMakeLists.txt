@@ -15,6 +15,7 @@ add_definitions(
   -g
   -Wall
   -Wextra
+  -Werror
   -pedantic
 )
 
