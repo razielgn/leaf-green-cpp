@@ -74,6 +74,7 @@ license you like.
 
 
 #include "json/json.h"
+#include "unused.hpp"
 
 
 // //////////////////////////////////////////////////////////////////////
@@ -3256,6 +3257,8 @@ Path::addPathInArg( const std::string &path,
                     InArgs::const_iterator &itInArg, 
                     PathArgument::Kind kind )
 {
+   UNUSED(path);
+
    if ( itInArg == in.end() )
    {
       // Error: missing argument %d
@@ -3275,6 +3278,9 @@ void
 Path::invalidPath( const std::string &path, 
                    int location )
 {
+   UNUSED(path);
+   UNUSED(location);
+
    // Error: invalid path.
 }
 
