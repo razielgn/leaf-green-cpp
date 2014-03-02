@@ -482,8 +482,8 @@ namespace Json {
          enum DuplicationPolicy 
          {
             noDuplication = 0,
-            duplicate,
-            duplicateOnCopy
+            duplicate = 1,
+            duplicateOnCopy = 2
          };
          CZString( ArrayIndex index );
          CZString( const char *cstr, DuplicationPolicy allocate );
@@ -805,7 +805,7 @@ namespace Json {
 # endif
       } value_;
       ValueType type_ : 8;
-      int allocated_ : 1;     // Notes: if declared as bool, bitfield is useless.
+      bool allocated_;
 # ifdef JSON_VALUE_USE_INTERNAL_MAP
       unsigned int itemIsUsed_ : 1;      // used by the ValueInternalMap container.
       int memberNameIsStatic_ : 1;       // used by the ValueInternalMap container.
