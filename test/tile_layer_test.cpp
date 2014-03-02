@@ -13,9 +13,9 @@ namespace green_leaf {
   protected:
     TileLayerTest() { }
 
-    TextureMock texture_ = TextureMock(Vector2(12, 12));
+    Texture* texture_ = new TextureMock(Vector2(12, 12));
     Vector2 tile_size_ = Vector2(4, 4);
-    TileSet tile_set_ = TileSet(&texture_, tile_size_, 1);
+    TileSet tile_set_ = TileSet(texture_, tile_size_, 1);
 
     StrictMock<GraphicsMock> graphics_;
   };
@@ -37,7 +37,7 @@ namespace green_leaf {
   }
 
   TEST_F(TileLayerTest, DrawShouldNeverDrawWhenTilesAreAllEmpty) {
-    EXPECT_CALL(graphics_, drawTexture(&texture_, _, _)).Times(0);
+    EXPECT_CALL(graphics_, drawTexture(texture_, _, _)).Times(0);
 
     std::vector<unsigned int> tiles = { 0, 0, 0,
                                         0, 0, 0,
@@ -48,7 +48,7 @@ namespace green_leaf {
   }
 
   TEST_F(TileLayerTest, DrawShouldDrawEveryTile) {
-    EXPECT_CALL(graphics_, drawTexture(&texture_, _, _)).Times(9);
+    EXPECT_CALL(graphics_, drawTexture(texture_, _, _)).Times(9);
 
     std::vector<unsigned int> tiles = { 1, 2, 3,
                                         4, 5, 6,
@@ -60,23 +60,23 @@ namespace green_leaf {
 
   TEST_F(TileLayerTest, DrawShouldCallDrawTextureWithCorrectParameters) {
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle( 5, 17, tile_size_), Rectangle(0, 0, tile_size_)));
+        drawTexture(texture_, Rectangle( 5, 17, tile_size_), Rectangle(0, 0, tile_size_)));
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle( 9, 17, tile_size_), Rectangle(4, 0, tile_size_)));
+        drawTexture(texture_, Rectangle( 9, 17, tile_size_), Rectangle(4, 0, tile_size_)));
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle(13, 17, tile_size_), Rectangle(8, 0, tile_size_)));
+        drawTexture(texture_, Rectangle(13, 17, tile_size_), Rectangle(8, 0, tile_size_)));
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle( 5, 21, tile_size_), Rectangle(0, 4, tile_size_)));
+        drawTexture(texture_, Rectangle( 5, 21, tile_size_), Rectangle(0, 4, tile_size_)));
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle( 9, 21, tile_size_), Rectangle(4, 4, tile_size_)));
+        drawTexture(texture_, Rectangle( 9, 21, tile_size_), Rectangle(4, 4, tile_size_)));
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle(13, 21, tile_size_), Rectangle(8, 4, tile_size_)));
+        drawTexture(texture_, Rectangle(13, 21, tile_size_), Rectangle(8, 4, tile_size_)));
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle( 5, 25, tile_size_), Rectangle(0, 8, tile_size_)));
+        drawTexture(texture_, Rectangle( 5, 25, tile_size_), Rectangle(0, 8, tile_size_)));
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle( 9, 25, tile_size_), Rectangle(4, 8, tile_size_)));
+        drawTexture(texture_, Rectangle( 9, 25, tile_size_), Rectangle(4, 8, tile_size_)));
     EXPECT_CALL(graphics_,
-        drawTexture(&texture_, Rectangle(13, 25, tile_size_), Rectangle(8, 8, tile_size_)));
+        drawTexture(texture_, Rectangle(13, 25, tile_size_), Rectangle(8, 8, tile_size_)));
 
     std::vector<unsigned int> tiles = { 1, 2, 3,
                                         4, 5, 6,

@@ -10,6 +10,7 @@ namespace green_leaf {
   class TileSet {
   public:
     TileSet(const Texture* texture, const Vector2 tile_size, unsigned int start_code);
+    ~TileSet();
 
     Rectangle rectangleFromCode(unsigned int tile_code) const;
 

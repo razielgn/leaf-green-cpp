@@ -12,6 +12,10 @@ namespace green_leaf {
   {
   }
 
+  TileSet::~TileSet() {
+    delete texture_;
+  }
+
   Rectangle TileSet::rectangleFromCode(unsigned int tile_code) const {
     tile_code -= start_code_;
 

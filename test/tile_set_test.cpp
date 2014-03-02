@@ -9,13 +9,13 @@ namespace green_leaf {
   protected:
     TileSetTest() { }
 
-    TextureMock texture_ = TextureMock(Vector2(48, 48));
+    Texture* texture_ = new TextureMock(Vector2(48, 48));
     const Vector2 tile_size_ = Vector2(16, 16);
-    const TileSet tile_set_ = TileSet(&texture_, tile_size_, 1);
+    const TileSet tile_set_ = TileSet(texture_, tile_size_, 1);
   };
 
   TEST_F(TileSetTest, Texture) {
-    EXPECT_EQ(&texture_, tile_set_.texture());
+    EXPECT_EQ(texture_, tile_set_.texture());
   }
 
   TEST_F(TileSetTest, TileSize) {
