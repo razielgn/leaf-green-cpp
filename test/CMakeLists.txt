@@ -23,6 +23,7 @@ set(SRC_FILES
   "${SRC_DIR}/tile_layer.cpp"
   "${SRC_DIR}/tile_set.cpp"
   "${SRC_DIR}/vector2.cpp"
+  "${SRC_DIR}/vector2f.cpp"
 )
 
 set(GTEST_FILES
