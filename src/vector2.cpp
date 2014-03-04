@@ -3,7 +3,7 @@
 #include <sstream>
 
 namespace green_leaf {
-  Vector2::Vector2(float x, float y)
+  Vector2::Vector2(int x, int y)
     : x_(x)
     , y_(y)
   {
@@ -23,7 +23,7 @@ namespace green_leaf {
     );
   }
 
-  Vector2 Vector2::operator*(float f) const {
+  Vector2 Vector2::operator*(int f) const {
     return Vector2(
       x_ * f,
       y_ * f
@@ -37,7 +37,7 @@ namespace green_leaf {
     );
   }
 
-  Vector2 Vector2::operator/(float f) const {
+  Vector2 Vector2::operator/(int f) const {
     return Vector2(
       x_ / f,
       y_ / f
