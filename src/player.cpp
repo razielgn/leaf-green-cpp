@@ -38,6 +38,7 @@ namespace green_leaf {
           frame_y = 2; break;
         case Movement::Right:
           frame_y = 3; break;
+        case Movement::Still:
         default: break;
       }
     }

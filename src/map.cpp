@@ -48,6 +48,7 @@ namespace green_leaf {
             desired_destination_ = player_position_ - Vector2(0, 1); break;
           case Movement::Down:
             desired_destination_ = player_position_ + Vector2(0, 1); break;
+          case Movement::Still:
           default: break;
         }
 
