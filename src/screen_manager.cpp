@@ -24,7 +24,7 @@ namespace green_leaf {
   }
 
   void ScreenManager::draw(const Graphics* graphics) {
-    for(Screen* screen : screens_) {
+    for(auto screen : screens_) {
       screen->draw(graphics);
     }
   }

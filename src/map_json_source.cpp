@@ -11,7 +11,7 @@
 
 namespace green_leaf {
   Json::Value findObjectWithName(const Json::Value array, const std::string name) {
-    for(const Json::Value &object : array) {
+    for(const auto object : array) {
       if(object["name"] == name) {
         return object;
       }
@@ -25,7 +25,7 @@ namespace green_leaf {
     Json::Value layer = findObjectWithName(layers, name);
     Json::Value data = layer["data"];
 
-    for(const Json::Value &tile_gid : data) {
+    for(const auto tile_gid : data) {
       background_tiles.push_back(tile_gid.asUInt());
     }
 
@@ -46,7 +46,7 @@ namespace green_leaf {
     Json::Value json_rectangles = collisions_layer["objects"];
     std::vector<Rectangle> rectangles;
 
-    for(const Json::Value &rectangle : json_rectangles) {
+    for(const auto rectangle : json_rectangles) {
       rectangles.push_back(Rectangle(
         rectangle["x"].asInt(),
         rectangle["y"].asInt(),

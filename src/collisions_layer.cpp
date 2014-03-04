@@ -8,7 +8,7 @@ namespace green_leaf {
     , blocked_tiles_(std::vector<bool>(size.x() * size.y(), true))
     , disallowed_moves_(std::unordered_set<std::pair<Vector2, Vector2>>())
   {
-    for(Rectangle rect_ : rectangles) {
+    for(const auto rect_ : rectangles) {
       Rectangle rect = rect_ / tile_size;
       Vector2 fin = rect.origin() + rect.size();
 
