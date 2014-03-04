@@ -25,8 +25,6 @@ namespace green_leaf {
       case InputKey::L:       return SDL_SCANCODE_A;
       case InputKey::Escape:  return SDL_SCANCODE_ESCAPE;
     }
-
-    throw "Unknown InputKet given!";
   }
 
   bool SDLInput::isKeyDown(InputKey key) {
