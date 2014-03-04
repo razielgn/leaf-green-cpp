@@ -3,7 +3,9 @@
 
 #include "vector2.hpp"
 
+#include <cmath>
 #include <iostream>
+#include <limits>
 #include <string>
 
 namespace green_leaf {
@@ -24,7 +26,9 @@ namespace green_leaf {
     }
 
     bool operator==(const Vector2f& p) const {
-      return (this == &p) || (x_ == p.x_ && y_ == p.y_);
+#define FLOAT_EQ(x, y) (std::fabs((x) - (y)) < std::numeric_limits<float>::epsilon())
+      return (this == &p) || (FLOAT_EQ(x_, p.x_) && FLOAT_EQ(y_, p.y_));
+#undef FLOAT_EQ
     }
 
     bool operator!=(const Vector2f& p) const {
