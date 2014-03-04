@@ -5,7 +5,7 @@ namespace green_leaf {
     : tile_size_(tile_size)
     , size_(size)
     , rectangles_(rectangles)
-    , blocked_tiles_(std::vector<bool>(size.x() * size.y(), true))
+    , blocked_tiles_(std::vector<bool>((unsigned long)(size.x() * size.y()), true))
     , disallowed_moves_(std::unordered_set<std::pair<Vector2, Vector2>>())
   {
     for(const auto rect_ : rectangles) {
@@ -59,11 +59,15 @@ namespace green_leaf {
     return true;
   }
 
+  unsigned long tile_index(Vector2 pos, Vector2 size) {
+    return (unsigned long)(pos.x() + pos.y() * size.x());
+  }
+
   bool CollisionsLayer::isTileBlocked(Vector2 pos) const {
-    return !blocked_tiles_[pos.x() + pos.y() * size_.x()];
+    return !blocked_tiles_[tile_index(pos, size_)];
   }
 
   void CollisionsLayer::setTileBlockeAt(Vector2 pos) {
-    blocked_tiles_[pos.x() + pos.y() * size_.x()] = false;
+    blocked_tiles_[tile_index(pos, size_)] = false;
   }
 }

@@ -20,8 +20,8 @@ namespace green_leaf {
     Vector2 tile_size = tile_set_->tileSize();
 
     // OPTIMIZATION: Only draw visible tiles.
-    for(unsigned int i = 0; i < size_.y(); i++) {
-      for(unsigned int j = 0; j < size_.x(); j++) {
+    for(int i = 0; i < size_.y(); i++) {
+      for(int j = 0; j < size_.x(); j++) {
         unsigned int tile_code = tiles_[j + size_.x() * i];
 
         if(tile_code > 0) {
