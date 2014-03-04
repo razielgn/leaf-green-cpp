@@ -3,7 +3,7 @@
 #include "screen.hpp"
 
 namespace green_leaf {
-  unsigned int ScreenManager::count() const {
+  unsigned long ScreenManager::count() const {
     return screens_.size();
   }
 

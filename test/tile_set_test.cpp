@@ -23,7 +23,7 @@ namespace green_leaf {
   }
 
   TEST_F(TileSetTest, StartCode) {
-    EXPECT_EQ(1, tile_set_.startCode());
+    EXPECT_EQ(1u, tile_set_.startCode());
   }
 
   TEST_F(TileSetTest, RectangleFromCode) {

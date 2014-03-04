@@ -11,7 +11,7 @@ namespace green_leaf {
 
   class ScreenManager {
   public:
-    unsigned int count() const;
+    unsigned long count() const;
     void push(Screen* screen);
     void pop();
 

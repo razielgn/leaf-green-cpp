@@ -31,7 +31,7 @@ namespace green_leaf {
 
     const TileSet* tile_set = backgroundLayer->tileSet();
     EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(1, tile_set->startCode());
+    EXPECT_EQ(1u, tile_set->startCode());
   }
 
   TEST_P(MapJsonSourceTest, FloorLayer) {
@@ -44,7 +44,7 @@ namespace green_leaf {
 
     const TileSet* tile_set = floorLayer->tileSet();
     EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5, tile_set->startCode());
+    EXPECT_EQ(5u, tile_set->startCode());
   }
 
   TEST_P(MapJsonSourceTest, DecorationsLayer) {
@@ -57,7 +57,7 @@ namespace green_leaf {
 
     const TileSet* tile_set = decorationsLayer->tileSet();
     EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5, tile_set->startCode());
+    EXPECT_EQ(5u, tile_set->startCode());
   }
 
   TEST_P(MapJsonSourceTest, ForegroundLayer) {
@@ -70,7 +70,7 @@ namespace green_leaf {
 
     const TileSet* tile_set = foregroundLayer->tileSet();
     EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5, tile_set->startCode());
+    EXPECT_EQ(5u, tile_set->startCode());
   }
 
   TEST_P(MapJsonSourceTest, CollisionsLayer) {

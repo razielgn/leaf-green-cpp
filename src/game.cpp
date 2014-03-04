@@ -36,16 +36,16 @@ namespace green_leaf {
     screen_manager_->push(hero_home_2f_);
 
     while(running_) {
-      int delay_time = 1000.0f / 60;
-      int frame_start = SDL_GetTicks();
+      unsigned int delay_time = 1000 / 60;
+      unsigned int frame_start = SDL_GetTicks();
 
       update();
       draw();
 
-      int frame_time = SDL_GetTicks() - frame_start;
+      unsigned int frame_time = SDL_GetTicks() - frame_start;
 
       if(frame_time < delay_time) {
-        SDL_Delay((int)(delay_time - frame_time));
+        SDL_Delay((unsigned int)(delay_time - frame_time));
       }
     }
   }

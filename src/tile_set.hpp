@@ -22,7 +22,7 @@ namespace green_leaf {
       return tile_size_;
     }
 
-    int startCode() const {
+    unsigned int startCode() const {
       return start_code_;
     }
 

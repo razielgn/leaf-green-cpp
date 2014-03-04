@@ -26,7 +26,7 @@ namespace green_leaf {
     Json::Value data = layer["data"];
 
     for(const Json::Value &tile_gid : data) {
-      background_tiles.push_back(tile_gid.asInt());
+      background_tiles.push_back(tile_gid.asUInt());
     }
 
     return new TileLayer(dimension, tile_set, background_tiles);
@@ -35,7 +35,7 @@ namespace green_leaf {
   const TileSet* extractTileSet(const Content* content, Vector2 tile_size, Json::Value tile_sets, std::string name) {
     Json::Value tile_set = findObjectWithName(tile_sets, name);
     std::string texture_path = tile_set["image"].asString();
-    unsigned int start_code = tile_set["firstgid"].asInt();
+    unsigned int start_code = tile_set["firstgid"].asUInt();
     const Texture* texture = content->loadTexture(texture_path);
 
     return new TileSet(texture, tile_size, start_code);
