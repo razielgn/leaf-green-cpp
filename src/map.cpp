@@ -9,6 +9,7 @@
 #include "rectangle.hpp"
 #include "tile_layer.hpp"
 #include "vector2.hpp"
+#include "vector2f.hpp"
 
 namespace green_leaf {
   MapOffset::MapOffset(Vector2 tile_size, Vector2 screen_size)
@@ -61,7 +62,8 @@ namespace green_leaf {
       }
 
       Vector2 destination = map_offset_.centerOffset(destination_);
-      screen_offset_ = screen_offset_ + (destination - screen_offset_) * player_movement->progress();
+      Vector2f something = Vector2f(destination - screen_offset_) * player_movement->progress();
+      screen_offset_ = screen_offset_ + something.toVector2();
     }
 
     if(player_movement->finished()) {
