@@ -6,7 +6,7 @@ namespace green_leaf {
 
   class Input {
   public:
-    virtual ~Input() { };
+    virtual ~Input() { }
 
     virtual void recordState() = 0;
 

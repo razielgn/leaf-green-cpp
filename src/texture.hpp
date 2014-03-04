@@ -6,7 +6,7 @@
 namespace green_leaf {
   class Texture {
   public:
-    virtual ~Texture() { };
+    virtual ~Texture() { }
 
     virtual Vector2 size() const = 0;
   };

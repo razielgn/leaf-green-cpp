@@ -9,7 +9,7 @@ namespace green_leaf {
 
   class Graphics {
   public:
-    virtual ~Graphics() { };
+    virtual ~Graphics() { }
 
     virtual void clear() const = 0;
     virtual void drawTexture(const Texture* texture, const Rectangle destination, const Rectangle source) const = 0;

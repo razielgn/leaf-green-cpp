@@ -9,7 +9,7 @@ namespace green_leaf {
 
   class MapSource {
   public:
-    virtual ~MapSource() { };
+    virtual ~MapSource() { }
 
     virtual const TileLayer* backgroundLayer() const = 0;
     virtual const TileLayer* decorationsLayer() const = 0;

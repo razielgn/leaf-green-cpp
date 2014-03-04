@@ -9,7 +9,7 @@ namespace green_leaf {
 
   class Screen {
   public:
-    virtual ~Screen() { };
+    virtual ~Screen() { }
 
     virtual void loadContent(const Content* content) = 0;
     virtual void update(Input* input, const GameTime* game_time) = 0;
