@@ -9,7 +9,7 @@ namespace green_leaf {
       throw "Could not initialize SDL video system";
     }
 
-    int flags;
+    unsigned int flags;
 
     if(visible) {
       flags = SDL_WINDOW_SHOWN;
