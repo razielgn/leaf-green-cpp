@@ -29,7 +29,7 @@ namespace green_leaf {
       background_tiles.push_back(tile_gid.asUInt());
     }
 
-    return new TileLayer(dimension, tile_set, background_tiles);
+    return new TileLayer(dimension, *tile_set, background_tiles);
   }
 
   const TileSet* extractTileSet(const Content* content, Vector2 tile_size, Json::Value tile_sets, std::string name) {

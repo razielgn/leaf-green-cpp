@@ -73,12 +73,12 @@ namespace green_leaf {
   }
 
   void Map::drawBackground(const Graphics* graphics) const {
-    map_source_->backgroundLayer()->draw(graphics, screen_offset_);
-    map_source_->floorLayer()->draw(graphics, screen_offset_);
-    map_source_->decorationsLayer()->draw(graphics, screen_offset_);
+    map_source_->backgroundLayer()->draw(*graphics, screen_offset_);
+    map_source_->floorLayer()->draw(*graphics, screen_offset_);
+    map_source_->decorationsLayer()->draw(*graphics, screen_offset_);
   }
 
   void Map::drawForeground(const Graphics* graphics) const {
-    map_source_->foregroundLayer()->draw(graphics, screen_offset_);
+    map_source_->foregroundLayer()->draw(*graphics, screen_offset_);
   }
 }

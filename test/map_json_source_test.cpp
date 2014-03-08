@@ -29,9 +29,9 @@ namespace green_leaf {
     std::vector<unsigned int> tiles = { 1, 2, 3, 4 };
     EXPECT_EQ(tiles, backgroundLayer->tiles());
 
-    const TileSet* tile_set = backgroundLayer->tileSet();
-    EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(1u, tile_set->startCode());
+    const TileSet& tile_set = backgroundLayer->tileSet();
+    EXPECT_EQ(GetParam()->tileSize(), tile_set.tileSize());
+    EXPECT_EQ(1u, tile_set.startCode());
   }
 
   TEST_P(MapJsonSourceTest, FloorLayer) {
@@ -42,9 +42,9 @@ namespace green_leaf {
     std::vector<unsigned int> tiles = { 5, 6, 7, 8 };
     EXPECT_EQ(tiles, floorLayer->tiles());
 
-    const TileSet* tile_set = floorLayer->tileSet();
-    EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5u, tile_set->startCode());
+    const TileSet& tile_set = floorLayer->tileSet();
+    EXPECT_EQ(GetParam()->tileSize(), tile_set.tileSize());
+    EXPECT_EQ(5u, tile_set.startCode());
   }
 
   TEST_P(MapJsonSourceTest, DecorationsLayer) {
@@ -55,9 +55,9 @@ namespace green_leaf {
     std::vector<unsigned int> tiles = { 9, 10, 11, 12 };
     EXPECT_EQ(tiles, decorationsLayer->tiles());
 
-    const TileSet* tile_set = decorationsLayer->tileSet();
-    EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5u, tile_set->startCode());
+    const TileSet& tile_set = decorationsLayer->tileSet();
+    EXPECT_EQ(GetParam()->tileSize(), tile_set.tileSize());
+    EXPECT_EQ(5u, tile_set.startCode());
   }
 
   TEST_P(MapJsonSourceTest, ForegroundLayer) {
@@ -68,9 +68,9 @@ namespace green_leaf {
     std::vector<unsigned int> tiles = { 13, 14, 15, 16 };
     EXPECT_EQ(tiles, foregroundLayer->tiles());
 
-    const TileSet* tile_set = foregroundLayer->tileSet();
-    EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5u, tile_set->startCode());
+    const TileSet& tile_set = foregroundLayer->tileSet();
+    EXPECT_EQ(GetParam()->tileSize(), tile_set.tileSize());
+    EXPECT_EQ(5u, tile_set.startCode());
   }
 
   TEST_P(MapJsonSourceTest, CollisionsLayer) {
