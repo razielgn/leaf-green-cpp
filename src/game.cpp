@@ -21,7 +21,6 @@ namespace green_leaf {
 
   Game::~Game() {
     delete graphics_;
-    delete hero_home_2f_;
     delete input_;
     delete content_;
     delete screen_manager_;

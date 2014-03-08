@@ -25,7 +25,6 @@ namespace green_leaf {
     Input* input_;
     Content* content_;
     ScreenManager* screen_manager_;
-    MapScreen* hero_home_2f_;
 
     unsigned int total_time_;
     bool running_;
