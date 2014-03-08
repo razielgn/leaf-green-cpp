@@ -1,6 +1,7 @@
 #include "map_screen.hpp"
 
 #include "content.hpp"
+#include "game_time.hpp"
 #include "map.hpp"
 #include "player.hpp"
 #include "player_movement.hpp"
@@ -29,7 +30,7 @@ namespace green_leaf {
   }
 
   void MapScreen::update(Input* input, const GameTime* game_time) {
-    player_movement_->update(input, game_time);
+    player_movement_->update(*input, *game_time);
 
     player_->update(player_movement_);
     map_->update(player_movement_);
