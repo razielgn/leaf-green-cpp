@@ -17,7 +17,7 @@ namespace green_leaf {
   }
 
   void MapScreen::loadContent(const Content& content) {
-    map_source_ = std::unique_ptr<const MapSource>(content.loadMap(map_name_));
+    map_source_ = content.loadMap(map_name_);
     player_.loadContent(content);
 
     map_ = std::unique_ptr<Map>(new Map(*map_source_, start_pos_, screen_size_));

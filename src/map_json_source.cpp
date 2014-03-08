@@ -36,7 +36,7 @@ namespace green_leaf {
     Json::Value tile_set = findObjectWithName(tile_sets, name);
     std::string texture_path = tile_set["image"].asString();
     unsigned int start_code = tile_set["firstgid"].asUInt();
-    std::unique_ptr<const Texture> texture(content->loadTexture(texture_path));
+    std::unique_ptr<const Texture> texture = content->loadTexture(texture_path);
 
     return new TileSet(std::move(texture), tile_size, start_code);
   }

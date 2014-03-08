@@ -12,7 +12,7 @@ namespace green_leaf {
   Game::Game() {
     graphics_ = new SDLGraphics();
     input_ = new SDLInput();
-    content_ = new SDLContent(graphics_, std::string("./assets"));
+    content_ = new SDLContent(*graphics_, std::string("./assets"));
     screen_manager_ = new ScreenManager();
 
     running_ = true;

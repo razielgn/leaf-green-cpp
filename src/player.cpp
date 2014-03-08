@@ -16,9 +16,7 @@ namespace green_leaf {
   }
 
   void Player::loadContent(const Content& content) {
-    texture_ = std::unique_ptr<const Texture>(
-      content.loadTexture("hero.png")
-    );
+    texture_ = content.loadTexture("hero.png");
   }
 
   void Player::unloadContent() {
