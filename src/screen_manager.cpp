@@ -20,12 +20,12 @@ namespace green_leaf {
       return;
     }
 
-    screens_.back()->update(&input, &game_time);
+    screens_.back()->update(input, game_time);
   }
 
   void ScreenManager::draw(const Graphics& graphics) {
     for(auto &screen : screens_) {
-      screen->draw(&graphics);
+      screen->draw(graphics);
     }
   }
 }

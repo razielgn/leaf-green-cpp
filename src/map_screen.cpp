@@ -14,34 +14,25 @@ namespace green_leaf {
     , start_pos_(start_pos)
     , screen_size_(screen_size)
   {
-    player_ = new Player();
-    player_movement_ = new PlayerMovement();
   }
 
-  MapScreen::~MapScreen() {
-    delete player_;
-    delete map_;
-    delete player_movement_;
-    delete map_source_;
+  void MapScreen::loadContent(const Content& content) {
+    map_source_ = std::unique_ptr<const MapSource>(content.loadMap(map_name_));
+    player_.loadContent(&content);
+
+    map_ = std::unique_ptr<Map>(new Map(*map_source_, start_pos_, screen_size_));
   }
 
-  void MapScreen::loadContent(const Content* content) {
-    map_source_ = content->loadMap(map_name_);
-    player_->loadContent(content);
+  void MapScreen::update(Input& input, const GameTime game_time) {
+    player_movement_.update(input, game_time);
 
-    map_ = new Map(*map_source_, start_pos_, screen_size_);
+    player_.update(&player_movement_);
+    map_->update(player_movement_, *map_source_->collisionsLayer());
   }
 
-  void MapScreen::update(Input* input, const GameTime* game_time) {
-    player_movement_->update(*input, *game_time);
-
-    player_->update(player_movement_);
-    map_->update(*player_movement_, *map_source_->collisionsLayer());
-  }
-
-  void MapScreen::draw(const Graphics* graphics) const {
-    map_->drawBackground(*graphics, *map_source_);
-    player_->draw(graphics);
-    map_->drawForeground(*graphics, *map_source_);
+  void MapScreen::draw(const Graphics& graphics) const {
+    map_->drawBackground(graphics, *map_source_);
+    player_.draw(&graphics);
+    map_->drawForeground(graphics, *map_source_);
   }
 }
