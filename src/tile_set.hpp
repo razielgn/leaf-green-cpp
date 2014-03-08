@@ -4,18 +4,20 @@
 #include "rectangle.hpp"
 #include "vector2.hpp"
 
+#include <memory>
+
 namespace green_leaf {
   class Texture;
 
   class TileSet {
   public:
     TileSet(const Texture* texture, const Vector2 tile_size, unsigned int start_code);
-    ~TileSet();
+    TileSet(const TileSet& other);
 
     Rectangle rectangleFromCode(unsigned int tile_code) const;
 
     const Texture* texture() const {
-      return texture_;
+      return texture_.get();
     }
 
     const Vector2 tileSize() const {
@@ -29,7 +31,7 @@ namespace green_leaf {
   private:
     const Vector2 tile_grid_;
     const Vector2 tile_size_;
-    const Texture* texture_;
+    const std::unique_ptr<const Texture> texture_;
 
     const unsigned int start_code_;
   };
