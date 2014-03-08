@@ -5,20 +5,20 @@
 #include "vector2.hpp"
 
 namespace green_leaf {
+  class CollisionsLayer;
   class Graphics;
   class MapSource;
   class PlayerMovement;
 
   class Map {
   public:
-    Map(const MapSource* map_source, Vector2 player_position, Vector2 screen_size);
+    Map(const MapSource& map_source, Vector2 player_position, Vector2 screen_size);
 
-    void update(PlayerMovement* player_movement);
-    void drawBackground(const Graphics* graphics) const;
-    void drawForeground(const Graphics* graphics) const;
+    void update(PlayerMovement& player_movement, const CollisionsLayer& collisions_layer);
+    void drawBackground(const Graphics& graphics, const MapSource& map_source) const;
+    void drawForeground(const Graphics& graphics, const MapSource& map_source) const;
 
   private:
-    const MapSource* map_source_;
     const MapOffset map_offset_;
 
     Vector2 player_position_;

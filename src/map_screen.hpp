@@ -6,6 +6,7 @@
 
 namespace green_leaf {
   class Map;
+  class MapSource;
   class Player;
   class PlayerMovement;
 
@@ -23,6 +24,7 @@ namespace green_leaf {
     const Vector2 start_pos_;
     const Vector2 screen_size_;
 
+    const MapSource* map_source_;
     Map* map_;
     Player* player_;
     PlayerMovement* player_movement_;

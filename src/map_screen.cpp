@@ -3,6 +3,7 @@
 #include "content.hpp"
 #include "game_time.hpp"
 #include "map.hpp"
+#include "map_source.hpp"
 #include "player.hpp"
 #include "player_movement.hpp"
 #include "player_movement.hpp"
@@ -21,24 +22,26 @@ namespace green_leaf {
     delete player_;
     delete map_;
     delete player_movement_;
+    delete map_source_;
   }
 
   void MapScreen::loadContent(const Content* content) {
+    map_source_ = content->loadMap(map_name_);
     player_->loadContent(content);
 
-    map_ = new Map(content->loadMap(map_name_), start_pos_, screen_size_);
+    map_ = new Map(*map_source_, start_pos_, screen_size_);
   }
 
   void MapScreen::update(Input* input, const GameTime* game_time) {
     player_movement_->update(*input, *game_time);
 
     player_->update(player_movement_);
-    map_->update(player_movement_);
+    map_->update(*player_movement_, *map_source_->collisionsLayer());
   }
 
   void MapScreen::draw(const Graphics* graphics) const {
-    map_->drawBackground(graphics);
+    map_->drawBackground(*graphics, *map_source_);
     player_->draw(graphics);
-    map_->drawForeground(graphics);
+    map_->drawForeground(*graphics, *map_source_);
   }
 }
