@@ -24,7 +24,7 @@ namespace green_leaf {
     SDL_Surface* surface = IMG_Load(relative_path.c_str());
     if (!surface) { throw "Could not load image"; }
 
-    SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(graphics->renderer(), surface);
+    SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(&graphics->renderer(), surface);
     if (!sdl_texture) { throw "Could create texture from file"; }
 
     Vector2 textureSize = fetchTextureSize(sdl_texture);

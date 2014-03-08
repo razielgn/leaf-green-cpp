@@ -72,6 +72,6 @@ namespace green_leaf {
       source.size()
     );
 
-    graphics.drawTexture(texture_.get(), destination, source);
+    graphics.drawTexture(*texture_, destination, source);
   }
 }

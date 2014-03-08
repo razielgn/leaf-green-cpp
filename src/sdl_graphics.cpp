@@ -44,23 +44,19 @@ namespace green_leaf {
     SDL_RenderClear(renderer_);
   }
 
-  void SDLGraphics::drawTexture(const Texture* texture_, const Rectangle destination, const Rectangle source) const {
-    const SDLTexture* texture = static_cast<const SDLTexture*>(texture_);
-
-    if(texture == nullptr) {
-      throw "SDLGraphics must work with SDLTexture";
-    }
+  void SDLGraphics::drawTexture(const Texture& texture_, const Rectangle destination, const Rectangle source) const {
+    const SDLTexture& texture = static_cast<const SDLTexture&>(texture_);
 
     Rectangle scaled_destination = destination * scale_;
 
     const SDL_Rect source_rect = source.toSDLRect();
     const SDL_Rect dest_rect   = scaled_destination.toSDLRect();
 
-    SDL_RenderCopy(renderer_, texture->data(), &source_rect, &dest_rect);
+    SDL_RenderCopy(renderer_, texture.data(), &source_rect, &dest_rect);
   }
 
-  void SDLGraphics::drawTexture(const Texture* texture, const Rectangle destination) const {
-    Rectangle source(0, 0, texture->size());
+  void SDLGraphics::drawTexture(const Texture& texture, const Rectangle destination) const {
+    Rectangle source(0, 0, texture.size());
 
     drawTexture(texture, destination, source);
   }
