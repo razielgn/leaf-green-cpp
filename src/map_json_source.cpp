@@ -47,12 +47,12 @@ namespace green_leaf {
     std::vector<Rectangle> rectangles;
 
     for(const auto rectangle : json_rectangles) {
-      rectangles.push_back(Rectangle(
+      rectangles.emplace_back(
         rectangle["x"].asInt(),
         rectangle["y"].asInt(),
         rectangle["width"].asInt(),
         rectangle["height"].asInt()
-      ));
+      );
     }
 
     return new CollisionsLayer(dimension, tile_size, rectangles);

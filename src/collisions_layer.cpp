@@ -14,20 +14,16 @@ namespace green_leaf {
 
       if(rect.size().x() == 0) {
         for(int y = rect.origin().y(); y < fin.y(); y++) {
-          disallowed_moves_.insert(
-            std::make_pair(
-              Vector2(rect.origin().x() - 1, y),
-              Vector2(rect.origin().x(),     y)
-            )
+          disallowed_moves_.emplace(
+            Vector2(rect.origin().x() - 1, y),
+            Vector2(rect.origin().x(),     y)
           );
         }
       } else if(rect.size().y() == 0) {
         for(int x = rect.origin().x(); x < fin.x(); x++) {
-          disallowed_moves_.insert(
-            std::make_pair(
-              Vector2(x, rect.origin().y() - 1),
-              Vector2(x, rect.origin().y())
-            )
+          disallowed_moves_.emplace(
+            Vector2(x, rect.origin().y() - 1),
+            Vector2(x, rect.origin().y())
           );
         }
       } else {
