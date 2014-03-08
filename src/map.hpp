@@ -1,24 +1,13 @@
 #ifndef GL_MAP_HPP
 #define GL_MAP_HPP
 
+#include "map_offset.hpp"
 #include "vector2.hpp"
 
 namespace green_leaf {
-  class Content;
   class Graphics;
   class MapSource;
   class PlayerMovement;
-
-  class MapOffset {
-  public:
-    MapOffset(Vector2 tile_size, Vector2 screen_size);
-
-    Vector2 centerOffset(Vector2 center) const;
-
-  private:
-    const Vector2 tile_size_;
-    const Vector2 screen_size_;
-  };
 
   class Map {
   public:
