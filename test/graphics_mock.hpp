@@ -8,6 +8,7 @@ namespace green_leaf {
   class GraphicsMock : public Graphics {
   public:
     GraphicsMock() { }
+    GraphicsMock(const GraphicsMock& other);
     ~GraphicsMock() { }
 
     MOCK_CONST_METHOD0(clear, void());

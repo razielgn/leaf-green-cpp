@@ -1,6 +1,9 @@
 #ifndef GL_SCREEN_MANAGER_HPP
 #define GL_SCREEN_MANAGER_HPP
 
+#include "game_time.hpp"
+
+#include <memory>
 #include <vector>
 
 namespace green_leaf {
@@ -12,14 +15,14 @@ namespace green_leaf {
   class ScreenManager {
   public:
     unsigned long count() const;
-    void push(Screen* screen);
+    void push(std::unique_ptr<Screen> screen);
     void pop();
 
-    void update(Input* input, const GameTime* game_time);
-    void draw(const Graphics* graphics);
+    void update(Input& input, const GameTime game_time);
+    void draw(const Graphics& graphics);
 
   private:
-    std::vector<Screen*> screens_;
+    std::vector<std::unique_ptr<Screen>> screens_;
   };
 }
 

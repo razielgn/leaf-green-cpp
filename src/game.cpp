@@ -28,13 +28,15 @@ namespace green_leaf {
   }
 
   void Game::loadContent() {
-    hero_home_2f_ = new MapScreen(std::string("hero_home_2f"), Vector2(5, 6), graphics_->size());
+    std::unique_ptr<MapScreen> hero_home_2f_(
+      new MapScreen(std::string("hero_home_2f"), Vector2(5, 6), graphics_->size())
+    );
     hero_home_2f_->loadContent(content_);
+
+    screen_manager_->push(std::move(hero_home_2f_));
   }
 
   void Game::run() {
-    screen_manager_->push(hero_home_2f_);
-
     while(running_) {
       unsigned int delay_time = 1000 / 60;
       unsigned int frame_start = SDL_GetTicks();
@@ -60,7 +62,7 @@ namespace green_leaf {
       stop();
     }
 
-    screen_manager_->update(input_, &game_time);
+    screen_manager_->update(*input_, game_time);
 
     total_time_ = SDL_GetTicks();
   }
@@ -68,7 +70,7 @@ namespace green_leaf {
   void Game::draw() const {
     graphics_->clear();
 
-    screen_manager_->draw(graphics_);
+    screen_manager_->draw(*graphics_);
 
     graphics_->present();
   }
