@@ -1,7 +1,10 @@
 #ifndef GL_PLAYER_HPP
 #define GL_PLAYER_HPP
 
+#include "texture.hpp"
 #include "vector2.hpp"
+
+#include <memory>
 
 namespace green_leaf {
   class Content;
@@ -9,19 +12,18 @@ namespace green_leaf {
   class Graphics;
   class Input;
   class PlayerMovement;
-  class Texture;
 
   class Player {
   public:
     Player();
-    void loadContent(const Content* graphics);
+    void loadContent(const Content& graphics);
     void unloadContent();
 
-    void update(const PlayerMovement* player_movement);
-    void draw(const Graphics* graphics) const;
+    void update(const PlayerMovement& player_movement);
+    void draw(const Graphics& graphics) const;
 
   private:
-    const Texture* texture_;
+    std::unique_ptr<const Texture> texture_;
 
     Vector2 frame_;
     unsigned int alternate_walk_;

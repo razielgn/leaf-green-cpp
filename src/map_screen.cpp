@@ -18,7 +18,7 @@ namespace green_leaf {
 
   void MapScreen::loadContent(const Content& content) {
     map_source_ = std::unique_ptr<const MapSource>(content.loadMap(map_name_));
-    player_.loadContent(&content);
+    player_.loadContent(content);
 
     map_ = std::unique_ptr<Map>(new Map(*map_source_, start_pos_, screen_size_));
   }
@@ -26,13 +26,13 @@ namespace green_leaf {
   void MapScreen::update(Input& input, const GameTime game_time) {
     player_movement_.update(input, game_time);
 
-    player_.update(&player_movement_);
+    player_.update(player_movement_);
     map_->update(player_movement_, *map_source_->collisionsLayer());
   }
 
   void MapScreen::draw(const Graphics& graphics) const {
     map_->drawBackground(graphics, *map_source_);
-    player_.draw(&graphics);
+    player_.draw(graphics);
     map_->drawForeground(graphics, *map_source_);
   }
 }
