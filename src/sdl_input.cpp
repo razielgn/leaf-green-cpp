@@ -25,6 +25,8 @@ namespace green_leaf {
       case InputKey::L:       return SDL_SCANCODE_A;
       case InputKey::Escape:  return SDL_SCANCODE_ESCAPE;
     }
+
+    return SDL_SCANCODE_UNKNOWN;
   }
 
   bool SDLInput::isKeyDown(InputKey key) {
