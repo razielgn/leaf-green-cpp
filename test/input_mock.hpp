@@ -9,6 +9,7 @@ namespace green_leaf {
   class InputMock : public Input {
   public:
     InputMock() { }
+    InputMock(const InputMock& other);
     ~InputMock() { }
 
     MOCK_METHOD0(recordState, void());

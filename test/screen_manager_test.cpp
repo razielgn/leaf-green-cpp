@@ -11,10 +11,19 @@ namespace green_leaf {
 
   class ScreenManagerTest : public Test {
   protected:
-    ScreenManagerTest() {
+    ScreenManagerTest()
+      : screen1_(new ScreenMock())
+      , screen2_(new ScreenMock())
+    {
     }
 
     ScreenManager screen_manager_;
+    std::unique_ptr<ScreenMock> screen1_;
+    std::unique_ptr<ScreenMock> screen2_;
+
+    InputMock input_;
+    GraphicsMock graphics_;
+    const GameTime game_time_ = GameTime(0, 0);
   };
 
   TEST_F(ScreenManagerTest, CountWhenEmpty) {
@@ -22,44 +31,33 @@ namespace green_leaf {
   }
 
   TEST_F(ScreenManagerTest, Push) {
-    StrictMock<ScreenMock> screen;
-    screen_manager_.push(&screen);
+    screen_manager_.push(std::move(screen1_));
 
     EXPECT_EQ(1u, screen_manager_.count());
   }
 
   TEST_F(ScreenManagerTest, Pop) {
-    StrictMock<ScreenMock> screen;
-    screen_manager_.push(&screen);
+    screen_manager_.push(std::move(screen1_));
     screen_manager_.pop();
 
     EXPECT_EQ(0u, screen_manager_.count());
   }
 
   TEST_F(ScreenManagerTest, Update) {
-    StrictMock<ScreenMock> screen1, screen2;
+    EXPECT_CALL(*screen1_, update(_, _)).Times(0);
+    EXPECT_CALL(*screen2_, update(_, _)).Times(1);
 
-    InputMock input;
-    const GameTime game_time(0, 0);
-
-    EXPECT_CALL(screen1, update(Eq(&input), Eq(&game_time))).Times(0);
-    EXPECT_CALL(screen2, update(Eq(&input), Eq(&game_time))).Times(1);
-
-    screen_manager_.push(&screen1);
-    screen_manager_.push(&screen2);
-    screen_manager_.update(&input, &game_time);
+    screen_manager_.push(std::move(screen1_));
+    screen_manager_.push(std::move(screen2_));
+    screen_manager_.update(input_, game_time_);
   }
 
   TEST_F(ScreenManagerTest, Draw) {
-    StrictMock<ScreenMock> screen1, screen2;
+    EXPECT_CALL(*screen1_, draw(_)).Times(1);
+    EXPECT_CALL(*screen2_, draw(_)).Times(1);
 
-    GraphicsMock graphics;
-
-    EXPECT_CALL(screen1, draw(Eq(&graphics))).Times(1);
-    EXPECT_CALL(screen2, draw(Eq(&graphics))).Times(1);
-
-    screen_manager_.push(&screen1);
-    screen_manager_.push(&screen2);
-    screen_manager_.draw(&graphics);
+    screen_manager_.push(std::move(screen1_));
+    screen_manager_.push(std::move(screen2_));
+    screen_manager_.draw(graphics_);
   }
 }

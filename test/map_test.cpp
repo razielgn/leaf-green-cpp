@@ -1,6 +1,5 @@
 #include "gmock/gmock.h"
-#include "map_source_mock.hpp"
-#include "map.hpp"
+#include "map_offset.hpp"
 
 namespace green_leaf {
   using namespace ::testing;

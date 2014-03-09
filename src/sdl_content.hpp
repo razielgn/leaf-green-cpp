@@ -8,13 +8,13 @@ namespace green_leaf {
 
   class SDLContent : public Content {
   public:
-    SDLContent(const Graphics* graphics_, const std::string base_path);
+    SDLContent(const Graphics& graphics_, const std::string base_path);
 
-    const Texture* loadTexture(const std::string path) const;
-    const MapSource* loadMap(const std::string path) const;
+    std::unique_ptr<const Texture> loadTexture(const std::string path) const;
+    std::unique_ptr<const MapSource> loadMap(const std::string path) const;
 
   private:
-    const Graphics* graphics_;
+    const Graphics& graphics_;
     const std::string base_path_;
 
 #if defined(WIN32) || defined(_WIN32)

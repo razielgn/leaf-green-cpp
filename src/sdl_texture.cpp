@@ -16,25 +16,22 @@ namespace green_leaf {
     return Vector2(width, height);
   }
 
-  SDLTexture* SDLTexture::fromPath(const Graphics* graphics_, std::string relative_path) {
-    const SDLGraphics* graphics = static_cast<const SDLGraphics*>(graphics_);
-
-    if(graphics == nullptr) { throw "SDLTexture must work with SDLGraphics"; }
+  std::unique_ptr<const SDLTexture> SDLTexture::fromPath(const Graphics& graphics_, std::string relative_path) {
+    const SDLGraphics& graphics = static_cast<const SDLGraphics&>(graphics_);
 
     SDL_Surface* surface = IMG_Load(relative_path.c_str());
     if (!surface) { throw "Could not load image"; }
 
-    SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(graphics->renderer(), surface);
+    SDL_Texture* sdl_texture = SDL_CreateTextureFromSurface(&graphics.renderer(), surface);
+    SDL_FreeSurface(surface);
     if (!sdl_texture) { throw "Could create texture from file"; }
 
     Vector2 textureSize = fetchTextureSize(sdl_texture);
 
-    SDLTexture* texture = new SDLTexture(textureSize);
+    auto texture = std::unique_ptr<SDLTexture>(new SDLTexture(textureSize));
     texture->loadData(sdl_texture);
 
-    SDL_FreeSurface(surface);
-
-    return texture;
+    return std::move(texture);
   }
 
   SDLTexture::SDLTexture(Vector2 size)

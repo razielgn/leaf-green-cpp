@@ -1,35 +1,24 @@
 #ifndef GL_MAP_HPP
 #define GL_MAP_HPP
 
+#include "map_offset.hpp"
 #include "vector2.hpp"
 
 namespace green_leaf {
-  class Content;
+  class CollisionsLayer;
   class Graphics;
   class MapSource;
   class PlayerMovement;
 
-  class MapOffset {
-  public:
-    MapOffset(Vector2 tile_size, Vector2 screen_size);
-
-    Vector2 centerOffset(Vector2 center) const;
-
-  private:
-    const Vector2 tile_size_;
-    const Vector2 screen_size_;
-  };
-
   class Map {
   public:
-    Map(const MapSource* map_source, Vector2 player_position, Vector2 screen_size);
+    Map(const MapSource& map_source, Vector2 player_position, Vector2 screen_size);
 
-    void update(PlayerMovement* player_movement);
-    void drawBackground(const Graphics* graphics) const;
-    void drawForeground(const Graphics* graphics) const;
+    void update(PlayerMovement& player_movement, const CollisionsLayer& collisions_layer);
+    void drawBackground(const Graphics& graphics, const MapSource& map_source) const;
+    void drawForeground(const Graphics& graphics, const MapSource& map_source) const;
 
   private:
-    const MapSource* map_source_;
     const MapOffset map_offset_;
 
     Vector2 player_position_;

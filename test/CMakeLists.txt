@@ -16,6 +16,7 @@ set(SRC_FILES
   "${SRC_DIR}/input_key.cpp"
   "${SRC_DIR}/jsoncpp.cpp"
   "${SRC_DIR}/map.cpp"
+  "${SRC_DIR}/map_offset.cpp"
   "${SRC_DIR}/map_json_source.cpp"
   "${SRC_DIR}/player_movement.cpp"
   "${SRC_DIR}/rectangle.cpp"

@@ -1,17 +1,17 @@
 #ifndef GL_MAP_JSON_SOURCE_HPP
 #define GL_MAP_JSON_SOURCE_HPP
 
+#include "collisions_layer.hpp"
 #include "map_source.hpp"
+#include "tile_layer.hpp"
+#include "tile_set.hpp"
 
 namespace green_leaf {
   class Content;
-  class Texture;
-  class TileSet;
 
   class MapJsonSource : public MapSource {
   public:
-    MapJsonSource(const Content* content, std::string path);
-    ~MapJsonSource();
+    MapJsonSource(const Content& content, const std::string path);
 
     Vector2 resolution() const {
       return resolution_;
@@ -21,38 +21,38 @@ namespace green_leaf {
       return tile_size_;
     }
 
-    const TileLayer* backgroundLayer() const {
-      return background_tile_layer_;
+    const TileLayer& backgroundLayer() const {
+      return *background_tile_layer_;
     }
 
-    const TileLayer* decorationsLayer() const {
-      return decorations_tile_layer_;
+    const TileLayer& decorationsLayer() const {
+      return *decorations_tile_layer_;
     }
 
-    const TileLayer* floorLayer() const {
-      return floor_tile_layer_;
+    const TileLayer& floorLayer() const {
+      return *floor_tile_layer_;
     }
 
-    const TileLayer* foregroundLayer() const {
-      return foreground_tile_layer_;
+    const TileLayer& foregroundLayer() const {
+      return *foreground_tile_layer_;
     }
 
-    const CollisionsLayer* collisionsLayer() const {
-      return collisions_layer_;
+    const CollisionsLayer& collisionsLayer() const {
+      return *collisions_layer_;
     }
 
   private:
     Vector2 resolution_;
     Vector2 tile_size_;
 
-    const TileSet* background_tile_set_;
-    const TileSet* decorations_tile_set_;
+    std::unique_ptr<const TileSet> background_tile_set_;
+    std::unique_ptr<const TileSet> decorations_tile_set_;
 
-    const TileLayer* background_tile_layer_;
-    const TileLayer* floor_tile_layer_;
-    const TileLayer* decorations_tile_layer_;
-    const TileLayer* foreground_tile_layer_;
-    const CollisionsLayer* collisions_layer_;
+    std::unique_ptr<const TileLayer> background_tile_layer_;
+    std::unique_ptr<const TileLayer> floor_tile_layer_;
+    std::unique_ptr<const TileLayer> decorations_tile_layer_;
+    std::unique_ptr<const TileLayer> foreground_tile_layer_;
+    std::unique_ptr<const CollisionsLayer> collisions_layer_;
   };
 }
 

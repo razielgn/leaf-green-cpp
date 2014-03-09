@@ -11,7 +11,7 @@ namespace green_leaf {
   public:
     PlayerMovement();
 
-    void update(Input* input, const GameTime* game_time);
+    void update(Input& input, const GameTime game_time);
 
     void clashing(bool clashing) {
       clashing_ = clashing;

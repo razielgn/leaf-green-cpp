@@ -17,12 +17,12 @@ namespace green_leaf {
     ~SDLGraphics();
 
     void clear() const;
-    void drawTexture(const Texture* texture, const Rectangle destination, const Rectangle source) const;
-    void drawTexture(const Texture* texture, const Rectangle destination) const;
+    void drawTexture(const Texture& texture, const Rectangle destination, const Rectangle source) const;
+    void drawTexture(const Texture& texture, const Rectangle destination) const;
     void present() const;
 
-    SDL_Renderer* renderer() const {
-      return renderer_;
+    SDL_Renderer& renderer() const {
+      return *renderer_;
     }
 
     Vector2 size() const {

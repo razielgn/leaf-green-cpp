@@ -7,7 +7,6 @@
 #include "movement.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"
-#include "texture.hpp"
 
 namespace green_leaf {
   Player::Player()
@@ -16,20 +15,19 @@ namespace green_leaf {
   {
   }
 
-  void Player::loadContent(const Content* content) {
-    texture_ = content->loadTexture("hero.png");
+  void Player::loadContent(const Content& content) {
+    texture_ = content.loadTexture("hero.png");
   }
 
   void Player::unloadContent() {
-    delete texture_;
   }
 
-  void Player::update(const PlayerMovement* player_movement) {
+  void Player::update(const PlayerMovement& player_movement) {
     int frame_x = frame_.x();
     int frame_y = frame_.y();
 
-    if(player_movement->moving()) {
-      switch(player_movement->movement()) {
+    if(player_movement.moving()) {
+      switch(player_movement.movement()) {
         case Movement::Down:
           frame_y = 0; break;
         case Movement::Left:
@@ -43,9 +41,9 @@ namespace green_leaf {
       }
     }
 
-    if(player_movement->moving()) {
-      float progress = player_movement->clashing() ? 0.5f : 0.6f;
-      if(player_movement->progress() >= progress) {
+    if(player_movement.moving()) {
+      float progress = player_movement.clashing() ? 0.5f : 0.6f;
+      if(player_movement.progress() >= progress) {
         frame_x = 0;
       } else {
         if(alternate_walk_ == 0) {
@@ -55,7 +53,7 @@ namespace green_leaf {
         }
       }
 
-      if(player_movement->finished()) {
+      if(player_movement.finished()) {
         frame_x = 0;
         alternate_walk_ = (alternate_walk_ + 1) % 2;
       }
@@ -64,14 +62,14 @@ namespace green_leaf {
     frame_ = Vector2(frame_x, frame_y);
   }
 
-  void Player::draw(const Graphics* graphics) const {
+  void Player::draw(const Graphics& graphics) const {
     Rectangle source(frame_ * frame_size_, frame_size_);
 
     Rectangle destination(
-      graphics->size() / 2 - frame_size_ / 2,
+      graphics.size() / 2 - frame_size_ / 2,
       source.size()
     );
 
-    graphics->drawTexture(texture_, destination, source);
+    graphics.drawTexture(*texture_, destination, source);
   }
 }

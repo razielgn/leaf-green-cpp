@@ -22,60 +22,60 @@ namespace green_leaf {
   }
 
   TEST_P(MapJsonSourceTest, BackgroundLayer) {
-    const TileLayer* backgroundLayer = GetParam()->backgroundLayer();
+    const TileLayer& backgroundLayer = GetParam()->backgroundLayer();
 
-    EXPECT_EQ(Vector2(4, 3), backgroundLayer->size());
+    EXPECT_EQ(Vector2(4, 3), backgroundLayer.size());
 
     std::vector<unsigned int> tiles = { 1, 2, 3, 4 };
-    EXPECT_EQ(tiles, backgroundLayer->tiles());
+    EXPECT_EQ(tiles, backgroundLayer.tiles());
 
-    const TileSet* tile_set = backgroundLayer->tileSet();
-    EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(1u, tile_set->startCode());
+    const TileSet& tile_set = backgroundLayer.tileSet();
+    EXPECT_EQ(GetParam()->tileSize(), tile_set.tileSize());
+    EXPECT_EQ(1u, tile_set.startCode());
   }
 
   TEST_P(MapJsonSourceTest, FloorLayer) {
-    const TileLayer* floorLayer = GetParam()->floorLayer();
+    const TileLayer& floorLayer = GetParam()->floorLayer();
 
-    EXPECT_EQ(Vector2(4, 3), floorLayer->size());
+    EXPECT_EQ(Vector2(4, 3), floorLayer.size());
 
     std::vector<unsigned int> tiles = { 5, 6, 7, 8 };
-    EXPECT_EQ(tiles, floorLayer->tiles());
+    EXPECT_EQ(tiles, floorLayer.tiles());
 
-    const TileSet* tile_set = floorLayer->tileSet();
-    EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5u, tile_set->startCode());
+    const TileSet& tile_set = floorLayer.tileSet();
+    EXPECT_EQ(GetParam()->tileSize(), tile_set.tileSize());
+    EXPECT_EQ(5u, tile_set.startCode());
   }
 
   TEST_P(MapJsonSourceTest, DecorationsLayer) {
-    const TileLayer* decorationsLayer = GetParam()->decorationsLayer();
+    const TileLayer& decorationsLayer = GetParam()->decorationsLayer();
 
-    EXPECT_EQ(Vector2(4, 3), decorationsLayer->size());
+    EXPECT_EQ(Vector2(4, 3), decorationsLayer.size());
 
     std::vector<unsigned int> tiles = { 9, 10, 11, 12 };
-    EXPECT_EQ(tiles, decorationsLayer->tiles());
+    EXPECT_EQ(tiles, decorationsLayer.tiles());
 
-    const TileSet* tile_set = decorationsLayer->tileSet();
-    EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5u, tile_set->startCode());
+    const TileSet& tile_set = decorationsLayer.tileSet();
+    EXPECT_EQ(GetParam()->tileSize(), tile_set.tileSize());
+    EXPECT_EQ(5u, tile_set.startCode());
   }
 
   TEST_P(MapJsonSourceTest, ForegroundLayer) {
-    const TileLayer* foregroundLayer = GetParam()->foregroundLayer();
+    const TileLayer& foregroundLayer = GetParam()->foregroundLayer();
 
-    EXPECT_EQ(Vector2(4, 3), foregroundLayer->size());
+    EXPECT_EQ(Vector2(4, 3), foregroundLayer.size());
 
     std::vector<unsigned int> tiles = { 13, 14, 15, 16 };
-    EXPECT_EQ(tiles, foregroundLayer->tiles());
+    EXPECT_EQ(tiles, foregroundLayer.tiles());
 
-    const TileSet* tile_set = foregroundLayer->tileSet();
-    EXPECT_EQ(GetParam()->tileSize(), tile_set->tileSize());
-    EXPECT_EQ(5u, tile_set->startCode());
+    const TileSet& tile_set = foregroundLayer.tileSet();
+    EXPECT_EQ(GetParam()->tileSize(), tile_set.tileSize());
+    EXPECT_EQ(5u, tile_set.startCode());
   }
 
   TEST_P(MapJsonSourceTest, CollisionsLayer) {
-    const CollisionsLayer* collisions_layer = GetParam()->collisionsLayer();
-    std::vector<Rectangle> rectangles = collisions_layer->rectangles();
+    const CollisionsLayer& collisions_layer = GetParam()->collisionsLayer();
+    std::vector<Rectangle> rectangles = collisions_layer.rectangles();
 
     EXPECT_EQ(2u, rectangles.size());
 
@@ -84,10 +84,8 @@ namespace green_leaf {
   }
 
   const ContentMock content_;
-  const MapJsonSource map_source_1 =
-    MapJsonSource(&content_, std::string("test_map.json"));
-  const MapJsonSource map_source_2 =
-    MapJsonSource(&content_, std::string("test_map_shuffled.json"));
+  const MapJsonSource map_source_1(content_, std::string("test_map.json"));
+  const MapJsonSource map_source_2(content_, std::string("test_map_shuffled.json"));
 
   INSTANTIATE_TEST_CASE_P(
     MapJsonSourceTest1,

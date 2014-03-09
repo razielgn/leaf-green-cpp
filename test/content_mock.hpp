@@ -10,13 +10,17 @@ namespace green_leaf {
   public:
     ContentMock() { }
 
-    const Texture* loadTexture(std::string path) const {
+    std::unique_ptr<const Texture> loadTexture(const std::string path) const {
       UNUSED(path);
 
-      return new TextureMock(Vector2(0, 0));
+      return std::unique_ptr<const Texture>(new TextureMock(Vector2(0, 0)));
     }
 
-    MOCK_CONST_METHOD1(loadMap, const MapSource*(std::string map_name));
+    std::unique_ptr<const MapSource> loadMap(const std::string map_name) const {
+      UNUSED(map_name);
+
+      return std::unique_ptr<const MapSource>(nullptr);
+    }
   };
 }
 

@@ -7,15 +7,15 @@ namespace green_leaf {
     return screens_.size();
   }
 
-  void ScreenManager::push(Screen* screen) {
-    screens_.push_back(screen);
+  void ScreenManager::push(std::unique_ptr<Screen> screen) {
+    screens_.push_back(std::move(screen));
   }
 
   void ScreenManager::pop() {
     screens_.pop_back();
   }
 
-  void ScreenManager::update(Input* input, const GameTime* game_time) {
+  void ScreenManager::update(Input& input, const GameTime game_time) const {
     if(count() == 0u) {
       return;
     }
@@ -23,8 +23,8 @@ namespace green_leaf {
     screens_.back()->update(input, game_time);
   }
 
-  void ScreenManager::draw(const Graphics* graphics) {
-    for(auto screen : screens_) {
+  void ScreenManager::draw(const Graphics& graphics) const {
+    for(auto &screen : screens_) {
       screen->draw(graphics);
     }
   }

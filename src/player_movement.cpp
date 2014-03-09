@@ -15,7 +15,7 @@ namespace green_leaf {
   {
   }
 
-  void PlayerMovement::update(Input* input, const GameTime* game_time) {
+  void PlayerMovement::update(Input& input, const GameTime game_time) {
     if(finished_) {
       finished_ = false;
       moving_ = false;
@@ -24,16 +24,16 @@ namespace green_leaf {
     }
 
     if(elapsed_mseconds_ == 0) {
-      if(input->isKeyDown(InputKey::Right)) {
+      if(input.isKeyDown(InputKey::Right)) {
         movement_ = Movement::Right;
         moving_ = true;
-      } else if(input->isKeyDown(InputKey::Left)) {
+      } else if(input.isKeyDown(InputKey::Left)) {
         movement_ = Movement::Left;
         moving_ = true;
-      } else if(input->isKeyDown(InputKey::Up)) {
+      } else if(input.isKeyDown(InputKey::Up)) {
         movement_ = Movement::Up;
         moving_ = true;
-      } else if(input->isKeyDown(InputKey::Down)) {
+      } else if(input.isKeyDown(InputKey::Down)) {
         movement_ = Movement::Down;
         moving_ = true;
       } else {
@@ -42,7 +42,7 @@ namespace green_leaf {
       }
     }
 
-    elapsed_mseconds_ += game_time->elapsed();
+    elapsed_mseconds_ += game_time.elapsed();
 
     if(elapsed_mseconds_ >= movement_time()) {
       finished_ = true;
