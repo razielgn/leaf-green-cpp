@@ -27,7 +27,7 @@ namespace green_leaf {
     player_movement_.update(input, game_time);
 
     player_.update(player_movement_);
-    map_->update(player_movement_, *map_source_->collisionsLayer());
+    map_->update(player_movement_, map_source_->collisionsLayer());
   }
 
   void MapScreen::draw(const Graphics& graphics) const {

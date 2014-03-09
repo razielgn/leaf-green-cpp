@@ -24,7 +24,7 @@ namespace green_leaf {
     std::string full_path = fullPath(path) + maps_ext_;
 
     return std::unique_ptr<const MapSource>(
-      new MapJsonSource(this, full_path)
+      new MapJsonSource(*this, full_path)
     );
   }
 }
