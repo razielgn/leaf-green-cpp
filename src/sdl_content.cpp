@@ -16,7 +16,7 @@ namespace green_leaf {
 
   std::unique_ptr<const Texture> SDLContent::loadTexture(const std::string path) const {
     return std::unique_ptr<const Texture>(
-      SDLTexture::fromPath(&graphics_, fullPath(path))
+      SDLTexture::fromPath(graphics_, fullPath(path))
     );
   }
 

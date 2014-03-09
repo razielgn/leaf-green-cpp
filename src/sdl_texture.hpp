@@ -3,6 +3,7 @@
 
 #include "texture.hpp"
 
+#include <memory>
 #include <SDL_render.h>
 #include <string>
 
@@ -11,12 +12,12 @@ namespace green_leaf {
 
   class SDLTexture : public Texture {
   public:
-    static SDLTexture* fromPath(const Graphics* graphics_, std::string relative_path);
+    static std::unique_ptr<const SDLTexture> fromPath(const Graphics& graphics_, const std::string relative_path);
 
     ~SDLTexture();
 
-    SDL_Texture* data() const {
-      return data_;
+    SDL_Texture& data() const {
+      return *data_;
     }
 
     Vector2 size() const {

@@ -52,7 +52,7 @@ namespace green_leaf {
     const SDL_Rect source_rect = source.toSDLRect();
     const SDL_Rect dest_rect   = scaled_destination.toSDLRect();
 
-    SDL_RenderCopy(renderer_, texture.data(), &source_rect, &dest_rect);
+    SDL_RenderCopy(renderer_, &texture.data(), &source_rect, &dest_rect);
   }
 
   void SDLGraphics::drawTexture(const Texture& texture, const Rectangle destination) const {
