@@ -15,7 +15,7 @@ namespace green_leaf {
     screens_.pop_back();
   }
 
-  void ScreenManager::update(Input& input, const GameTime game_time) {
+  void ScreenManager::update(Input& input, const GameTime game_time) const {
     if(count() == 0u) {
       return;
     }
@@ -23,7 +23,7 @@ namespace green_leaf {
     screens_.back()->update(input, game_time);
   }
 
-  void ScreenManager::draw(const Graphics& graphics) {
+  void ScreenManager::draw(const Graphics& graphics) const {
     for(auto &screen : screens_) {
       screen->draw(graphics);
     }
