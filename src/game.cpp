@@ -18,12 +18,12 @@ namespace green_leaf {
   }
 
   void Game::loadContent() {
-    std::unique_ptr<MapScreen> hero_home_2f_(
+    std::unique_ptr<MapScreen> hero_home_2f(
       new MapScreen(std::string("hero_home_2f"), Vector2(5, 6), graphics_->size())
     );
-    hero_home_2f_->loadContent(*content_);
+    hero_home_2f->loadContent(*content_);
 
-    screen_manager_.push(std::move(hero_home_2f_));
+    screen_manager_.push(std::move(hero_home_2f));
   }
 
   void Game::run() {
