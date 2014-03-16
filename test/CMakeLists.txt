@@ -20,6 +20,8 @@ set(SRC_FILES
   "${SRC_DIR}/map.cpp"
   "${SRC_DIR}/map_offset.cpp"
   "${SRC_DIR}/map_json_source.cpp"
+  "${SRC_DIR}/menu_triangle_state.cpp"
+  "${SRC_DIR}/message_box_state.cpp"
   "${SRC_DIR}/player_movement.cpp"
   "${SRC_DIR}/rectangle.cpp"
   "${SRC_DIR}/screen_manager.cpp"
