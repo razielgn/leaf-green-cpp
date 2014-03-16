@@ -4,6 +4,8 @@
 #include "graphics_mock.hpp"
 #include "texture_mock.hpp"
 
+#include <memory>
+
 namespace green_leaf {
   using namespace ::testing;
 
