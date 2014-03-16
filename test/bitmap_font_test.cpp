@@ -14,7 +14,7 @@ namespace green_leaf {
     std::unique_ptr<TextureMock> texture_ =
       std::unique_ptr<TextureMock>(new TextureMock(Vector2(0, 0)));
     GraphicsMock graphics_;
-    const BitmapFont font_ = BitmapFont(std::move(texture_));
+    BitmapFont font_ = BitmapFont(std::move(texture_));
   };
 
   TEST_F(BitmapFontTest, DrawString) {
