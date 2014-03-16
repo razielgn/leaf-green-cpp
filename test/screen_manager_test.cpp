@@ -13,8 +13,8 @@ namespace green_leaf {
   class ScreenManagerTest : public Test {
   protected:
     ScreenManagerTest()
-      : screen1_(new ScreenMock())
-      , screen2_(new ScreenMock())
+      : screen1_(new ScreenMock(screen_manager_))
+      , screen2_(new ScreenMock(screen_manager_))
     {
     }
 

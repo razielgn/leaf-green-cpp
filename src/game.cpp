@@ -20,7 +20,7 @@ namespace green_leaf {
 
   void Game::loadContent() {
     std::unique_ptr<MapScreen> hero_home_2f(
-      new MapScreen("hero_home_2f", Vector2(5, 6), graphics_->size())
+      new MapScreen(screen_manager_, "hero_home_2f", Vector2(5, 6), graphics_->size())
     );
 
     screen_manager_.push(std::move(hero_home_2f));

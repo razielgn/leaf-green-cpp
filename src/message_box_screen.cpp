@@ -30,8 +30,9 @@ namespace green_leaf {
     }
   }
 
-  MessageBoxScreen::MessageBoxScreen(const std::vector<message> messages)
-    : messages_(messages)
+  MessageBoxScreen::MessageBoxScreen(ScreenManager& screen_manager, const std::vector<message> messages)
+    : Screen(screen_manager)
+    , messages_(messages)
   {
   }
 

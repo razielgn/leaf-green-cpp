@@ -9,7 +9,8 @@
 namespace green_leaf {
   class ScreenMock : public Screen {
   public:
-    ScreenMock() { }
+    ScreenMock(ScreenManager& screen_manager)
+      : Screen(screen_manager) { }
     ~ScreenMock() { }
 
     MOCK_METHOD1(loadContent, void(const Content& content));

@@ -24,6 +24,7 @@ set(SRC_FILES
   "${SRC_DIR}/message_box_state.cpp"
   "${SRC_DIR}/player_movement.cpp"
   "${SRC_DIR}/rectangle.cpp"
+  "${SRC_DIR}/screen.cpp"
   "${SRC_DIR}/screen_manager.cpp"
   "${SRC_DIR}/tile_layer.cpp"
   "${SRC_DIR}/tile_set.cpp"

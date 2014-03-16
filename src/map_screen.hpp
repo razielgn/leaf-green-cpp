@@ -17,7 +17,7 @@ namespace green_leaf {
 
   class MapScreen : public Screen {
   public:
-    MapScreen(std::string map_name, Vector2 start_pos, Vector2 screen_size);
+    MapScreen(ScreenManager& screen_manager, std::string map_name, Vector2 start_pos, Vector2 screen_size);
 
     void loadContent(const Content& content);
     void update(Input& input, const GameTime game_time);

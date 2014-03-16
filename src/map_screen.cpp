@@ -9,8 +9,9 @@
 #include "player_movement.hpp"
 
 namespace green_leaf {
-  MapScreen::MapScreen(std::string map_name, Vector2 start_pos, Vector2 screen_size)
-    : map_name_(map_name)
+  MapScreen::MapScreen(ScreenManager& screen_manager, std::string map_name, Vector2 start_pos, Vector2 screen_size)
+    : Screen(screen_manager)
+    , map_name_(map_name)
     , start_pos_(start_pos)
     , screen_size_(screen_size)
   {

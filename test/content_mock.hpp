@@ -2,6 +2,7 @@
 #define GL_CONTENT_MOCK_HPP
 
 #include "content.hpp"
+#include "map_source.hpp"
 #include "texture_mock.hpp"
 #include "unused.hpp"
 
