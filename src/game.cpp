@@ -8,13 +8,13 @@
 #include "vector2.hpp"
 
 namespace green_leaf {
-  Game::Game() {
-    graphics_ = std::unique_ptr<Graphics>(new SDLGraphics());
-    input_ = std::unique_ptr<Input>(new SDLInput());
-    content_ = std::unique_ptr<Content>(new SDLContent(*graphics_, "./assets"));
-
-    running_ = true;
-    total_time_ = SDL_GetTicks();
+  Game::Game()
+    : graphics_(std::unique_ptr<Graphics>(new SDLGraphics()))
+    , input_(std::unique_ptr<Input>(new SDLInput()))
+    , content_(std::unique_ptr<Content>(new SDLContent(*graphics_, "./assets")))
+    , total_time_(SDL_GetTicks())
+    , running_(true)
+  {
   }
 
   void Game::loadContent() {
