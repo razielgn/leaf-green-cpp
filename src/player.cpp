@@ -64,12 +64,8 @@ namespace green_leaf {
 
   void Player::draw(const Graphics& graphics) const {
     Rectangle source(frame_ * frame_size_, frame_size_);
+    Vector2 offset = graphics.size() / 2 - frame_size_ / 2;
 
-    Rectangle destination(
-      graphics.size() / 2 - frame_size_ / 2,
-      source.size()
-    );
-
-    graphics.drawTexture(*texture_, destination, source);
+    graphics.drawTexture(*texture_, offset, source);
   }
 }

@@ -27,7 +27,7 @@ namespace green_leaf {
 
           graphics.drawTexture(
             tile_set_.texture(),
-            Rectangle(destOffset, tile_size),
+            destOffset,
             tile.scaleOrigin(tile_size)
           );
         }

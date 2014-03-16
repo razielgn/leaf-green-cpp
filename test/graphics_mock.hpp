@@ -16,6 +16,10 @@ namespace green_leaf {
     MOCK_CONST_METHOD2(drawTexture, void(const Texture& texture, const Rectangle destination));
     MOCK_CONST_METHOD0(present, void());
     MOCK_CONST_METHOD0(size, Vector2());
+
+    void drawTexture(const Texture& texture, const Vector2 offset, const Rectangle source) const {
+      Graphics::drawTexture(texture, offset, source);
+    }
   };
 }
 

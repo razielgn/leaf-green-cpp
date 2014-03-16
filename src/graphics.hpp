@@ -16,6 +16,8 @@ namespace green_leaf {
     virtual void present() const = 0;
 
     virtual Vector2 size() const = 0;
+
+    void drawTexture(const Texture& texture, const Vector2 offset, const Rectangle source) const;
   };
 }
 
