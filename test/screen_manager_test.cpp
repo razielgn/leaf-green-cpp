@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 
+#include "content_mock.hpp"
 #include "graphics_mock.hpp"
 #include "input_mock.hpp"
 #include "screen_manager.hpp"
@@ -17,7 +18,8 @@ namespace green_leaf {
     {
     }
 
-    ScreenManager screen_manager_;
+    ContentMock content_;
+    ScreenManager screen_manager_ = ScreenManager(content_);
     std::unique_ptr<ScreenMock> screen1_;
     std::unique_ptr<ScreenMock> screen2_;
 
@@ -31,12 +33,14 @@ namespace green_leaf {
   }
 
   TEST_F(ScreenManagerTest, Push) {
+    EXPECT_CALL(*screen1_, loadContent(_)).Times(1);
     screen_manager_.push(std::move(screen1_));
 
     EXPECT_EQ(1u, screen_manager_.count());
   }
 
   TEST_F(ScreenManagerTest, Pop) {
+    EXPECT_CALL(*screen1_, loadContent(_)).Times(1);
     screen_manager_.push(std::move(screen1_));
     screen_manager_.pop();
 
@@ -44,6 +48,8 @@ namespace green_leaf {
   }
 
   TEST_F(ScreenManagerTest, Update) {
+    EXPECT_CALL(*screen1_, loadContent(_)).Times(1);
+    EXPECT_CALL(*screen2_, loadContent(_)).Times(1);
     EXPECT_CALL(*screen1_, update(_, _)).Times(0);
     EXPECT_CALL(*screen2_, update(_, _)).Times(1);
 
@@ -53,6 +59,8 @@ namespace green_leaf {
   }
 
   TEST_F(ScreenManagerTest, Draw) {
+    EXPECT_CALL(*screen1_, loadContent(_)).Times(1);
+    EXPECT_CALL(*screen2_, loadContent(_)).Times(1);
     EXPECT_CALL(*screen1_, draw(_)).Times(1);
     EXPECT_CALL(*screen2_, draw(_)).Times(1);
 

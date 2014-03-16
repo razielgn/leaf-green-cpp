@@ -8,12 +8,15 @@
 #include <vector>
 
 namespace green_leaf {
+  class Content;
   class GameTime;
   class Graphics;
   class Input;
 
   class ScreenManager {
   public:
+    ScreenManager(Content& content);
+
     unsigned long count() const;
     void push(std::unique_ptr<Screen> screen);
     void pop();
@@ -23,6 +26,8 @@ namespace green_leaf {
 
   private:
     std::vector<std::unique_ptr<Screen>> screens_;
+
+    Content& content_;
   };
 }
 

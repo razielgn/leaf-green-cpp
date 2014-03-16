@@ -21,7 +21,6 @@ namespace green_leaf {
     std::unique_ptr<MapScreen> hero_home_2f(
       new MapScreen("hero_home_2f", Vector2(5, 6), graphics_->size())
     );
-    hero_home_2f->loadContent(*content_);
 
     screen_manager_.push(std::move(hero_home_2f));
   }
