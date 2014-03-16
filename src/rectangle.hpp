@@ -31,6 +31,22 @@ namespace green_leaf {
       return size_;
     }
 
+    int x() const {
+      return origin_.x();
+    }
+
+    int y() const {
+      return origin_.y();
+    }
+
+    int width() const {
+      return size_.x();
+    }
+
+    int height() const {
+      return size_.y();
+    }
+
     bool operator==(const Rectangle& r) const {
       return (this == &r) || (
         origin_ == r.origin_ &&

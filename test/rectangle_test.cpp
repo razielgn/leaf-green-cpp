@@ -87,4 +87,28 @@ namespace green_leaf {
     EXPECT_EQ(Rectangle(0, 0, 3, 4), r.scaleOrigin(Vector2(0, 0)));
     EXPECT_EQ(Rectangle(4, 8, 3, 4), r.scaleOrigin(Vector2(4, 4)));
   }
+
+  TEST(RectangleTest, X) {
+    Rectangle r(1, 2, 3, 4);
+
+    EXPECT_EQ(1, r.x());
+  }
+
+  TEST(RectangleTest, Y) {
+    Rectangle r(1, 2, 3, 4);
+
+    EXPECT_EQ(2, r.y());
+  }
+
+  TEST(RectangleTest, Width) {
+    Rectangle r(1, 2, 3, 4);
+
+    EXPECT_EQ(3, r.width());
+  }
+
+  TEST(RectangleTest, Height) {
+    Rectangle r(1, 2, 3, 4);
+
+    EXPECT_EQ(4, r.height());
+  }
 }

@@ -12,23 +12,23 @@ namespace green_leaf {
       Rectangle rect = rect_ / tile_size;
       Vector2 fin = rect.origin() + rect.size();
 
-      if(rect.size().x() == 0) {
-        for(int y = rect.origin().y(); y < fin.y(); y++) {
+      if(rect.width() == 0) {
+        for(int y = rect.y(); y < fin.y(); y++) {
           disallowed_moves_.emplace(
-            Vector2(rect.origin().x() - 1, y),
-            Vector2(rect.origin().x(),     y)
+            Vector2(rect.x() - 1, y),
+            Vector2(rect.x(),     y)
           );
         }
-      } else if(rect.size().y() == 0) {
-        for(int x = rect.origin().x(); x < fin.x(); x++) {
+      } else if(rect.height() == 0) {
+        for(int x = rect.x(); x < fin.x(); x++) {
           disallowed_moves_.emplace(
-            Vector2(x, rect.origin().y() - 1),
-            Vector2(x, rect.origin().y())
+            Vector2(x, rect.y() - 1),
+            Vector2(x, rect.y())
           );
         }
       } else {
-        for(int y = rect.origin().y(); y < fin.y(); y++) {
-          for(int x = rect.origin().x(); x < fin.x(); x++) {
+        for(int y = rect.y(); y < fin.y(); y++) {
+          for(int x = rect.x(); x < fin.x(); x++) {
             setTileBlockeAt(Vector2(x, y));
           }
         }
