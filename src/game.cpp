@@ -11,7 +11,7 @@ namespace green_leaf {
   Game::Game() {
     graphics_ = std::unique_ptr<Graphics>(new SDLGraphics());
     input_ = std::unique_ptr<Input>(new SDLInput());
-    content_ = std::unique_ptr<Content>(new SDLContent(*graphics_, std::string("./assets")));
+    content_ = std::unique_ptr<Content>(new SDLContent(*graphics_, "./assets"));
 
     running_ = true;
     total_time_ = SDL_GetTicks();
@@ -19,7 +19,7 @@ namespace green_leaf {
 
   void Game::loadContent() {
     std::unique_ptr<MapScreen> hero_home_2f(
-      new MapScreen(std::string("hero_home_2f"), Vector2(5, 6), graphics_->size())
+      new MapScreen("hero_home_2f", Vector2(5, 6), graphics_->size())
     );
     hero_home_2f->loadContent(*content_);
 

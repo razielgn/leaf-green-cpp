@@ -84,8 +84,8 @@ namespace green_leaf {
   }
 
   const ContentMock content_;
-  const MapJsonSource map_source_1(content_, std::string("test_map.json"));
-  const MapJsonSource map_source_2(content_, std::string("test_map_shuffled.json"));
+  const MapJsonSource map_source_1(content_, "test_map.json");
+  const MapJsonSource map_source_2(content_, "test_map_shuffled.json");
 
   INSTANTIATE_TEST_CASE_P(
     MapJsonSourceTest1,

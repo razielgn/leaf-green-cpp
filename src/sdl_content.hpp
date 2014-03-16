@@ -18,12 +18,12 @@ namespace green_leaf {
     const std::string base_path_;
 
 #if defined(WIN32) || defined(_WIN32)
-    const std::string dir_sep_ = std::string("\\");
+    const std::string dir_sep_ = "\\";
 #else
-    const std::string dir_sep_ = std::string("/");
+    const std::string dir_sep_ = "/";
 #endif
 
-    const std::string maps_ext_ = std::string(".json");
+    const std::string maps_ext_ = ".json";
 
     std::string fullPath(std::string path) const;
   };

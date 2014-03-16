@@ -40,7 +40,7 @@ namespace green_leaf {
   }
 
   TEST_F(Vector2Test, ToString) {
-    ASSERT_EQ(std::string("Vector2(1, 2)"), vec_.toString());
+    ASSERT_EQ("Vector2(1, 2)", vec_.toString());
   }
 
   TEST_F(Vector2Test, Sum) {

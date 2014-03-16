@@ -47,7 +47,7 @@ namespace green_leaf {
   }
 
   TEST_F(Vector2fTest, ToString) {
-    EXPECT_EQ(std::string("Vector2f(1.5, 2.5)"), Vector2f(1.5f, 2.5f).toString());
+    EXPECT_EQ("Vector2f(1.5, 2.5)", Vector2f(1.5f, 2.5f).toString());
   }
 
   TEST_F(Vector2fTest, ToVector2) {

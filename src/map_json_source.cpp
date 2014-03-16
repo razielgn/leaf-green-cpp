@@ -109,13 +109,13 @@ namespace green_leaf {
     tile_size_ = extractTileSize(root);
     resolution_ = dimension * tile_size_;
 
-    background_tile_set_  = extractTileSet(content, tile_size_, root["tilesets"], std::string("background"));
-    decorations_tile_set_ = extractTileSet(content, tile_size_, root["tilesets"], std::string("decorations"));
+    background_tile_set_  = extractTileSet(content, tile_size_, root["tilesets"], "background");
+    decorations_tile_set_ = extractTileSet(content, tile_size_, root["tilesets"], "decorations");
 
-    background_tile_layer_  = extractTileLayer(dimension, root["layers"], std::string("background"),  *background_tile_set_);
-    floor_tile_layer_       = extractTileLayer(dimension, root["layers"], std::string("floor"),       *decorations_tile_set_);
-    decorations_tile_layer_ = extractTileLayer(dimension, root["layers"], std::string("decorations"), *decorations_tile_set_);
-    foreground_tile_layer_  = extractTileLayer(dimension, root["layers"], std::string("foreground"),  *decorations_tile_set_);
+    background_tile_layer_  = extractTileLayer(dimension, root["layers"], "background",  *background_tile_set_);
+    floor_tile_layer_       = extractTileLayer(dimension, root["layers"], "floor",       *decorations_tile_set_);
+    decorations_tile_layer_ = extractTileLayer(dimension, root["layers"], "decorations", *decorations_tile_set_);
+    foreground_tile_layer_  = extractTileLayer(dimension, root["layers"], "foreground",  *decorations_tile_set_);
 
     collisions_layer_ = extractCollisionsLayer(dimension, root["layers"], "collisions", tile_size_);
   }
