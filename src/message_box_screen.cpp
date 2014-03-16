@@ -88,6 +88,10 @@ namespace green_leaf {
 
     if(endOfMessage()) {
       if(lastMessage()) {
+        if(actionButtonPressed(input)) {
+          popScreen();
+        }
+
         return;
       }
 
