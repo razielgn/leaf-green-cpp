@@ -37,6 +37,7 @@ namespace green_leaf {
     EXPECT_CALL(graphics_, drawTexture(_, Rectangle(88, 2, 4, 14), Rectangle( 44, 42, 4, 14))); // ,
     EXPECT_CALL(graphics_, drawTexture(_, Rectangle(92, 2, 6, 14), Rectangle(111, 56, 6, 14))); // u
 
-    font_.drawString(graphics_, Vector2(2, 2), "Heli. 9! It's go,u");
+    unsigned int total_width = font_.drawString(graphics_, Vector2(2, 2), "Heli. 9! It's go,u");
+    EXPECT_EQ(98u, total_width);
   }
 }

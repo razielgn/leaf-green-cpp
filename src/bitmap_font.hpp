@@ -12,12 +12,12 @@ namespace green_leaf {
   public:
     BitmapFont(std::unique_ptr<const Texture> texture);
 
-    void drawString(const Graphics& graphics, Vector2 offset, const std::string string) const;
+    unsigned int drawString(const Graphics& graphics, Vector2 offset, const std::string string) const;
   private:
     std::unique_ptr<const Texture> texture_;
 
     // Returns the drawn character width.
-    int drawCharacter(const Graphics& graphics, Vector2 offset, const char c) const;
+    unsigned int drawCharacter(const Graphics& graphics, Vector2 offset, const char c) const;
   };
 }
 

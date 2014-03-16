@@ -78,14 +78,14 @@ namespace green_leaf {
     { '\'', Rectangle( 45, 51, 3, 10) },
   };
 
-  const int space_width = 6;
+  const unsigned int space_width = 6;
 
   BitmapFont::BitmapFont(std::unique_ptr<const Texture> texture)
     : texture_(std::move(texture))
   {
   }
 
-  int BitmapFont::drawCharacter(const Graphics& graphics, Vector2 offset, const char c) const {
+  unsigned int BitmapFont::drawCharacter(const Graphics& graphics, Vector2 offset, const char c) const {
     auto search = chars.find(c);
 
     if(search == chars.end()) {
@@ -98,10 +98,12 @@ namespace green_leaf {
     return source_rect.width();
   }
 
-  void BitmapFont::drawString(const Graphics& graphics, Vector2 offset, const std::string string) const {
+  unsigned int BitmapFont::drawString(const Graphics& graphics, Vector2 offset, const std::string string) const {
     for(const char& c : string) {
       int char_width = drawCharacter(graphics, offset, c);
       offset = offset + Vector2(char_width, 0);
     }
+
+    return offset.x();
   }
 }
