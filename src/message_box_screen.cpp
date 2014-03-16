@@ -30,7 +30,7 @@ namespace green_leaf {
     }
   }
 
-  MessageBoxScreen::MessageBoxScreen(const std::vector<const message> messages)
+  MessageBoxScreen::MessageBoxScreen(const std::vector<message> messages)
     : messages_(messages)
   {
   }

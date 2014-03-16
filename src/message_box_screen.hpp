@@ -19,7 +19,7 @@ namespace green_leaf {
 
   class MessageBoxScreen : public Screen {
   public:
-    MessageBoxScreen(const std::vector<const message> messages);
+    MessageBoxScreen(const std::vector<message> messages);
 
     void loadContent(const Content& content);
     void update(Input& input, const GameTime game_time);
@@ -29,7 +29,7 @@ namespace green_leaf {
     std::unique_ptr<const Texture> menus_;
     std::unique_ptr<const BitmapFont> font_;
 
-    const std::vector<const message> messages_;
+    const std::vector<message> messages_;
 
     MenuTriangleState triangle_state_;
     MessageBoxState state_;
