@@ -17,7 +17,7 @@ namespace green_leaf {
     virtual const TileLayer& floorLayer() const = 0;
     virtual const TileLayer& foregroundLayer() const = 0;
     virtual const CollisionsLayer& collisionsLayer() const = 0;
-    virtual const std::vector<const Object> objects() const = 0;
+    virtual const std::vector<Object> objects() const = 0;
 
     virtual Vector2 resolution() const = 0;
     virtual Vector2 tileSize() const = 0;

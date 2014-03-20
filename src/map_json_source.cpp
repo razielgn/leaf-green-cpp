@@ -111,16 +111,16 @@ namespace green_leaf {
     return messages;
   }
 
-  std::vector<const Object> extractObjects(const Json::Value layers, const std::string name) {
+  std::vector<Object> extractObjects(const Json::Value layers, const std::string name) {
     const Json::Value layer = findObjectWithName(layers, name);
     const Json::Value json_objects = layer["objects"];
-    std::vector<const Object> objects;
+    std::vector<Object> objects;
 
     for(const auto json_object : json_objects) {
-      objects.push_back(Object(
+      objects.emplace_back(
         extractRectangle(json_object),
         extractMessages(json_object["properties"])
-      ));
+      );
     }
 
     return objects;

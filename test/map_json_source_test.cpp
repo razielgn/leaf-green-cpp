@@ -85,7 +85,7 @@ namespace green_leaf {
   }
 
   TEST_P(MapJsonSourceTest, Objects) {
-    const std::vector<const Object> objects = GetParam()->objects();
+    const std::vector<Object> objects = GetParam()->objects();
     EXPECT_EQ(2u, objects.size());
 
     EXPECT_EQ(Rectangle(48, 16, 32, 16), objects[0].rectangle());
