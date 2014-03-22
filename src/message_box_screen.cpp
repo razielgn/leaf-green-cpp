@@ -5,6 +5,7 @@
 #include "input.hpp"
 #include "input_key.hpp"
 #include "unused.hpp"
+#include "utf8/checked.h"
 
 namespace green_leaf {
   const Rectangle RED_ARROW_SRC(48, 0, 10, 6);
@@ -60,7 +61,8 @@ namespace green_leaf {
   }
 
   bool MessageBoxScreen::endOfLine() const {
-    return state_.character() == currentLine().size();
+    std::string line = currentLine();
+    return state_.character() == utf8::distance(line.begin(), line.end());
   }
 
   bool MessageBoxScreen::endOfMessage() const {
@@ -132,6 +134,10 @@ namespace green_leaf {
     return font_->drawString(graphics, lineOffset(index), msg);
   }
 
+  unsigned int MessageBoxScreen::drawLine(const Graphics& graphics, unsigned int index, const std::string msg, size_t chars) const {
+    return font_->drawString(graphics, lineOffset(index), msg, chars);
+  }
+
   void MessageBoxScreen::drawArrow(const Graphics& graphics, Vector2 offset) const {
     graphics.drawTexture(*menus_, offset, RED_ARROW_SRC);
   }
@@ -143,8 +149,7 @@ namespace green_leaf {
       drawLine(graphics, 0, lineAt(0));
     }
 
-    const std::string message_so_far = currentLine().substr(0, state_.character());
-    unsigned int full_width = drawLine(graphics, state_.line(), message_so_far);
+    unsigned int full_width = drawLine(graphics, state_.line(), currentLine(), state_.character());
 
     if(endOfMessage()) {
       if(lastMessage()) {

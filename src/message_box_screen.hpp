@@ -37,6 +37,7 @@ namespace green_leaf {
     void drawBackground(const Graphics& graphics) const;
     void drawArrow(const Graphics& graphics, Vector2 offset) const;
     unsigned int drawLine(const Graphics& graphics, unsigned int index, const std::string msg) const;
+    unsigned int drawLine(const Graphics& graphics, unsigned int index, const std::string msg, size_t chars) const;
 
     const message currentMessage() const;
     const std::string currentLine() const;
