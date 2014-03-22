@@ -194,10 +194,9 @@ namespace utf8
     }
 
     template <typename octet_iterator>
-    typename std::iterator_traits<octet_iterator>::difference_type
-    distance (octet_iterator first, octet_iterator last)
+    size_t distance (octet_iterator first, octet_iterator last)
     {
-        typename std::iterator_traits<octet_iterator>::difference_type dist;
+        size_t dist;
         for (dist = 0; first < last; ++dist)
             utf8::next(first, last);
         return dist;
