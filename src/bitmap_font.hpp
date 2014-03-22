@@ -17,7 +17,7 @@ namespace green_leaf {
     std::unique_ptr<const Texture> texture_;
 
     // Returns the drawn character width.
-    unsigned int drawCharacter(const Graphics& graphics, Vector2 offset, const char c) const;
+    unsigned int drawCharacter(const Graphics& graphics, Vector2 offset, uint32_t c) const;
   };
 }
 

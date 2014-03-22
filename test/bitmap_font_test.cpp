@@ -40,4 +40,12 @@ namespace green_leaf {
     unsigned int total_width = font_.drawString(graphics_, Vector2(2, 2), "Heli. 9! It's go,u");
     EXPECT_EQ(98u, total_width);
   }
+
+  TEST_F(BitmapFontTest, DrawUtf8) {
+    EXPECT_CALL(graphics_, drawTexture(_, Rectangle( 0, 0, 6, 14), Rectangle(183, 0, 6, 14))); // é
+    EXPECT_CALL(graphics_, drawTexture(_, Rectangle( 6, 0, 6, 14), Rectangle( 0, 42, 6, 14))); // …
+
+    unsigned int total_width = font_.drawString(graphics_, Vector2(0, 0), "é…");
+    EXPECT_EQ(12u, total_width);
+  }
 }
