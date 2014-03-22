@@ -48,4 +48,15 @@ namespace green_leaf {
     unsigned int total_width = font_.drawString(graphics_, Vector2(0, 0), "é…");
     EXPECT_EQ(12u, total_width);
   }
+
+  TEST_F(BitmapFontTest, DrawUtf8WithZeroChars) {
+    unsigned int total_width = font_.drawString(graphics_, Vector2(0, 0), "é…", 0);
+    EXPECT_EQ(0u, total_width);
+  }
+
+  TEST_F(BitmapFontTest, DrawUtf8WithOneChar) {
+    EXPECT_CALL(graphics_, drawTexture(_, Rectangle( 0, 0, 6, 14), Rectangle(183, 0, 6, 14))); // é
+    unsigned int total_width = font_.drawString(graphics_, Vector2(0, 0), "é…", 1);
+    EXPECT_EQ(6u, total_width);
+  }
 }

@@ -13,6 +13,7 @@ namespace green_leaf {
     BitmapFont(std::unique_ptr<const Texture> texture);
 
     unsigned int drawString(const Graphics& graphics, Vector2 offset, const std::string string) const;
+    unsigned int drawString(const Graphics& graphics, Vector2 offset, const std::string string, size_t chars) const;
   private:
     std::unique_ptr<const Texture> texture_;
 
