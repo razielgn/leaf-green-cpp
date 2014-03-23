@@ -2,6 +2,7 @@
 #define GL_MESSAGE_BOX_SCREEN_HPP
 
 #include "bitmap_font.hpp"
+#include "custom_types.hpp"
 #include "menu_triangle_state.hpp"
 #include "message_box_state.hpp"
 #include "screen.hpp"
@@ -14,8 +15,6 @@ namespace green_leaf {
   class Content;
   class Graphics;
   class Input;
-
-  typedef std::pair<const std::string, const std::string> message;
 
   class MessageBoxScreen : public Screen {
   public:
