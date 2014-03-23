@@ -4,6 +4,7 @@ file(
   GLOB
   SRC_FILES
   "${SRC_DIR}/*.cpp"
+  "${SRC_DIR}/utils/*.cpp"
 )
 
 file(

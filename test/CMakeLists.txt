@@ -8,6 +8,7 @@ file(
   GLOB
   TEST_FILES
   "${TEST_DIR}/*_test.cpp"
+  "${TEST_DIR}/utils/*_test.cpp"
 )
 
 set(SRC_FILES
@@ -28,6 +29,7 @@ set(SRC_FILES
   "${SRC_DIR}/screen_manager.cpp"
   "${SRC_DIR}/tile_layer.cpp"
   "${SRC_DIR}/tile_set.cpp"
+  "${SRC_DIR}/utils/string.cpp"
   "${SRC_DIR}/vector2.cpp"
   "${SRC_DIR}/vector2f.cpp"
 )
