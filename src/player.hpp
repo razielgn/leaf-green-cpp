@@ -17,7 +17,6 @@ namespace green_leaf {
   public:
     Player();
     void loadContent(const Content& graphics);
-    void unloadContent();
 
     void update(const PlayerMovement& player_movement);
     void draw(const Graphics& graphics) const;

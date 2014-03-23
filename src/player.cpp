@@ -19,9 +19,6 @@ namespace green_leaf {
     texture_ = content.loadTexture("hero.png");
   }
 
-  void Player::unloadContent() {
-  }
-
   void Player::update(const PlayerMovement& player_movement) {
     int frame_x = frame_.x();
     int frame_y = frame_.y();
