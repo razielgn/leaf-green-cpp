@@ -1,6 +1,7 @@
 #include "gmock/gmock.h"
 #include "collisions_layer.hpp"
 #include "map_json_source.hpp"
+#include "object.hpp"
 #include "tile_layer.hpp"
 #include "tile_set.hpp"
 #include "content_mock.hpp"
@@ -81,6 +82,23 @@ namespace green_leaf {
 
     EXPECT_EQ(Rectangle(80, 64, 16, 32), rectangles[0]);
     EXPECT_EQ(Rectangle(0, 16, 32, 32),  rectangles[1]);
+  }
+
+  TEST_P(MapJsonSourceTest, Objects) {
+    const std::vector<const Object> objects = GetParam()->objects();
+    EXPECT_EQ(2u, objects.size());
+
+    EXPECT_EQ(Rectangle(48, 16, 32, 16), objects[0].rectangle());
+
+    const std::vector<message> messages1;
+    EXPECT_EQ(messages1, objects[0].messages());
+
+    EXPECT_EQ(Rectangle(0, 16, 32, 32), objects[1].rectangle());
+    const std::vector<message> messages2 {
+      std::make_pair(u8"Line€", u8"Lineum ouch досда"),
+      std::make_pair("Line2", ""),
+    };
+    EXPECT_EQ(messages2, objects[1].messages());
   }
 
   const ContentMock content_;

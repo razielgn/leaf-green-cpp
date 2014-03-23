@@ -41,6 +41,10 @@ namespace green_leaf {
       return *collisions_layer_;
     }
 
+    virtual const std::vector<const Object> objects() const override {
+      return objects_;
+    }
+
   private:
     Vector2 resolution_;
     Vector2 tile_size_;
@@ -53,6 +57,8 @@ namespace green_leaf {
     std::unique_ptr<const TileLayer> decorations_tile_layer_;
     std::unique_ptr<const TileLayer> foreground_tile_layer_;
     std::unique_ptr<const CollisionsLayer> collisions_layer_;
+
+    std::vector<const Object> objects_;
   };
 }
 

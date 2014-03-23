@@ -6,6 +6,7 @@
 #include "texture.hpp"
 #include "tile_layer.hpp"
 #include "tile_set.hpp"
+#include "utils/string.hpp"
 
 #include <fstream>
 
@@ -83,6 +84,48 @@ namespace green_leaf {
     );
   }
 
+  message extractMessage(const std::string string_message) {
+    auto lines = utils::split(string_message, "\n");
+
+    if(lines.size() == 1) {
+      return std::make_pair(lines[0], "");
+    } else {
+      return std::make_pair(lines[0], lines[1]);
+    }
+  }
+
+  std::vector<message> extractMessages(const Json::Value properties) {
+    const Json::Value json_messages = properties["message"];
+
+    if(!json_messages) {
+      return {};
+    }
+
+    std::vector<message> messages;
+    auto split_messages = utils::split(json_messages.asString(), "|");
+
+    for(auto single_message : split_messages) {
+      messages.push_back(extractMessage(single_message));
+    }
+
+    return messages;
+  }
+
+  std::vector<const Object> extractObjects(const Json::Value layers, const std::string name) {
+    const Json::Value layer = findObjectWithName(layers, name);
+    const Json::Value json_objects = layer["objects"];
+    std::vector<const Object> objects;
+
+    for(const auto json_object : json_objects) {
+      objects.push_back(Object(
+        extractRectangle(json_object),
+        extractMessages(json_object["properties"])
+      ));
+    }
+
+    return objects;
+  }
+
   const Json::Value parseJsonPath(const std::string path) {
     Json::Value root;
     Json::Reader reader;
@@ -118,5 +161,7 @@ namespace green_leaf {
     foreground_tile_layer_  = extractTileLayer(dimension, root["layers"], "foreground",  *decorations_tile_set_);
 
     collisions_layer_ = extractCollisionsLayer(dimension, root["layers"], "collisions", tile_size_);
+
+    objects_ = extractObjects(root["layers"], "objects");
   }
 }
