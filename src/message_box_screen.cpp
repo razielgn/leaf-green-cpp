@@ -5,7 +5,7 @@
 #include "input.hpp"
 #include "input_key.hpp"
 #include "unused.hpp"
-#include "utf8/checked.h"
+#include "utils/string.hpp"
 
 namespace green_leaf {
   const Rectangle RED_ARROW_SRC(48, 0, 10, 6);
@@ -61,8 +61,7 @@ namespace green_leaf {
   }
 
   bool MessageBoxScreen::endOfLine() const {
-    std::string line = currentLine();
-    return state_.character() == utf8::distance(line.begin(), line.end());
+    return state_.character() == utils::utf8Length(currentLine());
   }
 
   bool MessageBoxScreen::endOfMessage() const {

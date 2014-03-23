@@ -27,5 +27,10 @@ namespace green_leaf {
       std::vector<std::string> expected { "a", "cacca", "d", "abba" };
       EXPECT_EQ(expected, split(str, ",."));
     }
+
+    TEST(StringUtils, Utf8Length) {
+      const std::string str = u8"$¢€𤭢";
+      EXPECT_EQ(4u, utf8Length(str));
+    }
   }
 }

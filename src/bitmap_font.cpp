@@ -1,6 +1,7 @@
 #include "bitmap_font.hpp"
 
 #include "graphics.hpp"
+#include "utils/string.hpp"
 #include "utf8/checked.h"
 
 #include <map>
@@ -100,7 +101,7 @@ namespace green_leaf {
   }
 
   unsigned int BitmapFont::drawString(const Graphics& graphics, Vector2 offset, const std::string str) const {
-    size_t length = utf8::distance(str.begin(), str.end());
+    size_t length = utils::utf8Length(str);
 
     return drawString(graphics, offset, str, length);
   }

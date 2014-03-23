@@ -1,5 +1,7 @@
 #include "string.hpp"
 
+#include "../utf8/checked.h"
+
 namespace green_leaf {
   namespace utils {
     std::vector<std::string> split(const std::string string, const std::string token) {
@@ -13,6 +15,10 @@ namespace green_leaf {
       } while(match != std::string::npos);
 
       return tokens;
+    }
+
+    size_t utf8Length(const std::string string) {
+      return utf8::distance(string.begin(), string.end());
     }
   }
 }
