@@ -26,23 +26,23 @@ namespace green_leaf {
 
     if(player_movement.moving()) {
       if(camera_stopped_) {
-        Vector2 desired_destination_(0, 0);
+        Vector2 desired_destination(0, 0);
 
         switch(player_movement.movement()) {
           case Movement::Right:
-            desired_destination_ = player_position_ + Vector2(1, 0); break;
+            desired_destination = player_position_ + Vector2(1, 0); break;
           case Movement::Left:
-            desired_destination_ = player_position_ - Vector2(1, 0); break;
+            desired_destination = player_position_ - Vector2(1, 0); break;
           case Movement::Up:
-            desired_destination_ = player_position_ - Vector2(0, 1); break;
+            desired_destination = player_position_ - Vector2(0, 1); break;
           case Movement::Down:
-            desired_destination_ = player_position_ + Vector2(0, 1); break;
+            desired_destination = player_position_ + Vector2(0, 1); break;
           case Movement::Still:
           default: break;
         }
 
-        if(collisions_layer.canMove(player_position_, desired_destination_)) {
-          destination_ = desired_destination_;
+        if(collisions_layer.canMove(player_position_, desired_destination)) {
+          destination_ = desired_destination;
           camera_stopped_ = false;
         } else {
           player_movement.clashing(true);
@@ -50,8 +50,8 @@ namespace green_leaf {
       }
 
       Vector2 destination = map_offset_.centerOffset(destination_);
-      Vector2f something = Vector2f(destination - screen_offset_) * player_movement.progress();
-      screen_offset_ = screen_offset_ + something.toVector2();
+      Vector2f movement = Vector2f(destination - screen_offset_) * player_movement.progress();
+      screen_offset_ = screen_offset_ + movement.toVector2();
     }
 
     if(player_movement.finished()) {
