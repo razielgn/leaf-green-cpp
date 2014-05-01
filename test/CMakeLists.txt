@@ -66,4 +66,5 @@ include_directories(
 
 target_link_libraries(green-leaf-tests
   -lpthread
+  ${extra_linker_flags}
 )

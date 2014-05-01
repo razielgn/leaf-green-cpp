@@ -19,5 +19,15 @@ add_definitions(
   -pedantic
 )
 
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  add_definitions(
+    -stdlib=libc++
+  )
+
+  set(extra_linker_flags
+    -lc++ -lc++abi
+  )
+endif()
+
 add_subdirectory("${SRC_DIR}")
 add_subdirectory("${TEST_DIR}")
