@@ -25,4 +25,5 @@ add_executable(green-leaf
 target_link_libraries(green-leaf
   ${SDL2_LIBRARY}
   ${SDL2_IMAGE_LIBRARY}
+  ${extra_linker_flags}
 )
