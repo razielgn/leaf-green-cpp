@@ -25,13 +25,13 @@ namespace green_leaf {
 
   private:
     const std::string map_name_;
-    const Vector2 start_pos_;
     const Vector2 screen_size_;
 
     std::unique_ptr<const MapSource> map_source_;
     std::unique_ptr<Map> map_;
     Player player_;
     PlayerMovement player_movement_;
+    Vector2 player_position_;
   };
 }
 
