@@ -6,9 +6,9 @@
 namespace green_leaf {
   class MapOffset {
   public:
-    MapOffset(Vector2 tile_size, Vector2 screen_size);
+    MapOffset(const Vector2 tile_size, const Vector2 screen_size);
 
-    Vector2 centerOffset(Vector2 center) const;
+    Vector2 centerOffset(const Vector2 center) const;
 
   private:
     const Vector2 tile_size_;
