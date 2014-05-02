@@ -11,8 +11,7 @@ namespace green_leaf {
   protected:
     BitmapFontTest() { }
 
-    std::unique_ptr<TextureMock> texture_ =
-      std::unique_ptr<TextureMock>(new TextureMock(Vector2(0, 0)));
+    std::unique_ptr<TextureMock> texture_ = std::make_unique<TextureMock>(Vector2(0, 0));
     GraphicsMock graphics_;
     BitmapFont font_ = BitmapFont(std::move(texture_));
   };

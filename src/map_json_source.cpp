@@ -30,9 +30,7 @@ namespace green_leaf {
       background_tiles.push_back(tile_gid.asUInt());
     }
 
-    return std::unique_ptr<const TileLayer>(
-      new TileLayer(dimension, tile_set, background_tiles)
-    );
+    return std::make_unique<const TileLayer>(dimension, tile_set, background_tiles);
   }
 
   std::unique_ptr<const TileSet> extractTileSet(const Content& content, Vector2 tile_size, const Json::Value tile_sets, const std::string name) {
@@ -42,9 +40,7 @@ namespace green_leaf {
     unsigned int start_code = tile_set["firstgid"].asUInt();
     std::unique_ptr<const Texture> texture = content.loadTexture(texture_path);
 
-    return std::unique_ptr<const TileSet>(
-      new TileSet(std::move(texture), tile_size, start_code)
-    );
+    return std::make_unique<const TileSet>(std::move(texture), tile_size, start_code);
   }
 
   Rectangle extractRectangle(const Json::Value rect) {
@@ -65,9 +61,7 @@ namespace green_leaf {
       rectangles.emplace_back(extractRectangle(rectangle));
     }
 
-    return std::unique_ptr<CollisionsLayer>(
-      new CollisionsLayer(dimension, tile_size, rectangles)
-    );
+    return std::make_unique<const CollisionsLayer>(dimension, tile_size, rectangles);
   }
 
   Vector2 extractDimension(const Json::Value root) {

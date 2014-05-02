@@ -6,7 +6,7 @@
 
 int main() {
   try {
-    auto game = std::unique_ptr<green_leaf::Game>(new green_leaf::Game());
+    auto game = std::make_unique<green_leaf::Game>();
 
     game->loadContent();
     game->run();

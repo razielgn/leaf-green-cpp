@@ -13,7 +13,7 @@ namespace green_leaf {
   protected:
     TileLayerTest() { }
 
-    std::unique_ptr<TextureMock> texture_ = std::unique_ptr<TextureMock>(new TextureMock(Vector2(12, 12)));
+    std::unique_ptr<TextureMock> texture_ = std::make_unique<TextureMock>(Vector2(12, 12));
     Vector2 tile_size_ = Vector2(4, 4);
     TileSet tile_set_ = TileSet(std::move(texture_), tile_size_, 1);
 

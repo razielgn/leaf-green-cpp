@@ -23,8 +23,6 @@ namespace green_leaf {
   std::unique_ptr<const MapSource> SDLContent::loadMap(const std::string path) const {
     std::string full_path = fullPath(path) + maps_ext_;
 
-    return std::unique_ptr<const MapSource>(
-      new MapJsonSource(*this, full_path)
-    );
+    return std::make_unique<const MapJsonSource>(*this, full_path);
   }
 }

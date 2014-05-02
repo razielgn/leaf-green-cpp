@@ -34,7 +34,7 @@ namespace green_leaf {
     map_source_ = content.loadMap(map_name_);
     player_.loadContent(content);
 
-    map_ = std::unique_ptr<Map>(new Map(*map_source_, screen_size_));
+    map_ = std::make_unique<Map>(*map_source_, screen_size_);
     map_->reset(player_position_);
   }
 

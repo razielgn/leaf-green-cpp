@@ -14,7 +14,7 @@ namespace green_leaf {
     std::unique_ptr<const Texture> loadTexture(const std::string path) const {
       UNUSED(path);
 
-      return std::unique_ptr<const Texture>(new TextureMock(Vector2(0, 0)));
+      return std::make_unique<const TextureMock>(Vector2(0, 0));
     }
 
     std::unique_ptr<const MapSource> loadMap(const std::string map_name) const {

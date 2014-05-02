@@ -9,9 +9,9 @@
 
 namespace green_leaf {
   Game::Game()
-    : graphics_(std::unique_ptr<Graphics>(new SDLGraphics()))
-    , input_(std::unique_ptr<Input>(new SDLInput()))
-    , content_(std::unique_ptr<Content>(new SDLContent(*graphics_, "./assets")))
+    : graphics_(std::make_unique<SDLGraphics>())
+    , input_(std::make_unique<SDLInput>())
+    , content_(std::make_unique<SDLContent>(*graphics_, "./assets"))
     , screen_manager_(ScreenManager(*content_))
     , total_time_(SDL_GetTicks())
     , running_(true)

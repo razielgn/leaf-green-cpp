@@ -13,8 +13,7 @@ namespace green_leaf {
   protected:
     GraphicsTest() { }
 
-    std::unique_ptr<TextureMock> texture_ =
-      std::unique_ptr<TextureMock>(new TextureMock(Vector2(0, 0)));
+    std::unique_ptr<TextureMock> texture_ = std::make_unique<TextureMock>(Vector2(0, 0));
     GraphicsMock graphics_;
   };
 

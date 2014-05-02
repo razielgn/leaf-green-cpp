@@ -41,7 +41,7 @@ namespace green_leaf {
     menus_ = content.loadTexture("menus.png");
 
     auto texture = content.loadTexture("font1.png");
-    font_ = std::unique_ptr<const BitmapFont>(new BitmapFont(std::move(texture)));
+    font_ = std::make_unique<const BitmapFont>(std::move(texture));
   }
 
   const message MessageBoxScreen::currentMessage() const {
