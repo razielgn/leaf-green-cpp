@@ -11,7 +11,7 @@ find_package(SDL2_Image REQUIRED)
 include_directories(${SDL2_IMAGE_INCLUDE_DIR})
 
 add_definitions(
-  -std=c++11
+  -std=c++1y
   -g
   -Wall
   -Wextra
