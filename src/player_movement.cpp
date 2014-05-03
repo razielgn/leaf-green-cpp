@@ -6,10 +6,10 @@
 #include "movement.hpp"
 
 namespace green_leaf {
-  PlayerMovement::PlayerMovement(const Movement start)
-    : movement_(start)
+  PlayerMovement::PlayerMovement(const Movement direction)
+    : movement_(Movement::Still)
+    , direction_(direction)
     , elapsed_mseconds_(0)
-    , moving_(false)
     , finished_(false)
     , clashing_(false)
   {
@@ -18,24 +18,21 @@ namespace green_leaf {
   void PlayerMovement::update(Input& input, const GameTime game_time) {
     if(finished_) {
       finished_ = false;
-      moving_ = false;
       clashing_ = false;
       elapsed_mseconds_ = 0;
+      direction_ = movement_;
+      movement_ = Movement::Still;
     }
 
     if(elapsed_mseconds_ == 0) {
       if(input.isKeyDown(InputKey::Right)) {
         movement_ = Movement::Right;
-        moving_ = true;
       } else if(input.isKeyDown(InputKey::Left)) {
         movement_ = Movement::Left;
-        moving_ = true;
       } else if(input.isKeyDown(InputKey::Up)) {
         movement_ = Movement::Up;
-        moving_ = true;
       } else if(input.isKeyDown(InputKey::Down)) {
         movement_ = Movement::Down;
-        moving_ = true;
       } else {
         return;
       }

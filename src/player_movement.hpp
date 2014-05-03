@@ -1,15 +1,15 @@
 #ifndef GL_PLAYER_MOVEMENT_HPP
 #define GL_PLAYER_MOVEMENT_HPP
 
+#include "movement.hpp"
+
 namespace green_leaf {
   class Input;
   class GameTime;
 
-  enum class Movement;
-
   class PlayerMovement {
   public:
-    PlayerMovement(const Movement start);
+    PlayerMovement(const Movement direction);
 
     void update(Input& input, const GameTime game_time);
 
@@ -21,8 +21,16 @@ namespace green_leaf {
       return movement_;
     }
 
+    Movement direction() const {
+      return direction_;
+    }
+
     bool moving() const {
-      return moving_;
+      return movement_ != Movement::Still;
+    }
+
+    bool still() const {
+      return !moving();
     }
 
     bool finished() const {
@@ -43,8 +51,8 @@ namespace green_leaf {
     const int clashing_movement_time_ = 500;
 
     Movement movement_;
+    Movement direction_;
     int elapsed_mseconds_;
-    bool moving_;
     bool finished_;
     bool clashing_;
 

@@ -21,15 +21,22 @@ namespace green_leaf {
       EXPECT_CALL(input_, isKeyDown(_)).WillRepeatedly(Return(false));
     }
 
-    PlayerMovement player_movement_ = PlayerMovement(Movement::Still);
+    PlayerMovement player_movement_ = PlayerMovement(Movement::Down);
     InputMock input_;
-    const GameTime game_time_ = GameTime(10, 0);
+
+    const GameTime empty_anim_ = GameTime(0, 0);
+    const GameTime half_anim_ = GameTime(125, 0);
+    const GameTime full_anim_ = GameTime(250, 0);
   };
+
+  TEST_F(PlayerMovementTest, Constructor) {
+    EXPECT_EQ(Movement::Down, player_movement_.direction());
+  }
 
   TEST_F(PlayerMovementTest, DownKeyPressed) {
     onlyPressed(InputKey::Down);
 
-    player_movement_.update(input_, game_time_);
+    player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_EQ(Movement::Down, player_movement_.movement());
@@ -38,7 +45,7 @@ namespace green_leaf {
   TEST_F(PlayerMovementTest, RightKeyPressed) {
     onlyPressed(InputKey::Right);
 
-    player_movement_.update(input_, game_time_);
+    player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_EQ(Movement::Right, player_movement_.movement());
@@ -47,7 +54,7 @@ namespace green_leaf {
   TEST_F(PlayerMovementTest, LeftKeyPressed) {
     onlyPressed(InputKey::Left);
 
-    player_movement_.update(input_, game_time_);
+    player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_EQ(Movement::Left, player_movement_.movement());
@@ -56,7 +63,7 @@ namespace green_leaf {
   TEST_F(PlayerMovementTest, UpKeyPressed) {
     onlyPressed(InputKey::Up);
 
-    player_movement_.update(input_, game_time_);
+    player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_EQ(Movement::Up, player_movement_.movement());
@@ -65,14 +72,14 @@ namespace green_leaf {
   TEST_F(PlayerMovementTest, InputSkippedWhenMoving) {
     onlyPressed(InputKey::Up);
 
-    player_movement_.update(input_, game_time_);
+    player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_EQ(Movement::Up, player_movement_.movement());
 
     onlyPressed(InputKey::Down);
 
-    player_movement_.update(input_, game_time_);
+    player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_EQ(Movement::Up, player_movement_.movement());
@@ -81,7 +88,7 @@ namespace green_leaf {
   TEST_F(PlayerMovementTest, ProgressFrozenWhenStill) {
     nothingPressed();
 
-    player_movement_.update(input_, game_time_);
+    player_movement_.update(input_, half_anim_);
 
     EXPECT_FLOAT_EQ(0.0f, player_movement_.progress());
   }
@@ -93,8 +100,7 @@ namespace green_leaf {
     float progress = 0.0f;
 
     do {
-      const GameTime game_time(elapsed, 0);
-      player_movement_.update(input_, game_time);
+      player_movement_.update(input_, GameTime(elapsed, 0));
 
       EXPECT_FLOAT_EQ(progress, player_movement_.progress());
 
@@ -106,28 +112,39 @@ namespace green_leaf {
   TEST_F(PlayerMovementTest, Finished) {
     onlyPressed(InputKey::Down);
 
-    const GameTime game_time(125, 0);
-
-    player_movement_.update(input_, game_time);
-    EXPECT_FALSE(player_movement_.finished());
-
-    player_movement_.update(input_, game_time);
+    player_movement_.update(input_, full_anim_);
     EXPECT_TRUE(player_movement_.finished());
+  }
+
+  TEST_F(PlayerMovementTest, MovementIsResetAfterFinish) {
+    onlyPressed(InputKey::Down);
+    player_movement_.update(input_, full_anim_);
+    nothingPressed();
+    player_movement_.update(input_, empty_anim_);
+
+    EXPECT_EQ(Movement::Still, player_movement_.movement());
+  }
+
+  TEST_F(PlayerMovementTest, DirectionIsMovementAfterFinish) {
+    onlyPressed(InputKey::Down);
+    player_movement_.update(input_, full_anim_);
+    nothingPressed();
+    player_movement_.update(input_, empty_anim_);
+
+    EXPECT_EQ(Movement::Down, player_movement_.direction());
   }
 
   TEST_F(PlayerMovementTest, ResetStateAfterFinished) {
     onlyPressed(InputKey::Down);
 
-    const GameTime game_time(250, 0);
-
-    player_movement_.update(input_, game_time);
+    player_movement_.update(input_, full_anim_);
     EXPECT_TRUE(player_movement_.finished());
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_FLOAT_EQ(1.0f, player_movement_.progress());
 
     nothingPressed();
 
-    player_movement_.update(input_, game_time_);
+    player_movement_.update(input_, half_anim_);
     EXPECT_FALSE(player_movement_.finished());
     EXPECT_FALSE(player_movement_.moving());
     EXPECT_THAT(0.0f, player_movement_.progress());
@@ -145,17 +162,13 @@ namespace green_leaf {
     onlyPressed(InputKey::Down);
     player_movement_.clashing(true);
 
-    const GameTime game_time(250, 0);
-
-    player_movement_.update(input_, game_time);
+    player_movement_.update(input_, full_anim_);
     EXPECT_FALSE(player_movement_.finished());
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_TRUE(player_movement_.clashing());
     EXPECT_FLOAT_EQ(0.5f, player_movement_.progress());
 
-    const GameTime game_time2(250, 0);
-
-    player_movement_.update(input_, game_time2);
+    player_movement_.update(input_, full_anim_);
     EXPECT_TRUE(player_movement_.finished());
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_TRUE(player_movement_.clashing());
