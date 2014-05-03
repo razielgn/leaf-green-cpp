@@ -2,7 +2,7 @@
 
 #include "graphics.hpp"
 #include "utils/string.hpp"
-#include "utf8/checked.h"
+#include "utf8/checked.hpp"
 
 #include <map>
 

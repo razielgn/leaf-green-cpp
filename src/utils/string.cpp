@@ -1,6 +1,6 @@
 #include "string.hpp"
 
-#include "../utf8/checked.h"
+#include "../utf8/checked.hpp"
 
 namespace green_leaf {
   namespace utils {
