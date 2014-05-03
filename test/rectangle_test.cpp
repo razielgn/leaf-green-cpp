@@ -111,4 +111,16 @@ namespace green_leaf {
 
     EXPECT_EQ(4, r.height());
   }
+
+  TEST(RectangleTest, Contains) {
+    Rectangle r(0, 0, 1, 2);
+
+    EXPECT_TRUE(r.contains(Vector2(0, 0)));
+    EXPECT_TRUE(r.contains(Vector2(0, 1)));
+
+    EXPECT_FALSE(r.contains(Vector2(1, 0)));
+    EXPECT_FALSE(r.contains(Vector2(1, 1)));
+    EXPECT_FALSE(r.contains(Vector2(1, 2)));
+    EXPECT_FALSE(r.contains(Vector2(2, 2)));
+  }
 }

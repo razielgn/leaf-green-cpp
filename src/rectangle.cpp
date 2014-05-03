@@ -66,6 +66,14 @@ namespace green_leaf {
     return s.str();
   }
 
+  bool Rectangle::contains(const Vector2 v) const {
+    return
+      v.x() >= x() &&
+      v.y() >= y() &&
+      v.x() < x() + width() &&
+      v.y() < y() + height();
+  }
+
   ::std::ostream& operator<<(::std::ostream& os, const Rectangle& r) {
     return os << r.toString();
   }

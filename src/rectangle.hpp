@@ -23,6 +23,8 @@ namespace green_leaf {
     Rectangle operator*(int factor) const;
     Rectangle operator/(const Vector2 &v) const;
 
+    bool contains(const Vector2 v) const;
+
     Vector2 origin() const {
       return origin_;
     }
