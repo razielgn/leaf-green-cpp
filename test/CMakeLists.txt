@@ -24,6 +24,7 @@ set(SRC_FILES
   "${SRC_DIR}/map_json_source.cpp"
   "${SRC_DIR}/menu_triangle_state.cpp"
   "${SRC_DIR}/message_box_state.cpp"
+  "${SRC_DIR}/movement.cpp"
   "${SRC_DIR}/player_movement.cpp"
   "${SRC_DIR}/rectangle.cpp"
   "${SRC_DIR}/screen.cpp"
