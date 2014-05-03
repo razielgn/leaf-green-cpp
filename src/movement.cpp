@@ -9,5 +9,7 @@ namespace green_leaf {
       case Movement::Down:  return os << "Down"; break;
       case Movement::Still: return os << "Still"; break;
     }
+
+    return os;
   }
 }
