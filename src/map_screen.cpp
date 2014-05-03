@@ -35,8 +35,8 @@ namespace green_leaf {
     map_source_ = content.loadMap(map_name_);
     player_.loadContent(content);
 
-    map_ = std::make_unique<Map>(*map_source_, screen_size_);
-    map_->reset(player_position_);
+    map_ = std::make_unique<Map>(map_source_->tileSize(), screen_size_);
+    map_->setup(player_position_);
   }
 
   void MapScreen::update(Input& input, const GameTime game_time) {
@@ -48,7 +48,9 @@ namespace green_leaf {
     map_collision.update(player_movement_, player_position_, destination);
 
     player_.update(player_movement_);
-    map_->update(player_movement_, player_position_, destination);
+    if(player_movement_.moving() && !player_movement_.clashing()) {
+      map_->update(player_movement_.progress(), player_position_, destination);
+    }
 
     if(player_movement_.finished() && !player_movement_.clashing()) {
       player_position_ = destination;
