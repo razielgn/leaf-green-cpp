@@ -88,12 +88,12 @@ namespace green_leaf {
     const std::vector<Object> objects = GetParam()->objects();
     EXPECT_EQ(2u, objects.size());
 
-    EXPECT_EQ(Rectangle(48, 16, 32, 16), objects[0].rectangle());
+    EXPECT_EQ(Rectangle(3, 1, 2, 1), objects[0].rectangle());
 
     const std::vector<message> messages1;
     EXPECT_EQ(messages1, objects[0].messages());
 
-    EXPECT_EQ(Rectangle(0, 16, 32, 32), objects[1].rectangle());
+    EXPECT_EQ(Rectangle(0, 3, 2, 2), objects[1].rectangle());
     const std::vector<message> messages2 {
       std::make_pair(u8"Line€", u8"Lineum ouch досда"),
       std::make_pair("Line2", ""),

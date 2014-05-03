@@ -105,14 +105,14 @@ namespace green_leaf {
     return messages;
   }
 
-  std::vector<Object> extractObjects(const Json::Value layers, const std::string name) {
+  std::vector<Object> extractObjects(const Json::Value layers, const std::string name, const Vector2 tile_size) {
     const Json::Value layer = findObjectWithName(layers, name);
     const Json::Value json_objects = layer["objects"];
     std::vector<Object> objects;
 
     for(const auto json_object : json_objects) {
       objects.emplace_back(
-        extractRectangle(json_object),
+        extractRectangle(json_object) / tile_size,
         extractMessages(json_object["properties"])
       );
     }
@@ -120,7 +120,7 @@ namespace green_leaf {
     return objects;
   }
 
-  const Json::Value parseJsonPath(const std::string path) {
+  const Json::Value parseJson(const std::string path) {
     Json::Value root;
     Json::Reader reader;
     std::ifstream input(path);
@@ -140,7 +140,7 @@ namespace green_leaf {
     : resolution_(Vector2(0, 0))
     , tile_size_(Vector2(0, 0))
   {
-    const Json::Value root = parseJsonPath(path);
+    const Json::Value root = parseJson(path);
 
     Vector2 dimension = extractDimension(root);
     tile_size_ = extractTileSize(root);
@@ -156,6 +156,6 @@ namespace green_leaf {
 
     collisions_layer_ = extractCollisionsLayer(dimension, root["layers"], "collisions", tile_size_);
 
-    objects_ = extractObjects(root["layers"], "objects");
+    objects_ = extractObjects(root["layers"], "objects", tile_size_);
   }
 }
