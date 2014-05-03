@@ -9,7 +9,7 @@ namespace green_leaf {
 
   class PlayerMovement {
   public:
-    PlayerMovement();
+    PlayerMovement(const Movement start);
 
     void update(Input& input, const GameTime game_time);
 

@@ -27,7 +27,7 @@ namespace green_leaf {
       rectangles_
     );
     const MapCollision map_collision_ = MapCollision(collisions_layer_);
-    PlayerMovement player_movement_;
+    PlayerMovement player_movement_ = PlayerMovement(Movement::Still);
   };
 
   TEST_F(MapCollisionTest, UpdateLegitMove) {

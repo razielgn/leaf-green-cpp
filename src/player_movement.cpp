@@ -6,8 +6,8 @@
 #include "movement.hpp"
 
 namespace green_leaf {
-  PlayerMovement::PlayerMovement()
-    : movement_(Movement::Still)
+  PlayerMovement::PlayerMovement(const Movement start)
+    : movement_(start)
     , elapsed_mseconds_(0)
     , moving_(false)
     , finished_(false)
@@ -37,7 +37,6 @@ namespace green_leaf {
         movement_ = Movement::Down;
         moving_ = true;
       } else {
-        movement_ = Movement::Still;
         return;
       }
     }

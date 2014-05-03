@@ -21,7 +21,7 @@ namespace green_leaf {
       EXPECT_CALL(input_, isKeyDown(_)).WillRepeatedly(Return(false));
     }
 
-    PlayerMovement player_movement_;
+    PlayerMovement player_movement_ = PlayerMovement(Movement::Still);
     InputMock input_;
     const GameTime game_time_ = GameTime(10, 0);
   };
@@ -60,15 +60,6 @@ namespace green_leaf {
 
     EXPECT_TRUE(player_movement_.moving());
     EXPECT_EQ(Movement::Up, player_movement_.movement());
-  }
-
-  TEST_F(PlayerMovementTest, NothingPressed) {
-    nothingPressed();
-
-    player_movement_.update(input_, game_time_);
-
-    EXPECT_FALSE(player_movement_.moving());
-    EXPECT_EQ(Movement::Still, player_movement_.movement());
   }
 
   TEST_F(PlayerMovementTest, InputSkippedWhenMoving) {

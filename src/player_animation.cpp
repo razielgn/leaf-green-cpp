@@ -66,7 +66,6 @@ namespace green_leaf {
         frame_ = Vector2(frame_.x(), 2); break;
       case Movement::Right:
         frame_ = Vector2(frame_.x(), 3); break;
-      case Movement::Still:
       default: break;
     }
 

@@ -26,6 +26,7 @@ namespace green_leaf {
     : Screen(screen_manager)
     , map_name_(map_name)
     , screen_size_(screen_size)
+    , player_movement_(Movement::Still)
     , player_position_(start_pos)
   {
   }
