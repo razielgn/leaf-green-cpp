@@ -47,16 +47,6 @@ namespace green_leaf {
   }
 
   void PlayerAnimation::update(const PlayerMovement& player_movement) {
-    if(!player_movement.moving()) {
-      return;
-    }
-
-    if(player_movement.finished()) {
-      frame_ = stillAnimationFrame();
-      alternateMovement();
-      return;
-    }
-
     switch(player_movement.movement()) {
       case Movement::Down:
         frame_ = Vector2(frame_.x(), 0); break;
@@ -71,6 +61,10 @@ namespace green_leaf {
 
     if(player_movement.progress() >= animationProgress(player_movement.clashing())) {
       frame_ = stillAnimationFrame();
+
+      if(player_movement.finished()) {
+        alternateMovement();
+      }
     } else {
       frame_ = nextAnimationFrame();
     }

@@ -47,9 +47,12 @@ namespace green_leaf {
     MapCollision map_collision(map_source_->collisionsLayer());
     map_collision.update(player_movement_, player_position_, destination);
 
-    player_.update(player_movement_);
-    if(player_movement_.moving() && !player_movement_.clashing()) {
-      map_->update(player_movement_.progress(), player_position_, destination);
+    if(player_movement_.moving()) {
+      player_.update(player_movement_);
+
+      if(!player_movement_.clashing()) {
+        map_->update(player_movement_.progress(), player_position_, destination);
+      }
     }
 
     if(player_movement_.finished() && !player_movement_.clashing()) {
