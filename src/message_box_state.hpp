@@ -4,7 +4,7 @@
 #include "game_time.hpp"
 
 namespace green_leaf {
-  class Input;
+  class KeyboardInput;
 
   struct MessageBoxState {
     MessageBoxState();
@@ -24,7 +24,7 @@ namespace green_leaf {
     void nextLine();
     void nextMessage();
 
-    void update(Input& input, GameTime game_time);
+    void update(KeyboardInput& input, GameTime game_time);
 
   private:
     unsigned int character_;

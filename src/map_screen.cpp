@@ -39,7 +39,7 @@ namespace green_leaf {
     map_->setup(player_position_);
   }
 
-  void MapScreen::update(Input& input, const GameTime game_time) {
+  void MapScreen::update(KeyboardInput& input, const GameTime game_time) {
     player_movement_.update(input, game_time);
 
     Vector2 destination = movementDestination(player_position_, player_movement_.movement());

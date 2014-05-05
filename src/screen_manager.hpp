@@ -11,7 +11,7 @@ namespace green_leaf {
   class Content;
   class GameTime;
   class Graphics;
-  class Input;
+  class KeyboardInput;
 
   class ScreenManager {
   public:
@@ -21,7 +21,7 @@ namespace green_leaf {
     void push(std::unique_ptr<Screen> screen);
     void pop();
 
-    void update(Input& input, const GameTime game_time) const;
+    void update(KeyboardInput& input, const GameTime game_time) const;
     void draw(const Graphics& graphics) const;
 
   private:

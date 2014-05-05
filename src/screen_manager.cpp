@@ -21,7 +21,7 @@ namespace green_leaf {
     screens_.pop_back();
   }
 
-  void ScreenManager::update(Input& input, const GameTime game_time) const {
+  void ScreenManager::update(KeyboardInput& input, const GameTime game_time) const {
     if(count() == 0u) {
       return;
     }

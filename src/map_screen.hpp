@@ -13,14 +13,14 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  class Input;
+  class KeyboardInput;
 
   class MapScreen : public Screen {
   public:
     MapScreen(ScreenManager& screen_manager, std::string map_name, Vector2 start_pos, Vector2 screen_size);
 
     void loadContent(const Content& content);
-    void update(Input& input, const GameTime game_time);
+    void update(KeyboardInput& input, const GameTime game_time);
     void draw(const Graphics& graphics) const;
 
   private:

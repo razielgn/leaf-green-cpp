@@ -9,7 +9,7 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  class Input;
+  class KeyboardInput;
   class PlayerMovement;
 
   enum AlternateMovement {

@@ -3,7 +3,7 @@
 #include "player_movement.hpp"
 #include "game_time.hpp"
 
-#include "input_mock.hpp"
+#include "keyboard_input_mock.hpp"
 
 namespace green_leaf {
   using namespace ::testing;
@@ -22,7 +22,7 @@ namespace green_leaf {
     }
 
     PlayerMovement player_movement_ = PlayerMovement(Movement::Down);
-    InputMock input_;
+    KeyboardInputMock input_;
 
     const GameTime empty_anim_ = GameTime(0, 0);
     const GameTime half_anim_ = GameTime(125, 0);

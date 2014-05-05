@@ -1,7 +1,7 @@
 #include "message_box_state.hpp"
 
 #include "gtest/gtest.h"
-#include "input_mock.hpp"
+#include "keyboard_input_mock.hpp"
 
 namespace green_leaf {
   using namespace ::testing;
@@ -34,7 +34,7 @@ namespace green_leaf {
   }
 
   TEST_F(MessageBoxStateTest, UpdateNormal) {
-    InputMock input;
+    KeyboardInputMock input;
 
     EXPECT_CALL(input, isKeyDown(InputKey::A)).WillRepeatedly(Return(false));
     EXPECT_CALL(input, isKeyDown(InputKey::B)).WillRepeatedly(Return(false));
@@ -44,7 +44,7 @@ namespace green_leaf {
   }
 
   TEST_F(MessageBoxStateTest, UpdateFastPressingA) {
-    InputMock input;
+    KeyboardInputMock input;
 
     EXPECT_CALL(input, isKeyDown(InputKey::A)).WillRepeatedly(Return(true));
     EXPECT_CALL(input, isKeyDown(InputKey::B)).WillRepeatedly(Return(false));
@@ -54,7 +54,7 @@ namespace green_leaf {
   }
 
   TEST_F(MessageBoxStateTest, UpdateFastPressingB) {
-    InputMock input;
+    KeyboardInputMock input;
 
     EXPECT_CALL(input, isKeyDown(InputKey::A)).WillRepeatedly(Return(false));
     EXPECT_CALL(input, isKeyDown(InputKey::B)).WillRepeatedly(Return(true));

@@ -14,14 +14,14 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  class Input;
+  class KeyboardInput;
 
   class MessageBoxScreen : public Screen {
   public:
     MessageBoxScreen(ScreenManager& screen_manager, const std::vector<message> messages);
 
     void loadContent(const Content& content);
-    void update(Input& input, const GameTime game_time);
+    void update(KeyboardInput& input, const GameTime game_time);
     void draw(const Graphics& graphics) const;
 
   private:

@@ -2,7 +2,7 @@
 
 #include "content.hpp"
 #include "graphics.hpp"
-#include "input.hpp"
+#include "keyboard_input.hpp"
 #include "movement.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"

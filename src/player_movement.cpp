@@ -1,7 +1,7 @@
 #include "player_movement.hpp"
 
 #include "game_time.hpp"
-#include "input.hpp"
+#include "keyboard_input.hpp"
 #include "input_key.hpp"
 #include "movement.hpp"
 
@@ -15,7 +15,7 @@ namespace green_leaf {
   {
   }
 
-  void PlayerMovement::update(Input& input, const GameTime game_time) {
+  void PlayerMovement::update(KeyboardInput& input, const GameTime game_time) {
     if(finished_) {
       finished_ = false;
       clashing_ = false;

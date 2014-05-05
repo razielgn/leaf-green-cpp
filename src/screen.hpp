@@ -8,7 +8,7 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  class Input;
+  class KeyboardInput;
   class ScreenManager;
 
   class Screen {
@@ -17,7 +17,7 @@ namespace green_leaf {
     virtual ~Screen() { }
 
     virtual void loadContent(const Content& content) = 0;
-    virtual void update(Input& input, const GameTime game_time) = 0;
+    virtual void update(KeyboardInput& input, const GameTime game_time) = 0;
     virtual void draw(const Graphics& graphics) const = 0;
 
   protected:

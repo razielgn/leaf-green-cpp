@@ -1,6 +1,6 @@
 #include "message_box_state.hpp"
 
-#include "input.hpp"
+#include "keyboard_input.hpp"
 #include "input_key.hpp"
 
 namespace green_leaf {
@@ -8,13 +8,13 @@ namespace green_leaf {
   const unsigned int CHAR_FAST_DELAY = 16;
 
   namespace {
-    bool actionButtonPressed(Input& input) {
+    bool actionButtonPressed(KeyboardInput& input) {
       return
         input.isKeyDown(InputKey::A) ||
         input.isKeyDown(InputKey::B);
     }
 
-    unsigned int charDelayTime(Input& input) {
+    unsigned int charDelayTime(KeyboardInput& input) {
       if(actionButtonPressed(input)) {
         return CHAR_FAST_DELAY;
       } else {
@@ -42,7 +42,7 @@ namespace green_leaf {
     message_++;
   }
 
-  void MessageBoxState::update(Input& input, GameTime game_time) {
+  void MessageBoxState::update(KeyboardInput& input, GameTime game_time) {
     elapsed_ += game_time.elapsed();
 
     unsigned int delay = charDelayTime(input);

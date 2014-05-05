@@ -2,7 +2,7 @@
 
 #include "content.hpp"
 #include "graphics.hpp"
-#include "input.hpp"
+#include "keyboard_input.hpp"
 #include "input_key.hpp"
 #include "unused.hpp"
 #include "utils/string.hpp"
@@ -15,7 +15,7 @@ namespace green_leaf {
   const unsigned int RED_ARROW_INSET = 2;
 
   namespace {
-    bool actionButtonPressed(Input& input) {
+    bool actionButtonPressed(KeyboardInput& input) {
       return
         input.isKeyDown(InputKey::A) ||
         input.isKeyDown(InputKey::B);
@@ -82,7 +82,7 @@ namespace green_leaf {
     return state_.message() == messages_.size() - 1;
   }
 
-  void MessageBoxScreen::update(Input& input, const GameTime game_time) {
+  void MessageBoxScreen::update(KeyboardInput& input, const GameTime game_time) {
     // 1. Run line animation (if A or B is pressed, go faster)
     // 2. Wait for input (red triangle animating)
     // 3. Go to next line and start from 1

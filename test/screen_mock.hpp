@@ -14,7 +14,7 @@ namespace green_leaf {
     ~ScreenMock() { }
 
     MOCK_METHOD1(loadContent, void(const Content& content));
-    MOCK_METHOD2(update, void(Input& input, const GameTime game_time));
+    MOCK_METHOD2(update, void(KeyboardInput& input, const GameTime game_time));
     MOCK_CONST_METHOD1(draw, void(const Graphics& graphics));
   };
 }
