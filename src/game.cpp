@@ -1,8 +1,8 @@
 #include "game.hpp"
 
 #include "game_time.hpp"
-#include "input_key.hpp"
 #include "map_screen.hpp"
+#include "player_keyboard_input.hpp"
 #include "sdl_content.hpp"
 #include "sdl_graphics.hpp"
 #include "sdl_keyboard_input.hpp"
@@ -11,7 +11,7 @@
 namespace green_leaf {
   Game::Game()
     : graphics_(std::make_unique<SDLGraphics>())
-    , input_(std::make_unique<SDLKeyboardInput>())
+    , input_(std::make_unique<PlayerKeyboardInput>(std::make_unique<SDLKeyboardInput>()))
     , content_(std::make_unique<SDLContent>(*graphics_, "./assets"))
     , screen_manager_(ScreenManager(*content_))
     , total_time_(SDL_GetTicks())
@@ -47,9 +47,9 @@ namespace green_leaf {
     unsigned int now = SDL_GetTicks();
     GameTime game_time(now - total_time_, now);
 
-    input_->recordState();
+    input_->update();
 
-    if(input_->isKeyDown(InputKey::Escape)) {
+    if(input_->escape()) {
       stop();
     }
 

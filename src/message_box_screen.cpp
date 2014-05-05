@@ -2,9 +2,7 @@
 
 #include "content.hpp"
 #include "graphics.hpp"
-#include "keyboard_input.hpp"
-#include "input_key.hpp"
-#include "unused.hpp"
+#include "player_input.hpp"
 #include "utils/string.hpp"
 
 namespace green_leaf {
@@ -15,10 +13,8 @@ namespace green_leaf {
   const unsigned int RED_ARROW_INSET = 2;
 
   namespace {
-    bool actionButtonPressed(KeyboardInput& input) {
-      return
-        input.isKeyDown(InputKey::A) ||
-        input.isKeyDown(InputKey::B);
+    bool actionButtonPressed(PlayerInput& input) {
+      return input.a() || input.b();
     }
 
     const Vector2 lineOffset(unsigned int index) {
@@ -82,7 +78,7 @@ namespace green_leaf {
     return state_.message() == messages_.size() - 1;
   }
 
-  void MessageBoxScreen::update(KeyboardInput& input, const GameTime game_time) {
+  void MessageBoxScreen::update(PlayerInput& input, const GameTime game_time) {
     // 1. Run line animation (if A or B is pressed, go faster)
     // 2. Wait for input (red triangle animating)
     // 3. Go to next line and start from 1

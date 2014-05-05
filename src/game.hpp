@@ -3,16 +3,12 @@
 
 #include "content.hpp"
 #include "graphics.hpp"
-#include "keyboard_input.hpp"
+#include "player_input.hpp"
 #include "screen_manager.hpp"
 
 #include <memory>
 
 namespace green_leaf {
-  class Graphics;
-  class KeyboardInput;
-  class Content;
-
   class Game {
   public:
     Game();
@@ -25,7 +21,7 @@ namespace green_leaf {
 
   private:
     std::unique_ptr<Graphics> graphics_;
-    std::unique_ptr<KeyboardInput> input_;
+    std::unique_ptr<PlayerInput> input_;
     std::unique_ptr<Content> content_;
     ScreenManager screen_manager_;
 

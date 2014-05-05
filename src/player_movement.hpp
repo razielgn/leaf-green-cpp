@@ -4,14 +4,14 @@
 #include "movement.hpp"
 
 namespace green_leaf {
-  class KeyboardInput;
+  class PlayerInput;
   class GameTime;
 
   class PlayerMovement {
   public:
     PlayerMovement(const Movement direction);
 
-    void update(KeyboardInput& input, const GameTime game_time);
+    void update(PlayerInput& input, const GameTime game_time);
 
     void clashing(bool clashing) {
       clashing_ = clashing;

@@ -6,7 +6,7 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  class KeyboardInput;
+  class PlayerInput;
   class PlayerMovement;
 
   class Player {

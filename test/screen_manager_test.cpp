@@ -2,7 +2,7 @@
 
 #include "content_mock.hpp"
 #include "graphics_mock.hpp"
-#include "keyboard_input_mock.hpp"
+#include "player_input_mock.hpp"
 #include "screen_manager.hpp"
 #include "screen_mock.hpp"
 #include "game_time.hpp"
@@ -23,7 +23,7 @@ namespace green_leaf {
     std::unique_ptr<ScreenMock> screen1_;
     std::unique_ptr<ScreenMock> screen2_;
 
-    KeyboardInputMock input_;
+    PlayerInputMock input_;
     GraphicsMock graphics_;
     const GameTime game_time_ = GameTime(0, 0);
   };

@@ -1,7 +1,7 @@
 #include "message_box_state.hpp"
 
 #include "gtest/gtest.h"
-#include "keyboard_input_mock.hpp"
+#include "player_input_mock.hpp"
 
 namespace green_leaf {
   using namespace ::testing;
@@ -9,6 +9,7 @@ namespace green_leaf {
   class MessageBoxStateTest : public Test {
   protected:
     MessageBoxState mbs_;
+    PlayerInputMock input_;
   };
 
   TEST_F(MessageBoxStateTest, New) {
@@ -34,31 +35,25 @@ namespace green_leaf {
   }
 
   TEST_F(MessageBoxStateTest, UpdateNormal) {
-    KeyboardInputMock input;
-
-    EXPECT_CALL(input, isKeyDown(InputKey::A)).WillRepeatedly(Return(false));
-    EXPECT_CALL(input, isKeyDown(InputKey::B)).WillRepeatedly(Return(false));
-    mbs_.update(input, GameTime(100, 0));
+    EXPECT_CALL(input_, a()).WillRepeatedly(Return(false));
+    EXPECT_CALL(input_, b()).WillRepeatedly(Return(false));
+    mbs_.update(input_, GameTime(100, 0));
 
     EXPECT_EQ(1u, mbs_.character());
   }
 
   TEST_F(MessageBoxStateTest, UpdateFastPressingA) {
-    KeyboardInputMock input;
-
-    EXPECT_CALL(input, isKeyDown(InputKey::A)).WillRepeatedly(Return(true));
-    EXPECT_CALL(input, isKeyDown(InputKey::B)).WillRepeatedly(Return(false));
-    mbs_.update(input, GameTime(16, 0));
+    EXPECT_CALL(input_, a()).WillRepeatedly(Return(true));
+    EXPECT_CALL(input_, b()).WillRepeatedly(Return(false));
+    mbs_.update(input_, GameTime(16, 0));
 
     EXPECT_EQ(1u, mbs_.character());
   }
 
   TEST_F(MessageBoxStateTest, UpdateFastPressingB) {
-    KeyboardInputMock input;
-
-    EXPECT_CALL(input, isKeyDown(InputKey::A)).WillRepeatedly(Return(false));
-    EXPECT_CALL(input, isKeyDown(InputKey::B)).WillRepeatedly(Return(true));
-    mbs_.update(input, GameTime(16, 0));
+    EXPECT_CALL(input_, a()).WillRepeatedly(Return(false));
+    EXPECT_CALL(input_, b()).WillRepeatedly(Return(true));
+    mbs_.update(input_, GameTime(16, 0));
 
     EXPECT_EQ(1u, mbs_.character());
   }
