@@ -3,7 +3,7 @@
 #include "screen.hpp"
 
 namespace green_leaf {
-  ScreenManager::ScreenManager(Content& content)
+  ScreenManager::ScreenManager(const Content& content)
     : content_(content)
   {
   }

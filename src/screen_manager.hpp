@@ -15,7 +15,7 @@ namespace green_leaf {
 
   class ScreenManager {
   public:
-    ScreenManager(Content& content);
+    ScreenManager(const Content& content);
 
     unsigned long count() const;
     void push(std::unique_ptr<Screen> screen);
@@ -27,7 +27,7 @@ namespace green_leaf {
   private:
     std::vector<std::unique_ptr<Screen>> screens_;
 
-    Content& content_;
+    const Content& content_;
   };
 }
 
