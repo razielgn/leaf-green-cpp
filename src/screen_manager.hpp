@@ -1,7 +1,6 @@
 #ifndef GL_SCREEN_MANAGER_HPP
 #define GL_SCREEN_MANAGER_HPP
 
-#include "game_time.hpp"
 #include "screen.hpp"
 
 #include <memory>
