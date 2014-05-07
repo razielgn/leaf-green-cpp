@@ -13,10 +13,6 @@ namespace green_leaf {
   const unsigned int RED_ARROW_INSET = 2;
 
   namespace {
-    bool actionButtonPressed(PlayerInput& input) {
-      return input.a() || input.b();
-    }
-
     const Vector2 lineOffset(unsigned int index) {
       switch(index) {
         case 0: return FIRST_LINE_OFFSET;
@@ -84,18 +80,14 @@ namespace green_leaf {
     // 3. Go to next line and start from 1
 
     if(endOfMessage()) {
-      if(lastMessage()) {
-        if(actionButtonPressed(input)) {
-          popScreen();
-        }
-
-        return;
-      }
-
       triangle_state_.update(game_time);
 
-      if(actionButtonPressed(input)) {
-        state_.nextMessage();
+      if(input.a() || input.b()) {
+        if(lastMessage()) {
+          popScreen();
+        } else {
+          state_.nextMessage();
+        }
       }
     } else {
       if(endOfLine()) {
