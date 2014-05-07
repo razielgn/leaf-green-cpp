@@ -72,7 +72,7 @@ namespace green_leaf {
 
   void PlayerAnimation::draw(const Graphics& graphics) const {
     Rectangle source(frame_ * frame_size_, frame_size_);
-    Vector2 offset = graphics.size() / 2 - frame_size_ / 2;
+    Vector2 offset = graphics.size() / 2 - frame_size_ / 2 - Vector2(0, 2);
 
     graphics.drawTexture(*texture_, offset, source);
   }

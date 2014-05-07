@@ -8,7 +8,6 @@ namespace green_leaf {
   }
 
   Vector2 MapOffset::centerOffset(const Vector2 center) const {
-    return (screen_size_ / 2 - tile_size_ / 2 + Vector2(0, 2)) -
-      center * tile_size_;
+    return (screen_size_ / 2 - tile_size_ / 2) - center * tile_size_;
   }
 }
