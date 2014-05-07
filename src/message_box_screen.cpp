@@ -82,7 +82,7 @@ namespace green_leaf {
     if(endOfMessage()) {
       triangle_state_.update(game_time);
 
-      if(input.a() || input.b()) {
+      if(input.aPressed() || input.bPressed()) {
         if(lastMessage()) {
           popScreen();
         } else {

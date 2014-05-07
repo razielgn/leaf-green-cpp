@@ -7,12 +7,8 @@ namespace green_leaf {
   const unsigned int CHAR_FAST_DELAY = 16;
 
   namespace {
-    bool actionButtonPressed(PlayerInput& input) {
-      return input.a() || input.b();
-    }
-
     unsigned int charDelayTime(PlayerInput& input) {
-      if(actionButtonPressed(input)) {
+      if(input.a() || input.b()) {
         return CHAR_FAST_DELAY;
       } else {
         return CHAR_NORMAL_DELAY;
