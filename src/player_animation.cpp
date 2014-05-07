@@ -2,14 +2,27 @@
 
 #include "content.hpp"
 #include "graphics.hpp"
-#include "keyboard_input.hpp"
 #include "movement.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"
 
 namespace green_leaf {
-  PlayerAnimation::PlayerAnimation()
-    : frame_(Vector2(0, 0))
+  namespace {
+    Vector2 movementFrame(const Movement movement, const Vector2 frame) {
+      switch(movement) {
+        case Movement::Down:  return Vector2(frame.x(), 0); break;
+        case Movement::Left:  return Vector2(frame.x(), 1); break;
+        case Movement::Up:    return Vector2(frame.x(), 2); break;
+        case Movement::Right: return Vector2(frame.x(), 3); break;
+        default: break;
+      }
+
+      return frame;
+    }
+  }
+
+  PlayerAnimation::PlayerAnimation(const Movement movement)
+    : frame_(movementFrame(movement, Vector2(0, 0)))
     , alternate_movement_(AlternateMovement::Right)
   {
   }
@@ -47,17 +60,7 @@ namespace green_leaf {
   }
 
   void PlayerAnimation::update(const PlayerMovement& player_movement) {
-    switch(player_movement.movement()) {
-      case Movement::Down:
-        frame_ = Vector2(frame_.x(), 0); break;
-      case Movement::Left:
-        frame_ = Vector2(frame_.x(), 1); break;
-      case Movement::Up:
-        frame_ = Vector2(frame_.x(), 2); break;
-      case Movement::Right:
-        frame_ = Vector2(frame_.x(), 3); break;
-      default: break;
-    }
+    frame_ = movementFrame(player_movement.movement(), frame_);
 
     if(player_movement.progress() >= animationProgress(player_movement.clashing())) {
       frame_ = stillAnimationFrame();

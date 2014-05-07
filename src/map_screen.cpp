@@ -22,11 +22,12 @@ namespace green_leaf {
     }
   }
 
-  MapScreen::MapScreen(ScreenManager& screen_manager, std::string map_name, Vector2 start_pos, Vector2 screen_size)
+  MapScreen::MapScreen(ScreenManager& screen_manager, const std::string map_name, Vector2 start_pos, Movement facing_direction, const Vector2 screen_size)
     : Screen(screen_manager)
     , map_name_(map_name)
     , screen_size_(screen_size)
-    , player_movement_(Movement::Still)
+    , player_(facing_direction)
+    , player_movement_(facing_direction)
     , player_position_(start_pos)
   {
   }

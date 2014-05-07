@@ -6,11 +6,13 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  class PlayerInput;
+  enum class Movement;
   class PlayerMovement;
 
   class Player {
   public:
+    Player(const Movement direction);
+
     void loadContent(const Content& graphics);
 
     void update(const PlayerMovement& player_movement);

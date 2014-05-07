@@ -1,6 +1,11 @@
 #include "player.hpp"
 
 namespace green_leaf {
+  Player::Player(const Movement direction)
+    : animation_(direction)
+  {
+  }
+
   void Player::loadContent(const Content& content) {
     animation_.loadContent(content);
   }
