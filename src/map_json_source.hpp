@@ -41,7 +41,7 @@ namespace green_leaf {
       return *collisions_layer_;
     }
 
-    const std::vector<Object> objects() const override {
+    const std::vector<Object>& objects() const override {
       return objects_;
     }
 
