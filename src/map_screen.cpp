@@ -6,7 +6,9 @@
 #include "map_collision.hpp"
 #include "map_source.hpp"
 #include "movement.hpp"
+#include "object_interaction.hpp"
 #include "player.hpp"
+#include "player_input.hpp"
 #include "player_movement.hpp"
 
 namespace green_leaf {
@@ -26,6 +28,7 @@ namespace green_leaf {
     : Screen(screen_manager)
     , map_name_(map_name)
     , screen_size_(screen_size)
+    , maybe_next_screen_(nullptr)
     , player_(facing_direction)
     , player_movement_(facing_direction)
     , player_position_(start_pos)
@@ -40,24 +43,39 @@ namespace green_leaf {
     map_->setup(player_position_);
   }
 
+  void MapScreen::updateInteractions(PlayerInput& input) {
+    const Vector2 facing = movementDestination(player_position_, player_movement_.direction());
+
+    const ObjectInteraction object_interaction(map_source_->objects());
+    maybe_next_screen_ = object_interaction.update(screenManager(), facing, input);
+  }
+
   void MapScreen::update(PlayerInput& input, const GameTime game_time) {
     player_movement_.update(input, game_time);
 
-    Vector2 destination = movementDestination(player_position_, player_movement_.movement());
-
-    MapCollision map_collision(map_source_->collisionsLayer());
-    map_collision.update(player_movement_, player_position_, destination);
+    if(maybe_next_screen_ == nullptr) {
+      updateInteractions(input);
+    }
 
     if(player_movement_.moving()) {
       player_.update(player_movement_);
 
+      const Vector2 destination = movementDestination(player_position_, player_movement_.movement());
+
+      const MapCollision map_collision(map_source_->collisionsLayer());
+      map_collision.update(player_movement_, player_position_, destination);
+
       if(!player_movement_.clashing()) {
         map_->update(player_movement_.progress(), player_position_, destination);
-      }
-    }
 
-    if(player_movement_.finished() && !player_movement_.clashing()) {
-      player_position_ = destination;
+        if(player_movement_.finished()) {
+          player_position_ = destination;
+        }
+      }
+    } else {
+      if(maybe_next_screen_) {
+        pushScreen(std::move(maybe_next_screen_));
+      }
     }
   }
 

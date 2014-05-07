@@ -29,9 +29,12 @@ namespace green_leaf {
 
     std::unique_ptr<const MapSource> map_source_;
     std::unique_ptr<Map> map_;
+    std::unique_ptr<Screen> maybe_next_screen_;
     Player player_;
     PlayerMovement player_movement_;
     Vector2 player_position_;
+
+    void updateInteractions(PlayerInput& input);
   };
 }
 
