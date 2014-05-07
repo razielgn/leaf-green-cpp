@@ -57,7 +57,7 @@ namespace green_leaf {
   }
 
   bool MessageBoxScreen::endOfLine() const {
-    return state_.character() == utils::utf8Length(currentLine());
+    return state_.character() >= utils::utf8Length(currentLine());
   }
 
   bool MessageBoxScreen::endOfMessage() const {
