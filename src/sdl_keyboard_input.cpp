@@ -2,13 +2,12 @@
 
 #include "input_key.hpp"
 
-namespace green_leaf {
-  SDLKeyboardInput::~SDLKeyboardInput() {
-  }
+#include <SDL_events.h>
 
+namespace green_leaf {
   void SDLKeyboardInput::recordState() {
+    SDL_PumpEvents();
     keyboard_state_ = SDL_GetKeyboardState(NULL);
-    SDL_PollEvent(&event_);
   }
 
   SDL_Scancode convertKeyToScancode(InputKey key) {
@@ -32,12 +31,12 @@ namespace green_leaf {
   bool SDLKeyboardInput::isKeyDown(InputKey key) {
     SDL_Scancode scancode = convertKeyToScancode(key);
 
-    return event_.type == SDL_KEYDOWN && keyboard_state_[scancode];
+    return keyboard_state_[scancode];
   }
 
   bool SDLKeyboardInput::isKeyUp(InputKey key) {
     SDL_Scancode scancode = convertKeyToScancode(key);
 
-    return event_.type == SDL_KEYUP && !keyboard_state_[scancode];
+    return !keyboard_state_[scancode];
   }
 }

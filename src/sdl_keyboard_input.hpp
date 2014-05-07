@@ -3,20 +3,17 @@
 
 #include "keyboard_input.hpp"
 
-#include <SDL_events.h>
-#include <SDL_keycode.h>
+#include <SDL_stdinc.h>
 
 namespace green_leaf {
   class SDLKeyboardInput : public KeyboardInput {
   public:
-    ~SDLKeyboardInput();
     void recordState();
 
     bool isKeyUp(InputKey key);
     bool isKeyDown(InputKey key);
 
   private:
-    SDL_Event event_;
     const Uint8* keyboard_state_;
   };
 }
