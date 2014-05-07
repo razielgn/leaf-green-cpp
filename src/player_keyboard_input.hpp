@@ -4,6 +4,7 @@
 #include "keyboard_input.hpp"
 #include "player_input.hpp"
 
+#include <array>
 #include <memory>
 
 namespace green_leaf {
@@ -14,7 +15,9 @@ namespace green_leaf {
     void update();
 
     bool a();
+    bool aPressed();
     bool b();
+    bool bPressed();
     bool up();
     bool down();
     bool left();
@@ -27,6 +30,8 @@ namespace green_leaf {
 
   private:
     std::unique_ptr<KeyboardInput> keyboard_input_;
+    std::array<bool, 11> previous_state_;
+    std::array<bool, 11> current_state_;
   };
 }
 

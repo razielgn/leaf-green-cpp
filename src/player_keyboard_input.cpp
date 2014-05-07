@@ -10,49 +10,70 @@ namespace green_leaf {
 
   void PlayerKeyboardInput::update() {
     keyboard_input_->recordState();
+
+    previous_state_ = current_state_;
+    current_state_[ 0] = keyboard_input_->isKeyDown(InputKey::A);
+    current_state_[ 1] = keyboard_input_->isKeyDown(InputKey::B);
+    current_state_[ 2] = keyboard_input_->isKeyDown(InputKey::Up);
+    current_state_[ 3] = keyboard_input_->isKeyDown(InputKey::Down);
+    current_state_[ 4] = keyboard_input_->isKeyDown(InputKey::Left);
+    current_state_[ 5] = keyboard_input_->isKeyDown(InputKey::Right);
+    current_state_[ 6] = keyboard_input_->isKeyDown(InputKey::Start);
+    current_state_[ 7] = keyboard_input_->isKeyDown(InputKey::Select);
+    current_state_[ 8] = keyboard_input_->isKeyDown(InputKey::R);
+    current_state_[ 9] = keyboard_input_->isKeyDown(InputKey::L);
+    current_state_[10] = keyboard_input_->isKeyDown(InputKey::Escape);
   }
 
   bool PlayerKeyboardInput::a() {
-    return keyboard_input_->isKeyDown(InputKey::A);
+    return current_state_[0];
+  }
+
+  bool PlayerKeyboardInput::aPressed() {
+    return !previous_state_[0] && a();
   }
 
   bool PlayerKeyboardInput::b() {
-    return keyboard_input_->isKeyDown(InputKey::B);
+    return current_state_[1];
+  }
+
+  bool PlayerKeyboardInput::bPressed() {
+    return !previous_state_[1] && b();
   }
 
   bool PlayerKeyboardInput::up() {
-    return keyboard_input_->isKeyDown(InputKey::Up);
+    return current_state_[2];
   }
 
   bool PlayerKeyboardInput::down() {
-    return keyboard_input_->isKeyDown(InputKey::Down);
+    return current_state_[3];
   }
 
   bool PlayerKeyboardInput::left() {
-    return keyboard_input_->isKeyDown(InputKey::Left);
+    return current_state_[4];
   }
 
   bool PlayerKeyboardInput::right() {
-    return keyboard_input_->isKeyDown(InputKey::Right);
+    return current_state_[5];
   }
 
   bool PlayerKeyboardInput::start() {
-    return keyboard_input_->isKeyDown(InputKey::Start);
+    return current_state_[6];
   }
 
   bool PlayerKeyboardInput::select() {
-    return keyboard_input_->isKeyDown(InputKey::Select);
+    return current_state_[7];
   }
 
   bool PlayerKeyboardInput::r() {
-    return keyboard_input_->isKeyDown(InputKey::R);
+    return current_state_[8];
   }
 
   bool PlayerKeyboardInput::l() {
-    return keyboard_input_->isKeyDown(InputKey::L);
+    return current_state_[9];
   }
 
   bool PlayerKeyboardInput::escape() {
-    return keyboard_input_->isKeyDown(InputKey::Escape);
+    return current_state_[10];
   }
 }

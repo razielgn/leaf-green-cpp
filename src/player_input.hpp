@@ -7,7 +7,9 @@ namespace green_leaf {
     virtual void update() = 0;
 
     virtual bool a() = 0;
+    virtual bool aPressed() = 0;
     virtual bool b() = 0;
+    virtual bool bPressed() = 0;
     virtual bool up() = 0;
     virtual bool down() = 0;
     virtual bool left() = 0;
