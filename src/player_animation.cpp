@@ -28,7 +28,7 @@ namespace green_leaf {
   }
 
   void PlayerAnimation::loadContent(const Content& content) {
-    texture_ = content.loadTexture("hero.png");
+    texture_ = content.loadTexture("hero.gif");
   }
 
   void PlayerAnimation::alternateMovement() {

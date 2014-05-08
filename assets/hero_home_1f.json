@@ -142,7 +142,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"background.png",
+         "image":"background.gif",
          "imageheight":320,
          "imagewidth":320,
          "margin":0,
@@ -157,7 +157,7 @@
         }, 
         {
          "firstgid":401,
-         "image":"decorations.png",
+         "image":"decorations.gif",
          "imageheight":320,
          "imagewidth":320,
          "margin":0,
