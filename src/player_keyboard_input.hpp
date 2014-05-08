@@ -19,7 +19,9 @@ namespace green_leaf {
     bool b();
     bool bPressed();
     bool up();
+    bool upPressed();
     bool down();
+    bool downPressed();
     bool left();
     bool right();
     bool start();

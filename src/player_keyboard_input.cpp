@@ -45,8 +45,16 @@ namespace green_leaf {
     return current_state_[2];
   }
 
+  bool PlayerKeyboardInput::upPressed() {
+    return !previous_state_[2] && up();
+  }
+
   bool PlayerKeyboardInput::down() {
     return current_state_[3];
+  }
+
+  bool PlayerKeyboardInput::downPressed() {
+    return !previous_state_[3] && down();
   }
 
   bool PlayerKeyboardInput::left() {
