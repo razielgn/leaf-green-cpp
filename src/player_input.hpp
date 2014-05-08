@@ -15,6 +15,7 @@ namespace green_leaf {
     virtual bool left() = 0;
     virtual bool right() = 0;
     virtual bool start() = 0;
+    virtual bool startPressed() = 0;
     virtual bool select() = 0;
     virtual bool r() = 0;
     virtual bool l() = 0;

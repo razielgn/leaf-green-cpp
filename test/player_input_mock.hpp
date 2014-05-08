@@ -18,6 +18,7 @@ namespace green_leaf {
     MOCK_METHOD0(left, bool());
     MOCK_METHOD0(right, bool());
     MOCK_METHOD0(start, bool());
+    MOCK_METHOD0(startPressed, bool());
     MOCK_METHOD0(select, bool());
     MOCK_METHOD0(l, bool());
     MOCK_METHOD0(r, bool());

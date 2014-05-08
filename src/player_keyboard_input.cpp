@@ -61,6 +61,10 @@ namespace green_leaf {
     return current_state_[6];
   }
 
+  bool PlayerKeyboardInput::startPressed() {
+    return !previous_state_[6] && start();
+  }
+
   bool PlayerKeyboardInput::select() {
     return current_state_[7];
   }

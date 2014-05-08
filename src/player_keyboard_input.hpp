@@ -23,6 +23,7 @@ namespace green_leaf {
     bool left();
     bool right();
     bool start();
+    bool startPressed();
     bool select();
     bool r();
     bool l();
