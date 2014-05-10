@@ -8,7 +8,7 @@
 namespace green_leaf {
   namespace {
     const Rectangle left_box_rect(169, 1, 70, 0);
-    const std::vector<const std::string> entries {
+    const std::vector<std::string> entries {
       { "BAG", "FRED", "SAVE", "OPTION", "EXIT" }
     };
     const std::vector<message> hint_messages {

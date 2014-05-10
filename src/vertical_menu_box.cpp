@@ -32,7 +32,7 @@ namespace green_leaf {
     const Rectangle arrow(48, 16, 6, 10);
   }
 
-  VerticalMenuBox::VerticalMenuBox(const std::vector<const std::string> entries, size_t selected_entry, unsigned int width, const Vector2 origin)
+  VerticalMenuBox::VerticalMenuBox(const std::vector<std::string> entries, size_t selected_entry, unsigned int width, const Vector2 origin)
     : entries_(entries)
     , selected_entry_(selected_entry)
     , width_(width - corner_tile.x() * 2)

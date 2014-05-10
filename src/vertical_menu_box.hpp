@@ -14,7 +14,7 @@ namespace green_leaf {
 
   class VerticalMenuBox {
   public:
-    VerticalMenuBox(const std::vector<const std::string> entries, size_t selected_entry, unsigned int width, const Vector2 origin);
+    VerticalMenuBox(const std::vector<std::string> entries, size_t selected_entry, unsigned int width, const Vector2 origin);
 
     void loadContent(const Content& content);
     void update(PlayerInput& input);
@@ -28,7 +28,7 @@ namespace green_leaf {
     std::unique_ptr<const Texture> menus_;
     std::unique_ptr<const BitmapFont> font_;
 
-    const std::vector<const std::string> entries_;
+    const std::vector<std::string> entries_;
     size_t selected_entry_;
 
     const unsigned int width_;

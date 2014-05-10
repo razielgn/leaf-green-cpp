@@ -5,7 +5,7 @@
 #include <utility>
 
 namespace green_leaf {
-  typedef std::pair<const std::string, const std::string> message;
+  typedef std::pair<std::string, std::string> message;
 }
 
 #endif
