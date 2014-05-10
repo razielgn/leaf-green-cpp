@@ -19,6 +19,7 @@ namespace green_leaf {
     void clear() const;
     void drawTexture(const Texture& texture, const Rectangle destination, const Rectangle source) const;
     void drawTexture(const Texture& texture, const Rectangle destination) const;
+    void drawTexture(const Texture& texture, const Vector2 offset, const Rectangle source) const;
     void present() const;
 
     SDL_Renderer& renderer() const {

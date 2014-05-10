@@ -13,11 +13,10 @@ namespace green_leaf {
     virtual void clear() const = 0;
     virtual void drawTexture(const Texture& texture, const Rectangle destination, const Rectangle source) const = 0;
     virtual void drawTexture(const Texture& texture, const Rectangle destination) const = 0;
+    virtual void drawTexture(const Texture& texture, const Vector2 offset, const Rectangle source) const = 0;
     virtual void present() const = 0;
 
     virtual Vector2 size() const = 0;
-
-    void drawTexture(const Texture& texture, const Vector2 offset, const Rectangle source) const;
   };
 }
 

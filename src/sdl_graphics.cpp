@@ -61,6 +61,10 @@ namespace green_leaf {
     drawTexture(texture, destination, source);
   }
 
+  void SDLGraphics::drawTexture(const Texture& texture, const Vector2 offset, const Rectangle source) const {
+    drawTexture(texture, Rectangle(offset, source.size()), source);
+  }
+
   void SDLGraphics::present() const {
     SDL_RenderPresent(renderer_);
   }
