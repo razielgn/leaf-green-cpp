@@ -98,21 +98,13 @@ namespace green_leaf {
 
   void MessageBoxScreen::drawBackground(const Graphics& graphics) const {
     // Left border.
-    for(int i = 7, j = 0; i < 10; i++, j++) {
-      graphics.drawTexture(*menus_, Vector2(0, i) * 16, Rectangle(0, j, 1, 1) * 16);
-    }
-
-    // Middle section 14 times.
-    for(int m = 1; m < 14; m++) {
-      for(int i = 7, j = 0; i < 10; i++, j++) {
-        graphics.drawTexture(*menus_, Vector2(m, i) * 16, Rectangle(1, j, 1, 1) * 16);
-      }
-    }
+    graphics.drawTexture(*menus_, BOX_OFFSET, Rectangle(0, 0, 16, 48));
 
     // Right border.
-    for(int i = 7, j = 0; i < 10; i++, j++) {
-      graphics.drawTexture(*menus_, Vector2(14, i) * 16, Rectangle(2, j, 1, 1) * 16);
-    }
+    graphics.drawTexture(*menus_, BOX_OFFSET + Vector2(224, 0), Rectangle(32, 0, 16, 48));
+
+    // Middle section.
+    graphics.drawTexture(*menus_, Rectangle(BOX_OFFSET + Vector2(16, 0), 208, 48), Rectangle(16, 0, 16, 48));
   }
 
   unsigned int MessageBoxScreen::drawLine(const Graphics& graphics, unsigned int index, const std::string msg) const {
