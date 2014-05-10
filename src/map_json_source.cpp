@@ -105,6 +105,10 @@ namespace green_leaf {
     return messages;
   }
 
+  bool extractBoolean(const Json::Value properties, const std::string key) {
+    return properties.isMember(key) && properties[key].asString() == "1";
+  }
+
   std::vector<Object> extractObjects(const Json::Value layers, const std::string name, const Vector2 tile_size) {
     const Json::Value layer = findObjectWithName(layers, name);
     const Json::Value json_objects = layer["objects"];
@@ -113,7 +117,8 @@ namespace green_leaf {
     for(const auto json_object : json_objects) {
       objects.emplace_back(
         extractRectangle(json_object) / tile_size,
-        extractMessages(json_object["properties"])
+        extractMessages(json_object["properties"]),
+        extractBoolean(json_object["properties"], "sign")
       );
     }
 

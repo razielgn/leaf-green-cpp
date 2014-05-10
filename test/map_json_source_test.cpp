@@ -92,6 +92,7 @@ namespace green_leaf {
 
     const std::vector<message> messages1;
     EXPECT_EQ(messages1, objects[0].messages());
+    EXPECT_FALSE(objects[0].isSign());
 
     EXPECT_EQ(Rectangle(0, 3, 2, 2), objects[1].rectangle());
     const std::vector<message> messages2 {
@@ -99,6 +100,7 @@ namespace green_leaf {
       std::make_pair("Line2", ""),
     };
     EXPECT_EQ(messages2, objects[1].messages());
+    EXPECT_TRUE(objects[1].isSign());
   }
 
   const ContentMock content_;
