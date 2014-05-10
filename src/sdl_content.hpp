@@ -12,6 +12,7 @@ namespace green_leaf {
 
     std::unique_ptr<const Texture> loadTexture(const std::string path) const;
     std::unique_ptr<const MapSource> loadMap(const std::string path) const;
+    std::unique_ptr<const BitmapFont> loadBitmapFont(const std::string path) const;
 
   private:
     const Graphics& graphics_;

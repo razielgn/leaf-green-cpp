@@ -1,5 +1,6 @@
 #include "sdl_content.hpp"
 
+#include "bitmap_font.hpp"
 #include "sdl_texture.hpp"
 #include "map_json_source.hpp"
 
@@ -24,5 +25,9 @@ namespace green_leaf {
     std::string full_path = fullPath(path) + maps_ext_;
 
     return std::make_unique<const MapJsonSource>(*this, full_path);
+  }
+
+  std::unique_ptr<const BitmapFont> SDLContent::loadBitmapFont(const std::string path) const {
+    return std::make_unique<const BitmapFont>(loadTexture(path));
   }
 }

@@ -31,9 +31,7 @@ namespace green_leaf {
 
   void MessageBoxScreen::loadContent(const Content& content) {
     menus_ = content.loadTexture("menus.gif");
-
-    auto texture = content.loadTexture("font1.gif");
-    font_ = std::make_unique<const BitmapFont>(std::move(texture));
+    font_ = content.loadBitmapFont("font1.gif");
   }
 
   const message MessageBoxScreen::currentMessage() const {
