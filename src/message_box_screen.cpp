@@ -6,13 +6,13 @@
 #include "utils/string.hpp"
 
 namespace green_leaf {
-  const Rectangle RED_ARROW_SRC(48, 0, 10, 6);
-  const Vector2 BOX_OFFSET(0, 16 * 7);
-  const Vector2 FIRST_LINE_OFFSET(16, BOX_OFFSET.y() + 9);
-  const Vector2 SECOND_LINE_OFFSET = FIRST_LINE_OFFSET + Vector2(0, 15);
-  const unsigned int RED_ARROW_INSET = 2;
-
   namespace {
+    const Rectangle RED_ARROW_SRC(48, 0, 10, 6);
+    const Vector2 BOX_OFFSET(0, 16 * 7);
+    const Vector2 FIRST_LINE_OFFSET(16, BOX_OFFSET.y() + 9);
+    const Vector2 SECOND_LINE_OFFSET = FIRST_LINE_OFFSET + Vector2(0, 15);
+    const unsigned int RED_ARROW_INSET = 2;
+
     const Vector2 lineOffset(unsigned int index) {
       switch(index) {
         case 0: return FIRST_LINE_OFFSET;
