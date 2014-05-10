@@ -1,5 +1,6 @@
 #include "gmock/gmock.h"
 #include "collisions_layer.hpp"
+#include "door.hpp"
 #include "map_json_source.hpp"
 #include "object.hpp"
 #include "tile_layer.hpp"
@@ -101,6 +102,14 @@ namespace green_leaf {
     };
     EXPECT_EQ(messages2, objects[1].messages());
     EXPECT_TRUE(objects[1].isSign());
+  }
+
+  TEST_P(MapJsonSourceTest, Doors) {
+    const std::vector<Door> doors = GetParam()->doors();
+    EXPECT_EQ(1u, doors.size());
+
+    EXPECT_EQ(Rectangle(1, 2, 3, 4), doors[0].rectangle());
+    EXPECT_EQ("other_map", doors[0].map());
   }
 
   const ContentMock content_;

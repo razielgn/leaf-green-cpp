@@ -196,6 +196,30 @@
          "width":11,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":9,
+         "name":"doors",
+         "objects":[
+                {
+                 "height":16,
+                 "name":"downstairs",
+                 "properties":
+                    {
+                     "map":"hero_home_1f"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":32
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":11,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":

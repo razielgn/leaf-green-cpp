@@ -125,6 +125,21 @@ namespace green_leaf {
     return objects;
   }
 
+  std::vector<Door> extractDoors(const Json::Value layers, const std::string name, const Vector2 tile_size) {
+    const Json::Value layer = findObjectWithName(layers, name);
+    const Json::Value json_objects = layer["objects"];
+    std::vector<Door> doors;
+
+    for(const auto json_object : json_objects) {
+      doors.emplace_back(
+        extractRectangle(json_object) / tile_size,
+        json_object["properties"]["map"].asString()
+      );
+    }
+
+    return doors;
+  }
+
   const Json::Value parseJson(const std::string path) {
     Json::Value root;
     Json::Reader reader;
@@ -162,5 +177,6 @@ namespace green_leaf {
     collisions_layer_ = extractCollisionsLayer(dimension, root["layers"], "collisions", tile_size_);
 
     objects_ = extractObjects(root["layers"], "objects", tile_size_);
+    doors_ = extractDoors(root["layers"], "doors", tile_size_);
   }
 }
