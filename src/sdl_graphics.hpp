@@ -35,7 +35,7 @@ namespace green_leaf {
     SDL_Renderer* renderer_;
 
     const Vector2 size_ = Vector2(240, 160);
-    int scale_ = 4;
+    int scale_ = 5;
   };
 }
 
