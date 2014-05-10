@@ -16,7 +16,8 @@ namespace green_leaf {
         return true;
       }
 
-      return box.selectedEntry() == entries.size() - 1 && input.aPressed();
+      bool lastEntry = box.selectedEntry() == entries.size() - 1;
+      return input.aPressed() && lastEntry;
     }
   }
 
