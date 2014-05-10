@@ -1,6 +1,7 @@
 #ifndef GL_START_SCREEN_HPP
 #define GL_START_SCREEN_HPP
 
+#include "hint_box.hpp"
 #include "screen.hpp"
 #include "vertical_menu_box.hpp"
 
@@ -15,6 +16,7 @@ namespace green_leaf {
 
   private:
     VerticalMenuBox right_box_;
+    HintBox hint_box_;
   };
 }
 
