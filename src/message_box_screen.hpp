@@ -24,6 +24,9 @@ namespace green_leaf {
     void update(PlayerInput& input, const GameTime game_time);
     void draw(const Graphics& graphics) const;
 
+  protected:
+    virtual const Vector2 boxSkin() const = 0;
+
   private:
     std::unique_ptr<const Texture> menus_;
     std::unique_ptr<const BitmapFont> font_;

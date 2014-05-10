@@ -97,14 +97,17 @@ namespace green_leaf {
   }
 
   void MessageBoxScreen::drawBackground(const Graphics& graphics) const {
+    const Vector2 skin_offset = boxSkin();
+    const Vector2 tile(16, 48);
+
     // Left border.
-    graphics.drawTexture(*menus_, BOX_OFFSET, Rectangle(0, 0, 16, 48));
+    graphics.drawTexture(*menus_, BOX_OFFSET, Rectangle(skin_offset, tile));
 
     // Right border.
-    graphics.drawTexture(*menus_, BOX_OFFSET + Vector2(224, 0), Rectangle(32, 0, 16, 48));
+    graphics.drawTexture(*menus_, BOX_OFFSET + Vector2(224, 0), Rectangle(skin_offset + Vector2(32, 0), tile));
 
     // Middle section.
-    graphics.drawTexture(*menus_, Rectangle(BOX_OFFSET + Vector2(16, 0), 208, 48), Rectangle(16, 0, 16, 48));
+    graphics.drawTexture(*menus_, Rectangle(BOX_OFFSET + Vector2(16, 0), 208, 48), Rectangle(skin_offset + Vector2(16, 0), tile));
   }
 
   unsigned int MessageBoxScreen::drawLine(const Graphics& graphics, unsigned int index, const std::string msg) const {

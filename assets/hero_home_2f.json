@@ -181,7 +181,8 @@
                  "name":"help sign",
                  "properties":
                     {
-                     "message":"It's a posted notice.|If you're confused, ask for help!\nPress the L or R button!"
+                     "message":"It's a posted notice.|If you're confused, ask for help!\nPress the L or R button!",
+                     "sign":"1"
                     },
                  "type":"sign",
                  "visible":true,
