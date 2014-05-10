@@ -10,6 +10,7 @@
 #include "player.hpp"
 #include "player_input.hpp"
 #include "player_movement.hpp"
+#include "start_screen.hpp"
 
 namespace green_leaf {
   namespace {
@@ -75,6 +76,8 @@ namespace green_leaf {
     } else {
       if(maybe_next_screen_) {
         pushScreen(std::move(maybe_next_screen_));
+      } else if(input.startPressed()) {
+        pushScreen(std::make_unique<StartScreen>(screenManager()));
       }
     }
   }
