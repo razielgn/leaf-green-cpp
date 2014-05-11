@@ -132,6 +132,80 @@
          "width":12,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":10,
+         "name":"objects",
+         "objects":[
+                {
+                 "height":16,
+                 "name":"tv",
+                 "properties":
+                    {
+                     "message":"There's a movie on TV.\nFour boys are walking on railroad tracks.|\u2026I better go, too."
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":16
+                }, 
+                {
+                 "height":16,
+                 "name":"cupboard",
+                 "properties":
+                    {
+                     "message":"Dishes and plates are neatly\nlined up."
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":16
+                }, 
+                {
+                 "height":16,
+                 "name":"sink",
+                 "properties":
+                    {
+                     "message":"It smeels delicious!\nSomebody's been cooking here."
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":0,
+                 "y":16
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":12,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "height":10,
+         "name":"doors",
+         "objects":[
+                {
+                 "height":16,
+                 "name":"upstairs",
+                 "properties":
+                    {
+                     "map":"hero_home_2f"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":160,
+                 "y":32
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":12,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":
