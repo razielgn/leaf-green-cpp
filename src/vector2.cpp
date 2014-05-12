@@ -1,5 +1,6 @@
 #include "vector2.hpp"
 
+#include <iostream>
 #include <sstream>
 
 namespace green_leaf {

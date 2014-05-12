@@ -1,7 +1,8 @@
 #ifndef GL_VECTOR2_HPP
 #define GL_VECTOR2_HPP
 
-#include <iostream>
+#include <iosfwd>
+#include <functional>
 #include <string>
 
 namespace green_leaf {

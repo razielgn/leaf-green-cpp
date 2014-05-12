@@ -4,7 +4,7 @@
 #include "vector2.hpp"
 
 #include <cmath>
-#include <iostream>
+#include <iosfwd>
 #include <limits>
 #include <string>
 

@@ -4,7 +4,7 @@
 #include "vector2.hpp"
 
 #include <SDL.h>
-#include <iostream>
+#include <iosfwd>
 #include <string>
 
 namespace green_leaf {

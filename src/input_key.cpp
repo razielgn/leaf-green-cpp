@@ -1,5 +1,7 @@
 #include "input_key.hpp"
 
+#include <iostream>
+
 namespace green_leaf {
   ::std::ostream& operator<<(::std::ostream& os, const InputKey& p) {
     std::string str;

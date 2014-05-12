@@ -1,7 +1,7 @@
 #ifndef GL_INPUT_KEYS_HPP
 #define GL_INPUT_KEYS_HPP
 
-#include <iostream>
+#include <iosfwd>
 
 namespace green_leaf {
   enum class InputKey {

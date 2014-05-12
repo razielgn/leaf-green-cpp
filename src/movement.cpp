@@ -1,5 +1,7 @@
 #include "movement.hpp"
 
+#include <iostream>
+
 namespace green_leaf {
   ::std::ostream& operator<<(::std::ostream& os, const Movement& m) {
     switch(m) {

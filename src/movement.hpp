@@ -1,7 +1,7 @@
 #ifndef GL_MOVEMENT_HPP
 #define GL_MOVEMENT_HPP
 
-#include <iostream>
+#include <iosfwd>
 
 namespace green_leaf {
   enum class Movement {
