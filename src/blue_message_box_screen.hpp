@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_BLUE_MESSAGE_BOX_SCREEN_HPP
 #define GL_BLUE_MESSAGE_BOX_SCREEN_HPP
 

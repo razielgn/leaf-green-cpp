@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_HINT_BOX_HPP
 #define GL_HINT_BOX_HPP
 

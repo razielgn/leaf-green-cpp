@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_GRAPHICS_HPP
 #define GL_GRAPHICS_HPP
 

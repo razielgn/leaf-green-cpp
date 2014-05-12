@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_COLLISIONS_LAYER_HPP
 #define GL_COLLISIONS_LAYER_HPP
 

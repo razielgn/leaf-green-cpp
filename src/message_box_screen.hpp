@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_MESSAGE_BOX_SCREEN_HPP
 #define GL_MESSAGE_BOX_SCREEN_HPP
 

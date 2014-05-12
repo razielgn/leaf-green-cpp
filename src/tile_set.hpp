@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_TILE_SET_HPP
 #define GL_TILE_SET_HPP
 

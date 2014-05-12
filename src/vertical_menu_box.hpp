@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_VERTICAL_MENU_BOX_HPP
 #define GL_VERTICAL_MENU_BOX_HPP
 

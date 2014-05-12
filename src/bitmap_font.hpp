@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_BITMAP_FONT_HPP
 #define GL_BITMAP_FONT_HPP
 

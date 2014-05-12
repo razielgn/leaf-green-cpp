@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_PLAYER_INPUT_MOCK_HPP
 #define GL_PLAYER_INPUT_MOCK_HPP
 

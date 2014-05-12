@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_START_SCREEN_HPP
 #define GL_START_SCREEN_HPP
 

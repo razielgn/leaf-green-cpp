@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_CUSTOM_TYPES
 #define GL_CUSTOM_TYPES
 

@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_DOOR_HPP
 #define GL_DOOR_HPP
 

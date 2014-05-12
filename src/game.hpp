@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_GAME_CPP
 #define GL_GAME_CPP
 

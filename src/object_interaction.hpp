@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_OBJECT_INTERACTION_HPP
 #define GL_OBJECT_INTERACTION_HPP
 

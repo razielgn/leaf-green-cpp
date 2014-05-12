@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_PLAYER_KEYBOARD_INPUT
 #define GL_PLAYER_KEYBOARD_INPUT
 

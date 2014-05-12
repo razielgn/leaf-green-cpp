@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_MOVEMENT_HPP
 #define GL_MOVEMENT_HPP
 

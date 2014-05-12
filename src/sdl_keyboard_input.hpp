@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_SDL_KEYBOARD_INPUT_HPP
 #define GL_SDL_KEYBOARD_INPUT_HPP
 

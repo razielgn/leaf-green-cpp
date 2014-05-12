@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_INPUT_KEYS_HPP
 #define GL_INPUT_KEYS_HPP
 

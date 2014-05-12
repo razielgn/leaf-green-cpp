@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_MAP_COLLISION_HPP
 #define GL_MAP_COLLISION_HPP
 

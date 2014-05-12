@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_GRAPHICS_MOCK_HPP
 #define GL_GRAPHICS_MOCK_HPP
 

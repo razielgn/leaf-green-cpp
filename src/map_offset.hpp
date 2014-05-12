@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_MAP_OFFSET_HPP
 #define GL_MAP_OFFSET_HPP
 

@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_MENU_TRIANGLE_STATE_HPP
 #define GL_MENU_TRIANGLE_STATE_HPP
 

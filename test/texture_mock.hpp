@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_TEXTURE_MOCK_HPP
 #define GL_TEXTURE_MOCK_HPP
 

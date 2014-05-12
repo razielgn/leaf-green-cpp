@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_SCREEN_MANAGER_HPP
 #define GL_SCREEN_MANAGER_HPP
 

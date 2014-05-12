@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_GAME_TIME_HPP
 #define GL_GAME_TIME_HPP
 

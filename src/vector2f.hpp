@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_VECTOR2F_HPP
 #define GL_VECTOR2F_HPP
 

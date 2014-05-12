@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_TEXTURE_CPP
 #define GL_TEXTURE_CPP
 

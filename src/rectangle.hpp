@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GL_RECTANGLE_HPP
 #define GL_RECTANGLE_HPP
 
