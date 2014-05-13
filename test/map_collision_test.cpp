@@ -1,8 +1,8 @@
 #include "map_collision.hpp"
 
 #include "collisions_layer.hpp"
+#include "direction.hpp"
 #include "gtest/gtest.h"
-#include "movement.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"
 
@@ -27,7 +27,7 @@ namespace green_leaf {
       rectangles_
     );
     const MapCollision map_collision_ = MapCollision(collisions_layer_);
-    PlayerMovement player_movement_ = PlayerMovement(Movement::Still);
+    PlayerMovement player_movement_ = PlayerMovement(Direction::Down);
   };
 
   TEST_F(MapCollisionTest, UpdateLegitMove) {

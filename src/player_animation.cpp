@@ -2,18 +2,17 @@
 
 #include "content.hpp"
 #include "graphics.hpp"
-#include "movement.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"
 
 namespace green_leaf {
   namespace {
-    Vector2 movementFrame(const Movement movement, const Vector2 frame) {
-      switch(movement) {
-        case Movement::Down:  return Vector2(frame.x(), 0); break;
-        case Movement::Left:  return Vector2(frame.x(), 1); break;
-        case Movement::Up:    return Vector2(frame.x(), 2); break;
-        case Movement::Right: return Vector2(frame.x(), 3); break;
+    Vector2 movementFrame(const Direction direction, const Vector2 frame) {
+      switch(direction) {
+        case Direction::Down:  return Vector2(frame.x(), 0); break;
+        case Direction::Left:  return Vector2(frame.x(), 1); break;
+        case Direction::Up:    return Vector2(frame.x(), 2); break;
+        case Direction::Right: return Vector2(frame.x(), 3); break;
         default: break;
       }
 
@@ -21,7 +20,7 @@ namespace green_leaf {
     }
   }
 
-  PlayerAnimation::PlayerAnimation(const Movement movement)
+  PlayerAnimation::PlayerAnimation(const Direction movement)
     : frame_(movementFrame(movement, Vector2(0, 0)))
     , alternate_movement_(AlternateMovement::Right)
   {
@@ -60,7 +59,7 @@ namespace green_leaf {
   }
 
   void PlayerAnimation::update(const PlayerMovement& player_movement) {
-    frame_ = movementFrame(player_movement.movement(), frame_);
+    frame_ = movementFrame(player_movement.direction(), frame_);
 
     if(player_movement.progress() >= animationProgress(player_movement.clashing())) {
       frame_ = stillAnimationFrame();

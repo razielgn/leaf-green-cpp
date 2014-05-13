@@ -1,8 +1,8 @@
 #include "player_movement.hpp"
 
+#include "direction.hpp"
 #include "game_time.hpp"
 #include "gmock/gmock.h"
-#include "movement.hpp"
 #include "player_input_mock.hpp"
 
 namespace green_leaf {
@@ -37,7 +37,7 @@ namespace green_leaf {
       KEY_NOT_PRESSED(escape);
     }
 
-    PlayerMovement player_movement_ = PlayerMovement(Movement::Down);
+    PlayerMovement player_movement_ = PlayerMovement(Direction::Down);
     PlayerInputMock input_;
 
     const GameTime empty_anim_ = GameTime(0, 0);
@@ -46,7 +46,7 @@ namespace green_leaf {
   };
 
   TEST_F(PlayerMovementTest, Constructor) {
-    EXPECT_EQ(Movement::Down, player_movement_.direction());
+    EXPECT_EQ(Direction::Down, player_movement_.direction());
   }
 
   TEST_F(PlayerMovementTest, DownKeyPressed) {
@@ -55,7 +55,7 @@ namespace green_leaf {
     player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Movement::Down, player_movement_.movement());
+    EXPECT_EQ(Direction::Down, player_movement_.direction());
   }
 
   TEST_F(PlayerMovementTest, RightKeyPressed) {
@@ -64,7 +64,7 @@ namespace green_leaf {
     player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Movement::Right, player_movement_.movement());
+    EXPECT_EQ(Direction::Right, player_movement_.direction());
   }
 
   TEST_F(PlayerMovementTest, LeftKeyPressed) {
@@ -73,7 +73,7 @@ namespace green_leaf {
     player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Movement::Left, player_movement_.movement());
+    EXPECT_EQ(Direction::Left, player_movement_.direction());
   }
 
   TEST_F(PlayerMovementTest, UpKeyPressed) {
@@ -82,7 +82,7 @@ namespace green_leaf {
     player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Movement::Up, player_movement_.movement());
+    EXPECT_EQ(Direction::Up, player_movement_.direction());
   }
 
   TEST_F(PlayerMovementTest, InputSkippedWhenMoving) {
@@ -91,14 +91,14 @@ namespace green_leaf {
     player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Movement::Up, player_movement_.movement());
+    EXPECT_EQ(Direction::Up, player_movement_.direction());
 
     nothingPressed();
 
     player_movement_.update(input_, half_anim_);
 
     EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Movement::Up, player_movement_.movement());
+    EXPECT_EQ(Direction::Up, player_movement_.direction());
   }
 
   TEST_F(PlayerMovementTest, ProgressFrozenWhenStill) {
@@ -141,7 +141,7 @@ namespace green_leaf {
 
     player_movement_.update(input_, empty_anim_);
 
-    EXPECT_EQ(Movement::Still, player_movement_.movement());
+    EXPECT_FALSE(player_movement_.moving());
   }
 
   TEST_F(PlayerMovementTest, DirectionIsMovementAfterFinish) {
@@ -153,7 +153,7 @@ namespace green_leaf {
 
     player_movement_.update(input_, empty_anim_);
 
-    EXPECT_EQ(Movement::Down, player_movement_.direction());
+    EXPECT_EQ(Direction::Down, player_movement_.direction());
   }
 
   TEST_F(PlayerMovementTest, ResetStateAfterFinished) {

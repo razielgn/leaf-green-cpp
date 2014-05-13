@@ -10,7 +10,7 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  enum class Movement;
+  enum class Direction;
   class PlayerMovement;
 
   enum AlternateMovement {
@@ -20,7 +20,7 @@ namespace green_leaf {
 
   class PlayerAnimation {
   public:
-    PlayerAnimation(const Movement movement);
+    PlayerAnimation(const Direction movement);
 
     void loadContent(const Content& content);
     void update(const PlayerMovement& player_movement);

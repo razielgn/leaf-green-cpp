@@ -2,10 +2,9 @@
 
 #include "game_time.hpp"
 #include "player_input.hpp"
-#include "movement.hpp"
 
 namespace green_leaf {
-  PlayerMovement::PlayerMovement(const Movement direction)
+  PlayerMovement::PlayerMovement(const Direction direction)
     : movement_(Movement::Still)
     , direction_(direction)
     , elapsed_mseconds_(0)
@@ -19,20 +18,21 @@ namespace green_leaf {
       finished_ = false;
       clashing_ = false;
       elapsed_mseconds_ = 0;
-      direction_ = movement_;
-      movement_ = Movement::Still;
     }
 
     if(elapsed_mseconds_ == 0) {
+      movement_ = Movement::Walking;
+
       if(input.right()) {
-        movement_ = Movement::Right;
+        direction_ = Direction::Right;
       } else if(input.left()) {
-        movement_ = Movement::Left;
+        direction_ = Direction::Left;
       } else if(input.up()) {
-        movement_ = Movement::Up;
+        direction_ = Direction::Up;
       } else if(input.down()) {
-        movement_ = Movement::Down;
+        direction_ = Direction::Down;
       } else {
+        movement_ = Movement::Still;
         return;
       }
     }
@@ -40,6 +40,7 @@ namespace green_leaf {
     elapsed_mseconds_ += game_time.elapsed();
 
     if(elapsed_mseconds_ >= movement_time()) {
+      elapsed_mseconds_ = movement_time();
       finished_ = true;
     }
   }

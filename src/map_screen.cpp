@@ -5,33 +5,34 @@
 #include "map.hpp"
 #include "map_collision.hpp"
 #include "map_source.hpp"
-#include "movement.hpp"
 #include "object_interaction.hpp"
 #include "player.hpp"
 #include "player_input.hpp"
 #include "player_movement.hpp"
 #include "start_screen.hpp"
 
+#include <iostream>
+
 namespace green_leaf {
   namespace {
-    Vector2 movementDestination(const Vector2 start, const Movement movement) {
+    Vector2 movementDestination(const Vector2 start, const Direction movement) {
       switch(movement) {
-        case Movement::Right: return start + Vector2(1, 0); break;
-        case Movement::Left:  return start - Vector2(1, 0); break;
-        case Movement::Up:    return start - Vector2(0, 1); break;
-        case Movement::Down:  return start + Vector2(0, 1); break;
+        case Direction::Right: return start + Vector2(1, 0); break;
+        case Direction::Left:  return start - Vector2(1, 0); break;
+        case Direction::Up:    return start - Vector2(0, 1); break;
+        case Direction::Down:  return start + Vector2(0, 1); break;
         default:              return start; break;
       }
     }
   }
 
-  MapScreen::MapScreen(ScreenManager& screen_manager, const std::string map_name, Vector2 start_pos, Movement facing_direction, const Vector2 screen_size)
+  MapScreen::MapScreen(ScreenManager& screen_manager, const std::string map_name, Vector2 start_pos, Direction direction, const Vector2 screen_size)
     : Screen(screen_manager)
     , map_name_(map_name)
     , screen_size_(screen_size)
     , maybe_next_screen_(nullptr)
-    , player_(facing_direction)
-    , player_movement_(facing_direction)
+    , player_(direction)
+    , player_movement_(direction)
     , player_position_(start_pos)
   {
   }
@@ -67,7 +68,7 @@ namespace green_leaf {
     if(player_movement_.moving()) {
       player_.update(player_movement_);
 
-      const Vector2 destination = movementDestination(player_position_, player_movement_.movement());
+      const Vector2 destination = movementDestination(player_position_, player_movement_.direction());
 
       const MapCollision map_collision(map_source_->collisionsLayer());
       map_collision.update(player_movement_, player_position_, destination);

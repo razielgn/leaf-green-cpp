@@ -1,7 +1,7 @@
 #include "player.hpp"
 
 namespace green_leaf {
-  Player::Player(const Movement direction)
+  Player::Player(const Direction direction)
     : animation_(direction)
   {
   }

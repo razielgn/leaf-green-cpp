@@ -14,6 +14,7 @@ file(
 set(SRC_FILES
   "${SRC_DIR}/bitmap_font.cpp"
   "${SRC_DIR}/collisions_layer.cpp"
+  "${SRC_DIR}/direction.cpp"
   "${SRC_DIR}/game_time.cpp"
   "${SRC_DIR}/input_key.cpp"
   "${SRC_DIR}/jsoncpp.cpp"
@@ -23,7 +24,6 @@ set(SRC_FILES
   "${SRC_DIR}/map_json_source.cpp"
   "${SRC_DIR}/menu_triangle_state.cpp"
   "${SRC_DIR}/message_box_state.cpp"
-  "${SRC_DIR}/movement.cpp"
   "${SRC_DIR}/player_movement.cpp"
   "${SRC_DIR}/rectangle.cpp"
   "${SRC_DIR}/screen.cpp"
