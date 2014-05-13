@@ -50,7 +50,7 @@ namespace green_leaf {
     if(alternate_movement_ == AlternateMovement::Right) {
       return Vector2(1, frame_.y());
     } else {
-      return Vector2(3, frame_.y());
+      return Vector2(2, frame_.y());
     }
   }
 
