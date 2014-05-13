@@ -1,1 +1,3 @@
-let g:syntastic_cpp_compiler_options = ' -std=c++1y'
+let g:syntastic_c_compiler = 'clang'
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -Wall -Wextra -Werror -pedantic -std=c++1y'
