@@ -45,6 +45,11 @@ namespace green_leaf {
   }
 
   void MapScreen::updateInteractions(PlayerInput& input) {
+    if(input.startPressed()) {
+      maybe_next_screen_ = std::make_unique<StartScreen>(screenManager());
+      return;
+    }
+
     const Vector2 facing = movementDestination(player_position_, player_movement_.direction());
 
     const ObjectInteraction object_interaction(map_source_->objects());
@@ -52,11 +57,12 @@ namespace green_leaf {
   }
 
   void MapScreen::update(PlayerInput& input, const GameTime game_time) {
+    // When the player is moving nothing can interrupt it from the keyboard.
+    // When the player is still or clashing, anything can interrupt it.
+
     player_movement_.update(input, game_time);
 
-    if(maybe_next_screen_ == nullptr) {
-      updateInteractions(input);
-    }
+    updateInteractions(input);
 
     if(player_movement_.moving()) {
       player_.update(player_movement_);
@@ -73,11 +79,12 @@ namespace green_leaf {
           player_position_ = destination;
         }
       }
-    } else {
+    }
+
+    if(player_movement_.clashing() || !player_movement_.moving()) {
       if(maybe_next_screen_) {
+        // TODO: reset player animation to still
         pushScreen(std::move(maybe_next_screen_));
-      } else if(input.startPressed()) {
-        pushScreen(std::make_unique<StartScreen>(screenManager()));
       }
     }
   }
