@@ -10,33 +10,26 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  enum class Direction;
   class PlayerMovement;
+  enum class Direction;
 
-  enum AlternateMovement {
+  enum class AlternateMovement {
     Right,
     Left
   };
 
   class PlayerAnimation {
   public:
-    PlayerAnimation(const Direction movement);
+    PlayerAnimation(const Direction direction);
 
     void loadContent(const Content& content);
     void update(const PlayerMovement& player_movement);
     void draw(const Graphics& graphics) const;
 
   private:
-    const Vector2 frame_size_ = Vector2(16, 20);
-
     std::unique_ptr<const Texture> texture_;
     Vector2 frame_;
     AlternateMovement alternate_movement_;
-
-    void alternateMovement();
-    float animationProgress(bool clashing) const;
-    Vector2 nextAnimationFrame() const;
-    Vector2 stillAnimationFrame() const;
   };
 }
 

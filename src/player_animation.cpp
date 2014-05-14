@@ -7,21 +7,46 @@
 
 namespace green_leaf {
   namespace {
-    Vector2 movementFrame(const Direction direction, const Vector2 frame) {
+    const Vector2 frame_size = Vector2(16, 20);
+
+    unsigned int directionIndex(const Direction direction) {
       switch(direction) {
-        case Direction::Down:  return Vector2(frame.x(), 0); break;
-        case Direction::Left:  return Vector2(frame.x(), 1); break;
-        case Direction::Up:    return Vector2(frame.x(), 2); break;
-        case Direction::Right: return Vector2(frame.x(), 3); break;
-        default: break;
+        case Direction::Down:  return 0u; break;
+        case Direction::Left:  return 1u; break;
+        case Direction::Up:    return 2u; break;
+        case Direction::Right: return 3u; break;
       }
 
-      return frame;
+      return 0;
+    }
+
+    float animationProgress(bool clashing) {
+      if(clashing) {
+        return 0.5f;
+      }
+
+      return 0.6f;
+    }
+
+    AlternateMovement alternateMovement(const AlternateMovement alternate) {
+      if(alternate == AlternateMovement::Right) {
+        return AlternateMovement::Left;
+      }
+
+      return AlternateMovement::Right;
+    }
+
+    unsigned int movementIndex(const AlternateMovement alternate) {
+      if(alternate == AlternateMovement::Right) {
+        return 1u;
+      }
+
+      return 2u;
     }
   }
 
-  PlayerAnimation::PlayerAnimation(const Direction movement)
-    : frame_(movementFrame(movement, Vector2(0, 0)))
+  PlayerAnimation::PlayerAnimation(const Direction direction)
+    : frame_(0, directionIndex(direction))
     , alternate_movement_(AlternateMovement::Right)
   {
   }
@@ -30,51 +55,24 @@ namespace green_leaf {
     texture_ = content.loadTexture("hero.gif");
   }
 
-  void PlayerAnimation::alternateMovement() {
-    if(alternate_movement_ == AlternateMovement::Right) {
-      alternate_movement_ = AlternateMovement::Left;
-    } else {
-      alternate_movement_ = AlternateMovement::Right;
-    }
-  }
-
-  float PlayerAnimation::animationProgress(bool clashing) const {
-    if(clashing) {
-      return 0.5f;
-    } else {
-      return 0.6f;
-    }
-  }
-
-  Vector2 PlayerAnimation::nextAnimationFrame() const {
-    if(alternate_movement_ == AlternateMovement::Right) {
-      return Vector2(1, frame_.y());
-    } else {
-      return Vector2(2, frame_.y());
-    }
-  }
-
-  Vector2 PlayerAnimation::stillAnimationFrame() const {
-    return Vector2(0, frame_.y());
-  }
-
   void PlayerAnimation::update(const PlayerMovement& player_movement) {
-    frame_ = movementFrame(player_movement.direction(), frame_);
+    unsigned int direction_index = directionIndex(player_movement.direction());
+    unsigned int movement_index = 0;
 
-    if(player_movement.progress() >= animationProgress(player_movement.clashing())) {
-      frame_ = stillAnimationFrame();
-
-      if(player_movement.finished()) {
-        alternateMovement();
-      }
-    } else {
-      frame_ = nextAnimationFrame();
+    if(player_movement.progress() < animationProgress(player_movement.clashing())) {
+      movement_index = movementIndex(alternate_movement_);
     }
+
+    if(player_movement.finished()) {
+      alternate_movement_ = alternateMovement(alternate_movement_);
+    }
+
+    frame_ = Vector2(movement_index, direction_index);
   }
 
   void PlayerAnimation::draw(const Graphics& graphics) const {
-    Rectangle source(frame_ * frame_size_, frame_size_);
-    Vector2 offset = graphics.size() / 2 - frame_size_ / 2 - Vector2(0, 2);
+    Rectangle source(frame_ * frame_size, frame_size);
+    Vector2 offset = graphics.size() / 2 - frame_size / 2 - Vector2(0, 2);
 
     graphics.drawTexture(*texture_, offset, source);
   }
