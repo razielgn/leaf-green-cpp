@@ -12,8 +12,8 @@ namespace green_leaf {
   }
 
   void MapCollision::update(PlayerMovement& player_movement, const Vector2 position, const Vector2 destination) const {
-    if(!collisions_layer_.canMove(position, destination)) {
-      player_movement.clashing(true);
-    }
+    const bool can_move = collisions_layer_.canMove(position, destination);
+
+    player_movement.clashing(!can_move);
   }
 }
