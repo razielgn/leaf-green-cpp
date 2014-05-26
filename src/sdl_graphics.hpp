@@ -14,7 +14,7 @@ namespace green_leaf {
 
   class SDLGraphics : public Graphics {
   public:
-    SDLGraphics(bool visible = true);
+    SDLGraphics(unsigned int scale);
     ~SDLGraphics();
 
     void clear() const;
@@ -35,8 +35,8 @@ namespace green_leaf {
     SDL_Window* window_;
     SDL_Renderer* renderer_;
 
-    const Vector2 size_ = Vector2(240, 160);
-    int scale_ = 5;
+    const unsigned int scale_;
+    const Vector2 size_;
   };
 }
 

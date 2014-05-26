@@ -10,7 +10,7 @@
 
 namespace green_leaf {
   Game::Game()
-    : graphics_(std::make_unique<SDLGraphics>())
+    : graphics_(std::make_unique<SDLGraphics>(4))
     , input_(std::make_unique<PlayerKeyboardInput>(std::make_unique<SDLKeyboardInput>()))
     , content_(std::make_unique<SDLContent>(*graphics_, "./assets"))
     , screen_manager_(ScreenManager(*content_))
