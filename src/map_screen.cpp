@@ -62,12 +62,11 @@ namespace green_leaf {
     // When the player is still or clashing, anything can interrupt it.
 
     player_movement_.update(input, game_time);
+    player_.update(player_movement_, screen_size_ / 2);
 
     updateInteractions(input);
 
     if(player_movement_.moving()) {
-      player_.update(player_movement_);
-
       const Vector2 destination = movementDestination(player_position_, player_movement_.direction());
 
       const MapCollision map_collision(map_source_->collisionsLayer());
