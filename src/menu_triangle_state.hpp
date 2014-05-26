@@ -23,8 +23,6 @@ namespace green_leaf {
     unsigned int elapsed_;
     unsigned int offset_;
     Direction direction_;
-
-    static const unsigned int ANIMATION_TIME = 150u;
   };
 }
 

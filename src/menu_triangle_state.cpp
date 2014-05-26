@@ -1,6 +1,10 @@
 #include "menu_triangle_state.hpp"
 
 namespace green_leaf {
+  namespace {
+    const unsigned int animation_time = 150u;
+  }
+
   MenuTriangleState::MenuTriangleState()
     : elapsed_(0u)
     , offset_(0u)
@@ -11,7 +15,7 @@ namespace green_leaf {
   void MenuTriangleState::update(GameTime game_time) {
     elapsed_ += game_time.elapsed();
 
-    if(elapsed_ < ANIMATION_TIME) {
+    if(elapsed_ < animation_time) {
       return;
     }
 
