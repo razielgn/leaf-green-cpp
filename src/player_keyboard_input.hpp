@@ -13,24 +13,24 @@ namespace green_leaf {
   public:
     PlayerKeyboardInput(std::unique_ptr<KeyboardInput> keyboard_input);
 
-    void update();
+    void update() override;
 
-    bool a();
-    bool aPressed();
-    bool b();
-    bool bPressed();
-    bool up();
-    bool upPressed();
-    bool down();
-    bool downPressed();
-    bool left();
-    bool right();
-    bool start();
-    bool startPressed();
-    bool select();
-    bool r();
-    bool l();
-    bool escape();
+    bool a() override;
+    bool aPressed() override;
+    bool b() override;
+    bool bPressed() override;
+    bool up() override;
+    bool upPressed() override;
+    bool down() override;
+    bool downPressed() override;
+    bool left() override;
+    bool right() override;
+    bool start() override;
+    bool startPressed() override;
+    bool select() override;
+    bool r() override;
+    bool l() override;
+    bool escape() override;
 
   private:
     std::unique_ptr<KeyboardInput> keyboard_input_;

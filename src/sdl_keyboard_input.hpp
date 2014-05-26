@@ -9,10 +9,10 @@
 namespace green_leaf {
   class SDLKeyboardInput : public KeyboardInput {
   public:
-    void recordState();
+    void recordState() override;
 
-    bool isKeyUp(InputKey key);
-    bool isKeyDown(InputKey key);
+    bool isKeyUp(InputKey key) override;
+    bool isKeyDown(InputKey key) override;
 
   private:
     const Uint8* keyboard_state_;

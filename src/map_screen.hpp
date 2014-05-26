@@ -20,9 +20,9 @@ namespace green_leaf {
   public:
     MapScreen(ScreenManager& screen_manager, const std::string map_name, Vector2 start_pos, Direction direction, const Vector2 screen_size);
 
-    void loadContent(const Content& content);
-    void update(PlayerInput& input, const GameTime game_time);
-    void draw(const Graphics& graphics) const;
+    void loadContent(const Content& content) override;
+    void update(PlayerInput& input, const GameTime game_time) override;
+    void draw(const Graphics& graphics) const override;
 
   private:
     const std::string map_name_;

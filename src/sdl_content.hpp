@@ -11,9 +11,9 @@ namespace green_leaf {
   public:
     SDLContent(const Graphics& graphics_, const std::string base_path);
 
-    std::unique_ptr<const Texture> loadTexture(const std::string path) const;
-    std::unique_ptr<const MapSource> loadMap(const std::string path) const;
-    std::unique_ptr<const BitmapFont> loadBitmapFont(const std::string path) const;
+    std::unique_ptr<const Texture> loadTexture(const std::string path) const override;
+    std::unique_ptr<const MapSource> loadMap(const std::string path) const override;
+    std::unique_ptr<const BitmapFont> loadBitmapFont(const std::string path) const override;
 
   private:
     const Graphics& graphics_;

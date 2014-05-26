@@ -11,9 +11,9 @@ namespace green_leaf {
   public:
     StartScreen(ScreenManager& screen_manager);
 
-    void loadContent(const Content& content);
-    void update(PlayerInput& input, const GameTime game_time);
-    void draw(const Graphics& graphics) const;
+    void loadContent(const Content& content) override;
+    void update(PlayerInput& input, const GameTime game_time) override;
+    void draw(const Graphics& graphics) const override;
 
   private:
     VerticalMenuBox right_box_;

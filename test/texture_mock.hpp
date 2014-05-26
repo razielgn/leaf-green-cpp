@@ -12,7 +12,7 @@ namespace green_leaf {
     {
     }
 
-    Vector2 size() const {
+    Vector2 size() const override {
       return size_;
     }
 

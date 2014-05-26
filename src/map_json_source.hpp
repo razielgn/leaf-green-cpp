@@ -14,31 +14,31 @@ namespace green_leaf {
   public:
     MapJsonSource(const Content& content, const std::string path);
 
-    Vector2 resolution() const {
+    Vector2 resolution() const override {
       return resolution_;
     }
 
-    Vector2 tileSize() const {
+    Vector2 tileSize() const override {
       return tile_size_;
     }
 
-    const TileLayer& backgroundLayer() const {
+    const TileLayer& backgroundLayer() const override {
       return *background_tile_layer_;
     }
 
-    const TileLayer& decorationsLayer() const {
+    const TileLayer& decorationsLayer() const override {
       return *decorations_tile_layer_;
     }
 
-    const TileLayer& floorLayer() const {
+    const TileLayer& floorLayer() const override {
       return *floor_tile_layer_;
     }
 
-    const TileLayer& foregroundLayer() const {
+    const TileLayer& foregroundLayer() const override {
       return *foreground_tile_layer_;
     }
 
-    const CollisionsLayer& collisionsLayer() const {
+    const CollisionsLayer& collisionsLayer() const override {
       return *collisions_layer_;
     }
 

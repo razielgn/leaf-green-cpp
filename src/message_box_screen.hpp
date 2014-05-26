@@ -21,9 +21,9 @@ namespace green_leaf {
   public:
     MessageBoxScreen(ScreenManager& screen_manager, const std::vector<message> messages);
 
-    void loadContent(const Content& content);
-    void update(PlayerInput& input, const GameTime game_time);
-    void draw(const Graphics& graphics) const;
+    void loadContent(const Content& content) override;
+    void update(PlayerInput& input, const GameTime game_time) override;
+    void draw(const Graphics& graphics) const override;
 
   protected:
     virtual const Vector2 boxSkin() const = 0;
