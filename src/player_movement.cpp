@@ -13,11 +13,15 @@ namespace green_leaf {
   {
   }
 
+  void PlayerMovement::reset() {
+    finished_ = false;
+    clashing_ = false;
+    elapsed_mseconds_ = 0;
+  }
+
   void PlayerMovement::update(PlayerInput& input, const GameTime game_time) {
     if(finished_) {
-      finished_ = false;
-      clashing_ = false;
-      elapsed_mseconds_ = 0;
+      reset();
     }
 
     if(elapsed_mseconds_ == 0) {

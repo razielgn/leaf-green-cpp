@@ -62,7 +62,6 @@ namespace green_leaf {
     // When the player is still or clashing, anything can interrupt it.
 
     player_movement_.update(input, game_time);
-    player_.update(player_movement_, screen_size_ / 2);
 
     updateInteractions(input);
 
@@ -83,10 +82,12 @@ namespace green_leaf {
 
     if(player_movement_.clashing() || !player_movement_.moving()) {
       if(maybe_next_screen_) {
-        // TODO: reset player animation to still
+        player_movement_.reset();
         pushScreen(std::move(maybe_next_screen_));
       }
     }
+
+    player_.update(player_movement_, screen_size_ / 2);
   }
 
   void MapScreen::draw(const Graphics& graphics) const {

@@ -20,6 +20,8 @@ namespace green_leaf {
 
     void update(PlayerInput& input, const GameTime game_time);
 
+    void reset();
+
     void clashing(bool clashing) {
       clashing_ = clashing;
     }
