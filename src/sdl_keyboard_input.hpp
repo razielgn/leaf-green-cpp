@@ -11,8 +11,8 @@ namespace green_leaf {
   public:
     void recordState() override;
 
-    bool isKeyUp(InputKey key) override;
-    bool isKeyDown(InputKey key) override;
+    bool isKeyUp(InputKey key) const override;
+    bool isKeyDown(InputKey key) const override;
 
   private:
     const Uint8* keyboard_state_;

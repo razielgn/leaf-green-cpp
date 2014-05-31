@@ -11,8 +11,8 @@ namespace green_leaf {
 
     virtual void recordState() = 0;
 
-    virtual bool isKeyUp(InputKey key) = 0;
-    virtual bool isKeyDown(InputKey key) = 0;
+    virtual bool isKeyUp(InputKey key) const = 0;
+    virtual bool isKeyDown(InputKey key) const = 0;
   };
 }
 

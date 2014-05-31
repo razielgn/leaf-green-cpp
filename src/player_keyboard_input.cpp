@@ -25,67 +25,67 @@ namespace green_leaf {
     current_state_[10] = keyboard_input_->isKeyDown(InputKey::Escape);
   }
 
-  bool PlayerKeyboardInput::a() {
+  bool PlayerKeyboardInput::a() const {
     return current_state_[0];
   }
 
-  bool PlayerKeyboardInput::aPressed() {
+  bool PlayerKeyboardInput::aPressed() const {
     return !previous_state_[0] && a();
   }
 
-  bool PlayerKeyboardInput::b() {
+  bool PlayerKeyboardInput::b() const {
     return current_state_[1];
   }
 
-  bool PlayerKeyboardInput::bPressed() {
+  bool PlayerKeyboardInput::bPressed() const {
     return !previous_state_[1] && b();
   }
 
-  bool PlayerKeyboardInput::up() {
+  bool PlayerKeyboardInput::up() const {
     return current_state_[2];
   }
 
-  bool PlayerKeyboardInput::upPressed() {
+  bool PlayerKeyboardInput::upPressed() const {
     return !previous_state_[2] && up();
   }
 
-  bool PlayerKeyboardInput::down() {
+  bool PlayerKeyboardInput::down() const {
     return current_state_[3];
   }
 
-  bool PlayerKeyboardInput::downPressed() {
+  bool PlayerKeyboardInput::downPressed() const {
     return !previous_state_[3] && down();
   }
 
-  bool PlayerKeyboardInput::left() {
+  bool PlayerKeyboardInput::left() const {
     return current_state_[4];
   }
 
-  bool PlayerKeyboardInput::right() {
+  bool PlayerKeyboardInput::right() const {
     return current_state_[5];
   }
 
-  bool PlayerKeyboardInput::start() {
+  bool PlayerKeyboardInput::start() const {
     return current_state_[6];
   }
 
-  bool PlayerKeyboardInput::startPressed() {
+  bool PlayerKeyboardInput::startPressed() const {
     return !previous_state_[6] && start();
   }
 
-  bool PlayerKeyboardInput::select() {
+  bool PlayerKeyboardInput::select() const {
     return current_state_[7];
   }
 
-  bool PlayerKeyboardInput::r() {
+  bool PlayerKeyboardInput::r() const {
     return current_state_[8];
   }
 
-  bool PlayerKeyboardInput::l() {
+  bool PlayerKeyboardInput::l() const {
     return current_state_[9];
   }
 
-  bool PlayerKeyboardInput::escape() {
+  bool PlayerKeyboardInput::escape() const {
     return current_state_[10];
   }
 }

@@ -7,22 +7,22 @@ namespace green_leaf {
   public:
     virtual void update() = 0;
 
-    virtual bool a() = 0;
-    virtual bool aPressed() = 0;
-    virtual bool b() = 0;
-    virtual bool bPressed() = 0;
-    virtual bool up() = 0;
-    virtual bool upPressed() = 0;
-    virtual bool down() = 0;
-    virtual bool downPressed() = 0;
-    virtual bool left() = 0;
-    virtual bool right() = 0;
-    virtual bool start() = 0;
-    virtual bool startPressed() = 0;
-    virtual bool select() = 0;
-    virtual bool r() = 0;
-    virtual bool l() = 0;
-    virtual bool escape() = 0;
+    virtual bool a() const = 0;
+    virtual bool aPressed() const = 0;
+    virtual bool b() const = 0;
+    virtual bool bPressed() const = 0;
+    virtual bool up() const = 0;
+    virtual bool upPressed() const = 0;
+    virtual bool down() const = 0;
+    virtual bool downPressed() const = 0;
+    virtual bool left() const = 0;
+    virtual bool right() const = 0;
+    virtual bool start() const = 0;
+    virtual bool startPressed() const = 0;
+    virtual bool select() const = 0;
+    virtual bool r() const = 0;
+    virtual bool l() const = 0;
+    virtual bool escape() const = 0;
   };
 }
 

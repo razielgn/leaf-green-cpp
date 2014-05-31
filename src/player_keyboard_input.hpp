@@ -15,22 +15,22 @@ namespace green_leaf {
 
     void update() override;
 
-    bool a() override;
-    bool aPressed() override;
-    bool b() override;
-    bool bPressed() override;
-    bool up() override;
-    bool upPressed() override;
-    bool down() override;
-    bool downPressed() override;
-    bool left() override;
-    bool right() override;
-    bool start() override;
-    bool startPressed() override;
-    bool select() override;
-    bool r() override;
-    bool l() override;
-    bool escape() override;
+    bool a() const override;
+    bool aPressed() const override;
+    bool b() const override;
+    bool bPressed() const override;
+    bool up() const override;
+    bool upPressed() const override;
+    bool down() const override;
+    bool downPressed() const override;
+    bool left() const override;
+    bool right() const override;
+    bool start() const override;
+    bool startPressed() const override;
+    bool select() const override;
+    bool r() const override;
+    bool l() const override;
+    bool escape() const override;
 
   private:
     std::unique_ptr<KeyboardInput> keyboard_input_;

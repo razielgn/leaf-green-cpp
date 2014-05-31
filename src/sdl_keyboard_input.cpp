@@ -28,13 +28,13 @@ namespace green_leaf {
     return SDL_SCANCODE_UNKNOWN;
   }
 
-  bool SDLKeyboardInput::isKeyDown(InputKey key) {
+  bool SDLKeyboardInput::isKeyDown(InputKey key) const {
     SDL_Scancode scancode = convertKeyToScancode(key);
 
     return keyboard_state_[scancode];
   }
 
-  bool SDLKeyboardInput::isKeyUp(InputKey key) {
+  bool SDLKeyboardInput::isKeyUp(InputKey key) const {
     SDL_Scancode scancode = convertKeyToScancode(key);
 
     return !keyboard_state_[scancode];

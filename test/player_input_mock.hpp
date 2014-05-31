@@ -10,22 +10,22 @@ namespace green_leaf {
   public:
     void update() { }
 
-    MOCK_METHOD0(a, bool());
-    MOCK_METHOD0(aPressed, bool());
-    MOCK_METHOD0(b, bool());
-    MOCK_METHOD0(bPressed, bool());
-    MOCK_METHOD0(up, bool());
-    MOCK_METHOD0(upPressed, bool());
-    MOCK_METHOD0(down, bool());
-    MOCK_METHOD0(downPressed, bool());
-    MOCK_METHOD0(left, bool());
-    MOCK_METHOD0(right, bool());
-    MOCK_METHOD0(start, bool());
-    MOCK_METHOD0(startPressed, bool());
-    MOCK_METHOD0(select, bool());
-    MOCK_METHOD0(l, bool());
-    MOCK_METHOD0(r, bool());
-    MOCK_METHOD0(escape, bool());
+    MOCK_CONST_METHOD0(a, bool());
+    MOCK_CONST_METHOD0(aPressed, bool());
+    MOCK_CONST_METHOD0(b, bool());
+    MOCK_CONST_METHOD0(bPressed, bool());
+    MOCK_CONST_METHOD0(up, bool());
+    MOCK_CONST_METHOD0(upPressed, bool());
+    MOCK_CONST_METHOD0(down, bool());
+    MOCK_CONST_METHOD0(downPressed, bool());
+    MOCK_CONST_METHOD0(left, bool());
+    MOCK_CONST_METHOD0(right, bool());
+    MOCK_CONST_METHOD0(start, bool());
+    MOCK_CONST_METHOD0(startPressed, bool());
+    MOCK_CONST_METHOD0(select, bool());
+    MOCK_CONST_METHOD0(l, bool());
+    MOCK_CONST_METHOD0(r, bool());
+    MOCK_CONST_METHOD0(escape, bool());
   };
 }
 
