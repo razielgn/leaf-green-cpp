@@ -8,193 +8,105 @@
 namespace green_leaf {
   using namespace ::testing;
 
-#define KEY_STATUS(button, status) \
-  EXPECT_CALL(input_, button()).WillRepeatedly(Return(status));
-#define KEY_PRESSED(button) \
-  KEY_STATUS(button, true);
-#define KEY_NOT_PRESSED(button) \
-  KEY_STATUS(button, false);
+#define KEY_STATUS(button, status) EXPECT_CALL(input_, button()).WillRepeatedly(Return(status));
+#define KEY_PRESSED(button)        KEY_STATUS(button, true);
+#define KEY_NOT_PRESSED(button)    KEY_STATUS(button, false);
 
   class PlayerMovementTest : public Test {
   protected:
-    PlayerMovementTest() { }
+    PlayerMovementTest()
+      : pm_(Direction::Down)
+    {
+    }
 
     void SetUp() {
       nothingPressed();
     }
 
     void nothingPressed() {
-      KEY_NOT_PRESSED(a);
-      KEY_NOT_PRESSED(b);
       KEY_NOT_PRESSED(up);
       KEY_NOT_PRESSED(down);
       KEY_NOT_PRESSED(left);
       KEY_NOT_PRESSED(right);
-      KEY_NOT_PRESSED(start);
-      KEY_NOT_PRESSED(select);
-      KEY_NOT_PRESSED(l);
-      KEY_NOT_PRESSED(r);
-      KEY_NOT_PRESSED(escape);
     }
 
-    PlayerMovement player_movement_ = PlayerMovement(Direction::Down);
+    PlayerMovement pm_;
     PlayerInputMock input_;
-
-    const GameTime empty_anim_ = GameTime(0, 0);
-    const GameTime half_anim_ = GameTime(125, 0);
-    const GameTime full_anim_ = GameTime(250, 0);
   };
 
-  TEST_F(PlayerMovementTest, Constructor) {
-    EXPECT_EQ(Direction::Down, player_movement_.direction());
+  TEST_F(PlayerMovementTest, DirectionIsTakenAsParameter) {
+    EXPECT_EQ(Direction::Down, pm_.direction());
   }
 
-  TEST_F(PlayerMovementTest, DownKeyPressed) {
-    KEY_PRESSED(down);
-
-    player_movement_.update(input_, half_anim_);
-
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Direction::Down, player_movement_.direction());
+  TEST_F(PlayerMovementTest, StateDefaultsToIdle) {
+    EXPECT_EQ(MovementState::Idle, pm_.state());
   }
 
-  TEST_F(PlayerMovementTest, RightKeyPressed) {
+  TEST_F(PlayerMovementTest, UpdateSetsDirectionToRight) {
     KEY_PRESSED(right);
 
-    player_movement_.update(input_, half_anim_);
+    pm_.update(input_);
 
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Direction::Right, player_movement_.direction());
+    EXPECT_EQ(Direction::Right, pm_.direction());
   }
 
-  TEST_F(PlayerMovementTest, LeftKeyPressed) {
+  TEST_F(PlayerMovementTest, UpdateSetsDirectionToLeft) {
     KEY_PRESSED(left);
 
-    player_movement_.update(input_, half_anim_);
+    pm_.update(input_);
 
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Direction::Left, player_movement_.direction());
+    EXPECT_EQ(Direction::Left, pm_.direction());
   }
 
-  TEST_F(PlayerMovementTest, UpKeyPressed) {
+  TEST_F(PlayerMovementTest, UpdateSetsDirectionToDown) {
+    KEY_PRESSED(down);
+
+    pm_.update(input_);
+
+    EXPECT_EQ(Direction::Down, pm_.direction());
+  }
+
+  TEST_F(PlayerMovementTest, UpdateSetsDirectionToUp) {
     KEY_PRESSED(up);
 
-    player_movement_.update(input_, half_anim_);
+    pm_.update(input_);
 
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Direction::Up, player_movement_.direction());
+    EXPECT_EQ(Direction::Up, pm_.direction());
   }
 
-  TEST_F(PlayerMovementTest, InputSkippedWhenMoving) {
+  TEST_F(PlayerMovementTest, UpdateSetsStateToIdleWhenNothingIsPressed) {
+    KEY_PRESSED(up);
+    pm_.update(input_);
+    nothingPressed();
+
+    pm_.update(input_);
+
+    EXPECT_EQ(MovementState::Idle, pm_.state());
+  }
+
+  TEST_F(PlayerMovementTest, UpdateSetsStateToTurningWhenChangingDirectionOfMovement) {
     KEY_PRESSED(up);
 
-    player_movement_.update(input_, half_anim_);
+    pm_.update(input_);
 
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Direction::Up, player_movement_.direction());
-
-    nothingPressed();
-
-    player_movement_.update(input_, half_anim_);
-
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_EQ(Direction::Up, player_movement_.direction());
+    EXPECT_EQ(MovementState::Turning, pm_.state());
   }
 
-  TEST_F(PlayerMovementTest, ProgressFrozenWhenStill) {
-    nothingPressed();
-
-    player_movement_.update(input_, half_anim_);
-
-    EXPECT_FLOAT_EQ(0.0f, player_movement_.progress());
-  }
-
-  TEST_F(PlayerMovementTest, AnimationProgress) {
+  TEST_F(PlayerMovementTest, UpdateSetsStateToMovingWhenGoingInTheSameDirection) {
     KEY_PRESSED(down);
 
-    int elapsed = 0;
-    float progress = 0.0f;
+    pm_.update(input_);
 
-    do {
-      player_movement_.update(input_, GameTime(elapsed, 0));
-
-      EXPECT_FLOAT_EQ(progress, player_movement_.progress());
-
-      progress += 0.2f;
-      elapsed = 50;
-    } while(progress <= 1.0f);
+    EXPECT_EQ(MovementState::Moving, pm_.state());
   }
 
-  TEST_F(PlayerMovementTest, Finished) {
+  TEST_F(PlayerMovementTest, ResetSetsStateToIdle) {
     KEY_PRESSED(down);
+    pm_.update(input_);
 
-    player_movement_.update(input_, full_anim_);
-    EXPECT_TRUE(player_movement_.finished());
-  }
+    pm_.reset();
 
-  TEST_F(PlayerMovementTest, MovementIsResetAfterFinish) {
-    KEY_PRESSED(down);
-
-    player_movement_.update(input_, full_anim_);
-
-    nothingPressed();
-
-    player_movement_.update(input_, empty_anim_);
-
-    EXPECT_FALSE(player_movement_.moving());
-  }
-
-  TEST_F(PlayerMovementTest, DirectionIsMovementAfterFinish) {
-    KEY_PRESSED(down);
-
-    player_movement_.update(input_, full_anim_);
-
-    nothingPressed();
-
-    player_movement_.update(input_, empty_anim_);
-
-    EXPECT_EQ(Direction::Down, player_movement_.direction());
-  }
-
-  TEST_F(PlayerMovementTest, ResetStateAfterFinished) {
-    KEY_PRESSED(down);
-
-    player_movement_.update(input_, full_anim_);
-    EXPECT_TRUE(player_movement_.finished());
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_FLOAT_EQ(1.0f, player_movement_.progress());
-
-    nothingPressed();
-
-    player_movement_.update(input_, half_anim_);
-    EXPECT_FALSE(player_movement_.finished());
-    EXPECT_FALSE(player_movement_.moving());
-    EXPECT_THAT(0.0f, player_movement_.progress());
-  }
-
-  TEST_F(PlayerMovementTest, Clashing) {
-    player_movement_.clashing(true);
-    EXPECT_TRUE(player_movement_.clashing());
-
-    player_movement_.clashing(false);
-    EXPECT_FALSE(player_movement_.clashing());
-  }
-
-  TEST_F(PlayerMovementTest, WalkingAndClashing) {
-    KEY_PRESSED(down);
-    player_movement_.clashing(true);
-
-    player_movement_.update(input_, full_anim_);
-    EXPECT_FALSE(player_movement_.finished());
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_TRUE(player_movement_.clashing());
-    EXPECT_FLOAT_EQ(0.5f, player_movement_.progress());
-
-    player_movement_.update(input_, full_anim_);
-    EXPECT_TRUE(player_movement_.finished());
-    EXPECT_TRUE(player_movement_.moving());
-    EXPECT_TRUE(player_movement_.clashing());
-    EXPECT_FLOAT_EQ(1.0f, player_movement_.progress());
+    EXPECT_EQ(MovementState::Idle, pm_.state());
   }
 
 #undef KEY_STATUS
