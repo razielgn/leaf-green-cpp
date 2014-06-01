@@ -2,6 +2,7 @@
 
 #include "content.hpp"
 #include "graphics.hpp"
+#include "movement_timing.hpp"
 #include "player_movement.hpp"
 #include "rectangle.hpp"
 
@@ -20,8 +21,8 @@ namespace green_leaf {
       return 0;
     }
 
-    float animationProgress(bool clashing) {
-      if(clashing) {
+    float animationProgress(bool clashing, bool turning) {
+      if(clashing || turning) {
         return 0.5f;
       }
 
@@ -56,21 +57,26 @@ namespace green_leaf {
     texture_ = content.loadTexture("hero.gif");
   }
 
-  void Player::update(const PlayerMovement& player_movement, const Vector2 position) {
+  void Player::update(const PlayerMovement& player_movement, const MovementTiming& timing) {
     unsigned int direction_index = directionIndex(player_movement.direction());
-    unsigned int movement_index = 0;
 
-    const float progress = player_movement.progress();
-    if(progress > 0 && progress < animationProgress(player_movement.clashing())) {
+    if(player_movement.state() == MovementState::Idle) {
+      frame_ = Vector2(0, direction_index);
+      return;
+    }
+
+    unsigned int movement_index = 0;
+    const auto turning = player_movement.state() == MovementState::Turning;
+
+    if(timing.progress() < animationProgress(timing.clashing(), turning)) {
       movement_index = movementIndex(alternate_movement_);
     }
 
-    if(player_movement.finished()) {
+    if(timing.finished()) {
       alternate_movement_ = alternateMovement(alternate_movement_);
     }
 
     frame_ = Vector2(movement_index, direction_index);
-    position_ = position;
   }
 
   void Player::draw(const Graphics& graphics) const {
