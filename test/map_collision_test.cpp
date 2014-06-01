@@ -27,22 +27,13 @@ namespace green_leaf {
       rectangles_
     );
     const MapCollision map_collision_ = MapCollision(collisions_layer_);
-    PlayerMovement player_movement_ = PlayerMovement(Direction::Down);
   };
 
-  TEST_F(MapCollisionTest, UpdateLegitMove) {
-    EXPECT_FALSE(player_movement_.clashing());
-
-    map_collision_.update(player_movement_, Vector2(4, 6), Vector2(4, 7));
-
-    EXPECT_FALSE(player_movement_.clashing());
+  TEST_F(MapCollisionTest, CanMoveReturnsTrueWhenNotCrossingCollisionBounds) {
+    EXPECT_TRUE(map_collision_.canMove(Vector2(4, 6), Vector2(4, 7)));
   }
 
-  TEST_F(MapCollisionTest, UpdateClashingMove) {
-    EXPECT_FALSE(player_movement_.clashing());
-
-    map_collision_.update(player_movement_, Vector2(5, 6), Vector2(5, 5));
-
-    EXPECT_TRUE(player_movement_.clashing());
+  TEST_F(MapCollisionTest, CanMoveReturnsFalseWhenCrossingCollisionBounds) {
+    EXPECT_FALSE(map_collision_.canMove(Vector2(5, 6), Vector2(5, 5)));
   }
 }

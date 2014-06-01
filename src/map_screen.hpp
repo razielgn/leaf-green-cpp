@@ -3,7 +3,9 @@
 #define GL_MAP_SCREEN_HPP
 
 #include "map.hpp"
+#include "map_collision.hpp"
 #include "map_source.hpp"
+#include "movement_timing.hpp"
 #include "player.hpp"
 #include "player_movement.hpp"
 #include "screen.hpp"
@@ -31,11 +33,18 @@ namespace green_leaf {
     std::unique_ptr<const MapSource> map_source_;
     std::unique_ptr<Map> map_;
     std::unique_ptr<Screen> maybe_next_screen_;
+    std::unique_ptr<const MapCollision> map_collision_;
+
     Player player_;
     PlayerMovement player_movement_;
+    MovementTiming player_timing_;
     Vector2 player_position_;
+    bool clashing_;
 
     void updateInteractions(PlayerInput& input);
+    void updateIdlePlayer(PlayerInput& input);
+    void updateTurningPlayer(const GameTime game_time);
+    void updateMovingPlayer(PlayerInput& input, const GameTime game_time);
   };
 }
 

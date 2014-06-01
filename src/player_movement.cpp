@@ -1,59 +1,54 @@
 #include "player_movement.hpp"
 
-#include "game_time.hpp"
+#include "maybe.hpp"
 #include "player_input.hpp"
 
 namespace green_leaf {
-  PlayerMovement::PlayerMovement(const Direction direction)
-    : movement_(Movement::Still)
-    , direction_(direction)
-    , elapsed_mseconds_(0)
-    , finished_(false)
-    , clashing_(false)
+  namespace {
+    Maybe<Direction> fromInput(const PlayerInput &input) {
+      if(input.right()) {
+        return Direction::Right;
+      } else if(input.left()) {
+        return Direction::Left;
+      } else if(input.down()) {
+        return Direction::Down;
+      } else if(input.up()) {
+        return Direction::Up;
+      }
+
+      return Nothing<Direction>();
+    }
+  }
+
+  PlayerMovement::PlayerMovement(Direction direction)
+    : direction_(direction)
   {
+    reset();
+  }
+
+  void PlayerMovement::update(const PlayerInput &input) {
+    const auto maybe_direction = fromInput(input);
+
+    if(maybe_direction.nothing()) {
+      reset();
+      return;
+    }
+
+    const auto prev_direction = direction_;
+    direction_ = maybe_direction.value();
+
+    if(state_ == MovementState::Moving) {
+      return;
+    }
+
+    if(direction_ == prev_direction) {
+      state_ = MovementState::Moving;
+    } else {
+      state_ = MovementState::Turning;
+    }
   }
 
   void PlayerMovement::reset() {
-    finished_ = false;
-    clashing_ = false;
-    elapsed_mseconds_ = 0;
-  }
-
-  void PlayerMovement::update(PlayerInput& input, const GameTime game_time) {
-    if(finished_) {
-      reset();
-    }
-
-    if(elapsed_mseconds_ == 0) {
-      movement_ = Movement::Walking;
-
-      if(input.right()) {
-        direction_ = Direction::Right;
-      } else if(input.left()) {
-        direction_ = Direction::Left;
-      } else if(input.up()) {
-        direction_ = Direction::Up;
-      } else if(input.down()) {
-        direction_ = Direction::Down;
-      } else {
-        movement_ = Movement::Still;
-        return;
-      }
-    }
-
-    elapsed_mseconds_ += game_time.elapsed();
-
-    if(elapsed_mseconds_ >= movement_time()) {
-      elapsed_mseconds_ = movement_time();
-      finished_ = true;
-    }
-  }
-
-  int PlayerMovement::movement_time() const {
-    if(clashing_) {
-      return clashing_movement_time_;
-    } else {
-      return walking_movement_time_;
-    }
+    state_ = MovementState::Idle;
   }
 }

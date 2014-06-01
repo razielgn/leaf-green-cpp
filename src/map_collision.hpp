@@ -6,13 +6,12 @@
 
 namespace green_leaf {
   class CollisionsLayer;
-  class PlayerMovement;
 
   class MapCollision {
   public:
     MapCollision(const CollisionsLayer& collisions_layer);
 
-    void update(PlayerMovement& player_movement, const Vector2 position, const Vector2 destination) const;
+    bool canMove(const Vector2 position, const Vector2 destination) const;
 
   private:
     const CollisionsLayer& collisions_layer_;

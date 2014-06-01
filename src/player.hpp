@@ -10,8 +10,9 @@
 namespace green_leaf {
   class Content;
   class Graphics;
-  enum class Direction;
+  class MovementTiming;
   class PlayerMovement;
+  enum class Direction;
 
   enum class AlternateMovement {
     Right,
@@ -23,8 +24,12 @@ namespace green_leaf {
     Player(const Direction direction);
 
     void loadContent(const Content& content);
-    void update(const PlayerMovement& player_movement, const Vector2 position);
+    void update(const PlayerMovement& player_movement, const MovementTiming& timing);
     void draw(const Graphics& graphics) const;
+
+    void position(const Vector2 position) {
+      position_ = position;
+    }
 
   private:
     std::unique_ptr<const Texture> texture_;
