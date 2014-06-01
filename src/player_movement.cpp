@@ -27,22 +27,25 @@ namespace green_leaf {
   }
 
   void PlayerMovement::update(const PlayerInput &input) {
-    auto maybe_direction = fromInput(input);
+    const auto maybe_direction = fromInput(input);
 
     if(maybe_direction.nothing()) {
       reset();
       return;
     }
 
-    Direction next_direction = maybe_direction.value();
+    const auto prev_direction = direction_;
+    direction_ = maybe_direction.value();
 
-    if(direction_ == next_direction) {
+    if(state_ == MovementState::Moving) {
+      return;
+    }
+
+    if(direction_ == prev_direction) {
       state_ = MovementState::Moving;
     } else {
       state_ = MovementState::Turning;
     }
-
-    direction_ = next_direction;
   }
 
   void PlayerMovement::reset() {

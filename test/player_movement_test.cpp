@@ -100,6 +100,15 @@ namespace green_leaf {
     EXPECT_EQ(MovementState::Moving, pm_.state());
   }
 
+  TEST_F(PlayerMovementTest, UpdateLeavesStateToMovingWhenAlreadyMoving) {
+    KEY_PRESSED(down);
+    pm_.update(input_);
+    KEY_PRESSED(left);
+    pm_.update(input_);
+
+    EXPECT_EQ(MovementState::Moving, pm_.state());
+  }
+
   TEST_F(PlayerMovementTest, ResetSetsStateToIdle) {
     KEY_PRESSED(down);
     pm_.update(input_);
