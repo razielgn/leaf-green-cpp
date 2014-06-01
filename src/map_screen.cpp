@@ -34,11 +34,15 @@ namespace green_leaf {
     , player_(direction)
     , player_movement_(direction)
     , player_position_(start_pos)
+    , clashing_(false)
   {
+    player_.position(screen_size_ / 2);
   }
 
   void MapScreen::loadContent(const Content& content) {
     map_source_ = content.loadMap(map_name_);
+    map_collision_ = std::make_unique<const MapCollision>(map_source_->collisionsLayer());
+
     player_.loadContent(content);
 
     map_ = std::make_unique<Map>(map_source_->tileSize(), screen_size_);
@@ -54,40 +58,71 @@ namespace green_leaf {
     const Vector2 facing = movementDestination(player_position_, player_movement_.direction());
 
     const ObjectInteraction object_interaction(map_source_->objects());
-    maybe_next_screen_ = object_interaction.update(screenManager(), facing, input);
+    auto screen = object_interaction.update(screenManager(), facing, input);
+
+    if(screen != nullptr) {
+      maybe_next_screen_ = std::move(screen);
+    }
   }
 
   void MapScreen::update(PlayerInput& input, const GameTime game_time) {
-    // When the player is moving nothing can interrupt it from the keyboard.
-    // When the player is still or clashing, anything can interrupt it.
+    switch(player_movement_.state()) {
+      case MovementState::Idle: updateIdlePlayer(input); break;
+      case MovementState::Turning: updateTurningPlayer(game_time); break;
+      case MovementState::Moving: updateMovingPlayer(input, game_time); break;
+    }
+  }
 
-    player_movement_.update(input, game_time);
+  void MapScreen::updateIdlePlayer(PlayerInput& input) {
+    player_movement_.update(input);
 
     updateInteractions(input);
+    if(maybe_next_screen_) {
+      pushScreen(std::move(maybe_next_screen_));
+    }
+  }
 
-    if(player_movement_.moving()) {
-      const Vector2 destination = movementDestination(player_position_, player_movement_.direction());
+  void MapScreen::updateTurningPlayer(const GameTime game_time) {
+    player_timing_.turning(true);
+    player_timing_.update(game_time);
 
-      const MapCollision map_collision(map_source_->collisionsLayer());
-      map_collision.update(player_movement_, player_position_, destination);
+    player_.update(player_movement_, player_timing_);
 
-      if(!player_movement_.clashing()) {
-        map_->update(player_movement_.progress(), player_position_, destination);
+    if(player_timing_.finished()) {
+      player_timing_.reset();
+      player_movement_.reset();
+    }
+  }
 
-        if(player_movement_.finished()) {
-          player_position_ = destination;
-        }
-      }
+  void MapScreen::updateMovingPlayer(PlayerInput& input, const GameTime game_time) {
+    player_timing_.update(game_time);
+    updateInteractions(input);
+    player_.update(player_movement_, player_timing_);
+
+    Vector2 destination = movementDestination(player_position_, player_movement_.direction());
+    clashing_ = !map_collision_->canMove(player_position_, destination);
+
+    player_timing_.clashing(clashing_);
+
+    if(clashing_) {
+      destination = player_position_;
     }
 
-    if(player_movement_.clashing() || !player_movement_.moving()) {
-      if(maybe_next_screen_) {
-        player_movement_.reset();
-        pushScreen(std::move(maybe_next_screen_));
-      }
+    map_->update(player_timing_.progress(), player_position_, destination);
+
+    if(player_timing_.finished()) {
+      player_timing_.reset();
+      player_movement_.update(input);
+
+      player_position_ = destination;
     }
 
-    player_.update(player_movement_, screen_size_ / 2);
+    if(clashing_ && maybe_next_screen_) {
+      player_movement_.reset();
+      player_timing_.reset();
+      player_.update(player_movement_, player_timing_);
+      pushScreen(std::move(maybe_next_screen_));
+    }
   }
 
   void MapScreen::draw(const Graphics& graphics) const {
