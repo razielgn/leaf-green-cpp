@@ -15,11 +15,8 @@ namespace green_leaf {
     }
   }
 
-  MovementTiming::MovementTiming()
-    : elapsed_(0)
-    , clashing_(false)
-    , turning_(false)
-  {
+  MovementTiming::MovementTiming() {
+    reset();
   }
 
   void MovementTiming::update(const GameTime game_time) {
