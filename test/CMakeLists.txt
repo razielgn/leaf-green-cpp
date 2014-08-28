@@ -58,8 +58,6 @@ add_executable(green-leaf-tests
   ${GREEN_LEAF_TESTS_SRC}
 )
 
-add_dependencies(green-leaf-tests GoogleMock)
-
 include_directories(
   ${SRC_DIR}
   ${TEST_DIR}
