@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MAP_SCREEN_HPP
-#define GL_MAP_SCREEN_HPP
 
 #include "map.hpp"
 #include "map_collision.hpp"
@@ -47,5 +45,3 @@ namespace green_leaf {
     void updateMovingPlayer(PlayerInput& input, const GameTime game_time);
   };
 }
-
-#endif

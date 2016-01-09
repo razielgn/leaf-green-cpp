@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_VECTOR2F_HPP
-#define GL_VECTOR2F_HPP
 
 #include "vector2.hpp"
 
@@ -59,5 +57,3 @@ namespace std {
     }
   };
 }
-
-#endif

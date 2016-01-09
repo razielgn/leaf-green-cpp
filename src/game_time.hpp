@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_GAME_TIME_HPP
-#define GL_GAME_TIME_HPP
 
 namespace green_leaf {
   class GameTime {
@@ -20,5 +18,3 @@ namespace green_leaf {
     const unsigned int total_;
   };
 }
-
-#endif

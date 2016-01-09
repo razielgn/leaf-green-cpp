@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_RECTANGLE_HPP
-#define GL_RECTANGLE_HPP
 
 #include "vector2.hpp"
 
@@ -68,5 +66,3 @@ namespace green_leaf {
 
   ::std::ostream& operator<<(::std::ostream& os, const Rectangle& r);
 }
-
-#endif

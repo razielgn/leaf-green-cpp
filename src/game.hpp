@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_GAME_CPP
-#define GL_GAME_CPP
 
 #include "content.hpp"
 #include "graphics.hpp"
@@ -30,5 +28,3 @@ namespace green_leaf {
     bool running_;
   };
 }
-
-#endif

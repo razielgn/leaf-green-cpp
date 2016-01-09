@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_SCREEN_HPP
-#define GL_SCREEN_HPP
 
 #include "game_time.hpp"
 
@@ -33,5 +31,3 @@ namespace green_leaf {
     ScreenManager& screen_manager_;
   };
 }
-
-#endif

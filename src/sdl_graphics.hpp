@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_SDL_GRAPHICS_HPP
-#define GL_SDL_GRAPHICS_HPP
 
 #include "graphics.hpp"
 #include "vector2.hpp"
@@ -39,5 +37,3 @@ namespace green_leaf {
     const Vector2 size_;
   };
 }
-
-#endif

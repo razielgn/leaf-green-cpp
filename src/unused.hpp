@@ -1,4 +1,3 @@
-#ifndef UNUSED_MACRO
-#define UNUSED_MACRO
+#pragma once
+
 #define UNUSED(expr) do { (void)(expr); } while (0)
-#endif

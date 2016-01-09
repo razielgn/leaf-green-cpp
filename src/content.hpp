@@ -1,10 +1,7 @@
 #pragma once
-#ifndef GL_CONTENT_HPP
-#define GL_CONTENT_HPP
-
-#include <string>
 
 #include <memory>
+#include <string>
 
 namespace green_leaf {
   class BitmapFont;
@@ -20,5 +17,3 @@ namespace green_leaf {
     virtual std::unique_ptr<const BitmapFont> loadBitmapFont(const std::string path) const = 0;
   };
 }
-
-#endif

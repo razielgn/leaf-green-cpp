@@ -1,5 +1,4 @@
-#ifndef GL_UTILS_STRING_HPP
-#define GL_UTILS_STRING_HPP
+#pragma once
 
 #include <string>
 #include <vector>
@@ -10,5 +9,3 @@ namespace green_leaf {
     size_t utf8Length(const std::string string);
   }
 }
-
-#endif

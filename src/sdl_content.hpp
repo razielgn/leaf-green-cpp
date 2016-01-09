@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_SDL_CONTENT_HPP
-#define GL_SDL_CONTENT_HPP
 
 #include "content.hpp"
 
@@ -30,5 +28,3 @@ namespace green_leaf {
     std::string fullPath(std::string path) const;
   };
 }
-
-#endif

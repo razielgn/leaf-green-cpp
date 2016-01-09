@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MESSAGE_BOX_SCREEN_HPP
-#define GL_MESSAGE_BOX_SCREEN_HPP
 
 #include "bitmap_font.hpp"
 #include "custom_types.hpp"
@@ -50,5 +48,3 @@ namespace green_leaf {
     bool lastMessage() const;
   };
 }
-
-#endif

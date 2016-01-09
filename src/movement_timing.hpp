@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MOVEMENT_TIMING
-#define GL_MOVEMENT_TIMING
 
 namespace green_leaf {
   class GameTime;
@@ -32,5 +30,3 @@ namespace green_leaf {
     bool turning_;
   };
 }
-
-#endif

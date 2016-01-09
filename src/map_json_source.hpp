@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MAP_JSON_SOURCE_HPP
-#define GL_MAP_JSON_SOURCE_HPP
 
 #include "collisions_layer.hpp"
 #include "map_source.hpp"
@@ -67,5 +65,3 @@ namespace green_leaf {
     std::vector<Door> doors_;
   };
 }
-
-#endif

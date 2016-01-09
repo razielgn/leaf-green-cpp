@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MESSAGE_BOX_STATE_HPP
-#define GL_MESSAGE_BOX_STATE_HPP
 
 #include "game_time.hpp"
 
@@ -34,5 +32,3 @@ namespace green_leaf {
     unsigned int elapsed_;
   };
 }
-
-#endif

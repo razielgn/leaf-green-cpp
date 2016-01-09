@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_PLAYER_HPP
-#define GL_PLAYER_HPP
 
 #include "texture.hpp"
 #include "vector2.hpp"
@@ -38,5 +36,3 @@ namespace green_leaf {
     AlternateMovement alternate_movement_;
   };
 }
-
-#endif

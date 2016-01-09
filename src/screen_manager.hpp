@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_SCREEN_MANAGER_HPP
-#define GL_SCREEN_MANAGER_HPP
 
 #include "screen.hpp"
 
@@ -30,5 +28,3 @@ namespace green_leaf {
     const Content& content_;
   };
 }
-
-#endif

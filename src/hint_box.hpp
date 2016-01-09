@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_HINT_BOX_HPP
-#define GL_HINT_BOX_HPP
 
 #include "bitmap_font.hpp"
 #include "custom_types.hpp"
@@ -26,5 +24,3 @@ namespace green_leaf {
     const std::vector<message> messages_;
   };
 }
-
-#endif

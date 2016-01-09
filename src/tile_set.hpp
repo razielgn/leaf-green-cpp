@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_TILE_SET_HPP
-#define GL_TILE_SET_HPP
 
 #include "rectangle.hpp"
 #include "vector2.hpp"
@@ -37,5 +35,3 @@ namespace green_leaf {
     const unsigned int start_code_;
   };
 }
-
-#endif

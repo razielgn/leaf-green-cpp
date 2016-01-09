@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MENU_TRIANGLE_STATE_HPP
-#define GL_MENU_TRIANGLE_STATE_HPP
 
 #include "game_time.hpp"
 
@@ -25,5 +23,3 @@ namespace green_leaf {
     Direction direction_;
   };
 }
-
-#endif

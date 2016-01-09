@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_PLAYER_MOVEMENT_HPP
-#define GL_PLAYER_MOVEMENT_HPP
 
 #include "direction.hpp"
 
@@ -33,5 +31,3 @@ namespace green_leaf {
     MovementState state_;
   };
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_INPUT_KEYS_HPP
-#define GL_INPUT_KEYS_HPP
 
 #include <iosfwd>
 
@@ -21,5 +19,3 @@ namespace green_leaf {
 
   ::std::ostream& operator<<(::std::ostream& os, const InputKey& p);
 }
-
-#endif

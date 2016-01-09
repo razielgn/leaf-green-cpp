@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_OBJECT_HPP
-#define GL_OBJECT_HPP
 
 #include "custom_types.hpp"
 #include "rectangle.hpp"
@@ -35,5 +33,3 @@ namespace green_leaf {
     const bool sign_;
   };
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MAP_COLLISION_HPP
-#define GL_MAP_COLLISION_HPP
 
 #include "vector2.hpp"
 
@@ -17,5 +15,3 @@ namespace green_leaf {
     const CollisionsLayer& collisions_layer_;
   };
 }
-
-#endif

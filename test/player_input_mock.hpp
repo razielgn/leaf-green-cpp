@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_PLAYER_INPUT_MOCK_HPP
-#define GL_PLAYER_INPUT_MOCK_HPP
 
 #include "gmock/gmock.h"
 #include "player_input.hpp"
@@ -28,5 +26,3 @@ namespace green_leaf {
     MOCK_CONST_METHOD0(escape, bool());
   };
 }
-
-#endif

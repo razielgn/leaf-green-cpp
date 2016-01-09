@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_CONTENT_MOCK_HPP
-#define GL_CONTENT_MOCK_HPP
 
 #include "bitmap_font.hpp"
 #include "content.hpp"
@@ -32,5 +30,3 @@ namespace green_leaf {
     }
   };
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_VERTICAL_MENU_BOX_HPP
-#define GL_VERTICAL_MENU_BOX_HPP
 
 #include "bitmap_font.hpp"
 #include "texture.hpp"
@@ -40,5 +38,3 @@ namespace green_leaf {
     const Vector2 right_border_offset_;
   };
 }
-
-#endif

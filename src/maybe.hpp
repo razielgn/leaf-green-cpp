@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MAYBE_HPP
-#define GL_MAYBE_HPP
 
 namespace green_leaf {
   template<class A> class Maybe {
@@ -37,5 +35,3 @@ namespace green_leaf {
     return Maybe<A>();
   }
 }
-
-#endif

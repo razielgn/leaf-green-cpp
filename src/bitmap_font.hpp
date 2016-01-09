@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_BITMAP_FONT_HPP
-#define GL_BITMAP_FONT_HPP
 
 #include "texture.hpp"
 
@@ -22,5 +20,3 @@ namespace green_leaf {
     unsigned int drawCharacter(const Graphics& graphics, Vector2 offset, uint32_t c) const;
   };
 }
-
-#endif

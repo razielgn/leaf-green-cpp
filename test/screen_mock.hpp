@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_SCREEN_MOCK_HPP
-#define GL_SCREEN_MOCK_HPP
 
 #include "content.hpp"
 #include "screen.hpp"
@@ -19,5 +17,3 @@ namespace green_leaf {
     MOCK_CONST_METHOD1(draw, void(const Graphics& graphics));
   };
 }
-
-#endif

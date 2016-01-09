@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_START_SCREEN_HPP
-#define GL_START_SCREEN_HPP
 
 #include "hint_box.hpp"
 #include "screen.hpp"
@@ -20,5 +18,3 @@ namespace green_leaf {
     HintBox hint_box_;
   };
 }
-
-#endif

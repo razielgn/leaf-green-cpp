@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MAP_SOURCE_HPP
-#define GL_MAP_SOURCE_HPP
 
 #include "door.hpp"
 #include "object.hpp"
@@ -26,5 +24,3 @@ namespace green_leaf {
     virtual Vector2 tileSize() const = 0;
   };
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_PLAYER_INPUT_HPP
-#define GL_PLAYER_INPUT_HPP
 
 namespace green_leaf {
   class PlayerInput {
@@ -25,5 +23,3 @@ namespace green_leaf {
     virtual bool escape() const = 0;
   };
 }
-
-#endif

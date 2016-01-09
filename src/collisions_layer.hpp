@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_COLLISIONS_LAYER_HPP
-#define GL_COLLISIONS_LAYER_HPP
 
 #include "rectangle.hpp"
 
@@ -40,5 +38,3 @@ namespace green_leaf {
     void setTileBlockeAt(Vector2 pos);
   };
 }
-
-#endif

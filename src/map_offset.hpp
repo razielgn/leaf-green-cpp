@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MAP_OFFSET_HPP
-#define GL_MAP_OFFSET_HPP
 
 #include "vector2.hpp"
 
@@ -16,5 +14,3 @@ namespace green_leaf {
     const Vector2 screen_size_;
   };
 }
-
-#endif

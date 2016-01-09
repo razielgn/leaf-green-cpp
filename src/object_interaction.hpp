@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_OBJECT_INTERACTION_HPP
-#define GL_OBJECT_INTERACTION_HPP
 
 #include "message_box_screen.hpp"
 #include "object.hpp"
@@ -16,5 +14,3 @@ namespace green_leaf {
     const std::vector<Object>& objects_;
   };
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_SDL_KEYBOARD_INPUT_HPP
-#define GL_SDL_KEYBOARD_INPUT_HPP
 
 #include "keyboard_input.hpp"
 
@@ -18,5 +16,3 @@ namespace green_leaf {
     const Uint8* keyboard_state_;
   };
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_SIGN_MESSAGE_BOX_SCREEN_HPP
-#define GL_SIGN_MESSAGE_BOX_SCREEN_HPP
 
 #include "message_box_screen.hpp"
 
@@ -18,5 +16,3 @@ namespace green_leaf {
     }
   };
 }
-
-#endif

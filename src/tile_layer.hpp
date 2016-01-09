@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_TILE_LAYER_HPP
-#define GL_TILE_LAYER_HPP
 
 #include "vector2.hpp"
 
@@ -35,5 +33,3 @@ namespace green_leaf {
     const std::vector<unsigned int> tiles_;
   };
 }
-
-#endif

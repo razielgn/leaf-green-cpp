@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_PLAYER_KEYBOARD_INPUT
-#define GL_PLAYER_KEYBOARD_INPUT
 
 #include "keyboard_input.hpp"
 #include "player_input.hpp"
@@ -38,5 +36,3 @@ namespace green_leaf {
     std::array<bool, 11> current_state_;
   };
 }
-
-#endif

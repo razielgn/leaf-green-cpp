@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_GRAPHICS_HPP
-#define GL_GRAPHICS_HPP
 
 #include "rectangle.hpp"
 #include "texture.hpp"
@@ -20,5 +18,3 @@ namespace green_leaf {
     virtual Vector2 size() const = 0;
   };
 }
-
-#endif

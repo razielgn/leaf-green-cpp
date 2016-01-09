@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_MAP_HPP
-#define GL_MAP_HPP
 
 #include "map_offset.hpp"
 #include "vector2.hpp"
@@ -24,5 +22,3 @@ namespace green_leaf {
     Vector2 screen_offset_;
   };
 }
-
-#endif

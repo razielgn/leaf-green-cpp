@@ -18,6 +18,10 @@ add_definitions(
   -Werror
   -Wshadow
   -Wpedantic
+  -Wstrict-overflow
+  -fno-strict-aliasing
+  -Wno-missing-field-initializers
+  -march=native
 )
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")

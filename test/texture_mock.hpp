@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_TEXTURE_MOCK_HPP
-#define GL_TEXTURE_MOCK_HPP
 
 #include "texture.hpp"
 
@@ -20,5 +18,3 @@ namespace green_leaf {
     const Vector2 size_;
   };
 }
-
-#endif

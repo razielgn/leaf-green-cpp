@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GL_DOOR_HPP
-#define GL_DOOR_HPP
 
 #include "rectangle.hpp"
 
@@ -26,5 +24,3 @@ namespace green_leaf {
     const std::string map_;
   };
 }
-
-#endif
