@@ -8,7 +8,7 @@
 
 namespace green_leaf {
   namespace {
-    const std::map<uint32_t, Rectangle> chars {
+    const std::map<uint32_t, Rectangle> chars_map {
       { L'!', Rectangle(132, 28, 6, 14) },
       { L',', Rectangle( 44, 42, 4, 14) },
       { L'-', Rectangle(149, 28, 6, 14) },
@@ -90,9 +90,9 @@ namespace green_leaf {
   }
 
   unsigned int BitmapFont::drawCharacter(const Graphics& graphics, Vector2 offset, uint32_t c) const {
-    auto search = chars.find(c);
+    auto search = chars_map.find(c);
 
-    if(search == chars.end()) {
+    if(search == chars_map.end()) {
       return space_width;
     }
 

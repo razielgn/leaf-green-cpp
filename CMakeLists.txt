@@ -11,12 +11,13 @@ find_package(SDL2_Image REQUIRED)
 include_directories(${SDL2_IMAGE_INCLUDE_DIR})
 
 add_definitions(
-  -std=c++1y
+  -std=c++14
   -g
   -Wall
   -Wextra
   -Werror
-  -pedantic
+  -Wshadow
+  -Wpedantic
 )
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
